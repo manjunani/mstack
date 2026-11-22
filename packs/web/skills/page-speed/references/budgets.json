@@ -3,15 +3,15 @@
   "ttfb_ms": {
     "value": 800,
     "unit": "ms",
-    "source": "The upper edge of a 'good' time to first byte as remembered from web.dev guidance. Not read in the source during this work; read it there before quoting it.",
+    "source": "https://web.dev/articles/ttfb",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true, "note": "\"good\" is 0.8 seconds or less, described as a rough guide; TTFB is not a Core Web Vital"
   },
   "min_compress_bytes": {
     "value": 1024,
     "unit": "bytes",
     "source": "mstack's own choice, not taken from a standard. Below about one kilobyte compression saves little; text at or above it that arrives uncompressed is reported as a finding.",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   }
 }

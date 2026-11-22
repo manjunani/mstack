@@ -5,13 +5,15 @@
     "unit": "times one identical tool call (same name, same arguments) may appear before it is reported",
     "source": "mstack default, first setting; one retry of a failed call is normal, a third identical call rarely learns anything new",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "top": {
     "value": 5,
     "unit": "largest context contributors listed",
     "source": "mstack default, first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   }
 }

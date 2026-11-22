@@ -2,21 +2,21 @@
   "snap_pad": {
     "value": 0.15, "unit": "seconds",
     "source": "mstack default chosen by the builder: a cut point moved out of a word lands at most this far from that word's edge",
-    "checked": "2026-11-22", "verified": false
+    "checked": "2026-11-22", "verified": false, "note": "mstack default; no primary source"
   },
   "sync_tolerance": {
     "value": 0.1, "unit": "seconds",
     "source": "mstack default chosen by the builder: how far the sound track's length may differ from the picture's",
-    "checked": "2026-11-22", "verified": false
+    "checked": "2026-11-22", "verified": false, "note": "mstack default; no primary source"
   },
   "frames_per_cut": {
     "value": 1, "unit": "frames",
     "source": "mstack default chosen by the builder: allowed difference in total length for each cut made",
-    "checked": "2026-11-22", "verified": false
+    "checked": "2026-11-22", "verified": false, "note": "mstack default; no primary source"
   },
   "join_match": {
     "value": 4, "unit": "grey levels (0 to 255), mean difference",
     "source": "mstack default chosen by the builder: a frame beside a join may differ this much from the matching source frame after re-encoding",
-    "checked": "2026-11-22", "verified": false
+    "checked": "2026-11-22", "verified": false, "note": "mstack default; no primary source"
   }
 }

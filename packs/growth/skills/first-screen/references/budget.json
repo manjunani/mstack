@@ -6,6 +6,6 @@
     "kind": "guidance",
     "source": "mstack working value. Not taken from a published standard.",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "working value; no primary source states a fixed number"
   }
 }

@@ -2,8 +2,8 @@
   "about": "Limits for an emulated WebXR session report, and adapter names that mean a software renderer. Working values chosen for mstack; none was read from a primary source. Measure on the target headset and replace them.",
   "checked": "2026-11-22",
   "limits": {
-    "max_draw_calls": { "value": 100, "unit": "draw calls per frame, per eye pass as reported by the renderer", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-    "max_triangles": { "value": 300000, "unit": "triangles per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+    "max_draw_calls": { "value": 100, "unit": "draw calls per frame, per eye pass as reported by the renderer", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; Meta's Unity performance page (https://developers.meta.com/horizon/documentation/unity/unity-perf/) gives only example ranges (Quest 2/Pro: 80-200 draw calls in busy scenes, 750k-1m triangles; Quest 3/3S: 200-300 and 1.3m-1.8m); no source fixes a number for WebXR" },
+    "max_triangles": { "value": 300000, "unit": "triangles per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; Meta's Unity performance page (https://developers.meta.com/horizon/documentation/unity/unity-perf/) gives only example ranges (Quest 2/Pro: 80-200 draw calls in busy scenes, 750k-1m triangles; Quest 3/3S: 200-300 and 1.3m-1.8m); no source fixes a number for WebXR" }
   },
-  "software_renderers": { "value": ["swiftshader", "llvmpipe", "softpipe", "lavapipe", "software", "basic render"], "unit": "lower-case fragments of a GPU adapter name", "source": "mstack working list, no primary source", "checked": "2026-11-22", "verified": false }
+  "software_renderers": { "value": ["swiftshader", "llvmpipe", "softpipe", "lavapipe", "software", "basic render"], "unit": "lower-case fragments of a GPU adapter name", "source": "mstack working list, no primary source", "checked": "2026-11-22", "verified": false, "note": "working list; adapter names are not standardised" }
 }

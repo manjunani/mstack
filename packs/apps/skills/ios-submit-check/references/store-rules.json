@@ -1,16 +1,11 @@
 {
   "about": "Tables ios-submit-check matches against. All were written from memory during this work, with no access to Apple's documentation, so every entry is unverified and the script prints that. Apple's App Store Connect help and the privacy manifest documentation are the source. To verify an entry: read the source, correct it, set checked to that day and verified to true.",
   "screenshot_sizes": {
-    "value": {
-      "iPhone 6.9 inch": [[1320, 2868], [1290, 2796]],
-      "iPhone 6.5 inch": [[1242, 2688], [1284, 2778]],
-      "iPhone 5.5 inch": [[1242, 2208]],
-      "iPad 13 inch": [[2064, 2752], [2048, 2732]]
-    },
+    "value": {"iPhone 6.9 inch": [[1320, 2868], [1290, 2796], [1260, 2736]], "iPhone 6.5 inch": [[1242, 2688], [1284, 2778]], "iPhone 6.3 inch": [[1179, 2556], [1206, 2622]], "iPhone 6.1 inch": [[1170, 2532], [1125, 2436], [1080, 2340]], "iPhone 5.5 inch": [[1242, 2208]], "iPhone 4.7 inch": [[750, 1334]], "iPhone 4 inch": [[640, 1096], [640, 1136]], "iPhone 3.5 inch": [[640, 920], [640, 960]], "iPhone Duo": [[1398, 2034], [2007, 2853]], "iPad 13 inch": [[2064, 2752], [2048, 2732]], "iPad 11 inch": [[1488, 2266], [1512, 2316], [1668, 2420], [1668, 2388], [1640, 2360]], "iPad 10.5 inch": [[1668, 2224]], "iPad 9.7 inch": [[1536, 2008], [1536, 2048], [768, 1004], [768, 1024]]},
     "unit": "pixels, portrait; landscape is the same pair swapped",
-    "source": "memory of App Store Connect screenshot specifications; not read from Apple in this work",
+    "source": "https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true, "was": {"iPhone 6.9 inch": [[1320, 2868], [1290, 2796]], "iPhone 6.5 inch": [[1242, 2688], [1284, 2778]], "iPhone 5.5 inch": [[1242, 2208]], "iPad 13 inch": [[2064, 2752], [2048, 2732]]}, "note": "Apple's groups: Dynamic Island large (6.9) adds 1260x2736; Dynamic Island medium (6.3) is the required iPhone set; Face ID medium, Home Button and older iPad sizes were missing and made valid screenshots fail. iPhone Duo sizes are listed as outer and inner display; Apple requires them from April 2027 for the iOS 27.1 SDK"
   },
   "usage_keys": {
     "value": {

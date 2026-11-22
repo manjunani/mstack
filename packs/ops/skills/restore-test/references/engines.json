@@ -1,6 +1,7 @@
 {
   "checked": "2026-11-22",
   "verified": false,
+  "note": "not checked in this pass: client tool names were not re-read in each engine's documentation",
   "source": "Tool names written from memory of each engine's standard client tools; not read in the engines' manuals during this work. Read each tool's own --help before use.",
   "steps": [
     "Find the newest backup and write down when it was taken and how large it is. If there is none, stop: that is the finding.",

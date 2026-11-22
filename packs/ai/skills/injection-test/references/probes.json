@@ -6,7 +6,8 @@
     "unit": "transcripts per probe before a clean result counts as a pass",
     "source": "mstack default, first setting; an agent that resists once may obey on the next run",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "probes": [
     {

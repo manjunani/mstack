@@ -2,6 +2,7 @@
   "source": "Each ecosystem's own audit command, written from memory of its documentation; not re-read during this work.",
   "checked": "2026-11-22",
   "verified": false,
+  "note": "not checked in this pass: audit commands were not re-read in each tool's documentation",
   "audits": [
     { "name": "npm", "markers": ["package-lock.json"], "command": "npm audit --audit-level=low", "install_hint": "it comes with Node.js" },
     { "name": "pnpm", "markers": ["pnpm-lock.yaml"], "command": "pnpm audit", "install_hint": "see pnpm.io" },

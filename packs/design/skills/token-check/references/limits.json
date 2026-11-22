@@ -3,15 +3,15 @@
   "contrast_text_min": {
     "value": 4.5,
     "unit": "ratio",
-    "source": "WCAG 2.2, success criterion 1.4.3 Contrast (Minimum), level AA, body text",
+    "source": "https://www.w3.org/TR/WCAG22/",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true
   },
   "contrast_large_min": {
     "value": 3.0,
     "unit": "ratio",
-    "source": "WCAG 2.2, success criterion 1.4.3 (large text) and 1.4.11 Non-text Contrast (interface parts), level AA",
+    "source": "https://www.w3.org/TR/WCAG22/",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true
   }
 }

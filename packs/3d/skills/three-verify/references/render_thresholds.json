@@ -2,10 +2,10 @@
   "about": "Limits that decide whether a screenshot holds a rendered picture, and whether two renders agree. Working values chosen for mstack. None was read from a primary source; re-source or tune them on real captures before treating a result as final.",
   "checked": "2026-11-22",
   "thresholds": {
-    "min_spread": { "value": 2.0, "unit": "levels out of 255 (largest per-channel standard deviation)", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-    "max_dominant_share": { "value": 0.999, "unit": "share of sampled pixels with the most common colour", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-    "max_transparent_share": { "value": 0.98, "unit": "share of pixels with alpha 0", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-    "max_mean_difference": { "value": 4.0, "unit": "levels out of 255 (mean absolute channel difference between two renders)", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-    "max_changed_share": { "value": 0.05, "unit": "share of sampled pixels that differ by more than 16 levels", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+    "min_spread": { "value": 2.0, "unit": "levels out of 255 (largest per-channel standard deviation)", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" },
+    "max_dominant_share": { "value": 0.999, "unit": "share of sampled pixels with the most common colour", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" },
+    "max_transparent_share": { "value": 0.98, "unit": "share of pixels with alpha 0", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" },
+    "max_mean_difference": { "value": 4.0, "unit": "levels out of 255 (mean absolute channel difference between two renders)", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" },
+    "max_changed_share": { "value": 0.05, "unit": "share of sampled pixels that differ by more than 16 levels", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" }
   }
 }

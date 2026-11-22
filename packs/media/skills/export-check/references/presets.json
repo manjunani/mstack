@@ -5,14 +5,14 @@
     "unit": "seconds",
     "source": "mstack default chosen by the builder: how far the export's length may differ from the source's",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   },
   "aspect_tolerance": {
     "value": 0.01,
     "unit": "ratio",
     "source": "mstack default chosen by the builder",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   },
   "presets": {
     "youtube-1080p": {
@@ -23,86 +23,86 @@
         "video_codec": {
           "value": "h264",
           "unit": "codec",
-          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "source": "https://support.google.com/youtube/answer/1722171",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "recommended upload setting, not a hard rule"
         },
         "pixel_format": {
           "value": "yuv420p",
           "unit": "pixel format",
-          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "source": "https://support.google.com/youtube/answer/1722171",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "YouTube recommends 4:2:0 chroma subsampling"
         },
         "width": {
           "value": 1920,
           "unit": "pixels",
           "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "preset definition (1080p, 16:9); YouTube states no required pixel size"
         },
         "height": {
           "value": 1080,
           "unit": "pixels",
           "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "preset definition (1080p, 16:9); YouTube states no required pixel size"
         },
         "max_fps": {
           "value": 60,
           "unit": "frames per second",
           "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "working value; YouTube asks for the recorded frame rate and lists common rates up to 60 but accepts others"
         },
         "max_duration": {
           "value": 43200,
           "unit": "seconds",
-          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "source": "https://support.google.com/youtube/answer/71673",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "12 hours"
         },
         "max_size_mb": {
           "value": 256000,
           "unit": "megabytes",
-          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "source": "https://support.google.com/youtube/answer/71673",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "256 GB or 12 hours, whichever is less"
         },
         "audio_codec": {
           "value": "aac",
           "unit": "codec",
-          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "source": "https://support.google.com/youtube/answer/1722171",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "YouTube recommends AAC-LC (Opus and Eclipsa Audio also listed)"
         },
         "sample_rate": {
           "value": 48000,
           "unit": "Hz",
-          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "source": "https://support.google.com/youtube/answer/1722171",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "recommended 48 kHz"
         },
         "loudness": {
           "value": -14.0,
           "unit": "LUFS",
           "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work; platforms publish playback normalisation levels, not upload rules, so treat this as a target the user may change",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "working value; YouTube publishes no loudness target for uploads"
         },
         "loudness_tolerance": {
           "value": 1.0,
           "unit": "LU",
           "source": "mstack default chosen by the builder",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "mstack default; no primary source"
         },
         "max_true_peak": {
           "value": -1.0,
           "unit": "dBTP",
           "source": "a common delivery ceiling, written from memory; not read in a standard during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "working value; the platform pages read give no true-peak ceiling (-1 dBTP is the EBU R 128 and Apple Podcasts figure)"
         }
       }
     },
@@ -114,86 +114,86 @@
         "video_codec": {
           "value": "h264",
           "unit": "codec",
-          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "source": "https://support.google.com/youtube/answer/1722171",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "recommended upload setting, not a hard rule"
         },
         "pixel_format": {
           "value": "yuv420p",
           "unit": "pixel format",
-          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "source": "https://support.google.com/youtube/answer/1722171",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "YouTube recommends 4:2:0 chroma subsampling"
         },
         "width": {
           "value": 1080,
           "unit": "pixels",
           "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "preset definition; YouTube asks only for a square or vertical aspect ratio"
         },
         "height": {
           "value": 1920,
           "unit": "pixels",
           "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "preset definition; YouTube asks only for a square or vertical aspect ratio"
         },
         "max_fps": {
           "value": 60,
           "unit": "frames per second",
           "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "working value; YouTube asks for the recorded frame rate and lists common rates up to 60 but accepts others"
         },
         "max_duration": {
           "value": 180,
           "unit": "seconds",
-          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "source": "https://support.google.com/youtube/answer/15424877",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "Shorts are up to three minutes"
         },
         "max_size_mb": {
           "value": 256000,
           "unit": "megabytes",
-          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "source": "https://support.google.com/youtube/answer/71673",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "256 GB or 12 hours, whichever is less"
         },
         "audio_codec": {
           "value": "aac",
           "unit": "codec",
-          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "source": "https://support.google.com/youtube/answer/1722171",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "YouTube recommends AAC-LC (Opus and Eclipsa Audio also listed)"
         },
         "sample_rate": {
           "value": 48000,
           "unit": "Hz",
-          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "source": "https://support.google.com/youtube/answer/1722171",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "recommended 48 kHz"
         },
         "loudness": {
           "value": -14.0,
           "unit": "LUFS",
           "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work; platforms publish playback normalisation levels, not upload rules, so treat this as a target the user may change",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "working value; YouTube publishes no loudness target for uploads"
         },
         "loudness_tolerance": {
           "value": 1.0,
           "unit": "LU",
           "source": "mstack default chosen by the builder",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "mstack default; no primary source"
         },
         "max_true_peak": {
           "value": -1.0,
           "unit": "dBTP",
           "source": "a common delivery ceiling, written from memory; not read in a standard during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "working value; the platform pages read give no true-peak ceiling (-1 dBTP is the EBU R 128 and Apple Podcasts figure)"
         }
       }
     },
@@ -205,93 +205,93 @@
         "video_codec": {
           "value": "h264",
           "unit": "codec",
-          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "source": "https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "Graph API reel spec: HEVC or H264"
         },
         "pixel_format": {
           "value": "yuv420p",
           "unit": "pixel format",
-          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "source": "https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "4:2:0 chroma subsampling"
         },
         "width": {
           "value": 1080,
           "unit": "pixels",
           "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "preset definition; the Graph API reel spec allows up to 1920 horizontal pixels and recommends 9:16"
         },
         "height": {
           "value": 1920,
           "unit": "pixels",
           "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "preset definition; the Graph API reel spec allows up to 1920 horizontal pixels and recommends 9:16"
         },
         "max_fps": {
-          "value": 30,
+          "value": 60,
           "unit": "frames per second",
-          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "source": "https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "was": 30, "note": "Graph API reel spec: 23-60 FPS"
         },
         "max_duration": {
-          "value": 180,
+          "value": 900,
           "unit": "seconds",
-          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "source": "https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "was": 180, "note": "Graph API reel spec: 15 minutes maximum when publishing through the API; the app limit is not documented on that page"
         },
         "max_size_mb": {
-          "value": 4000,
+          "value": 300,
           "unit": "megabytes",
-          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "source": "https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "was": 4000, "note": "Graph API reel spec: 300MB maximum when publishing through the API"
         },
         "audio_codec": {
           "value": "aac",
           "unit": "codec",
-          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "source": "https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true
         },
         "sample_rate": {
           "value": 48000,
           "unit": "Hz",
-          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "source": "https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "48 kHz maximum"
         },
         "loudness": {
           "value": -14.0,
           "unit": "LUFS",
           "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work; platforms publish playback normalisation levels, not upload rules, so treat this as a target the user may change",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "working value; the Graph API reel spec gives no loudness target"
         },
         "loudness_tolerance": {
           "value": 1.0,
           "unit": "LU",
           "source": "mstack default chosen by the builder",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "mstack default; no primary source"
         },
         "max_true_peak": {
           "value": -1.0,
           "unit": "dBTP",
           "source": "a common delivery ceiling, written from memory; not read in a standard during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "working value; the platform pages read give no true-peak ceiling (-1 dBTP is the EBU R 128 and Apple Podcasts figure)"
         },
         "min_duration": {
           "value": 3,
           "unit": "seconds",
-          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "source": "https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "3 seconds minimum"
         }
       }
     },
@@ -375,7 +375,7 @@
           "unit": "LU",
           "source": "mstack default chosen by the builder",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "mstack default; no primary source"
         },
         "max_true_peak": {
           "value": -1.0,
@@ -394,44 +394,44 @@
         "audio_codec": {
           "value": "mp3",
           "unit": "codec",
-          "source": "the usual format podcast hosts accept, written from memory",
+          "source": "https://podcasters.apple.com/support/893-audio-requirements",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "Apple Podcasts Connect accepts WAV, FLAC or MP3; RSS feeds MP3 or AAC"
         },
         "sample_rate": {
           "value": 44100,
           "unit": "Hz",
-          "source": "common podcast practice, written from memory",
+          "source": "https://podcasters.apple.com/support/893-audio-requirements",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "MP3 minimum 44.1 kHz; 44.1 or 48 kHz recommended"
         },
         "loudness": {
           "value": -16.0,
           "unit": "LUFS",
-          "source": "a level podcast apps are often said to ask for, written from memory; not read in any platform's documentation during this work",
+          "source": "https://podcasters.apple.com/support/893-audio-requirements",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "around -16 dB LKFS"
         },
         "loudness_tolerance": {
           "value": 1.0,
           "unit": "LU",
-          "source": "mstack default chosen by the builder",
+          "source": "https://podcasters.apple.com/support/893-audio-requirements",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true, "note": "+/- 1 dB"
         },
         "max_true_peak": {
           "value": -1.0,
           "unit": "dBTP",
-          "source": "a common delivery ceiling, written from memory; not read in a standard during this work",
+          "source": "https://podcasters.apple.com/support/893-audio-requirements",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": true
         },
         "max_size_mb": {
           "value": 200,
           "unit": "megabytes",
           "source": "a size many podcast hosts accept, written from memory; hosts differ",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false, "note": "working value; podcast hosts set their own limits"
         }
       }
     }

@@ -386,7 +386,8 @@ def page_speed(env):
     run("byte budget exceeded", [fast, "--delay", "0", "--transfer-only", "--budget-bytes", "500"], 1, has=["bytes on the wire, budget 500"])
     run("request budget exceeded", [fast, "--delay", "0", "--transfer-only", "--budget-requests", "3"], 1, has=["5 requests, budget 3"])
     run("first-byte budget exceeded", [f"{base}/slow.html", "--delay", "0", "--transfer-only", "--runs", "1", "--budget-ttfb-ms", "300"], 1, has=["median time to first byte", "budget 300 ms"])
-    run("slow first byte against the unverified default only warns", [f"{base}/slow.html", "--delay", "0", "--transfer-only", "--runs", "1"], 0, has=["a warning only", "unverified, written from memory"])
+    # The default first-byte limit was checked against its source on 2026-11-22, so the warning now says "verified".
+    run("slow first byte against the default limit only warns", [f"{base}/slow.html", "--delay", "0", "--transfer-only", "--runs", "1"], 0, has=["a warning only", "that limit is verified"])
     run("assets disallowed by robots are not fetched", [f"{base}/robots.html", "--delay", "0", "--transfer-only"], 2,
         has=["not measured  " + f"{base}/hidden/secret.js: disallowed by robots.txt", f"{cdn}/tracking/t.js: disallowed by robots.txt", "2 asset(s) could not be measured"],
         check=lambda o: None if count("/hidden/secret.js") == 0 else "an asset disallowed by robots.txt was fetched")

@@ -6,41 +6,41 @@
     "unit": "first family in the computed font stack, lower case",
     "source": "mstack's own observation of generated pages, written 2026-11-22",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   },
   "max_font_sizes": {
     "value": 8,
     "unit": "different text sizes in one view before a warning",
     "source": "mstack first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   },
   "min_readable_px": {
     "value": 11,
     "unit": "CSS px; smaller text gets a warning",
     "source": "mstack first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   },
   "phone_max_width": {
     "value": 480,
     "unit": "CSS px; views this narrow get the touch comfort warning",
     "source": "mstack first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   },
   "touch_comfort_px": {
     "value": 44,
     "unit": "CSS px on each side",
-    "source": "platform guidance for touch targets as remembered (Apple 44 pt, Android 48 dp); a warning level only",
+    "source": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true, "note": "Apple: 44x44 pt default control size on iOS and iPadOS; Android recommends at least 48dp (https://developer.android.com/guide/topics/ui/accessibility/apps)"
   },
   "default_gradient_hue_range": {
     "value": [235, 290],
     "unit": "degrees of hue (indigo to violet)",
     "source": "mstack's own observation of generated pages, written 2026-11-22",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   }
 }

@@ -5,27 +5,31 @@
     "unit": "trials per case",
     "source": "mstack default: one run of a model cannot tell a real change from chance, three is the smallest count that shows a case is unstable",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "min_cases": {
     "value": 10,
     "unit": "cases present in both files",
     "source": "mstack default, first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "max_drop": {
     "value": 0.05,
     "unit": "pass rate (0 to 1) the candidate may lose before the gate fails",
     "source": "mstack default, first setting; set it with the owner of the evaluation set",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "pass_score": {
     "value": 0.5,
     "unit": "score at or above which a trial with a score and no pass field counts as passed",
     "source": "mstack default; depends on the grader, so set it per evaluation set",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   }
 }

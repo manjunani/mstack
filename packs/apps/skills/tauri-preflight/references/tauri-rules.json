@@ -12,7 +12,7 @@
     "unit": "fragments that mark an identifier as a placeholder",
     "source": "mstack judgement; common placeholder words",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack judgement; no primary source lists placeholder words"
   },
   "broad_permission_patterns": {
     "value": [

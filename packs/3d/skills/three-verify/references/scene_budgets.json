@@ -3,18 +3,18 @@
   "checked": "2026-11-22",
   "profiles": {
     "desktop-web": {
-      "calls": { "value": 300, "unit": "draw calls per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-      "triangles": { "value": 1000000, "unit": "triangles per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-      "geometries": { "value": 500, "unit": "geometries in memory", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-      "textures": { "value": 64, "unit": "textures in memory", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-      "programs": { "value": 40, "unit": "shader programs", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+      "calls": { "value": 300, "unit": "draw calls per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" },
+      "triangles": { "value": 1000000, "unit": "triangles per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" },
+      "geometries": { "value": 500, "unit": "geometries in memory", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" },
+      "textures": { "value": 64, "unit": "textures in memory", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" },
+      "programs": { "value": 40, "unit": "shader programs", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" }
     },
     "mobile-web": {
-      "calls": { "value": 100, "unit": "draw calls per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-      "triangles": { "value": 200000, "unit": "triangles per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-      "geometries": { "value": 200, "unit": "geometries in memory", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-      "textures": { "value": 32, "unit": "textures in memory", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
-      "programs": { "value": 20, "unit": "shader programs", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+      "calls": { "value": 100, "unit": "draw calls per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" },
+      "triangles": { "value": 200000, "unit": "triangles per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" },
+      "geometries": { "value": 200, "unit": "geometries in memory", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" },
+      "textures": { "value": 32, "unit": "textures in memory", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" },
+      "programs": { "value": 20, "unit": "shader programs", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false, "note": "working value; no primary source states a fixed number" }
     }
   },
   "software_renderers": {
@@ -22,6 +22,7 @@
     "unit": "lower-case fragments of a GPU adapter name",
     "source": "mstack working list, no primary source",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working list; adapter names are not standardised"
   }
 }

@@ -6,7 +6,7 @@
     "unit": "render-and-inspect rounds before the work stops and asks",
     "source": "mstack first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   },
   "patterns": {
     "value": [
@@ -23,6 +23,6 @@
     "unit": "regular expressions matched per line, case-insensitive",
     "source": "mstack's own observation of generated pages, written 2026-11-22",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack list; no primary source"
   }
 }

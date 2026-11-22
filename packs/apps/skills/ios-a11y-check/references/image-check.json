@@ -5,41 +5,41 @@
     "unit": "share of sampled pixels that have the single most common colour",
     "source": "mstack default; a screen that is 99.8% one colour shows less than one short line of text",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack detection threshold; no primary source states a number"
   },
   "min_luma_stddev": {
     "value": 2.0,
     "unit": "brightness levels on a 0 to 255 scale",
     "source": "mstack default; below this the picture is one flat tone with noise",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack detection threshold; no primary source states a number"
   },
   "transparent_fraction": {
     "value": 0.98,
     "unit": "share of sampled pixels with alpha 0",
     "source": "mstack default",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack detection threshold; no primary source states a number"
   },
   "ignore_top_fraction": {
     "value": 0.07,
     "unit": "share of the image height skipped at the top (status bar)",
     "source": "mstack default; the status bar is drawn by the system even when the app draws nothing",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack detection threshold; no primary source states a number"
   },
   "ignore_bottom_fraction": {
     "value": 0.04,
     "unit": "share of the image height skipped at the bottom (home indicator)",
     "source": "mstack default",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack detection threshold; no primary source states a number"
   },
   "min_side_px": {
     "value": 200,
     "unit": "pixels",
     "source": "mstack default; smaller than any device screen",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack detection threshold; no primary source states a number"
   }
 }

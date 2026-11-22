@@ -1,10 +1,12 @@
 {
   "note": "The protocol revision the probe offers in its initialize request. A server answers with the revision it speaks, and the probe prints both. Check the current revision in the Model Context Protocol specification before relying on this value.",
   "protocol_version": {
-    "value": "2025-06-18",
+    "value": "2025-11-25",
     "unit": "MCP protocol revision (a date string)",
-    "source": "written from memory of the Model Context Protocol specification; the specification was not opened during this work",
+    "source": "https://modelcontextprotocol.io/specification/versioning",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true,
+    "was": "2025-06-18",
+    "note": "2025-11-25 is the newest handshake-based (initialize) revision. The current revision is 2026-07-28, which drops the initialize handshake (per-request _meta version, server/discover), so this probe, which sends initialize, offers 2025-11-25."
   }
 }

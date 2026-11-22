@@ -4,20 +4,23 @@
     "unit": "rows",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "time_limit_seconds": {
     "value": 5,
     "unit": "seconds",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "cell_width": {
     "value": 60,
     "unit": "characters",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   }
 }

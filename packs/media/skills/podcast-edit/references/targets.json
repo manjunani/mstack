@@ -3,25 +3,25 @@
   "targets": {
     "podcast": {
       "about": "Spoken word for podcast apps, stereo file",
-      "loudness": { "value": -16.0, "unit": "LUFS", "source": "a level podcast apps are often said to ask for, written from memory; not read in any platform's documentation during this work", "checked": "2026-11-22", "verified": false },
-      "max_true_peak": { "value": -1.0, "unit": "dBTP", "source": "a common delivery ceiling, written from memory; not read in a standard during this work", "checked": "2026-11-22", "verified": false }
+      "loudness": { "value": -16.0, "unit": "LUFS", "source": "https://podcasters.apple.com/support/893-audio-requirements", "checked": "2026-11-22", "verified": true, "note": "Apple: around -16 dB LKFS, +/- 1 dB, measured per ITU-R BS.1770-5" },
+      "max_true_peak": { "value": -1.0, "unit": "dBTP", "source": "https://podcasters.apple.com/support/893-audio-requirements", "checked": "2026-11-22", "verified": true }
     },
     "podcast-mono": {
       "about": "Spoken word for podcast apps, mono file",
-      "loudness": { "value": -19.0, "unit": "LUFS", "source": "the mono counterpart often quoted beside the stereo level, written from memory; not read in any platform's documentation during this work", "checked": "2026-11-22", "verified": false },
-      "max_true_peak": { "value": -1.0, "unit": "dBTP", "source": "a common delivery ceiling, written from memory; not read in a standard during this work", "checked": "2026-11-22", "verified": false }
+      "loudness": { "value": -19.0, "unit": "LUFS", "source": "the mono counterpart often quoted beside the stereo level, written from memory; not read in any platform's documentation during this work", "checked": "2026-11-22", "verified": false, "note": "working value; Apple Podcasts gives one -16 LKFS target with no separate mono level" },
+      "max_true_peak": { "value": -1.0, "unit": "dBTP", "source": "https://podcasters.apple.com/support/893-audio-requirements", "checked": "2026-11-22", "verified": true, "note": "Apple's -1 dBFS true-peak ceiling is not limited to stereo" }
     },
     "broadcast": {
       "about": "Programme loudness for European broadcast",
-      "loudness": { "value": -23.0, "unit": "LUFS", "source": "the EBU R 128 programme level as remembered; the recommendation itself was not read during this work", "checked": "2026-11-22", "verified": false },
-      "max_true_peak": { "value": -1.0, "unit": "dBTP", "source": "the EBU R 128 ceiling as remembered; the recommendation itself was not read during this work", "checked": "2026-11-22", "verified": false }
+      "loudness": { "value": -23.0, "unit": "LUFS", "source": "https://tech.ebu.ch/docs/r/r128.pdf", "checked": "2026-11-22", "verified": true, "note": "EBU R 128: Target Level -23.0 LUFS" },
+      "max_true_peak": { "value": -1.0, "unit": "dBTP", "source": "https://tech.ebu.ch/docs/r/r128.pdf", "checked": "2026-11-22", "verified": true, "note": "EBU R 128: True Peak shall not exceed -1 dBTP" }
     }
   },
-  "loudness_tolerance": { "value": 1.0, "unit": "LU", "source": "mstack default chosen by the builder", "checked": "2026-11-22", "verified": false },
-  "max_silence": { "value": 1.5, "unit": "seconds", "source": "mstack default chosen by the builder: a pause longer than this is shortened", "checked": "2026-11-22", "verified": false },
-  "keep_silence": { "value": 0.6, "unit": "seconds", "source": "mstack default chosen by the builder: how much of a long pause is left", "checked": "2026-11-22", "verified": false },
-  "silence_noise_db": { "value": -35, "unit": "dB", "source": "mstack default chosen by the builder; a noisy room needs a higher value", "checked": "2026-11-22", "verified": false },
-  "crossfade": { "value": 0.02, "unit": "seconds", "source": "mstack default chosen by the builder: the overlap at every join", "checked": "2026-11-22", "verified": false },
-  "filler_pad": { "value": 0.03, "unit": "seconds", "source": "mstack default chosen by the builder: extra time removed each side of a filler word", "checked": "2026-11-22", "verified": false },
-  "duration_tolerance": { "value": 0.15, "unit": "seconds", "source": "mstack default chosen by the builder: lossy encoders pad a file by a few hundredths of a second", "checked": "2026-11-22", "verified": false }
+  "loudness_tolerance": { "value": 1.0, "unit": "LU", "source": "https://podcasters.apple.com/support/893-audio-requirements", "checked": "2026-11-22", "verified": true, "note": "Apple allows +/- 1 dB; EBU R 128 allows +/- 1.0 LU only where the target is not practically achievable (live)" },
+  "max_silence": { "value": 1.5, "unit": "seconds", "source": "mstack default chosen by the builder: a pause longer than this is shortened", "checked": "2026-11-22", "verified": false, "note": "mstack default; no primary source" },
+  "keep_silence": { "value": 0.6, "unit": "seconds", "source": "mstack default chosen by the builder: how much of a long pause is left", "checked": "2026-11-22", "verified": false, "note": "mstack default; no primary source" },
+  "silence_noise_db": { "value": -35, "unit": "dB", "source": "mstack default chosen by the builder; a noisy room needs a higher value", "checked": "2026-11-22", "verified": false, "note": "mstack default; no primary source" },
+  "crossfade": { "value": 0.02, "unit": "seconds", "source": "mstack default chosen by the builder: the overlap at every join", "checked": "2026-11-22", "verified": false, "note": "mstack default; no primary source" },
+  "filler_pad": { "value": 0.03, "unit": "seconds", "source": "mstack default chosen by the builder: extra time removed each side of a filler word", "checked": "2026-11-22", "verified": false, "note": "mstack default; no primary source" },
+  "duration_tolerance": { "value": 0.15, "unit": "seconds", "source": "mstack default chosen by the builder: lossy encoders pad a file by a few hundredths of a second", "checked": "2026-11-22", "verified": false, "note": "mstack default; no primary source" }
 }

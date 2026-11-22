@@ -4,20 +4,23 @@
     "unit": "series",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "max_pie_slices": {
     "value": 5,
     "unit": "slices",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "min_bars_to_sort": {
     "value": 4,
     "unit": "categories",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   }
 }

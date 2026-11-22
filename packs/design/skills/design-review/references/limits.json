@@ -3,50 +3,50 @@
   "contrast_text_min": {
     "value": 4.5,
     "unit": "ratio",
-    "source": "WCAG 2.2, success criterion 1.4.3 Contrast (Minimum), level AA, body text",
+    "source": "https://www.w3.org/TR/WCAG22/",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true
   },
   "contrast_large_min": {
     "value": 3.0,
     "unit": "ratio",
-    "source": "WCAG 2.2, success criterion 1.4.3, large text",
+    "source": "https://www.w3.org/TR/WCAG22/",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true
   },
   "large_text_px": {
     "value": 24,
     "unit": "CSS px (18 pt)",
-    "source": "WCAG 2.2 glossary, 'large scale (text)'",
+    "source": "https://www.w3.org/TR/WCAG22/#dfn-large-scale",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true, "note": "WCAG states 18 point; 24 CSS px is the CSS conversion (1pt = 4/3 px)"
   },
   "large_bold_text_px": {
     "value": 18.66,
     "unit": "CSS px (14 pt), weight 700 or more",
-    "source": "WCAG 2.2 glossary, 'large scale (text)'",
+    "source": "https://www.w3.org/TR/WCAG22/#dfn-large-scale",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true, "note": "WCAG states 14 point bold; 18.66 CSS px is the CSS conversion (exactly 18.67)"
   },
   "target_min_px": {
     "value": 24,
     "unit": "CSS px on each side",
-    "source": "WCAG 2.2, success criterion 2.5.8 Target Size (Minimum), level AA, with its spacing exception",
+    "source": "https://www.w3.org/TR/WCAG22/#target-size-minimum",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true
   },
   "required_widths": {
     "value": [320, 768, 1440],
     "unit": "CSS px viewport widths",
     "source": "320 from WCAG 2.2 success criterion 1.4.10 Reflow; 768 and 1440 are mstack's own choice of a tablet and a desktop width",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "320 is confirmed in WCAG 2.2 SC 1.4.10 Reflow (https://www.w3.org/TR/WCAG22/#reflow); 768 and 1440 are mstack choices with no primary source"
   },
   "overflow_slack_px": {
     "value": 1,
     "unit": "CSS px ignored as rounding",
     "source": "mstack first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   }
 }

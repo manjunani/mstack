@@ -5,34 +5,34 @@
     "unit": "steps of 255 per channel",
     "source": "mstack first setting: absorbs font smoothing and image compression noise",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   },
   "region_max_diff_percent": {
     "value": 2.0,
     "unit": "percent of pixels in a region",
     "source": "mstack first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   },
   "grid": {
     "value": "6x8",
     "unit": "columns x rows",
     "source": "mstack first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   },
   "height_gap_px": {
     "value": 4,
     "unit": "px of height difference that still passes",
     "source": "mstack first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   },
   "max_rounds": {
     "value": 3,
     "unit": "render-compare-fix rounds",
     "source": "mstack first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "mstack default; no primary source"
   }
 }

@@ -10,7 +10,8 @@
       "cache_write": 18.75,
       "source": "placeholder written from memory; check the provider's pricing page",
       "checked": "2026-11-22",
-      "verified": false
+      "verified": false,
+      "note": "placeholder model name, so nothing to verify; the pricing page https://platform.claude.com/docs/en/about-claude/pricing (read 2026-11-22) lists these exact numbers for Claude Opus 4.1 (retired). Replace with real model names before trusting a cost"
     },
     "example-medium": {
       "input": 3.0,
@@ -19,7 +20,8 @@
       "cache_write": 3.75,
       "source": "placeholder written from memory; check the provider's pricing page",
       "checked": "2026-11-22",
-      "verified": false
+      "verified": false,
+      "note": "placeholder model name, so nothing to verify; the pricing page https://platform.claude.com/docs/en/about-claude/pricing (read 2026-11-22) lists these exact numbers for Claude Sonnet 4.6 and 4.5. Replace with real model names before trusting a cost"
     },
     "example-small": {
       "input": 0.8,
@@ -28,7 +30,8 @@
       "cache_write": 1.0,
       "source": "placeholder written from memory; check the provider's pricing page",
       "checked": "2026-11-22",
-      "verified": false
+      "verified": false,
+      "note": "placeholder model name, so nothing to verify; the pricing page https://platform.claude.com/docs/en/about-claude/pricing (read 2026-11-22) lists no model at 0.80/4.00. Replace with real model names before trusting a cost"
     }
   }
 }

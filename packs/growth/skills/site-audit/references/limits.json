@@ -5,27 +5,27 @@
     "unit": "characters",
     "source": "mstack working value: shorter titles rarely name both the page and the site. Not from a published standard.",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "working value; no primary source states a fixed number"
   },
   "title_max_chars": {
     "value": 60,
     "unit": "characters",
     "source": "Common guidance for when a result title is cut. Search engines cut by pixel width, not by a character count; see Google Search Central, 'Influencing your title links'.",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "working value; no primary source states a fixed number"
   },
   "description_min_chars": {
     "value": 70,
     "unit": "characters",
     "source": "mstack working value. Not from a published standard.",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "working value; no primary source states a fixed number"
   },
   "description_max_chars": {
     "value": 160,
     "unit": "characters",
     "source": "Common guidance for when a result snippet is cut. Google states no length limit; see Google Search Central, 'Control your snippets in search results'.",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "working value; no primary source states a fixed number"
   }
 }

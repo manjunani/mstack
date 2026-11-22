@@ -4,14 +4,16 @@
     "unit": "MB",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "max_range_cells": {
     "value": 20000,
     "unit": "cells",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "plain_constants": {
     "value": [
@@ -25,6 +27,7 @@
     "unit": "numbers not flagged inside formulas",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   }
 }

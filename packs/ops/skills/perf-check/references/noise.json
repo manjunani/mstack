@@ -4,20 +4,23 @@
     "unit": "runs",
     "source": "mstack starting value: the fewest counted runs for which a median and a middle-half spread say anything. Not taken from a standard.",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "relative_floor_pct": {
     "value": 2,
     "unit": "percent of the baseline median",
     "source": "mstack starting value: a difference smaller than this is treated as noise even when both spreads are tiny. Not measured on any machine.",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "max_spread_pct": {
     "value": 25,
     "unit": "percent of the median",
     "source": "mstack starting value: above this the middle half of the runs is so wide that the script declines to compare. Not taken from a standard.",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   }
 }

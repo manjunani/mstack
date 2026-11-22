@@ -1,33 +1,18 @@
 {
   "_about": "Property lists used by scripts/jsonld.py. Each entry is a summary, written from memory, of what a search engine's documentation asks for on one schema.org type. All are unverified: open the source named in the entry and correct the list before trusting a pass. 'required' and 'one_of' produce failures, 'recommended' produces warnings, 'nested' checks objects found at a dotted path, 'also' lists subtypes checked with the same list.",
   "Article": {
-    "value": {
-      "also": ["NewsArticle", "BlogPosting"],
-      "required": [],
-      "one_of": [],
-      "recommended": ["headline", "image", "datePublished", "author"],
-      "nested": [{ "path": "author", "required": ["name"] }]
-    },
+    "value": {"also": ["NewsArticle", "BlogPosting"], "required": [], "one_of": [], "recommended": ["headline", "image", "datePublished", "author"], "nested": []},
     "unit": "schema.org property names",
-    "source": "Google Search Central, 'Article structured data'",
+    "source": "https://developers.google.com/search/docs/appearance/structured-data/article",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true, "was": {"also": ["NewsArticle", "BlogPosting"], "required": [], "one_of": [], "recommended": ["headline", "image", "datePublished", "author"], "nested": [{"path": "author", "required": ["name"]}]}, "note": "Google lists no required properties; author.name appears only under recommended properties, so a missing author name no longer fails"
   },
   "Product": {
-    "value": {
-      "also": [],
-      "required": ["name"],
-      "one_of": ["offers", "review", "aggregateRating"],
-      "recommended": ["image", "description"],
-      "nested": [
-        { "path": "offers", "required": ["price", "priceCurrency"] },
-        { "path": "aggregateRating", "required": ["ratingValue"] }
-      ]
-    },
+    "value": {"also": [], "required": ["name"], "one_of": ["offers", "review", "aggregateRating"], "recommended": ["aggregateRating", "offers", "review"], "nested": [{"path": "offers", "required": ["price"]}, {"path": "aggregateRating", "required": ["ratingValue"]}]},
     "unit": "schema.org property names",
-    "source": "Google Search Central, 'Product snippet structured data'",
+    "source": "https://developers.google.com/search/docs/appearance/structured-data/product-snippet",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true, "was": {"also": [], "required": ["name"], "one_of": ["offers", "review", "aggregateRating"], "recommended": ["image", "description"], "nested": [{"path": "offers", "required": ["price", "priceCurrency"]}, {"path": "aggregateRating", "required": ["ratingValue"]}]}, "note": "Offer requires price (or priceSpecification.price; this check only reads price); priceCurrency is not listed as required. Google recommends aggregateRating, offers and review, not image or description. aggregateRating.ratingValue was not re-read: Google refers to the review snippet page for it"
   },
   "Organization": {
     "value": {
@@ -38,9 +23,9 @@
       "nested": []
     },
     "unit": "schema.org property names",
-    "source": "Google Search Central, 'Organization structured data'",
+    "source": "https://developers.google.com/search/docs/appearance/structured-data/organization",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true, "note": "no required properties; name, url and logo are among the recommended ones. Google names OnlineStore, OnlineBusiness and LocalBusiness as subtypes; Corporation is a schema.org subtype not named there"
   },
   "BreadcrumbList": {
     "value": {
@@ -51,9 +36,9 @@
       "nested": [{ "path": "itemListElement", "required": ["position", "name"] }]
     },
     "unit": "schema.org property names",
-    "source": "Google Search Central, 'Breadcrumb structured data'",
+    "source": "https://developers.google.com/search/docs/appearance/structured-data/breadcrumb",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true, "note": "ListItem.item is also required except on the last item; name is not needed when item is a Thing with its own name"
   },
   "FAQPage": {
     "value": {
@@ -70,7 +55,7 @@
     "unit": "schema.org property names",
     "source": "Google Search Central, 'FAQ structured data' and the August 2023 notice about FAQ and HowTo results",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "no current primary source: Google stopped showing FAQ rich results in 2026 and removed the FAQ structured data page (Search Central documentation changelog); the property list stays only as schema.org shape"
   },
   "SoftwareApplication": {
     "value": {
@@ -84,8 +69,8 @@
       ]
     },
     "unit": "schema.org property names",
-    "source": "Google Search Central, 'Software app structured data'",
+    "source": "https://developers.google.com/search/docs/appearance/structured-data/software-app",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true
   }
 }

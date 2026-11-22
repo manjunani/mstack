@@ -1,18 +1,21 @@
 {
   "_note": "Lists used by scripts/pii_scan.py. Every entry was written from memory on the checked date and is marked unverified until someone reads the primary source. The scanner prints a line saying so.",
   "reserved_email_domains": {
-    "value": ["example.com", "example.org", "example.net", "example.edu"],
+    "value": ["example.com", "example.org", "example.net"],
     "unit": "domain names reserved for documentation",
-    "source": "IETF RFC 2606 and the IANA reserved domains list",
+    "source": "https://www.rfc-editor.org/rfc/rfc2606.html",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true,
+    "was": ["example.com", "example.org", "example.net", "example.edu"],
+    "note": "RFC 2606 section 3 reserves example.com, example.net and example.org only. example.edu is not in RFC 2606 or on https://www.iana.org/domains/reserved."
   },
   "reserved_email_tlds": {
     "value": ["test", "example", "invalid", "localhost"],
     "unit": "top-level names that never resolve on the public internet",
-    "source": "IETF RFC 2606 and RFC 6761",
+    "source": "https://www.rfc-editor.org/rfc/rfc2606.html",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true,
+    "note": "RFC 2606 section 2 reserves .test, .example, .invalid and .localhost."
   },
   "public_mail_domains": {
     "value": ["gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.uk", "yahoo.co.in", "yahoo.in", "ymail.com", "outlook.com",
@@ -23,21 +26,24 @@
     "unit": "domains where anyone can hold a real mailbox",
     "source": "common public mail providers; not an official list",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working list; no primary source keeps such a list"
   },
   "fictional_phone_prefixes": {
     "value": ["447700900", "07700900", "442079460", "02079460", "441632960", "01632960", "441134960", "01134960", "61491570", "0491570"],
     "unit": "leading digits of number ranges set aside for drama and examples (United Kingdom, Australia)",
     "source": "Ofcom numbers for use in TV and radio drama; ACMA numbers for use in fiction",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "UK half confirmed on https://www.ofcom.org.uk/phones-and-broadband/phone-numbers/numbers-for-drama (07700 900000-900999, 020 7946 0000-0999, 01632 960000-960999, 0113 496 0000-0999). Australian 0491 570 not confirmed: the ACMA page timed out, and ACMA may list single numbers rather than the whole 0491 570 block."
   },
   "nanp_fictional_line_range": {
     "value": [100, 199],
     "unit": "last four digits, with exchange 555, reserved for fictional use in North American numbers",
     "source": "North American Numbering Plan Administrator, 555 line number guidance",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "not checked: the NANPA site did not resolve on 2026-11-22"
   },
   "published_test_cards": {
     "value": ["4242424242424242", "4000056655665556", "4111111111111111", "4012888888881881", "4000000000000002",
@@ -47,7 +53,8 @@
     "unit": "card numbers that payment providers publish for test mode",
     "source": "payment providers' testing pages (Stripe, PayPal sandbox, Adyen)",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "15 of 17 confirmed on https://docs.stripe.com/testing (4000000000000002 is Stripe's generic-decline card). 4111111111111111 and 4012888888881881 are not on Stripe's page and were not checked on another provider's page."
   },
   "ssn_never_issued": {
     "value": { "areas": ["000", "666"], "area_ranges": [[900, 999]], "group": "00", "serial": "0000",
@@ -55,6 +62,7 @@
     "unit": "United States social security number parts that are never assigned, plus numbers used in advertising",
     "source": "US Social Security Administration",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "not checked: https://www.ssa.gov/employer/randomization.html returned 403 to the fetcher"
   }
 }

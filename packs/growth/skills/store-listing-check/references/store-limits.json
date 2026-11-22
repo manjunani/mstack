@@ -3,21 +3,21 @@
   "stores": {
     "apple": {
       "required_fields": { "value": ["name", "description", "keywords", "screenshots"], "unit": "listing fields that cannot be empty", "source": "App Store Connect help, 'Required, localizable, and editable properties'", "checked": "2026-11-22", "verified": false },
-      "name_max_chars": { "value": 30, "unit": "characters", "source": "App Store Connect help, 'App information'", "checked": "2026-11-22", "verified": false },
-      "subtitle_max_chars": { "value": 30, "unit": "characters", "source": "App Store Connect help, 'App information'", "checked": "2026-11-22", "verified": false },
-      "promotional_text_max_chars": { "value": 170, "unit": "characters", "source": "App Store Connect help, 'Platform version information'", "checked": "2026-11-22", "verified": false },
-      "description_max_chars": { "value": 4000, "unit": "characters", "source": "App Store Connect help, 'Platform version information'", "checked": "2026-11-22", "verified": false },
-      "keywords_max_chars": { "value": 100, "unit": "characters, commas included", "source": "App Store Connect help, 'Platform version information'", "checked": "2026-11-22", "verified": false },
-      "screenshots_min": { "value": 1, "unit": "screenshots", "source": "App Store Connect help, 'Upload app previews and screenshots'", "checked": "2026-11-22", "verified": false },
-      "screenshots_max": { "value": 10, "unit": "screenshots", "source": "App Store Connect help, 'Upload app previews and screenshots'", "checked": "2026-11-22", "verified": false }
+      "name_max_chars": { "value": 30, "unit": "characters", "source": "https://developer.apple.com/help/app-store-connect/reference/app-information/app-information", "checked": "2026-11-22", "verified": true, "note": "the name must also be at least two characters" },
+      "subtitle_max_chars": { "value": 30, "unit": "characters", "source": "https://developer.apple.com/help/app-store-connect/reference/app-information/app-information", "checked": "2026-11-22", "verified": true },
+      "promotional_text_max_chars": { "value": 170, "unit": "characters", "source": "https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information", "checked": "2026-11-22", "verified": true },
+      "description_max_chars": { "value": 4000, "unit": "characters", "source": "https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information", "checked": "2026-11-22", "verified": true },
+      "keywords_max_chars": { "value": 100, "unit": "bytes (UTF-8), commas included", "source": "https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information", "checked": "2026-11-22", "verified": true, "was_unit": "characters, commas included", "note": "Apple states the limit as 100 bytes, not characters; non-ASCII keywords use more than one byte per character, so a character count can pass a field Apple rejects" },
+      "screenshots_min": { "value": 1, "unit": "screenshots", "source": "https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications", "checked": "2026-11-22", "verified": true, "note": "per device size" },
+      "screenshots_max": { "value": 10, "unit": "screenshots", "source": "https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications", "checked": "2026-11-22", "verified": true, "note": "per device size" }
     },
     "google": {
       "required_fields": { "value": ["name", "short_description", "description", "screenshots"], "unit": "listing fields that cannot be empty", "source": "Play Console help, 'Create and set up your app' and 'Add preview assets'", "checked": "2026-11-22", "verified": false },
-      "name_max_chars": { "value": 30, "unit": "characters", "source": "Play Console help, store listing metadata policy", "checked": "2026-11-22", "verified": false },
-      "short_description_max_chars": { "value": 80, "unit": "characters", "source": "Play Console help, 'Create and set up your app'", "checked": "2026-11-22", "verified": false },
-      "description_max_chars": { "value": 4000, "unit": "characters", "source": "Play Console help, 'Create and set up your app'", "checked": "2026-11-22", "verified": false },
-      "screenshots_min": { "value": 2, "unit": "screenshots", "source": "Play Console help, 'Add preview assets to showcase your app'", "checked": "2026-11-22", "verified": false },
-      "screenshots_max": { "value": 8, "unit": "screenshots", "source": "Play Console help, 'Add preview assets to showcase your app'", "checked": "2026-11-22", "verified": false }
+      "name_max_chars": { "value": 30, "unit": "characters", "source": "https://support.google.com/googleplay/android-developer/answer/9859152", "checked": "2026-11-22", "verified": true },
+      "short_description_max_chars": { "value": 80, "unit": "characters", "source": "https://support.google.com/googleplay/android-developer/answer/9859152", "checked": "2026-11-22", "verified": true },
+      "description_max_chars": { "value": 4000, "unit": "characters", "source": "https://support.google.com/googleplay/android-developer/answer/9859152", "checked": "2026-11-22", "verified": true },
+      "screenshots_min": { "value": 2, "unit": "screenshots", "source": "https://support.google.com/googleplay/android-developer/answer/9866151", "checked": "2026-11-22", "verified": true, "note": "at least two screenshots across device types to publish" },
+      "screenshots_max": { "value": 8, "unit": "screenshots", "source": "https://support.google.com/googleplay/android-developer/answer/9866151", "checked": "2026-11-22", "verified": true, "note": "up to 8 per supported device type" }
     }
   }
 }

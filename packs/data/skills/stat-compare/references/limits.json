@@ -4,48 +4,55 @@
     "unit": "values in the smaller group",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "small_n_warn": {
     "value": 30,
     "unit": "values in the smaller group",
     "source": "common rule of thumb in introductory statistics; mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "rule of thumb; no primary source states a fixed number"
   },
   "skew_warn": {
     "value": 1.0,
     "unit": "sample skewness",
     "source": "common rule of thumb for 'highly skewed'; mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "rule of thumb; no primary source states a fixed number"
   },
   "spread_ratio_warn": {
     "value": 2.0,
     "unit": "ratio of standard deviations",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "split_ratio_warn": {
     "value": 3.0,
     "unit": "ratio of group sizes",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "alpha": {
     "value": 0.05,
     "unit": "p-value",
     "source": "conventional level; the user may state another",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "convention; no primary source fixes it"
   },
   "bootstrap_resamples": {
     "value": 2000,
     "unit": "resamples",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   }
 }

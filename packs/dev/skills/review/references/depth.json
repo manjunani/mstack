@@ -4,20 +4,23 @@
     "unit": "changed lines (added plus removed), with at most 3 files",
     "source": "mstack's own first setting; no outside source",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "full_min_lines": {
     "value": 400,
     "unit": "changed lines (added plus removed)",
     "source": "mstack's own first setting; no outside source",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "risky_path_words": {
     "value": ["auth", "login", "password", "passwd", "token", "session", "secret", "crypto", "payment", "billing", "invoice", "migration", "migrate", "permission", "acl", "admin", "sql", "schema", "upload", "webhook"],
     "unit": "words in a file path that make a change worth a full review",
     "source": "mstack's own first setting; no outside source",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   }
 }

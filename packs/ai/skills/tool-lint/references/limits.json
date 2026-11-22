@@ -5,34 +5,40 @@
     "unit": "words in a tool description below which it is reported as too short",
     "source": "mstack default, first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number; Anthropic's define-tools page asks for at least 3-4 sentences per description"
   },
   "overlap_warn": {
     "value": 0.5,
     "unit": "share of description words two tools have in common (0 to 1) from which the pair is reported as a warning",
     "source": "mstack default, first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "overlap_fail": {
     "value": 0.85,
     "unit": "share of description words two tools have in common (0 to 1) from which the pair fails",
     "source": "mstack default, first setting",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "name_max_length": {
-    "value": 64,
+    "value": 128,
     "unit": "characters in a tool name",
-    "source": "provider tool-use documentation, written from memory; not opened during this work",
+    "source": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true,
+    "was": 64,
+    "note": "Claude API: name must match ^[a-zA-Z0-9_-]{1,128}$. MCP 2025-11-25 also says names SHOULD be 1 to 128 characters. Other providers may set a lower limit; not checked."
   },
   "name_pattern": {
     "value": "^[A-Za-z0-9_-]+$",
     "unit": "regular expression a tool name is expected to match",
-    "source": "provider tool-use documentation, written from memory; not opened during this work",
+    "source": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true,
+    "note": "Same character set as the Claude API rule ^[a-zA-Z0-9_-]{1,128}$ (length is checked separately). MCP 2025-11-25 (https://modelcontextprotocol.io/specification/2025-11-25/server/tools) also allows '.', so a dotted MCP name fails here although MCP permits it."
   }
 }

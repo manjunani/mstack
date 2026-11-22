@@ -26,7 +26,9 @@ fx.ffmpeg("-f", "lavfi", "-i", "testsrc2=size=1920x1080:rate=30:duration=4", "-f
 (root / "empty.mp4").write_bytes(b"")
 
 out = c.case("presets: list", [E, "presets"], 0, must_print="UNVERIFIED")
-c.expect("no shipped number claims to be verified", " verified\n" not in out and "0 of" in out)
+# Some preset numbers were checked against their sources on 2026-11-22; the list must label each one.
+c.expect("every preset number is labelled verified or UNVERIFIED",
+         all(line.rstrip().endswith(("verified", "UNVERIFIED")) for line in out.splitlines() if "checked 20" in line))
 c.case("plan: no --run prints the command and encodes nothing", [E, "plan", wide, "--preset", "youtube-1080p", "--out", root / "o" / "wide-yt.mp4"], 2, must_print="plan only")
 c.expect("no output file exists after a plan", not (root / "o").exists())
 out = c.case("plan --run: landscape source to youtube-1080p", [E, "plan", wide, "--preset", "youtube-1080p", "--out", root / "o" / "wide-yt.mp4", "--run"], 0)

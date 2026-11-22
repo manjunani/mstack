@@ -3,36 +3,36 @@
   "spf_max_lookups": {
     "value": 10,
     "unit": "DNS-querying terms (include, a, mx, ptr, exists, redirect) allowed while evaluating one SPF record",
-    "source": "RFC 7208, section 4.6.4",
+    "source": "https://www.rfc-editor.org/rfc/rfc7208.html#section-4.6.4",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true
   },
   "dkim_min_rsa_bits": {
     "value": 1024,
     "unit": "bits; a shorter RSA key fails",
-    "source": "RFC 8301, section 3.2",
+    "source": "https://www.rfc-editor.org/rfc/rfc8301.html#section-3.2",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true, "note": "Signers MUST use RSA keys of at least 1024 bits"
   },
   "dkim_recommended_rsa_bits": {
     "value": 2048,
     "unit": "bits; a shorter RSA key gets a warning",
-    "source": "RFC 8301, section 3.2",
+    "source": "https://www.rfc-editor.org/rfc/rfc8301.html#section-3.2",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true, "note": "Signers SHOULD use RSA keys of at least 2048 bits"
   },
   "spf_ip4_prefix_fail": {
     "value": 8,
     "unit": "prefix length; an ip4 range wider than this (a smaller number) fails as too permissive",
     "source": "mstack working value, not from a standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "working value; no primary source states a fixed number"
   },
   "spf_ip4_prefix_warn": {
     "value": 16,
     "unit": "prefix length; an ip4 range wider than this gets a warning",
     "source": "mstack working value, not from a standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false, "note": "working value; no primary source states a fixed number"
   }
 }

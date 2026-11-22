@@ -4,27 +4,31 @@
     "unit": "share of filled values",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "high_empty_share": {
     "value": 0.5,
     "unit": "share of rows",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "personal_value_share": {
     "value": 0.5,
     "unit": "share of filled values",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   },
   "max_rows": {
     "value": 500000,
     "unit": "rows",
     "source": "mstack-data default chosen while writing this skill; not from an outside standard (memory bound for the standard-library reader)",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": false,
+    "note": "working value; no primary source states a fixed number"
   }
 }
