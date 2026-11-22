@@ -1,0 +1,50 @@
+name: Skill started at the wrong time
+description: A skill started on a request it should not handle, or stayed quiet on one it should.
+title: "[trigger] <skill>: "
+labels: [trigger]
+body:
+  - type: markdown
+    attributes:
+      value: These reports are the most useful kind. The exact words you typed are what make them testable.
+  - type: input
+    id: skill
+    attributes:
+      label: Skill and pack
+      placeholder: verify (mstack-core)
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What went wrong
+      options:
+        - It started, but the request was not its job
+        - It did not start, but the request was its job
+        - A different skill started instead
+    validations:
+      required: true
+  - type: textarea
+    id: request
+    attributes:
+      label: The exact words you typed
+      description: Copy them as they were. Remove secrets and private paths.
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: instead
+    attributes:
+      label: Which skill should have answered, if any
+      placeholder: debug (mstack-dev), or "none"
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and version
+      placeholder: Claude Code 2.1.330
+    validations:
+      required: true
+  - type: textarea
+    id: installed
+    attributes:
+      label: Other skill packs installed
+      description: Other installed skills compete for the same requests, so this matters.

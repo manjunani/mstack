@@ -1,6 +1,6 @@
 ---
 name: query-review
-description: Reviews one SELECT query without running it, flagging SELECT star, joins with no condition, filters wrapped in a function, no LIMIT, and on SQLite the query plan's full scans and missing indexes. Use when a query is slow, before a query goes into code or a dashboard, or when asked "is this SQL ok" or "why is this query slow". Not for getting the query's results (use sql-run) or reviewing schema migrations (use migration-check).
+description: Reviews one SQL query without running it and flags SELECT *, joins with no condition, filters wrapped in a function, no LIMIT and, on SQLite, the query plan's full scans and missing indexes. Use when asked to "review this SQL", "is this SQL ok" or "why is this query slow", or before a query goes into code, a report or a dashboard. Not for getting the query's results (use sql-run) or reviewing schema migrations (use migration-check).
 license: MIT
 metadata:
   pack: data

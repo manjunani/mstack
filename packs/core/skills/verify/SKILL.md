@@ -1,6 +1,6 @@
 ---
 name: verify
-description: Proves a "done" claim with fresh evidence. Runs the project's own test, type, lint and build commands and writes a record of each result tied to the exact code state. Use when work is about to be called finished, fixed or passing, before a commit, pull request or deploy, or when the user asks "is it done?" or "does it still work?". Not for finding why a check fails (use debug) or for judging code quality (use review).
+description: Proves a "done" claim with fresh evidence: runs the project's own test, type, lint and build commands and records each result for the exact code state. Use when the user asks "are we done?", "is it safe to commit this?", "does it still work?" or "is the fix working?", or work is about to be called finished, fixed or passing before a commit, pull request or deploy. Not for finding why a check fails (use debug) or for judging code quality (use review).
 license: MIT
 metadata:
   pack: core

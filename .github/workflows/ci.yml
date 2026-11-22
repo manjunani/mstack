@@ -1,0 +1,49 @@
+name: checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# The token can read the repository and nothing else.
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Pinned to an exact commit (v7.0.1). Dependabot proposes updates.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Skills follow the mstack rules
+        run: python3 tools/validate.py --strict
+
+      - name: Skill map matches the skills
+        run: python3 tools/build_map.py --check
+
+      - name: Every script compiles
+        run: python3 -m compileall -q packs tools
+
+      - name: No secrets, personal email or home paths
+        run: >
+          python3 tools/release_check.py
+          --allow packs/dev/tests/scripts/fixtures/commit_msg_secret.txt
+          --allow packs/ops/skills/ci-fix/scripts/cilog.py
+          --allow packs/ops/tests/scripts/ci_fix_cases.py
+
+      - name: Core pack script tests
+        run: |
+          git config --global user.name ci
+          git config --global user.email ci@example.invalid
+          mkdir -p .testrun
+          python3 packs/core/tests/scripts/guard_cases.py packs/core/hooks/guard.py "$PWD"
+          sh packs/core/tests/scripts/remember_cases.sh "$PWD/packs/core/skills/remember/scripts/record.py" "$PWD/.testrun/remember"
+          python3 packs/core/tests/scripts/scan_cases.py "$PWD/packs/core/skills/skill-check/scripts/scan.py" "$PWD/.testrun/scan"

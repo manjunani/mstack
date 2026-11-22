@@ -1,6 +1,6 @@
 ---
 name: ui-match
-description: Builds UI from a screenshot, Figma export or mockup image and proves how close the result is, by comparing a screenshot of the built page with the reference region by region. Use when the user shares a design image and says "make it look like this", "match this mockup", "pixel perfect" or "build this from the screenshot". Not for designing a screen with no reference (use ui-build) or for release checks of a page (use design-review).
+description: Builds a screen from a screenshot, Figma export or mockup image and proves how close it is by comparing a screenshot of the result with the reference, region by region. Use when the user shares a design image or screenshot and says "build this screen from the screenshot", "make it look like this", "match this mockup" or "pixel perfect". Not for designing a screen with no reference (use ui-build) or for release checks of a page (use design-review).
 license: MIT
 metadata:
   pack: design

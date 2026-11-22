@@ -1,6 +1,6 @@
 ---
 name: tracking-check
-description: Reads a HAR file or captured request list and confirms each expected analytics event was sent to the endpoint with its name and properties, flags events sent twice, error answers, and personal data such as an email in the URL. Use when sign-up or purchase events are missing or doubled in analytics, or after adding a tracking tag. Not for measuring page load (use page-speed).
+description: Reads a HAR file or network capture and confirms each expected analytics event was sent with the right name and properties, flagging doubles, error answers and emails in URLs. Use when sign_up, signup, purchase or checkout events are not showing, fire twice or carry wrong properties in analytics, or the user shares a HAR or network capture to check. Not for adding a tracking tag or counting sign-ups, or for measuring page load (use page-speed).
 license: MIT
 metadata:
   pack: growth

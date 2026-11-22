@@ -1,6 +1,6 @@
 ---
 name: copyedit
-description: Copy-edits a text to a named style guide, with corrections, suggestions and queries in separate lists. Use when the user asks to proofread, copy-edit, fix grammar or apply a style guide to a document. A script proves that code, quotes, links, numbers and names survived and that every change is a listed item. Ships a short house style as the default. Not for interface wording (use ui-copy).
+description: Proofreads and copy-edits a document to a style guide, house style by default, listing corrections, suggestions and queries apart and proving code, quotes, links and numbers survived. Use when the user asks to proofread, copy-edit, line edit, fix grammar, spelling or typos, or polish the wording of a doc, report, article, README or essay before sending it. Not for interface wording (use ui-copy), translation (use translate-check) or social posts (use post-check).
 license: MIT
 metadata:
   pack: writing

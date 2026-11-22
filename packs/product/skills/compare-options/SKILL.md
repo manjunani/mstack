@@ -1,6 +1,6 @@
 ---
 name: compare-options
-description: Ranks named options on weighted criteria with a script, applies veto criteria, and shows the smallest change in one weight or one score that would change the winner. Use when the user has two or more named options and asks "which one", "X or Y", wants a trade-off table, a build-or-buy or vendor choice, or a short list put in order. Not for producing the options (use ideate), for testing the chosen plan's assumptions (use premortem) or for recording the decision afterwards (use remember).
+description: Ranks named options on weighted criteria with a script, applies vetoes, and shows the smallest change that would flip the winner. Use when the user names two or more options and asks "which one?", "X or Y" or "X vs Y" for a database, queue, vendor, tool or build-or-buy choice, says what matters most (cost, effort, speed), or wants a trade-off table or a short list ranked. Not for producing the options (use ideate), testing the chosen plan (use premortem), timing code (use perf-check) or recording the decision (use remember).
 license: MIT
 metadata:
   pack: product

@@ -1,6 +1,6 @@
 ---
 name: page-extract
-description: Turns one web page into clean JSON (title, main text without navigation or scripts, headings, links and tables) and fails on an empty result or a page that needs JavaScript to render. Use when the user wants "the text of this page", "pull the table from this URL", "get the article as clean text", or a saved .html file read into data. Not for many pages at once (use fetch-plan first) or for checking quotes against sources (use cite-check).
+description: Turns one web page into clean JSON: title, main text without navigation or scripts, headings, links and tables; fails on an empty result or a page that needs JavaScript. Use when the user wants the text, the article, a table or the links from one page or URL as JSON or clean text, says "pull the table from this page into json", or has a saved .html file to read into data. Not for many pages at once (use fetch-plan first) or for checking quotes against sources (use cite-check).
 license: MIT
 metadata:
   pack: web

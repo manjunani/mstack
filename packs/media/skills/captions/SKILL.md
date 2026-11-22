@@ -1,6 +1,6 @@
 ---
 name: captions
-description: Writes .srt and .vtt subtitles from a word-timed transcript and checks every cue for overlaps, order, line length, lines per cue and reading speed; burns them into the video only when asked, then pulls frames to prove they show. Use when the user wants subtitles or closed captions for a video, or an existing .srt needs checking. Not for transcribing the audio first (use transcribe).
+description: Writes .srt and .vtt subtitle files from a word-timed transcript and checks every cue for overlaps, order, line length and reading speed; burns them into the video only when asked. Use when the user wants subtitles, closed captions or an .srt or .vtt file for a video or .mp4, or an existing .srt needs checking or retiming. Not for transcribing the audio first (use transcribe) or for translating subtitles (use translate-check).
 license: MIT
 metadata:
   pack: media

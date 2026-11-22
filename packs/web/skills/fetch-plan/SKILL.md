@@ -1,6 +1,6 @@
 ---
 name: fetch-plan
-description: Writes a plan before fetching many pages: robots.txt verdict per address, crawl delay, sitemap, terms link, count, rate and duration. Use when the user wants to scrape, download or collect a list of pages, "grab all the product pages", or asks "is it ok to crawl this site". Refuses a plan that touches disallowed paths. Not for reading one page (use page-extract) or checking links (use link-check).
+description: Writes a plan before fetching many pages: robots.txt verdict per address, crawl delay, sitemap, terms link, count, rate and duration; refuses a plan that touches disallowed paths. Use when the user wants to scrape, crawl, download or collect many pages or a list of URLs, asks "can I crawl this site?" or "is it ok to scrape this", or wants to grab every page of a kind. Not for reading one page (use page-extract) or checking links (use link-check).
 license: MIT
 metadata:
   pack: web

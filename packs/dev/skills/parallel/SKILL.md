@@ -1,6 +1,6 @@
 ---
 name: parallel
-description: Splits independent tasks across agents, one git worktree each, then merges the results in order and runs the suite on the merged tree. Refuses when two tasks' file lists overlap. Use when several tasks do not depend on each other and the user asks to run them in parallel, at the same time, with multiple agents or in worktrees. Not for tasks that share files or build on each other (use build) or for turning a request into tasks (use plan).
+description: Runs independent tasks at the same time with separate agents, one git worktree each, then merges the results in order and runs the suite on the merged tree; refuses when two tasks' files overlap. Use when the user says "run these tasks in parallel", "with separate agents", "fan them out", "at the same time" or "in worktrees" for tasks that do not depend on each other. Not for tasks that share files or build on each other (use build), for turning a request into tasks (use plan) or for parallel code such as thread pools.
 license: MIT
 metadata:
   pack: dev

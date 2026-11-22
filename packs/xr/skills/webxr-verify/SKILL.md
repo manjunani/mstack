@@ -1,6 +1,6 @@
 ---
 name: webxr-verify
-description: Proves a WebXR page works without a headset: scans the code for session, render loop, input and exit, then judges an emulated session with a screenshot per head pose and input mode, console errors, draw calls and the GPU name. Use when a WebXR, VR or AR web page was built or changed, or the user asks whether it works on Quest. Not for plain three.js pages with no XR session (use three-verify).
+description: Proves a WebXR page works without a headset: checks the code for an XR session, render loop, input and exit, and judges an emulated session by head-pose screenshots and console errors. Use when a WebXR, VR or AR web page that enters an XR session was built or changed, its Enter VR button or hands and controllers fail, or the user asks if it works on Quest. Not for three.js pages with no XR session (use three-verify in the 3d pack), VR UI comfort or text size (use xr-comfort-review) or which platform a repo targets (use xr-target).
 license: MIT
 metadata:
   pack: xr

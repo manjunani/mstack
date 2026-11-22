@@ -1,6 +1,6 @@
 ---
 name: safe-delete
-description: Removes files and folders so the removal can be undone. Lists exactly what would go, what refers to it and what git cannot bring back, then moves it to a trash folder with an undo command. Use when asked to delete, remove, clean up, clear out or get rid of files, folders, old code or build output, or before any command that destroys or overwrites. Not for reverting a code change (use git) or for finishing a branch (use land).
+description: Deletes files and folders so the removal can be undone: lists what would go, what refers to it and what git cannot bring back, then moves it to a trash folder with an undo command. Use when asked to delete, remove, clean up, clear out, wipe, nuke or get rid of files, folders, unused components, old code or build output, or to free up space. Not for lines inside a file such as imports or logs, for reverting a code change (use git) or for finishing a branch (use land).
 license: MIT
 metadata:
   pack: core

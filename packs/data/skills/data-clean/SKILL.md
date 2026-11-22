@@ -1,6 +1,6 @@
 ---
 name: data-clean
-description: Cleans a CSV with named operations (trim, change case, dates to ISO, drop exact duplicates, map values, fill with a stated value) into a new file, and writes a log with row, column, before and after for every change, replayed to prove it. Use when asked to tidy, standardise, fix or deduplicate messy data, "clean up this CSV", or fix the problems a profile found. It never guesses a fill value. Not for finding the problems first (use data-profile) or for fake test data (use test-data).
+description: Cleans messy values in a CSV into a new file (trim, case, dates to ISO, exact duplicates, mapped codes such as UK and U.K. to GB, stated fills) and logs every change with before and after. Use when asked to clean, tidy, standardise, normalise, dedupe or fix messy values, country codes, names or dates in a CSV or spreadsheet export, or fix what a profile found. It never guesses a fill value. Not for finding the problems first (use data-profile) or for fake test data (use test-data).
 license: MIT
 metadata:
   pack: data

@@ -1,6 +1,6 @@
 ---
 name: perf-check
-description: Says whether one change made one command faster or slower beyond run-to-run noise. Times the command several times, saves a baseline, times it again after the change and compares medians and spread. Use when the user says "make this faster", "did that speed it up?" or "is the build slower now?", or an optimisation is about to be kept. Not for deciding what the speed targets should be (use nfr-budgets) or for finding why code misbehaves (use debug).
+description: Measures whether a change made one command, script or build faster or slower beyond run-to-run noise, from a saved baseline and repeated timings compared by median and spread. Use when the user says "make this script faster", "did that speed it up?" or "is it slower now?", wants a benchmark or baseline before an optimisation, or is about to keep one. Not for deciding what the speed targets should be (use nfr-budgets), page load time (use page-speed) or finding why code misbehaves (use debug).
 license: MIT
 metadata:
   pack: ops

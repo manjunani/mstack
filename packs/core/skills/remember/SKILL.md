@@ -1,6 +1,6 @@
 ---
 name: remember
-description: Saves a decision or a lesson as a short record in a plain file in the repository, so the next session, agent or person does not ask again or repeat a mistake. Use when the user settles something that lasts ("we'll use Postgres", "from now on", "never do X again"), corrects the way work is done, or asks to note or remember something. Not for passing the current task to a new session (use handoff) or for explaining what changed (use debrief).
+description: Saves a decision or a lesson as a short record in a plain file in the repository, so no one asks again or repeats a mistake. Use when the user settles something that lasts ("we're going with Postgres", "from now on", "never do X again"), says "you keep making this mistake, write it down", "note that down" or "keep a record", or corrects how work is done. Not for passing the current task to a new session (use handoff) or for explaining what changed (use debrief).
 license: MIT
 metadata:
   pack: core

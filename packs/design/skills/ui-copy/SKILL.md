@@ -1,6 +1,6 @@
 ---
 name: ui-copy
-description: Checks the words in an interface from a list of every visible label, button and message. Use when the user asks to review button labels, microcopy, error messages or UX writing, or says the wording on a screen is confusing. Flags one action with several names, buttons like "OK" or "Submit" that do not say what happens, errors with no way forward, raw error codes and leftover placeholder text. Not for editing long prose or docs (use copyedit) or for a visual page check (use design-review).
+description: Checks the words in an interface and flags one action with several names, vague buttons like "OK" or "Submit", errors with no way forward, raw error codes and leftover placeholders. Use when the user asks to check or review error messages, button labels, microcopy or UX writing, or says the wording in the app is confusing or useless. Not for editing long prose or docs (use copyedit) or for a visual page check (use design-review).
 license: MIT
 metadata:
   pack: design

@@ -1,0 +1,38 @@
+name: Bug
+description: A script crashed, gave a wrong result, or the skill did something it says it does not do.
+title: "[bug] <skill>: "
+labels: [bug]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Skill and pack
+      placeholder: safe-delete (mstack-core)
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce it
+      description: The command that was run, and the smallest input that shows the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      description: The last lines the script printed, including its RESULT line. Remove secrets and private paths.
+      render: text
+  - type: input
+    id: system
+    attributes:
+      label: System
+      placeholder: macOS 15, Python 3.12, Claude Code 2.1.330
+    validations:
+      required: true

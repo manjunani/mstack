@@ -1,6 +1,6 @@
 ---
 name: debrief
-description: Explains what a task really changed, built from the actual diff and the checks on record, at the user's level, including what is not done and not verified. Use when the user asks what you just did, what changed, which files you touched and why, for a summary of the work on this task, to walk them through it, or did not follow the work that was just finished. Not for proving the work passes (use verify) or for handing unfinished work to a new session (use handoff).
+description: Explains what a task really changed, from the actual diff and the checks on record, including what is not done or not verified. Use when the user asks "what did you just do?", "what changed?", "which files did you touch and why", wants a summary of the work you did on this task or a walk-through of it, or did not follow it. Not for proving the work passes (use verify) or for handing unfinished work to a new session (use handoff).
 license: MIT
 metadata:
   pack: core

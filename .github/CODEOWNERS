@@ -1,0 +1,7 @@
+# Every change is reviewed by the maintainer before it is merged.
+* @manjunani
+
+# Code that runs by itself on users' machines gets extra care.
+/packs/*/hooks/ @manjunani
+/tools/ @manjunani
+/.github/ @manjunani

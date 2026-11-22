@@ -670,7 +670,7 @@
     {
       "name": "debrief",
       "pack": "mstack-core",
-      "description": "Explains what a task really changed, built from the actual diff and the checks on record, at the user's level, including what is not done and not verified. Use when the user asks what you just did, what changed, which files you touched and why, for a summary of the work on this task, to walk them through it, or did not follow the work that was just finished. Not for proving the work passes (use verify) or for handing unfinished work to a new session (use handoff).",
+      "description": "Explains what a task really changed, from the actual diff and the checks on record, including what is not done or not verified. Use when the user asks \"what did you just do?\", \"what changed?\", \"which files did you touch and why\", wants a summary of the work you did on this task or a walk-through of it, or did not follow it. Not for proving the work passes (use verify) or for handing unfinished work to a new session (use handoff).",
       "needs": [
         "python3",
         "git"
@@ -723,7 +723,7 @@
     {
       "name": "remember",
       "pack": "mstack-core",
-      "description": "Saves a decision or a lesson as a short record in a plain file in the repository, so the next session, agent or person does not ask again or repeat a mistake. Use when the user settles something that lasts (\"we'll use Postgres\", \"from now on\", \"never do X again\"), corrects the way work is done, or asks to note or remember something. Not for passing the current task to a new session (use handoff) or for explaining what changed (use debrief).",
+      "description": "Saves a decision or a lesson as a short record in a plain file in the repository, so no one asks again or repeats a mistake. Use when the user settles something that lasts (\"we're going with Postgres\", \"from now on\", \"never do X again\"), says \"you keep making this mistake, write it down\", \"note that down\" or \"keep a record\", or corrects how work is done. Not for passing the current task to a new session (use handoff) or for explaining what changed (use debrief).",
       "needs": [
         "python3"
       ],
@@ -740,7 +740,7 @@
     {
       "name": "safe-delete",
       "pack": "mstack-core",
-      "description": "Removes files and folders so the removal can be undone. Lists exactly what would go, what refers to it and what git cannot bring back, then moves it to a trash folder with an undo command. Use when asked to delete, remove, clean up, clear out or get rid of files, folders, old code or build output, or before any command that destroys or overwrites. Not for reverting a code change (use git) or for finishing a branch (use land).",
+      "description": "Deletes files and folders so the removal can be undone: lists what would go, what refers to it and what git cannot bring back, then moves it to a trash folder with an undo command. Use when asked to delete, remove, clean up, clear out, wipe, nuke or get rid of files, folders, unused components, old code or build output, or to free up space. Not for lines inside a file such as imports or logs, for reverting a code change (use git) or for finishing a branch (use land).",
       "needs": [
         "python3",
         "git"
@@ -792,7 +792,7 @@
     {
       "name": "verify",
       "pack": "mstack-core",
-      "description": "Proves a \"done\" claim with fresh evidence. Runs the project's own test, type, lint and build commands and writes a record of each result tied to the exact code state. Use when work is about to be called finished, fixed or passing, before a commit, pull request or deploy, or when the user asks \"is it done?\" or \"does it still work?\". Not for finding why a check fails (use debug) or for judging code quality (use review).",
+      "description": "Proves a \"done\" claim with fresh evidence: runs the project's own test, type, lint and build commands and records each result for the exact code state. Use when the user asks \"are we done?\", \"is it safe to commit this?\", \"does it still work?\" or \"is the fix working?\", or work is about to be called finished, fixed or passing before a commit, pull request or deploy. Not for finding why a check fails (use debug) or for judging code quality (use review).",
       "needs": [
         "python3",
         "git"
@@ -846,7 +846,7 @@
     {
       "name": "data-clean",
       "pack": "mstack-data",
-      "description": "Cleans a CSV with named operations (trim, change case, dates to ISO, drop exact duplicates, map values, fill with a stated value) into a new file, and writes a log with row, column, before and after for every change, replayed to prove it. Use when asked to tidy, standardise, fix or deduplicate messy data, \"clean up this CSV\", or fix the problems a profile found. It never guesses a fill value. Not for finding the problems first (use data-profile) or for fake test data (use test-data).",
+      "description": "Cleans messy values in a CSV into a new file (trim, case, dates to ISO, exact duplicates, mapped codes such as UK and U.K. to GB, stated fills) and logs every change with before and after. Use when asked to clean, tidy, standardise, normalise, dedupe or fix messy values, country codes, names or dates in a CSV or spreadsheet export, or fix what a profile found. It never guesses a fill value. Not for finding the problems first (use data-profile) or for fake test data (use test-data).",
       "needs": [
         "python3"
       ],
@@ -938,7 +938,7 @@
     {
       "name": "query-review",
       "pack": "mstack-data",
-      "description": "Reviews one SELECT query without running it, flagging SELECT star, joins with no condition, filters wrapped in a function, no LIMIT, and on SQLite the query plan's full scans and missing indexes. Use when a query is slow, before a query goes into code or a dashboard, or when asked \"is this SQL ok\" or \"why is this query slow\". Not for getting the query's results (use sql-run) or reviewing schema migrations (use migration-check).",
+      "description": "Reviews one SQL query without running it and flags SELECT *, joins with no condition, filters wrapped in a function, no LIMIT and, on SQLite, the query plan's full scans and missing indexes. Use when asked to \"review this SQL\", \"is this SQL ok\" or \"why is this query slow\", or before a query goes into code, a report or a dashboard. Not for getting the query's results (use sql-run) or reviewing schema migrations (use migration-check).",
       "needs": [
         "python3"
       ],
@@ -1104,7 +1104,7 @@
     {
       "name": "ui-copy",
       "pack": "mstack-design",
-      "description": "Checks the words in an interface from a list of every visible label, button and message. Use when the user asks to review button labels, microcopy, error messages or UX writing, or says the wording on a screen is confusing. Flags one action with several names, buttons like \"OK\" or \"Submit\" that do not say what happens, errors with no way forward, raw error codes and leftover placeholder text. Not for editing long prose or docs (use copyedit) or for a visual page check (use design-review).",
+      "description": "Checks the words in an interface and flags one action with several names, vague buttons like \"OK\" or \"Submit\", errors with no way forward, raw error codes and leftover placeholders. Use when the user asks to check or review error messages, button labels, microcopy or UX writing, or says the wording in the app is confusing or useless. Not for editing long prose or docs (use copyedit) or for a visual page check (use design-review).",
       "needs": [
         "python3; a browser for the best evidence"
       ],
@@ -1122,7 +1122,7 @@
     {
       "name": "ui-match",
       "pack": "mstack-design",
-      "description": "Builds UI from a screenshot, Figma export or mockup image and proves how close the result is, by comparing a screenshot of the built page with the reference region by region. Use when the user shares a design image and says \"make it look like this\", \"match this mockup\", \"pixel perfect\" or \"build this from the screenshot\". Not for designing a screen with no reference (use ui-build) or for release checks of a page (use design-review).",
+      "description": "Builds a screen from a screenshot, Figma export or mockup image and proves how close it is by comparing a screenshot of the result with the reference, region by region. Use when the user shares a design image or screenshot and says \"build this screen from the screenshot\", \"make it look like this\", \"match this mockup\" or \"pixel perfect\". Not for designing a screen with no reference (use ui-build) or for release checks of a page (use design-review).",
       "needs": [
         "python3",
         "a browser the agent can drive",
@@ -1220,7 +1220,7 @@
     {
       "name": "parallel",
       "pack": "mstack-dev",
-      "description": "Splits independent tasks across agents, one git worktree each, then merges the results in order and runs the suite on the merged tree. Refuses when two tasks' file lists overlap. Use when several tasks do not depend on each other and the user asks to run them in parallel, at the same time, with multiple agents or in worktrees. Not for tasks that share files or build on each other (use build) or for turning a request into tasks (use plan).",
+      "description": "Runs independent tasks at the same time with separate agents, one git worktree each, then merges the results in order and runs the suite on the merged tree; refuses when two tasks' files overlap. Use when the user says \"run these tasks in parallel\", \"with separate agents\", \"fan them out\", \"at the same time\" or \"in worktrees\" for tasks that do not depend on each other. Not for tasks that share files or build on each other (use build), for turning a request into tasks (use plan) or for parallel code such as thread pools.",
       "needs": [
         "python3",
         "git 2.17 or newer",
@@ -1507,7 +1507,7 @@
     {
       "name": "tracking-check",
       "pack": "mstack-growth",
-      "description": "Reads a HAR file or captured request list and confirms each expected analytics event was sent to the endpoint with its name and properties, flags events sent twice, error answers, and personal data such as an email in the URL. Use when sign-up or purchase events are missing or doubled in analytics, or after adding a tracking tag. Not for measuring page load (use page-speed).",
+      "description": "Reads a HAR file or network capture and confirms each expected analytics event was sent with the right name and properties, flagging doubles, error answers and emails in URLs. Use when sign_up, signup, purchase or checkout events are not showing, fire twice or carry wrong properties in analytics, or the user shares a HAR or network capture to check. Not for adding a tracking tag or counting sign-ups, or for measuring page load (use page-speed).",
       "needs": [
         "python3",
         "a network capture the user made"
@@ -1526,7 +1526,7 @@
     {
       "name": "captions",
       "pack": "mstack-media",
-      "description": "Writes .srt and .vtt subtitles from a word-timed transcript and checks every cue for overlaps, order, line length, lines per cue and reading speed; burns them into the video only when asked, then pulls frames to prove they show. Use when the user wants subtitles or closed captions for a video, or an existing .srt needs checking. Not for transcribing the audio first (use transcribe).",
+      "description": "Writes .srt and .vtt subtitle files from a word-timed transcript and checks every cue for overlaps, order, line length and reading speed; burns them into the video only when asked. Use when the user wants subtitles, closed captions or an .srt or .vtt file for a video or .mp4, or an existing .srt needs checking or retiming. Not for transcribing the audio first (use transcribe) or for translating subtitles (use translate-check).",
       "needs": [
         "python3; ffmpeg with the subtitles filter (libass) for burn-in only"
       ],
@@ -1808,7 +1808,7 @@
     {
       "name": "perf-check",
       "pack": "mstack-ops",
-      "description": "Says whether one change made one command faster or slower beyond run-to-run noise. Times the command several times, saves a baseline, times it again after the change and compares medians and spread. Use when the user says \"make this faster\", \"did that speed it up?\" or \"is the build slower now?\", or an optimisation is about to be kept. Not for deciding what the speed targets should be (use nfr-budgets) or for finding why code misbehaves (use debug).",
+      "description": "Measures whether a change made one command, script or build faster or slower beyond run-to-run noise, from a saved baseline and repeated timings compared by median and spread. Use when the user says \"make this script faster\", \"did that speed it up?\" or \"is it slower now?\", wants a benchmark or baseline before an optimisation, or is about to keep one. Not for deciding what the speed targets should be (use nfr-budgets), page load time (use page-speed) or finding why code misbehaves (use debug).",
       "needs": [
         "python3"
       ],
@@ -1882,7 +1882,7 @@
     {
       "name": "compare-options",
       "pack": "mstack-product",
-      "description": "Ranks named options on weighted criteria with a script, applies veto criteria, and shows the smallest change in one weight or one score that would change the winner. Use when the user has two or more named options and asks \"which one\", \"X or Y\", wants a trade-off table, a build-or-buy or vendor choice, or a short list put in order. Not for producing the options (use ideate), for testing the chosen plan's assumptions (use premortem) or for recording the decision afterwards (use remember).",
+      "description": "Ranks named options on weighted criteria with a script, applies vetoes, and shows the smallest change that would flip the winner. Use when the user names two or more options and asks \"which one?\", \"X or Y\" or \"X vs Y\" for a database, queue, vendor, tool or build-or-buy choice, says what matters most (cost, effort, speed), or wants a trade-off table or a short list ranked. Not for producing the options (use ideate), testing the chosen plan (use premortem), timing code (use perf-check) or recording the decision (use remember).",
       "needs": [
         "python3"
       ],
@@ -2167,7 +2167,7 @@
     {
       "name": "fetch-plan",
       "pack": "mstack-web",
-      "description": "Writes a plan before fetching many pages: robots.txt verdict per address, crawl delay, sitemap, terms link, count, rate and duration. Use when the user wants to scrape, download or collect a list of pages, \"grab all the product pages\", or asks \"is it ok to crawl this site\". Refuses a plan that touches disallowed paths. Not for reading one page (use page-extract) or checking links (use link-check).",
+      "description": "Writes a plan before fetching many pages: robots.txt verdict per address, crawl delay, sitemap, terms link, count, rate and duration; refuses a plan that touches disallowed paths. Use when the user wants to scrape, crawl, download or collect many pages or a list of URLs, asks \"can I crawl this site?\" or \"is it ok to scrape this\", or wants to grab every page of a kind. Not for reading one page (use page-extract) or checking links (use link-check).",
       "needs": [
         "python3"
       ],
@@ -2203,7 +2203,7 @@
     {
       "name": "page-extract",
       "pack": "mstack-web",
-      "description": "Turns one web page into clean JSON (title, main text without navigation or scripts, headings, links and tables) and fails on an empty result or a page that needs JavaScript to render. Use when the user wants \"the text of this page\", \"pull the table from this URL\", \"get the article as clean text\", or a saved .html file read into data. Not for many pages at once (use fetch-plan first) or for checking quotes against sources (use cite-check).",
+      "description": "Turns one web page into clean JSON: title, main text without navigation or scripts, headings, links and tables; fails on an empty result or a page that needs JavaScript. Use when the user wants the text, the article, a table or the links from one page or URL as JSON or clean text, says \"pull the table from this page into json\", or has a saved .html file to read into data. Not for many pages at once (use fetch-plan first) or for checking quotes against sources (use cite-check).",
       "needs": [
         "python3"
       ],
@@ -2294,7 +2294,7 @@
     {
       "name": "copyedit",
       "pack": "mstack-writing",
-      "description": "Copy-edits a text to a named style guide, with corrections, suggestions and queries in separate lists. Use when the user asks to proofread, copy-edit, fix grammar or apply a style guide to a document. A script proves that code, quotes, links, numbers and names survived and that every change is a listed item. Ships a short house style as the default. Not for interface wording (use ui-copy).",
+      "description": "Proofreads and copy-edits a document to a style guide, house style by default, listing corrections, suggestions and queries apart and proving code, quotes, links and numbers survived. Use when the user asks to proofread, copy-edit, line edit, fix grammar, spelling or typos, or polish the wording of a doc, report, article, README or essay before sending it. Not for interface wording (use ui-copy), translation (use translate-check) or social posts (use post-check).",
       "needs": [
         "python3"
       ],
@@ -2351,7 +2351,7 @@
     {
       "name": "webxr-verify",
       "pack": "mstack-xr",
-      "description": "Proves a WebXR page works without a headset: scans the code for session, render loop, input and exit, then judges an emulated session with a screenshot per head pose and input mode, console errors, draw calls and the GPU name. Use when a WebXR, VR or AR web page was built or changed, or the user asks whether it works on Quest. Not for plain three.js pages with no XR session (use three-verify).",
+      "description": "Proves a WebXR page works without a headset: checks the code for an XR session, render loop, input and exit, and judges an emulated session by head-pose screenshots and console errors. Use when a WebXR, VR or AR web page that enters an XR session was built or changed, its Enter VR button or hands and controllers fail, or the user asks if it works on Quest. Not for three.js pages with no XR session (use three-verify in the 3d pack), VR UI comfort or text size (use xr-comfort-review) or which platform a repo targets (use xr-target).",
       "needs": [
         "python3",
         "a browser the agent can drive",

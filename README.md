@@ -132,14 +132,14 @@ The base pack: prove work is done, delete safely, keep decisions, hand off a ses
 
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
-| `debrief` | Explains what a task really changed, built from the actual diff and the checks on record, at the user's level, including what is not done and not verified. | python3, git | trigger 9/10, silence 0/10 |
+| `debrief` | Explains what a task really changed, from the actual diff and the checks on record, including what is not done or not verified. | python3, git | trigger 9/10, silence 0/10 |
 | `handoff` | Writes one file that lets a fresh session continue unfinished work without the old conversation, with the goal, what is done, the next steps and the exact code state. | python3, git | trigger 10/10, silence 0/10 |
 | `mstack` | Looks up which mstack skill or pack fits a task, from the generated map of every skill, and gives the install line for a pack that is missing. | python3 | trigger 10/10, silence 0/10 |
-| `remember` | Saves a decision or a lesson as a short record in a plain file in the repository, so the next session, agent or person does not ask again or repeat a mistake. | python3 | trigger 9/10, silence 0/10 |
-| `safe-delete` | Removes files and folders so the removal can be undone. | python3, git | trigger 9/10, silence 0/10 |
+| `remember` | Saves a decision or a lesson as a short record in a plain file in the repository, so no one asks again or repeats a mistake. | python3 | trigger 9/10, silence 0/10 |
+| `safe-delete` | Deletes files and folders so the removal can be undone: lists what would go, what refers to it and what git cannot bring back, then moves it to a trash folder with an undo command. | python3, git | trigger 9/10, silence 0/10 |
 | `scope-lock` | Keeps file edits inside one folder until released, so a task cannot change files elsewhere by accident. | python3 | trigger 10/10, silence 0/10 |
 | `skill-check` | Reads a third-party skill, plugin or skills repository before install and reports what could harm the user, such as downloads piped into a shell, credential reads, hidden text and instructions aimed at the agent. | python3 | trigger 10/10, silence 0/10 |
-| `verify` | Proves a "done" claim with fresh evidence. | python3, git | trigger 8/10, silence 0/10 |
+| `verify` | Proves a "done" claim with fresh evidence: runs the project's own test, type, lint and build commands and records each result for the exact code state. | python3, git | trigger 8/10, silence 0/10 |
 
 ### mstack-data
 
@@ -153,12 +153,12 @@ Working with data: profile, check, diff and clean datasets, run and review SQL r
 |---|---|---|---|
 | `chart-check` | Checks a chart from its JSON spec for a truncated bar axis, missing labels or units, clipped data, too many series, crowded pies, dual axes, categories out of order, values that differ from the source data. | python3 | smoke: trigger 2/2, silence 0/2 |
 | `data-check` | Runs written rules against a dataset like tests (not null, unique, allowed values, range, pattern, row count, foreign key into another file) and reports each rule as pass, fail or not run, with the failing row numbers. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `data-clean` | Cleans a CSV with named operations (trim, change case, dates to ISO, drop exact duplicates, map values, fill with a stated value) into a new file, and writes a log with row, column, before and after for every change, replayed to prove it. | python3 | smoke: trigger 1/2, silence 0/2 |
+| `data-clean` | Cleans messy values in a CSV into a new file (trim, case, dates to ISO, exact duplicates, mapped codes such as UK and U.K. | python3 | smoke: trigger 1/2, silence 0/2 |
 | `data-diff` | Compares two versions of a dataset by key and reports rows added, removed and changed, which columns changed and how often, with before and after values; reordered rows and columns are not counted as changes, and the totals are checked to add up. | python3 | smoke: trigger 2/2, silence 0/2 |
 | `data-profile` | Describes a CSV, JSON-lines file or SQLite table as it really is, giving row count, per-column type, empty share, distinct count, min and max, top values, duplicate rows, and columns that look like identifiers or personal data. | python3 | smoke: trigger 2/2, silence 0/2 |
 | `notebook-check` | Checks a Jupyter .ipynb file for cells run out of order or never run, error outputs, names used before they are defined, machine-only paths, credentials; re-runs a copy when Jupyter is there. | python3, jupyter (optional, for the re-run) | smoke: trigger 2/2, silence 0/2 |
 | `number-trace` | Ties every number in a report to the query or file aggregate that produced it, re-runs each one, and lists numbers that match, do not match, or have no source. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `query-review` | Reviews one SELECT query without running it, flagging SELECT star, joins with no condition, filters wrapped in a function, no LIMIT, and on SQLite the query plan's full scans and missing indexes. | python3 | smoke: trigger 1/2, silence 0/2 |
+| `query-review` | Reviews one SQL query without running it and flags SELECT *, joins with no condition, filters wrapped in a function, no LIMIT and, on SQLite, the query plan's full scans and missing indexes. | python3 | smoke: trigger 1/2, silence 0/2 |
 | `sheet-audit` | Audits an .xlsx workbook from the file for error cells, numbers typed over formulas, formulas that break their row or column, links to empty cells or other workbooks, hidden sheets, and what it did not read. | python3 | smoke: trigger 2/2, silence 0/2 |
 | `sql-run` | Runs one SQL query read-only with the limits inside the runner, with a single SELECT or WITH only, the SQLite file opened read-only, a row cap, a time limit, the query plan printed with the rows. | python3 | smoke: trigger 2/2, silence 0/2 |
 | `stat-compare` | Compares two groups from the raw rows (A/B test, before and after, two segments), giving sizes, means, medians, a seeded permutation test, an interval, an effect size, and warnings on small samples, skew and spread. | python3 | smoke: trigger 2/2, silence 0/2 |
@@ -178,8 +178,8 @@ UI and UX checks: gate a rendered page, audit accessibility, check tokens, build
 | `design-review` | Gates a rendered page before it is called done, from what the browser drew at phone, tablet and desktop width. | python3, a browser the agent can drive (host browser tool or Playwright) | smoke: trigger 2/2, silence 0/2 |
 | `token-check` | Measures every text-on-background colour token pair in light and dark mode, proposes a passing value with the same hue for each failure, and lists hard-coded colours and off-scale sizes in the code. | python3 | smoke: trigger 2/2, silence 0/2 |
 | `ui-build` | Builds a new screen, or reworks one that looks generic, so it fits this product: a short written direction first, then the build, a lint for unfinished work and default-look traits, and at most three render-and-inspect rounds. | python3, a browser the agent can drive for the render step | smoke: trigger 2/2, silence 0/2 |
-| `ui-copy` | Checks the words in an interface from a list of every visible label, button and message. | python3; a browser for the best evidence | smoke: trigger 1/2, silence 0/2 |
-| `ui-match` | Builds UI from a screenshot, Figma export or mockup image and proves how close the result is, by comparing a screenshot of the built page with the reference region by region. | python3, a browser the agent can drive, the reference as PNG | smoke: trigger 1/2, silence 0/2 |
+| `ui-copy` | Checks the words in an interface and flags one action with several names, vague buttons like "OK" or "Submit", errors with no way forward, raw error codes and leftover placeholders. | python3; a browser for the best evidence | smoke: trigger 1/2, silence 0/2 |
+| `ui-match` | Builds a screen from a screenshot, Figma export or mockup image and proves how close it is by comparing a screenshot of the result with the reference, region by region. | python3, a browser the agent can drive, the reference as PNG | smoke: trigger 1/2, silence 0/2 |
 
 ### mstack-dev
 
@@ -195,7 +195,7 @@ Software development with proof at each step: plan, build, prove a test, debug, 
 | `commit` | Turns a mixed working tree into clean commits, one per reason for change. | python3, git | smoke: trigger 2/2, silence 0/2 |
 | `debug` | Finds the real cause of a bug before any fix. | python3, git | smoke: trigger 2/2, silence 0/2 |
 | `land` | Finishes a branch in one of three ways the user picks: merge it locally, push it and open a pull request, or keep it as is. | python3, git, gh (only for opening a pull request) | smoke: trigger 2/2, silence 0/2 |
-| `parallel` | Splits independent tasks across agents, one git worktree each, then merges the results in order and runs the suite on the merged tree. | python3, git 2.17 or newer, a host that can start separate agents | smoke: trigger 1/2, silence 0/2 |
+| `parallel` | Runs independent tasks at the same time with separate agents, one git worktree each, then merges the results in order and runs the suite on the merged tree; refuses when two tasks' files overlap. | python3, git 2.17 or newer, a host that can start separate agents | smoke: trigger 1/2, silence 0/2 |
 | `plan` | Turns a settled request into a plan file of small ordered tasks, each naming its files, one check command and the output to expect, then lints the plan. | python3, git | smoke: trigger 2/2, silence 0/2 |
 | `prove-test` | Shows that a test can catch the bug it protects against. | python3, git, the project's test runner | smoke: trigger 2/2, silence 0/2 |
 | `release` | Cuts a version from the exact range since the last tag: lists the commits, migrations, config and dependency changes in it, drafts release notes, and refuses to go on until a rollback step is written in the release file. | python3, git | smoke: trigger 2/2, silence 0/2 |
@@ -221,7 +221,7 @@ Getting a product found and understood: site audit, structured data, launch page
 | `site-audit` | Crawls one live site within a page limit, obeying robots.txt, and reports per page the title, meta description, h1, heading order, canonical, lang and image alt text, plus robots.txt, the sitemap and whether its URLs answer. | python3, network access to the site named | smoke: trigger 2/2, silence 0/2 |
 | `store-listing-check` | Checks an app store listing kept as a file (name, subtitle, description, keywords, screenshots) against the store's field limits from a dated list, finds repeated keywords and missing screenshots, and fails claims with no source. | python3 | smoke: trigger 2/2, silence 0/2 |
 | `structured-data-check` | Validates the JSON-LD on real pages: each block parses, has @context and @type, and Article, Product, Organization, BreadcrumbList, FAQPage and SoftwareApplication items carry the properties in a dated list. | python3, network only for a URL | smoke: trigger 2/2, silence 0/2 |
-| `tracking-check` | Reads a HAR file or captured request list and confirms each expected analytics event was sent to the endpoint with its name and properties, flags events sent twice, error answers, and personal data such as an email in the URL. | python3, a network capture the user made | smoke: trigger 1/2, silence 0/2 |
+| `tracking-check` | Reads a HAR file or network capture and confirms each expected analytics event was sent with the right name and properties, flagging doubles, error answers and emails in URLs. | python3, a network capture the user made | smoke: trigger 1/2, silence 0/2 |
 
 ### mstack-media
 
@@ -233,7 +233,7 @@ Audio, video and image work with a measured result: word-timed transcripts, subt
 
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
-| `captions` | Writes .srt and .vtt subtitles from a word-timed transcript and checks every cue for overlaps, order, line length, lines per cue and reading speed; burns them into the video only when asked, then pulls frames to prove they show. | python3; ffmpeg with the subtitles filter (libass) for burn-in only | smoke: trigger 1/2, silence 0/2 |
+| `captions` | Writes .srt and .vtt subtitle files from a word-timed transcript and checks every cue for overlaps, order, line length and reading speed; burns them into the video only when asked. | python3; ffmpeg with the subtitles filter (libass) for burn-in only | smoke: trigger 1/2, silence 0/2 |
 | `export-check` | Encodes a finished video or audio file for a named platform and proves the result with ffprobe and a loudness reading. | python3, ffmpeg, ffprobe | smoke: trigger 2/2, silence 0/2 |
 | `image-batch` | Applies one resize, crop and export to a whole folder of images into a new folder, and checks every output. | python3; sips (macOS), ImageMagick or Pillow | smoke: trigger 2/2, silence 0/2 |
 | `podcast-edit` | Cleans a spoken recording into a new file: shortens long pauses, brings loudness to a named target in two passes, and only on request removes filler words with short crossfades, writing a list of every cut with its time. | python3, ffmpeg, ffprobe; a word-timed transcript for filler removal | smoke: trigger 2/2, silence 0/2 |
@@ -259,7 +259,7 @@ Running software: check a deploy, a migration, a backup, a CI file, a bill and a
 | `env-check` | Lists environment variable names the code reads that are not set or not documented, and names that nothing reads, without showing any value. | python3 | smoke: trigger 2/2, silence 0/2 |
 | `log-triage` | Narrows a saved log file to the first error, the distinct error groups with counts (numbers and ids masked), and what changed in the lines just before the first error, such as a deploy, a restart or a config change. | python3 | smoke: trigger 2/2, silence 0/2 |
 | `migration-check` | Reads pending SQL migration files and flags statements that lock a table, lose data or leave no way back, each with the reason and a safer form. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `perf-check` | Says whether one change made one command faster or slower beyond run-to-run noise. | python3 | smoke: trigger 1/2, silence 0/2 |
+| `perf-check` | Measures whether a change made one command, script or build faster or slower beyond run-to-run noise, from a saved baseline and repeated timings compared by median and spread. | python3 | smoke: trigger 1/2, silence 0/2 |
 | `restore-test` | Restores a backup into a new scratch folder and proves the data is in it, by an integrity check and row or file counts compared with numbers the user states. | python3 | smoke: trigger 2/2, silence 0/2 |
 | `rollback` | Returns a service to its previous version through a checked plan, then confirms the old version answers. | python3, the hosting platform's own command-line tool or dashboard | smoke: trigger 2/2, silence 0/2 |
 
@@ -274,7 +274,7 @@ Requirement gathering and brainstorming: settle what is wanted, write a checkabl
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
 | `clarify` | Settles what the user wants before anything is built. | python3, a user who can answer | smoke: trigger 2/2, silence 0/2 |
-| `compare-options` | Ranks named options on weighted criteria with a script, applies veto criteria, and shows the smallest change in one weight or one score that would change the winner. | python3 | smoke: trigger 1/2, silence 0/2 |
+| `compare-options` | Ranks named options on weighted criteria with a script, applies vetoes, and shows the smallest change that would flip the winner. | python3 | smoke: trigger 1/2, silence 0/2 |
 | `ideate` | Produces a wide list of options grounded in the project, cuts it with a reason for every cut, and ends with a short list of two or three. | python3 | smoke: trigger 2/2, silence 0/2 |
 | `nfr-budgets` | Turns quality words such as fast, reliable or secure into budgets that a command can check. | python3, a project with commands that can be run | smoke: trigger 2/2, silence 0/2 |
 | `premortem` | Assumes a chosen plan has already failed, lists the assumptions it rests on, ranks them by impact and confidence with a script, and names the cheapest test for the worst one, with a pass and a fail line. | python3, a written plan or spec | smoke: trigger 2/2, silence 0/2 |
@@ -311,9 +311,9 @@ Working with the live web, honestly: check a deployed site, find broken links, e
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
 | `cite-check` | Confirms that every quote and quoted claim in a document appears word for word in the saved copy of the source it cites, and lists not found, found and source missing. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `fetch-plan` | Writes a plan before fetching many pages: robots.txt verdict per address, crawl delay, sitemap, terms link, count, rate and duration. | python3 | smoke: trigger 1/2, silence 0/2 |
+| `fetch-plan` | Writes a plan before fetching many pages: robots.txt verdict per address, crawl delay, sitemap, terms link, count, rate and duration; refuses a plan that touches disallowed paths. | python3 | smoke: trigger 1/2, silence 0/2 |
 | `link-check` | Finds broken links and missing images, scripts and styles on one site by crawling it within a stated depth and page limit, and sorts every target into broken, fine and could not check. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `page-extract` | Turns one web page into clean JSON (title, main text without navigation or scripts, headings, links and tables) and fails on an empty result or a page that needs JavaScript to render. | python3 | smoke: trigger 1/2, silence 0/2 |
+| `page-extract` | Turns one web page into clean JSON: title, main text without navigation or scripts, headings, links and tables; fails on an empty result or a page that needs JavaScript. | python3 | smoke: trigger 1/2, silence 0/2 |
 | `page-speed` | Measures how a page transfers without a browser: median time to first byte, bytes, requests, uncompressed text and missing cache headers, against the user's budgets. | python3 | smoke: trigger 2/2, silence 0/2 |
 | `page-watch` | Tells what changed on one web page since the last look: saves a normalised text snapshot under .mstack/ and on the next run lists added and removed lines, ignoring parts the user marks as noisy (clocks, ads, counters). | python3 | smoke: trigger 2/2, silence 0/2 |
 | `site-check` | Checks how a deployed address answers: every redirect hop, the final status, security and cache headers, certificate expiry and mixed content, each marked ok, warn, failed or not checked. | python3 | smoke: trigger 2/2, silence 0/2 |
@@ -329,7 +329,7 @@ Text work with a proof: copy-edits where every change is listed and nothing else
 
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
-| `copyedit` | Copy-edits a text to a named style guide, with corrections, suggestions and queries in separate lists. | python3 | smoke: trigger 1/2, silence 0/2 |
+| `copyedit` | Proofreads and copy-edits a document to a style guide, house style by default, listing corrections, suggestions and queries apart and proving code, quotes, links and numbers survived. | python3 | smoke: trigger 1/2, silence 0/2 |
 | `translate-check` | Translates a text or a JSON strings file and proves nothing countable was lost. | python3 | smoke: trigger 2/2, silence 0/2 |
 
 ### mstack-xr
@@ -343,7 +343,7 @@ VR and AR without guessing: WebXR checks in an emulator, a numeric comfort audit
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
 | `webar-preview` | Turns a .glb into a phone AR preview at true size: compares the model's bounding box in metres with the real object's declared size, checks a .usdz twin with Apple's usdcat and usdchecker, and writes a small page with an AR viewer element. | python3; optional usdcat, usdchecker, a GLB to USDZ converter, a model-viewer build | smoke: trigger 2/2, silence 0/2 |
-| `webxr-verify` | Proves a WebXR page works without a headset: scans the code for session, render loop, input and exit, then judges an emulated session with a screenshot per head pose and input mode, console errors, draw calls and the GPU name. | python3, a browser the agent can drive, a WebXR emulator | smoke: trigger 2/2, silence 1/2 |
+| `webxr-verify` | Proves a WebXR page works without a headset: checks the code for an XR session, render loop, input and exit, and judges an emulated session by head-pose screenshots and console errors. | python3, a browser the agent can drive, a WebXR emulator | smoke: trigger 2/2, silence 1/2 |
 | `xr-comfort-review` | Measures every UI element of a running VR or AR scene: distance from the head, visual angle of text, angle off the forward view, target size and head-locked placement, each with pass or fail against dated limits. | python3, a browser running the scene (three.js) | smoke: trigger 2/2, silence 0/2 |
 | `xr-target` | Finds which VR or AR platform and stack a repository targets (three.js WebXR, A-Frame, Babylon, Unity XR, Quest Android, visionOS, Unreal, Godot) and prints one target record with the evidence lines, then names the skill to use next. | python3 | smoke: trigger 2/2, silence 0/2 |
 
@@ -366,7 +366,14 @@ Version 0.1. Honest state of things:
 
 `standard/` is the method: the rules, how to write a description that triggers, the skill template, how tests work, and how to build a pack. `tools/validate.py` enforces the rules; `claude plugin validate` checks the plugin format.
 
-Contributions are welcome when they follow `standard/BUILDING.md` and pass both validators. A new skill must do a job no existing skill does, and must run something.
+## Contributing and reporting
+
+- **A skill started at the wrong time, or stayed quiet:** [open a trigger issue](https://github.com/manjunani/mstack/issues/new/choose) with the exact words you typed. These reports improve the library most.
+- **A bug or a new skill idea:** use the matching issue form. Propose a new skill in an issue before writing it.
+- **A pull request:** read [CONTRIBUTING.md](CONTRIBUTING.md). One change per pull request; the checks in CI must pass; only the maintainer merges.
+- **A security problem:** do not open an issue. Follow [SECURITY.md](SECURITY.md).
+
+Everyone taking part follows the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## What mstack will not contain
 
