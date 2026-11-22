@@ -1,0 +1,23 @@
+{
+  "mstack_snapshot": 1,
+  "views": [
+    {
+      "viewport": { "width": 1440, "height": 900 }, "theme": "light", "state": "login",
+      "elements": [
+        { "selector": "main > h1", "role": "heading", "name": "Sign in to Parcel Desk", "text": "Sign in to Parcel Desk", "box": { "x": 520, "y": 120, "width": 400, "height": 40 } },
+        { "selector": "form > button.primary", "role": "button", "name": "Sign in", "text": "Sign in", "box": { "x": 520, "y": 320, "width": 400, "height": 44 } },
+        { "selector": "form > a.forgot", "role": "link", "name": "Reset your password", "text": "Reset your password", "href": "/reset", "box": { "x": 520, "y": 380, "width": 160, "height": 20 } },
+        { "selector": "#email", "role": "textbox", "name": "Email", "text": "", "placeholder": "name@company.com", "box": { "x": 520, "y": 200, "width": 400, "height": 44 } }
+      ]
+    },
+    {
+      "viewport": { "width": 1440, "height": 900 }, "theme": "light", "state": "expired session",
+      "elements": [
+        { "selector": "dialog.expired > p", "role": "alert", "name": "", "text": "We could not save the label because your session ended.", "box": { "x": 480, "y": 200, "width": 480, "height": 24 } },
+        { "selector": "dialog.expired > button", "role": "button", "name": "Sign in", "text": "Sign in", "box": { "x": 480, "y": 240, "width": 120, "height": 44 } },
+        { "selector": "li.order > button", "role": "button", "name": "Delete draft label", "text": "Delete draft label", "box": { "x": 1100, "y": 400, "width": 160, "height": 36 } },
+        { "selector": "div.upload > p.error", "role": "alert", "name": "", "text": "That file is larger than 10 MB. Choose a smaller file.", "box": { "x": 200, "y": 600, "width": 500, "height": 24 } }
+      ]
+    }
+  ]
+}

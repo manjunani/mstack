@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "look into whether the harbour fees went up this year and keep the sources",
+    "find out which static hosts support custom headers, with links",
+    "research the current state of WebGPU support across browsers",
+    "compare three password managers and cite where each fact comes from",
+    "what changed in the EU cookie rules recently? need sources",
+    "dig up evidence on whether 4-day weeks raise output",
+    "check my research notes: every claim needs a source",
+    "web-research: best practices for robots.txt today",
+    "I need a sourced answer, not a guess: who maintains the sqlite project",
+    "gather facts on the new tax rule and separate what's known from what's assumed"
+  ],
+  "quiet": [
+    "check the quotes in my finished draft against the saved sources",
+    "synthesise the findings from these user interviews",
+    "get the text of this one page",
+    "find broken links on the docs",
+    "explain how DNS works",
+    "write a blog post about our launch",
+    "is our site certificate expiring",
+    "plan crawling 300 pages from this site",
+    "summarise this PDF",
+    "watch the competitor's pricing page for changes"
+  ],
+  "tasks": [
+    {
+      "name": "notes-check",
+      "prompt": "My research notes are in notes/fees.md. Are they in good shape before I write the answer?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "notes_check\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "The notes include one claim with no source and a conclusion that rests on one site. PASS if the reply names both problems from the checker and ends as fail. FAIL if it calls the notes fine."
+        }
+      ]
+    },
+    {
+      "name": "sourced-answer",
+      "prompt": "Research which of the files in ./saved support the claim that the quay fee is 40 per night, and keep notes with sources.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "notes_check\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply produces a notes file with labelled, sourced claims, runs the checker, and separates found from inferred. FAIL if it answers without a notes file or a checker run."
+        }
+      ]
+    }
+  ]
+}

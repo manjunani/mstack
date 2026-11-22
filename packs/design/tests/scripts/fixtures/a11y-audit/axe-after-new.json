@@ -1,0 +1,14 @@
+{
+  "url": "http://localhost:5173/checkout",
+  "testEngine": { "name": "axe-core", "version": "written by hand for the script tests" },
+  "violations": [
+    { "id": "link-name", "impact": "serious", "tags": ["cat.name-role-value", "wcag2a", "wcag244"], "help": "Links must have discernible text",
+      "nodes": [ { "target": ["a.icon-help"], "html": "<a class=\"icon-help\" href=\"/help\"></a>" } ] }
+  ],
+  "passes": [ { "id": "html-has-lang", "nodes": [] }, { "id": "image-alt", "nodes": [] }, { "id": "label", "nodes": [] },
+              { "id": "color-contrast", "nodes": [] }, { "id": "button-name", "nodes": [] } ],
+  "incomplete": [
+    { "id": "color-contrast", "help": "Elements must meet minimum color contrast ratio thresholds", "nodes": [ { "target": [".hero h1"] } ] }
+  ],
+  "inapplicable": [ { "id": "video-caption", "nodes": [] } ]
+}

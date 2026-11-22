@@ -1,0 +1,38 @@
+{
+  "_about": "Settings used by scripts/compare_png.py. They are mstack's own first choices, not values from a standard, so no outside source can verify them. Change them here, or per run with the script's options, when a project needs a different bar.",
+  "channel_tolerance": {
+    "value": 16,
+    "unit": "steps of 255 per channel",
+    "source": "mstack first setting: absorbs font smoothing and image compression noise",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "region_max_diff_percent": {
+    "value": 2.0,
+    "unit": "percent of pixels in a region",
+    "source": "mstack first setting",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "grid": {
+    "value": "6x8",
+    "unit": "columns x rows",
+    "source": "mstack first setting",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "height_gap_px": {
+    "value": 4,
+    "unit": "px of height difference that still passes",
+    "source": "mstack first setting",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "max_rounds": {
+    "value": 3,
+    "unit": "render-compare-fix rounds",
+    "source": "mstack first setting",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

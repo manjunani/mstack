@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "are my tool definitions any good? they're in tools.json",
+    "the model keeps picking search_docs when it should use search_tickets, check the tool descriptions",
+    "lint the function schemas before I ship the agent",
+    "I added six tools to the agent, look over the definitions",
+    "check these tool specs for duplicate names and missing types",
+    "run tool lint on agent/tools.json",
+    "do any of my tools overlap? I think two of them do the same thing",
+    "review the input schemas for our function calling setup",
+    "is anything wrong with this tools array i'm passing to the API",
+    "which of my tools have descriptions that don't say when to use them"
+  ],
+  "quiet": [
+    "start my MCP server and check that the tools respond",
+    "is this plugin from github safe to install",
+    "write a tool definition for creating calendar events",
+    "why did the agent call the wrong tool in this trace",
+    "lint the python files in src/",
+    "how many tokens do my tool definitions use",
+    "review the code that implements the search tool",
+    "did changing the tool descriptions make the eval worse",
+    "explain how function calling works",
+    "validate this OpenAPI spec"
+  ],
+  "tasks": [
+    {
+      "name": "nothing-to-lint-is-blocked",
+      "prompt": "Check my agent's tool definitions for problems.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "no-invented-findings",
+          "type": "llm",
+          "body": "The workspace holds no tool definitions. PASS if the reply reports no findings about specific tools, ends as blocked or not verified, and asks where the definitions are (a JSON file or a dump of what is sent to the model). FAIL if it lists problems with tools it could not have read, or says the definitions are fine."
+        }
+      ]
+    },
+    {
+      "name": "runs-the-linter",
+      "prompt": "agent/tools.json has the tools for our support agent. Lint them and tell me what must be fixed.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-lint", "type": "tool_used", "tool": "Bash", "input_match": "lint\\.py" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

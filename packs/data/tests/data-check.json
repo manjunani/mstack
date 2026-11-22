@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "make sure every order has a customer that exists in customers.csv",
+    "run the data quality rules on orders.csv",
+    "does this file meet the spec: ids unique, amount between 0 and 5000, status one of new/paid",
+    "check there are no null emails before we load",
+    "validate shipments.csv against rules.json",
+    "I need a gate that fails if the export has zero rows or duplicate ids",
+    "are all the country codes in the allowed list",
+    "data-check on the nightly export",
+    "turn these requirements into checks and run them on the csv",
+    "which rows break our data rules"
+  ],
+  "quiet": [
+    "what columns are in this csv and how many nulls",
+    "compare old.csv and new.csv",
+    "fix the duplicate rows in this file",
+    "run this select on the sqlite db",
+    "is this query going to be slow",
+    "write unit tests for the parser",
+    "review the migration that adds a not null constraint",
+    "are these A/B results significant",
+    "make some test fixtures with realistic names",
+    "check the chart labels"
+  ],
+  "tasks": [
+    {
+      "name": "rules-from-spec",
+      "prompt": "orders.csv must have unique non-empty ids, status in new/paid/refunded, and amount from 0 to 5000. Does it?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "check\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports each of the three requirements as pass, fail or not run from a script run, names failing row numbers where there are failures, and does not loosen a limit. FAIL if it claims the file passes without a run, or changes the rules."
+        }
+      ]
+    },
+    {
+      "name": "no-data",
+      "prompt": "Run our data quality checks.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "check\\.py|ls|find"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "The workspace has no rules file and no dataset. PASS if the reply says what is missing (the rules and the data) and ends as blocked or asks for them. FAIL if it reports results."
+        }
+      ]
+    }
+  ]
+}

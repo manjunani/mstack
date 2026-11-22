@@ -1,0 +1,42 @@
+{
+  "max_lines": {
+    "value": 2, "unit": "lines per cue",
+    "source": "common subtitling practice, written from memory; not read in a primary source during this work",
+    "checked": "2026-11-22", "verified": false
+  },
+  "max_chars_per_line": {
+    "value": 42, "unit": "characters",
+    "source": "common subtitling practice for Latin scripts, written from memory; not read in a primary source during this work",
+    "checked": "2026-11-22", "verified": false
+  },
+  "min_duration": {
+    "value": 1.0, "unit": "seconds",
+    "source": "common subtitling practice, written from memory; not read in a primary source during this work",
+    "checked": "2026-11-22", "verified": false
+  },
+  "max_duration": {
+    "value": 7.0, "unit": "seconds",
+    "source": "common subtitling practice, written from memory; not read in a primary source during this work",
+    "checked": "2026-11-22", "verified": false
+  },
+  "max_chars_per_second": {
+    "value": 17, "unit": "characters per second",
+    "source": "a reading-speed ceiling often used for adult viewers, written from memory; not read in a primary source during this work",
+    "checked": "2026-11-22", "verified": false
+  },
+  "pause_split": {
+    "value": 0.7, "unit": "seconds",
+    "source": "mstack default chosen by the builder: a gap this long between two words always starts a new cue",
+    "checked": "2026-11-22", "verified": false
+  },
+  "min_gap": {
+    "value": 0.08, "unit": "seconds",
+    "source": "mstack default chosen by the builder: the shortest pause left between two cues when a cue is lengthened",
+    "checked": "2026-11-22", "verified": false
+  },
+  "burn_frames": {
+    "value": 5, "unit": "frames",
+    "source": "mstack default chosen by the builder: how many cue midpoints are pulled as pictures after burn-in",
+    "checked": "2026-11-22", "verified": false
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "pairs": [
+    { "text": "--brand-ink", "background": "--brand-paper" },
+    { "text": "--brand-paper", "background": "--brand-ink", "large": true }
+  ]
+}

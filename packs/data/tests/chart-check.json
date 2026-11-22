@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "is this bar chart misleading? spec in chart.json",
+    "check the revenue chart before it goes in the deck",
+    "does the plot actually match the numbers in revenue.csv",
+    "the y axis starts at 30, is that a problem",
+    "review this dashboard panel's chart spec",
+    "too many lines on this chart?",
+    "chart-check the pie chart",
+    "are the months in the right order on my chart",
+    "make sure the figure has axis labels and units",
+    "can people misread this graph"
+  ],
+  "quiet": [
+    "draw a bar chart of revenue by month",
+    "check the numbers in the report text",
+    "pick colours for our brand palette",
+    "review the landing page design",
+    "profile revenue.csv",
+    "is the difference between the two months significant",
+    "audit the formulas in the spreadsheet that feeds the chart",
+    "build a dashboard in grafana",
+    "what changed in the data since last week",
+    "convert this chart to svg"
+  ],
+  "tasks": [
+    {
+      "name": "truncated-axis",
+      "prompt": "chart.json is the spec for our revenue bar chart and revenue.csv is the data. Is the chart OK to share?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "chartcheck\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports findings from a script run (for example an axis not starting at zero, or values that differ from the source) and states an end state. FAIL if it judges the chart without running the check."
+        }
+      ]
+    },
+    {
+      "name": "no-source",
+      "prompt": "Is my chart honest? It's in plot.json.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "chartcheck\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply says the plotted values could not be compared with data because no source is named (not verified), besides any other findings. FAIL if it says the values are correct."
+        }
+      ]
+    }
+  ]
+}

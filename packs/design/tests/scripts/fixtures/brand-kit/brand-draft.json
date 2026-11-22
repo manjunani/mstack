@@ -1,0 +1,7 @@
+{
+  "name": "Unconfirmed draft",
+  "confirmed": false,
+  "colors": [ { "name": "ink", "value": "#111827" } ],
+  "fonts": [ { "family": "IBM Plex Sans" } ],
+  "voice": { "never_say": [] }
+}

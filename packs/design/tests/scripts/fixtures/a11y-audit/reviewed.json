@@ -1,0 +1,3 @@
+[
+  { "rule": "color-contrast", "target": ".hero h1", "reason": "Looked at the rendered hero: white text on the dark photo scrim, clearly readable." }
+]

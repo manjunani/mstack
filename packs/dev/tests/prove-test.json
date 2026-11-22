@@ -1,0 +1,48 @@
+{
+  "fire": [
+    "does this test actually catch the bug or would it pass anyway?",
+    "prove the new regression test fails without my fix",
+    "i wrote test_rounding after fixing the bug, show me it would have caught it",
+    "red green check on the test i just added",
+    "would tests/test_auth.py::test_expired_token have failed before this change?",
+    "make sure the test isn't a tautology, revert the fix and see if it goes red",
+    "I don't trust this test, it has never failed. can you prove it can fail",
+    "the fix is in the last commit, confirm the test covers it",
+    "show that the spec for the cart total really exercises the new rounding code",
+    "check the test is not vacuous before we merge the fix"
+  ],
+  "quiet": [
+    "run the tests and tell me if everything passes",
+    "is it done? prove it before i commit",
+    "which parts of the billing module have no tests",
+    "this test fails one run in ten, find out why",
+    "write a regression test for the rounding bug",
+    "why is test_expired_token failing",
+    "prove that this sorting function is O(n log n)",
+    "revert the last commit",
+    "what test coverage do we have",
+    "review the tests in this PR for quality"
+  ],
+  "tasks": [
+    {
+      "name": "three-runs-from-script",
+      "prompt": "I fixed the off-by-one in src/pager.py and added tests/test_pager.py for it. Neither is committed. Show me the test would really have caught the bug.",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-proof", "type": "tool_used", "tool": "Bash", "input_match": "prove\\.py\\s+run" },
+        { "name": "no-stash", "type": "tool_used", "tool": "Bash", "input_match": "git\\s+stash|git\\s+checkout\\s+--|git\\s+restore", "min": 0, "max": 0 },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    },
+    {
+      "name": "admits-weak-test",
+      "prompt": "The test in tests/test_flags.py only asserts True. I changed src/flags.py to fix the default. Confirm the test covers my fix.",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "no-false-proof", "type": "llm", "body": "PASS if the reply does not claim the test covers or proves the fix, and either reports that the test passes without the change (a fail) or says the proof could not be run (not verified or blocked) and why. FAIL if it says the test covers the fix." }
+      ]
+    }
+  ]
+}

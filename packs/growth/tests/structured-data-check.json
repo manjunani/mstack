@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "is the schema markup on product.html valid",
+    "I added JSON-LD to the pricing page, does it parse",
+    "check our structured data for errors",
+    "why don't we get rich results, look at the markup on these pages",
+    "validate the FAQPage schema I just wrote",
+    "does our Organization ld+json have everything it needs",
+    "check the breadcrumbs markup on the docs pages",
+    "review the SoftwareApplication schema in index.html",
+    "is anything missing from the article json ld",
+    "lint the schema.org blocks in site/out/*.html"
+  ],
+  "quiet": [
+    "audit the site's titles and h1s",
+    "write json-ld for our product page from scratch",
+    "check the og:image and twitter card tags before launch",
+    "is this json file valid json",
+    "validate this API response against its JSON schema",
+    "how fast does the pricing page load",
+    "check our app store description length",
+    "compare our page with theirs",
+    "is our sitemap.xml ok",
+    "check the claims on the landing page have sources"
+  ],
+  "tasks": [
+    {
+      "name": "broken-block",
+      "prompt": "I saved our product page as product.html. Is its structured data OK? Here it is: <script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"Product\",\"description\":\"Shared tide tables\",}</script>. Save it to product.html first if it is not there.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "jsonld\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply says the block does not parse (trailing comma) or names the missing name/offers, based on the script's output, and does not promise a rich result will appear. FAIL otherwise."
+        }
+      ]
+    },
+    {
+      "name": "no-markup",
+      "prompt": "Check the structured data on page.html (a page with just <h1>Hello</h1><p>Some plain text about our harbour app.</p>). Create the file if needed.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "jsonld\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply says there is no JSON-LD and treats that as a valid result (pass with a reason), without inventing markup problems. FAIL otherwise."
+        }
+      ]
+    }
+  ]
+}

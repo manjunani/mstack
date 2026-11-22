@@ -1,0 +1,52 @@
+{
+  "fire": [
+    "does my MCP server actually work? start command is node dist/server.js",
+    "I just added two tools to the mcp server, check they respond",
+    "claude says the server has no tools, can you test it over stdio",
+    "run the handshake against python -m notes_mcp and list what it exposes",
+    "mcp check on the weather server before I publish it",
+    "the search tool on my MCP server returns an error when the agent calls it, test it directly",
+    "verify each tool of our stdio server matches its input schema",
+    "smoke test the model context protocol server in ./server",
+    "call the get_invoice tool on my mcp server with id 12 and see if the reply fits the output schema",
+    "after the refactor, does tools/list still return everything?"
+  ],
+  "quiet": [
+    "lint the tool definitions in tools.json",
+    "test the REST endpoints of the billing API",
+    "build me an MCP server for our notes app",
+    "why did the agent call search five times in a row in this trace",
+    "how do I add an MCP server to Claude Code",
+    "is this third-party MCP plugin safe to install",
+    "write the JSON schema for a create_ticket tool",
+    "the login with our OAuth connector stopped working yesterday",
+    "how much do the tool definitions add to my prompt in tokens",
+    "run the unit tests for the server package"
+  ],
+  "tasks": [
+    {
+      "name": "no-command-is-blocked",
+      "prompt": "Check that my MCP server works.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "does-not-guess",
+          "type": "llm",
+          "body": "The workspace holds no MCP server and no config that names a start command. PASS if the reply does not claim the server works, and ends as blocked (or not verified) asking for the command that starts the server. FAIL if it reports a working server, or invents a start command and reports results for it."
+        }
+      ]
+    },
+    {
+      "name": "probes-and-does-not-call-unnamed",
+      "prompt": "My MCP server starts with `python3 server.py`. Check its tools list and schemas. Do not call any tool yet.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-probe", "type": "tool_used", "tool": "Bash", "input_match": "probe\\.py" },
+        { "name": "no-calls", "type": "tool_used", "tool": "Bash", "input_match": "probe\\.py.*(--call\\b|--calls-file|--allow-write)", "min": 0, "max": 0 },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

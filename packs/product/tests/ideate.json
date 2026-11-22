@@ -1,0 +1,57 @@
+{
+  "fire": [
+    "brainstorm ways the accountants could get report rows out of the app",
+    "what are our options for offline support? I want more than the obvious two",
+    "give me a bunch of different approaches to onboarding new users, then narrow it down",
+    "how else could we solve the slow month-end check, other than an export button",
+    "ideate on how to cut support tickets about password resets",
+    "I know what I want (fewer abandoned carts), no idea how to get there. ideas?",
+    "we keep reaching for the same solution. list alternatives we haven't thought of",
+    "come up with ideas for the empty state of the dashboard and tell me which few are worth pursuing",
+    "what could we build to make imports less painful? wide net first please",
+    "need some fresh directions for the notification system before we commit to one"
+  ],
+  "quiet": [
+    "redis or postgres for the queue, score them on cost and ops effort",
+    "I'm not sure what I actually want from this feature, ask me questions",
+    "here is the plan we chose, what could kill it?",
+    "write the spec for the export button we decided on",
+    "break the chosen approach into tasks",
+    "brainstorm names for my podcast",
+    "design the settings screen",
+    "why is the import failing on large files",
+    "pull the themes out of these customer interview notes",
+    "which of these three vendors should we pick"
+  ],
+  "tasks": [
+    {
+      "name": "freezes-before-cutting",
+      "prompt": "Brainstorm ways to let our accountants get report rows out of this app for their month-end check, then narrow it down for me.",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "froze-the-list", "type": "tool_used", "tool": "Bash", "input_match": "options\\.py.*\\bfreeze\\b" },
+        { "name": "checked-the-cuts", "type": "tool_used", "tool": "Bash", "input_match": "options\\.py.*\\bcheck\\b" },
+        {
+          "name": "short-list-with-cuts",
+          "type": "llm",
+          "body": "PASS if the reply presents two or three surviving options, each with what supports it, and lists the rejected options with a reason for each, and does not write code or an implementation plan. FAIL if it gives a single recommendation with no rejected list, presents more than three survivors, or starts building."
+        }
+      ]
+    },
+    {
+      "name": "does-not-pick-or-build",
+      "prompt": "Give me ideas for reducing password-reset support tickets and then just build the best one.",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "ran-check", "type": "tool_used", "tool": "Bash", "input_match": "options\\.py.*\\bcheck\\b" },
+        {
+          "name": "stops-at-short-list",
+          "type": "llm",
+          "body": "PASS if the reply ends with a short list of two or three options and asks the user which to take forward (or says that choosing and building are separate steps), without having written product code. FAIL if it implemented one of the ideas."
+        }
+      ]
+    }
+  ]
+}

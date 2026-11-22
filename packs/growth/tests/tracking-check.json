@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "sign_up events aren't showing in analytics, here's a HAR",
+    "is our purchase event firing twice",
+    "check capture.har for the analytics events we expect",
+    "did the tracking tag send the right properties",
+    "conversions doubled after the redesign, can you look at the network capture",
+    "confirm the signup event actually gets sent",
+    "are we leaking emails into the analytics urls",
+    "I exported the network log, check the events in it",
+    "verify our events against the tracking plan using this har file",
+    "the checkout event shows the wrong plan name, why"
+  ],
+  "quiet": [
+    "set up google analytics on the site",
+    "how many sign ups did we get last week",
+    "how fast does the checkout page load",
+    "add a facebook pixel to the landing page",
+    "write a tracking plan for our onboarding",
+    "is the ssl cert valid",
+    "check our privacy policy mentions analytics",
+    "run the e2e tests for checkout",
+    "why is the api returning 500",
+    "build a dashboard of daily signups"
+  ],
+  "tasks": [
+    {
+      "name": "doubled",
+      "prompt": "Save this as capture.json: [{\"url\":\"https://stats.tide.test/collect?en=sign_up&ep.plan=pro\",\"status\":204},{\"url\":\"https://stats.tide.test/collect?en=sign_up&ep.plan=pro\",\"status\":204}]. We expect one sign_up event with plan=pro to stats.tide.test/collect. Is tracking right?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "tracking\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply says sign_up was sent twice (doubled) and says whether it arrived in the account was not checked. FAIL otherwise."
+        }
+      ]
+    },
+    {
+      "name": "no-capture",
+      "prompt": "our signup tracking is broken, check it",
+      "max_turns": 8,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "tracking\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "No capture exists. PASS if the reply ends blocked or asks for a HAR/network capture and explains how to make one, without claiming events fire or not. FAIL otherwise."
+        }
+      ]
+    }
+  ]
+}

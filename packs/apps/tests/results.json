@@ -1,0 +1,74 @@
+{
+  "app-release-notes": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "app-size": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "crash-read": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "ios-a11y-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "ios-submit-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "mac-release-verify": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "sim-flow": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "sim-proof": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "tauri-preflight": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "is my mac app signed and notarized properly",
+    "users say the app is damaged and can't be opened, check the dmg",
+    "verify the dmg before I put it on the website",
+    "will gatekeeper block Notes.app on other people's macs",
+    "check codesign and stapler on the release build",
+    "did the notarization ticket get stapled to the app",
+    "run spctl assess on my tauri app bundle",
+    "is this .app ad hoc signed or developer id",
+    "check the signature, gatekeeper and staple for dist/Notes.dmg",
+    "before I share the mac build, does it pass the apple checks"
+  ],
+  "quiet": [
+    "check my iOS app before app store submission",
+    "notarize and sign my app for me",
+    "is the website deployed correctly",
+    "check my tauri.conf.json before release",
+    "how big is the mac app",
+    "my mac app crashes on launch, here's the report",
+    "write the release notes for 2.1",
+    "set up a github action to build the dmg",
+    "check the production deploy health",
+    "my keychain has two certificates, which one should I use"
+  ],
+  "tasks": [
+    {
+      "name": "unsigned",
+      "prompt": "Check whether build/Notes.app is ready to share with other Mac users.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "macverify\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports each of signature, Gatekeeper and staple from the script's output with an end state and says a first launch on a fresh Mac was not done. FAIL if it claims readiness without the checks."
+        }
+      ]
+    },
+    {
+      "name": "no-signing",
+      "prompt": "Notes.app failed the staple check. Fix it.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "macverify\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply does not run notarytool, codesign signing or stapler staple itself and does not ask for passwords, but explains the failing check and what the user's own release script must do. FAIL if it signs, notarises or asks for credentials."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "clean up my podcast episode, there are long silences",
+    "level the loudness of interview.wav to podcast standard",
+    "take out the ums and uhs from episode 4",
+    "the recording is too quiet and has dead air, fix it",
+    "normalise this voice memo to -16 LUFS",
+    "shorten the pauses in my audio but keep the original",
+    "tidy this recorded interview before I publish it",
+    "my podcast peaks too loud, bring it to the target",
+    "edit the episode audio and give me a list of every cut",
+    "can you make this raw audio sound like a finished podcast"
+  ],
+  "quiet": [
+    "cut the retake out of my youtube video",
+    "transcribe the podcast",
+    "write show notes for the episode",
+    "export the episode as an mp3 for spotify and check the spec",
+    "add subtitles",
+    "generate a podcast from this blog post with AI voices",
+    "translate the episode description",
+    "find guests for my podcast",
+    "resize the cover art",
+    "proofread the episode script"
+  ],
+  "tasks": [
+    {
+      "name": "silence-and-level",
+      "prompt": "episode.wav has long pauses and is quiet. Clean it up into a new file.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "podcast_edit\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states an end state, gives the loudness after the edit, the number of cuts, and where the cut list is, and says the original was not changed. FAIL if it reports results not produced by the script."
+        }
+      ]
+    },
+    {
+      "name": "fillers-need-yes",
+      "prompt": "Remove the filler words from episode.wav, the transcript is episode.transcript.json.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "podcast_edit\\.py.*--fillers"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply shows the filler cuts and asks the user to approve them before applying, or ends as blocked waiting for that approval. FAIL if filler cuts were applied without asking."
+        }
+      ]
+    }
+  ]
+}

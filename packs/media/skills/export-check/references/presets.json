@@ -1,0 +1,439 @@
+{
+  "about": "Export presets for export-check. Every number here was written from memory on the date shown and none was read in a primary source, so every entry says verified false. Check the platform's current upload page before relying on a preset, then set verified to true and update the date.",
+  "duration_tolerance": {
+    "value": 0.1,
+    "unit": "seconds",
+    "source": "mstack default chosen by the builder: how far the export's length may differ from the source's",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "aspect_tolerance": {
+    "value": 0.01,
+    "unit": "ratio",
+    "source": "mstack default chosen by the builder",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "presets": {
+    "youtube-1080p": {
+      "about": "Landscape 16:9 upload at 1920x1080",
+      "kind": "video",
+      "container": "mp4",
+      "limits": {
+        "video_codec": {
+          "value": "h264",
+          "unit": "codec",
+          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "pixel_format": {
+          "value": "yuv420p",
+          "unit": "pixel format",
+          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "width": {
+          "value": 1920,
+          "unit": "pixels",
+          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "height": {
+          "value": 1080,
+          "unit": "pixels",
+          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_fps": {
+          "value": 60,
+          "unit": "frames per second",
+          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_duration": {
+          "value": 43200,
+          "unit": "seconds",
+          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_size_mb": {
+          "value": 256000,
+          "unit": "megabytes",
+          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "audio_codec": {
+          "value": "aac",
+          "unit": "codec",
+          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "sample_rate": {
+          "value": 48000,
+          "unit": "Hz",
+          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "loudness": {
+          "value": -14.0,
+          "unit": "LUFS",
+          "source": "written from memory of YouTube's upload guidance; not read in the platform's own documentation during this work; platforms publish playback normalisation levels, not upload rules, so treat this as a target the user may change",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "loudness_tolerance": {
+          "value": 1.0,
+          "unit": "LU",
+          "source": "mstack default chosen by the builder",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_true_peak": {
+          "value": -1.0,
+          "unit": "dBTP",
+          "source": "a common delivery ceiling, written from memory; not read in a standard during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        }
+      }
+    },
+    "youtube-short": {
+      "about": "Vertical 9:16 short at 1080x1920",
+      "kind": "video",
+      "container": "mp4",
+      "limits": {
+        "video_codec": {
+          "value": "h264",
+          "unit": "codec",
+          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "pixel_format": {
+          "value": "yuv420p",
+          "unit": "pixel format",
+          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "width": {
+          "value": 1080,
+          "unit": "pixels",
+          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "height": {
+          "value": 1920,
+          "unit": "pixels",
+          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_fps": {
+          "value": 60,
+          "unit": "frames per second",
+          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_duration": {
+          "value": 180,
+          "unit": "seconds",
+          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_size_mb": {
+          "value": 256000,
+          "unit": "megabytes",
+          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "audio_codec": {
+          "value": "aac",
+          "unit": "codec",
+          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "sample_rate": {
+          "value": 48000,
+          "unit": "Hz",
+          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "loudness": {
+          "value": -14.0,
+          "unit": "LUFS",
+          "source": "written from memory of YouTube Shorts guidance; not read in the platform's own documentation during this work; platforms publish playback normalisation levels, not upload rules, so treat this as a target the user may change",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "loudness_tolerance": {
+          "value": 1.0,
+          "unit": "LU",
+          "source": "mstack default chosen by the builder",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_true_peak": {
+          "value": -1.0,
+          "unit": "dBTP",
+          "source": "a common delivery ceiling, written from memory; not read in a standard during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        }
+      }
+    },
+    "instagram-reel": {
+      "about": "Vertical 9:16 reel at 1080x1920",
+      "kind": "video",
+      "container": "mp4",
+      "limits": {
+        "video_codec": {
+          "value": "h264",
+          "unit": "codec",
+          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "pixel_format": {
+          "value": "yuv420p",
+          "unit": "pixel format",
+          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "width": {
+          "value": 1080,
+          "unit": "pixels",
+          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "height": {
+          "value": 1920,
+          "unit": "pixels",
+          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_fps": {
+          "value": 30,
+          "unit": "frames per second",
+          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_duration": {
+          "value": 180,
+          "unit": "seconds",
+          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_size_mb": {
+          "value": 4000,
+          "unit": "megabytes",
+          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "audio_codec": {
+          "value": "aac",
+          "unit": "codec",
+          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "sample_rate": {
+          "value": 48000,
+          "unit": "Hz",
+          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "loudness": {
+          "value": -14.0,
+          "unit": "LUFS",
+          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work; platforms publish playback normalisation levels, not upload rules, so treat this as a target the user may change",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "loudness_tolerance": {
+          "value": 1.0,
+          "unit": "LU",
+          "source": "mstack default chosen by the builder",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_true_peak": {
+          "value": -1.0,
+          "unit": "dBTP",
+          "source": "a common delivery ceiling, written from memory; not read in a standard during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "min_duration": {
+          "value": 3,
+          "unit": "seconds",
+          "source": "written from memory of Instagram Reels guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        }
+      }
+    },
+    "tiktok": {
+      "about": "Vertical 9:16 video at 1080x1920",
+      "kind": "video",
+      "container": "mp4",
+      "limits": {
+        "video_codec": {
+          "value": "h264",
+          "unit": "codec",
+          "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "pixel_format": {
+          "value": "yuv420p",
+          "unit": "pixel format",
+          "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "width": {
+          "value": 1080,
+          "unit": "pixels",
+          "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "height": {
+          "value": 1920,
+          "unit": "pixels",
+          "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_fps": {
+          "value": 60,
+          "unit": "frames per second",
+          "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_duration": {
+          "value": 600,
+          "unit": "seconds",
+          "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_size_mb": {
+          "value": 287,
+          "unit": "megabytes",
+          "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "audio_codec": {
+          "value": "aac",
+          "unit": "codec",
+          "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "sample_rate": {
+          "value": 48000,
+          "unit": "Hz",
+          "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "loudness": {
+          "value": -14.0,
+          "unit": "LUFS",
+          "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work; platforms publish playback normalisation levels, not upload rules, so treat this as a target the user may change",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "loudness_tolerance": {
+          "value": 1.0,
+          "unit": "LU",
+          "source": "mstack default chosen by the builder",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_true_peak": {
+          "value": -1.0,
+          "unit": "dBTP",
+          "source": "a common delivery ceiling, written from memory; not read in a standard during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        }
+      }
+    },
+    "podcast-mp3": {
+      "about": "Spoken-word audio as an MP3 file",
+      "kind": "audio",
+      "container": "mp3",
+      "limits": {
+        "audio_codec": {
+          "value": "mp3",
+          "unit": "codec",
+          "source": "the usual format podcast hosts accept, written from memory",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "sample_rate": {
+          "value": 44100,
+          "unit": "Hz",
+          "source": "common podcast practice, written from memory",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "loudness": {
+          "value": -16.0,
+          "unit": "LUFS",
+          "source": "a level podcast apps are often said to ask for, written from memory; not read in any platform's documentation during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "loudness_tolerance": {
+          "value": 1.0,
+          "unit": "LU",
+          "source": "mstack default chosen by the builder",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_true_peak": {
+          "value": -1.0,
+          "unit": "dBTP",
+          "source": "a common delivery ceiling, written from memory; not read in a standard during this work",
+          "checked": "2026-11-22",
+          "verified": false
+        },
+        "max_size_mb": {
+          "value": 200,
+          "unit": "megabytes",
+          "source": "a size many podcast hosts accept, written from memory; hosts differ",
+          "checked": "2026-11-22",
+          "verified": false
+        }
+      }
+    }
+  }
+}

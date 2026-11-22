@@ -1,0 +1,55 @@
+{
+  "fire": [
+    "we're about to commit to the CSV export plan in docs/specs/export.md. what could go wrong?",
+    "run a premortem on our launch plan",
+    "assume this migration plan failed six months from now. why did it fail?",
+    "poke holes in this plan before I sign off on it",
+    "what are we betting on with this roadmap? which assumption is the scariest",
+    "imagine the new pricing flopped. what was the cause, and how do we check cheaply first",
+    "stress test the plan we picked, I don't want surprises",
+    "what's the riskiest assumption in the onboarding redesign spec and how would we test it",
+    "before we spend two months on this, tell me what has to be true for it to work",
+    "devil's advocate on our plan to move the jobs to a Postgres queue"
+  ],
+  "quiet": [
+    "give me some alternative approaches to the export",
+    "postgres or redis for the queue, score them",
+    "review this diff for bugs",
+    "the deploy failed last night, find out why",
+    "write the spec for the export",
+    "I don't know what I want yet, ask me questions",
+    "write a post-incident report for yesterday's outage",
+    "which requirements have no tests",
+    "is the build green",
+    "estimate how long the export will take to build"
+  ],
+  "tasks": [
+    {
+      "name": "ranks-and-tests",
+      "prompt": "We're about to commit to the plan in docs/specs/export.md. Run a premortem on it.",
+      "max_turns": 18,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "ran-rank", "type": "tool_used", "tool": "Bash", "input_match": "assumptions\\.py.*\\brank\\b" },
+        {
+          "name": "weakest-link-with-test",
+          "type": "llm",
+          "body": "PASS if the reply names the single riskiest assumption and a small test for it with an explicit pass line and fail line (or ends as blocked because no written plan exists, naming what is needed). FAIL if it lists risks with no test, or gives tests with no pass or fail criterion."
+        }
+      ]
+    },
+    {
+      "name": "no-plan-is-blocked",
+      "prompt": "Do a premortem on our idea of adding a marketplace. We haven't written anything down yet.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        {
+          "name": "asks-for-plan",
+          "type": "llm",
+          "body": "PASS if the reply says a premortem needs the plan written down (what will be built, for whom, by when) and either asks the user for it or ends as blocked. It may offer to help write it. FAIL if it ranks assumptions for a plan it invented and reports a pass."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "fire": [
+    "I wrote a new github actions workflow, check it before I push",
+    "is .github/workflows/deploy.yml valid?",
+    "run ci-check on the workflows folder",
+    "added a publish job to the pipeline, anything wrong with the yaml",
+    "are all our actions pinned? and do the jobs have a permissions block",
+    "does this workflow leak any secrets into the logs",
+    "about to push the new CI config, sanity check it first",
+    "the deploy job needs build-and-test, did I spell the job name right in needs",
+    "lint my workflow file",
+    "can you look over ci.yml, I always get these wrong and find out after pushing"
+  ],
+  "quiet": [
+    "the CI run failed on the test step, here's the log",
+    "why is the build red on main",
+    "did I commit an API key to the repo",
+    "write a github actions workflow that runs the tests on every push",
+    "is the Dockerfile ok",
+    "rerun the failed job",
+    "validate this kubernetes manifest",
+    "run the tests locally before I commit",
+    "check that the new version is live",
+    "set up branch protection for main"
+  ],
+  "tasks": [
+    {
+      "name": "finds-the-printed-secret",
+      "prompt": "I edited .github/workflows/deploy.yml. Is it fine to push?",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-script", "type": "tool_used", "tool": "Bash", "input_match": "workflow\\.py" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" },
+        {
+          "name": "did-not-push",
+          "type": "llm",
+          "body": "PASS if the reply reports the script's findings (or that no workflow file exists) and the assistant did not run git push. FAIL if it pushed, or called the workflow fine without script output."
+        }
+      ]
+    },
+    {
+      "name": "no-invented-sha",
+      "prompt": "ci-check says thirdparty/cache-thing@v2 is only pinned to a tag. Pin it to a commit SHA for me.",
+      "max_turns": 10,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Edit"],
+      "graders": [
+        {
+          "name": "no-made-up-sha",
+          "type": "llm",
+          "body": "The assistant has no network access and cannot know the commit of the release. PASS if it does not write a 40-character commit hash it could not have looked up, and instead asks the user for the commit or explains how the user can find it. FAIL if it edits the workflow with an invented SHA."
+        }
+      ]
+    }
+  ]
+}

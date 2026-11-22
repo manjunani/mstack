@@ -1,0 +1,42 @@
+{
+  "_about": "Per-platform limits read by scripts/postcheck.py. Every value was written from memory on the date shown and is unverified: platforms change these without notice, so open the source named and correct the value before posting. An entry with \"kind\": \"guidance\" produces a warning; every other entry is treated as a hard limit and produces a failure. Counting methods: 'codepoints' counts Unicode code points; 'weighted' counts code points inside light_ranges as 1 and all others as 2; 'graphemes' counts what a reader sees as one character (approximated: combining marks, joiners, variation selectors and skin-tone modifiers do not count, a flag pair counts once). Where url_chars is set, every link counts as that many characters whatever its real length.",
+  "platforms": {
+    "x": {
+      "name": { "value": "X", "unit": "name", "source": "n/a", "checked": "2026-11-22", "verified": false },
+      "max_chars": { "value": 280, "unit": "weighted characters", "source": "X developer documentation, 'Counting characters'; applies to accounts without a paid long-post plan", "checked": "2026-11-22", "verified": false },
+      "count": { "value": "weighted", "unit": "counting method", "source": "X developer documentation, 'Counting characters'", "checked": "2026-11-22", "verified": false },
+      "light_ranges": { "value": [[0, 4351], [8192, 8205], [8208, 8223], [8242, 8247]], "unit": "code point ranges that count as 1", "source": "twitter-text configuration file, version 3", "checked": "2026-11-22", "verified": false },
+      "url_chars": { "value": 23, "unit": "characters per link", "source": "X developer documentation, 'Counting characters'", "checked": "2026-11-22", "verified": false },
+      "max_hashtags": { "value": 2, "unit": "hashtags", "kind": "guidance", "source": "X help pages on hashtags (a recommendation, not a limit)", "checked": "2026-11-22", "verified": false }
+    },
+    "linkedin": {
+      "name": { "value": "LinkedIn post", "unit": "name", "source": "n/a", "checked": "2026-11-22", "verified": false },
+      "max_chars": { "value": 3000, "unit": "characters", "source": "LinkedIn help, post character limits", "checked": "2026-11-22", "verified": false },
+      "count": { "value": "codepoints", "unit": "counting method", "source": "assumed; LinkedIn does not document how it counts", "checked": "2026-11-22", "verified": false },
+      "fold_chars": { "value": 210, "unit": "characters shown before 'see more'", "kind": "guidance", "source": "observed behaviour reported by users; varies by device", "checked": "2026-11-22", "verified": false },
+      "max_hashtags": { "value": 5, "unit": "hashtags", "kind": "guidance", "source": "mstack working value, not a platform rule", "checked": "2026-11-22", "verified": false }
+    },
+    "mastodon": {
+      "name": { "value": "Mastodon", "unit": "name", "source": "n/a", "checked": "2026-11-22", "verified": false },
+      "max_chars": { "value": 500, "unit": "characters", "source": "Mastodon documentation, default server setting; each server may set its own", "checked": "2026-11-22", "verified": false },
+      "count": { "value": "codepoints", "unit": "counting method", "source": "Mastodon documentation", "checked": "2026-11-22", "verified": false },
+      "url_chars": { "value": 23, "unit": "characters per link", "source": "Mastodon documentation", "checked": "2026-11-22", "verified": false }
+    },
+    "bluesky": {
+      "name": { "value": "Bluesky", "unit": "name", "source": "n/a", "checked": "2026-11-22", "verified": false },
+      "max_chars": { "value": 300, "unit": "graphemes", "source": "AT Protocol lexicon app.bsky.feed.post, maxGraphemes", "checked": "2026-11-22", "verified": false },
+      "count": { "value": "graphemes", "unit": "counting method", "source": "AT Protocol lexicon app.bsky.feed.post", "checked": "2026-11-22", "verified": false }
+    },
+    "threads": {
+      "name": { "value": "Threads", "unit": "name", "source": "n/a", "checked": "2026-11-22", "verified": false },
+      "max_chars": { "value": 500, "unit": "characters", "source": "Threads help pages", "checked": "2026-11-22", "verified": false },
+      "count": { "value": "codepoints", "unit": "counting method", "source": "assumed; not documented", "checked": "2026-11-22", "verified": false }
+    },
+    "blog": {
+      "name": { "value": "Blog post with front matter", "unit": "name", "source": "n/a", "checked": "2026-11-22", "verified": false },
+      "front_matter": { "value": ["title", "description", "date"], "unit": "required front matter keys", "source": "mstack working set; a site generator may ask for more or other keys", "checked": "2026-11-22", "verified": false },
+      "title_max_chars": { "value": 60, "unit": "characters", "kind": "guidance", "source": "common guidance for when a search result title is cut; no search engine publishes a fixed limit", "checked": "2026-11-22", "verified": false },
+      "description_max_chars": { "value": 160, "unit": "characters", "kind": "guidance", "source": "common guidance for when a search snippet is cut; no search engine publishes a fixed limit", "checked": "2026-11-22", "verified": false }
+    }
+  }
+}

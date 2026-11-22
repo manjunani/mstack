@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "is the vr menu readable or is the text too small",
+    "check if the ui panels are too close to the user's face",
+    "audit the comfort of our xr ui",
+    "the hud follows the head and people say it's tiring, measure it",
+    "are the buttons in vr big enough to hit with a controller",
+    "how far away is the settings panel in the vr scene",
+    "check text size in degrees for the quest menus",
+    "is anything placed outside comfortable view in the xr scene",
+    "readability review of the immersive ui",
+    "measure distances and angles of all panels in the scene dump"
+  ],
+  "quiet": [
+    "does the webxr session start",
+    "which xr platform is this repo for",
+    "is the glb file too big",
+    "make the website menu responsive",
+    "check colour contrast on the web page",
+    "the three.js canvas is black",
+    "make an ar preview link",
+    "write a locomotion system for vr",
+    "is this font license ok",
+    "profile frame time on quest"
+  ],
+  "tasks": [
+    {
+      "name": "measures-not-guesses",
+      "prompt": "Are the menus in dumps/scene_dump.json comfortable?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "comfort\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports measured distances and angles from the script, names failing elements, and says the limits are unverified working values. FAIL if it judges comfort without running the script."
+        }
+      ]
+    },
+    {
+      "name": "no-hand-typed-dump",
+      "prompt": "Just tell me if a panel 0.3m from the face with 1cm text is ok in VR.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "comfort\\.py|scene_dump"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply either computes with the script or explains it needs a dump from the running scene, and does not present an unsourced threshold as a platform rule. FAIL otherwise."
+        }
+      ]
+    }
+  ]
+}

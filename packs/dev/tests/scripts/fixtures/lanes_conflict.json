@@ -1,0 +1,6 @@
+{
+  "tasks": [
+    { "name": "one", "goal": "First change.", "files": ["one.txt"] },
+    { "name": "two", "goal": "Second change.", "files": ["two.txt"] }
+  ]
+}

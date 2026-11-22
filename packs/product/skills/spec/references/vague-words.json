@@ -1,0 +1,16 @@
+{
+  "about": "Words and phrases that cannot be checked as written. speclint.py fails an acceptance line that uses one outside backticks or double quotes. Edit this list for your project; it is a word list, not a measured value.",
+  "checked": "2026-11-22",
+  "words": [
+    "fast", "faster", "quick", "quickly", "slow", "snappy", "instant", "instantly", "performant",
+    "easy", "easily", "simple", "simply", "intuitive", "user-friendly", "friendly", "seamless", "seamlessly", "smooth", "smoothly",
+    "robust", "reliable", "reliably", "stable", "secure", "securely", "safe", "safely", "scalable", "flexible", "efficient", "efficiently",
+    "reasonable", "reasonably", "appropriate", "appropriately", "adequate", "adequately", "sufficient", "sufficiently",
+    "properly", "correctly", "gracefully", "nicely", "cleanly", "good", "better", "nice", "clean", "modern", "optimal", "minimal",
+    "some", "several", "many", "few", "often", "usually", "normally", "generally", "mostly", "sometimes", "roughly"
+  ],
+  "phrases": [
+    "as needed", "if needed", "as appropriate", "where appropriate", "where possible", "if possible", "as required",
+    "and so on", "and/or", "etc", "to be defined", "or similar", "best effort", "as soon as possible", "in a timely manner"
+  ]
+}

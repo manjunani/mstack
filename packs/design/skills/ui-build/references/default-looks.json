@@ -1,0 +1,28 @@
+{
+  "_about": "Traits that make a screen look like every other generated screen, used by scripts/lint_ui.py as warnings only. They describe what machine-made pages tend to share as of the date written; fashions move, so review the list when it is more than six months old. A brief that asks for one of these wins.",
+  "_written": "2026-11-22",
+  "max_rounds": {
+    "value": 3,
+    "unit": "render-and-inspect rounds before the work stops and asks",
+    "source": "mstack first setting",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "patterns": {
+    "value": [
+      { "id": "violet-gradient", "pattern": "from-(indigo|violet|purple)-\\d00.{0,40}to-(blue|purple|pink|fuchsia)-\\d00|linear-gradient\\([^)]*(#667eea|#764ba2|#6366f1|#8b5cf6|#a855f7)", "what": "an indigo-to-violet gradient, the most common generated accent" },
+      { "id": "default-font", "pattern": "font-family\\s*:\\s*['\"]?(Inter|Roboto|Poppins)\\b|fontFamily.{0,20}(Inter|Poppins)", "what": "a font family most generated pages use" },
+      { "id": "glass-cards", "pattern": "backdrop-blur|backdrop-filter\\s*:\\s*blur", "what": "frosted glass panels" },
+      { "id": "emoji-icons", "pattern": ">[^<{]*[\\u2600-\\u27BF\\U0001F300-\\U0001FAFF][^<{]*<", "what": "emoji used as icons in markup" },
+      { "id": "gradient-text", "pattern": "bg-clip-text|background-clip\\s*:\\s*text", "what": "gradient-filled headline text" },
+      { "id": "stock-hero-words", "pattern": "\\b(unleash|supercharge|revolutioni[sz]e|seamless(ly)?|next-gen(eration)?|game.?chang|elevate your|empower your|10x)\\b", "what": "hero copy words that fit any product" },
+      { "id": "three-card-row", "pattern": "grid-cols-3|repeat\\(3,\\s*1fr\\)", "what": "a row of three equal feature cards" },
+      { "id": "everything-rounded", "pattern": "rounded-(2xl|3xl)|border-radius\\s*:\\s*(2[4-9]|[3-9]\\d)px", "what": "very large corner radius on every block" },
+      { "id": "glow-shadow", "pattern": "shadow-(indigo|violet|purple)-|box-shadow[^;]*rgba\\((99, 102, 241|139, 92, 246)", "what": "coloured glow shadows" }
+    ],
+    "unit": "regular expressions matched per line, case-insensitive",
+    "source": "mstack's own observation of generated pages, written 2026-11-22",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

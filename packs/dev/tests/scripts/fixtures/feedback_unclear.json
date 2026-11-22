@@ -1,0 +1,6 @@
+{
+  "items": [
+    { "id": "1", "comment": "v15 should not be 150", "verdict": "accept", "reason": "The reviewer is right, it was a typo.", "changed": ["src/util.py"] },
+    { "id": "2", "comment": "this should use the other helper", "verdict": "unclear", "reason": "Two helpers exist; which one does the reviewer mean?" }
+  ]
+}

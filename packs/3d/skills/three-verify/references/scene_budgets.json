@@ -1,0 +1,27 @@
+{
+  "about": "Limits for the renderer's own counters after a scene has loaded, and the adapter names that mean the page ran on a software renderer. Working values chosen for mstack; none was read from a primary source. Measure on the target device and replace them.",
+  "checked": "2026-11-22",
+  "profiles": {
+    "desktop-web": {
+      "calls": { "value": 300, "unit": "draw calls per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "triangles": { "value": 1000000, "unit": "triangles per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "geometries": { "value": 500, "unit": "geometries in memory", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "textures": { "value": 64, "unit": "textures in memory", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "programs": { "value": 40, "unit": "shader programs", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+    },
+    "mobile-web": {
+      "calls": { "value": 100, "unit": "draw calls per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "triangles": { "value": 200000, "unit": "triangles per frame", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "geometries": { "value": 200, "unit": "geometries in memory", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "textures": { "value": 32, "unit": "textures in memory", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "programs": { "value": 20, "unit": "shader programs", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+    }
+  },
+  "software_renderers": {
+    "value": ["swiftshader", "llvmpipe", "softpipe", "lavapipe", "software", "basic render"],
+    "unit": "lower-case fragments of a GPU adapter name",
+    "source": "mstack working list, no primary source",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

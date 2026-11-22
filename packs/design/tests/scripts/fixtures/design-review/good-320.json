@@ -1,0 +1,33 @@
+{
+  "viewport": { "width": 320, "height": 640 },
+  "theme": "light",
+  "state": "default",
+  "url": "http://localhost:5173/orders",
+  "title": "Orders",
+  "collector": "written by hand for the script tests",
+  "document": { "scrollWidth": 320, "clientWidth": 320, "scrollHeight": 900 },
+  "skipped": 0,
+  "elements": [
+    { "selector": "header > a.skip", "tag": "a", "role": "link", "name": "Skip to the order list", "nameFrom": "content", "text": "Skip to the order list",
+      "box": { "x": 0, "y": 0, "width": 1, "height": 1 }, "color": "rgb(17, 24, 39)", "background": "rgb(255, 255, 255)", "backgroundKnown": true,
+      "fontSize": 16, "fontWeight": 400, "fontFamily": "\"IBM Plex Sans\", sans-serif", "interactive": true, "focusable": true, "visuallyHidden": true, "href": "#orders" },
+    { "selector": "main > h1", "tag": "h1", "role": "heading", "name": "Orders waiting to ship", "nameFrom": "content", "text": "Orders waiting to ship",
+      "box": { "x": 16, "y": 72, "width": 288, "height": 64 }, "color": "rgb(17, 24, 39)", "background": "rgb(255, 255, 255)", "backgroundKnown": true,
+      "fontSize": 28, "fontWeight": 600, "fontFamily": "Fraunces, serif" },
+    { "selector": "main > p.lede", "tag": "p", "role": "", "name": "", "text": "14 orders are packed and need a carrier label before 4 pm.",
+      "box": { "x": 16, "y": 148, "width": 288, "height": 48 }, "color": "rgb(55, 65, 81)", "background": "rgb(255, 255, 255)", "backgroundKnown": true,
+      "fontSize": 16, "fontWeight": 400, "fontFamily": "\"IBM Plex Sans\", sans-serif" },
+    { "selector": "main > p.lede > a", "tag": "a", "role": "link", "name": "carrier label", "nameFrom": "content", "text": "carrier label",
+      "box": { "x": 120, "y": 172, "width": 86, "height": 19 }, "color": "rgb(29, 78, 216)", "background": "rgb(255, 255, 255)", "backgroundKnown": true,
+      "fontSize": 16, "fontWeight": 400, "fontFamily": "\"IBM Plex Sans\", sans-serif", "interactive": true, "focusable": true, "inline": true, "href": "/help/labels" },
+    { "selector": "#print-labels", "tag": "button", "role": "button", "name": "Print 14 labels", "nameFrom": "content", "text": "Print 14 labels",
+      "box": { "x": 16, "y": 216, "width": 288, "height": 48 }, "color": "rgb(255, 255, 255)", "background": "rgb(29, 78, 216)", "backgroundKnown": true,
+      "fontSize": 16, "fontWeight": 600, "fontFamily": "\"IBM Plex Sans\", sans-serif", "interactive": true, "focusable": true },
+    { "selector": "#filter", "tag": "input", "role": "searchbox", "name": "Filter orders by customer", "nameFrom": "label", "text": "",
+      "box": { "x": 16, "y": 284, "width": 288, "height": 44 }, "color": "rgb(17, 24, 39)", "background": "rgb(255, 255, 255)", "backgroundKnown": true,
+      "fontSize": 16, "fontWeight": 400, "fontFamily": "\"IBM Plex Sans\", sans-serif", "interactive": true, "focusable": true, "placeholder": "For example: Okafor" },
+    { "selector": "main > img.empty-box", "tag": "img", "role": "presentation", "name": "", "text": "",
+      "box": { "x": 96, "y": 360, "width": 128, "height": 96 }, "color": "rgb(17, 24, 39)", "background": "rgb(255, 255, 255)", "backgroundKnown": true,
+      "fontSize": 16, "fontWeight": 400, "fontFamily": "\"IBM Plex Sans\", sans-serif", "decorative": true }
+  ]
+}

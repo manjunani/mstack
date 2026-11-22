@@ -1,0 +1,42 @@
+{
+  "blender-task": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "gltf-gate": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "rig-motion-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "text-to-3d": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "three-verify": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  }
+}

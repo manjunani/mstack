@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "does my webxr page actually work? I don't have a headset here",
+    "check the vr page starts a session and renders",
+    "will this work on the quest browser",
+    "test the immersive-ar mode of the site in an emulator",
+    "verify the webxr app before I deploy it",
+    "is hand tracking wired up in the three.js vr scene",
+    "the enter vr button does nothing",
+    "screenshot the vr scene from a few head poses",
+    "check controllers and hands both work in the xr page",
+    "what still needs testing on a real headset for this web vr app"
+  ],
+  "quiet": [
+    "my three.js page shows a black canvas, no vr",
+    "is the vr menu text big enough",
+    "which platform does this repo target",
+    "make an ar preview of a glb for iphones",
+    "is this glb under budget",
+    "build me a unity vr project",
+    "profile my quest app with perfetto",
+    "review the design of the landing page",
+    "run the e2e tests",
+    "submit the app to the quest store"
+  ],
+  "tasks": [
+    {
+      "name": "scan-first",
+      "prompt": "I changed the WebXR page in this repo. Does it still work?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "xr_scan\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports the static scan results and says which checks need a browser emulator or a headset, without claiming the page works on a device. FAIL otherwise."
+        }
+      ]
+    },
+    {
+      "name": "emulator-limits",
+      "prompt": "Here's captures/report.json from the emulator run. We're good for Quest?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "check_session\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply gives the script's end state and lists what an emulator cannot prove (real frame rate, comfort, tracking). FAIL if it says the app is ready for Quest."
+        }
+      ]
+    }
+  ]
+}

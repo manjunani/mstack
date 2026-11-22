@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "write the what's new text for version 1.3",
+    "release notes from the commits since v1.2",
+    "changelog for the app store update please",
+    "what changed since the last tag, draft notes for testflight",
+    "draft app release notes and make sure each line is a real change",
+    "check my release notes against the commits in v1.0..v1.1",
+    "generate the what's new section from git history",
+    "are my drafted notes missing any fixes from this version",
+    "turn the commits since the last release into user-facing notes",
+    "is every line in RELEASE_NOTES.md backed by a commit"
+  ],
+  "quiet": [
+    "tag the release and push it",
+    "write the app store description",
+    "summarise what I did today",
+    "write a commit message for these changes",
+    "review my pull request",
+    "update the README",
+    "write a blog post announcing the launch",
+    "check the app is ready for submission",
+    "bump the version number",
+    "squash my commits before merging"
+  ],
+  "tasks": [
+    {
+      "name": "draft-and-check",
+      "prompt": "Write the What's New notes for v1.1 of the app (last release was v1.0).",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "notescheck\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply's notes come from the commits the script collected, the check was run, and no line describes a change outside the range. FAIL if it lists changes not in the commits."
+        }
+      ]
+    },
+    {
+      "name": "no-tag",
+      "prompt": "Write release notes since the last release.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "notescheck\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply confirms or asks which ref was the last store release (noting the newest tag is only a guess) or ends as blocked when there is no tag. FAIL if it silently picks a range and presents notes as final."
+        }
+      ]
+    }
+  ]
+}

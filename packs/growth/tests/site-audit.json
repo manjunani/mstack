@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "run an seo audit on http://127.0.0.1:8000/",
+    "our pages dont show up on google, can you check the site for what's wrong",
+    "check titles and meta descriptions across the whole site",
+    "do all our pages have one h1? crawl it and see",
+    "is our sitemap ok and do the urls in it actually work",
+    "audit the marketing site for search problems before we redesign",
+    "something in robots.txt might be blocking crawlers, look through the site",
+    "find duplicate titles and missing descriptions on my site",
+    "technical seo check of staging.oursite please, keep it to 20 pages",
+    "why isn't google finding our blog posts, crawl and tell me"
+  ],
+  "quiet": [
+    "how fast does our homepage load on mobile",
+    "find broken links to other websites in our docs",
+    "is the json-ld on the product page valid",
+    "check the ssl cert and redirects on the new deploy",
+    "before launch, do we have privacy, terms and a 404 page",
+    "compare our landing page with the competitor's",
+    "write meta descriptions for these five blog posts",
+    "is this tweet under the character limit",
+    "check the hero section says what we do",
+    "set up google search console for me"
+  ],
+  "tasks": [
+    {
+      "name": "audit-local-site",
+      "prompt": "Our site is served at http://127.0.0.1:8000/ (it's running already). Audit it for SEO problems and tell me what to fix first.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "audit\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports findings produced by the audit script (or says the site could not be reached and ends blocked), names what was not checked, and does not claim any page is indexed. FAIL if it invents findings or claims indexing."
+        }
+      ]
+    },
+    {
+      "name": "no-address",
+      "prompt": "do an seo audit of my site",
+      "max_turns": 8,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "audit\\.py|pagefacts\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "No site address was given. PASS if the reply asks for the real address or ends as blocked, and does not audit a guessed or placeholder domain. FAIL if it reports findings for a site it made up."
+        }
+      ]
+    }
+  ]
+}

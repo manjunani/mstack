@@ -1,0 +1,67 @@
+{
+  "fire": [
+    "we agreed on CSV export of the filtered rows for the accountants. write the spec",
+    "turn what we just settled into requirements with acceptance criteria I can check off",
+    "write a PRD for the password reset flow, the goal is clear: users reset by emailed link, link dies after 30 minutes",
+    "I need this written down before anyone builds it: done-when lines, numbered, each with how we test it",
+    "this repo has no requirements doc at all. write one from what the code actually does",
+    "document the current behaviour of the billing service as numbered requirements, cite where each comes from",
+    "put the acceptance criteria for the invite feature on one page",
+    "spec this out: rate limit of 100 requests per minute per API key, 429 with a Retry-After header beyond that",
+    "can you lint my spec, docs/specs/export.md, does every line have a check?",
+    "what's out of scope and what counts as done for the search filter? write it up so we can sign it off"
+  ],
+  "quiet": [
+    "I want something for sharing reports but I honestly don't know what yet, ask me questions",
+    "split the approved spec into tasks with files and test commands",
+    "write test cases for R-001 to R-006, boundaries and bad input included",
+    "which requirements have no test yet?",
+    "are we done? check the work against the spec",
+    "give me a number for 'the page must be fast'",
+    "brainstorm approaches for the offline mode",
+    "what does the OpenAPI spec say about the /users route, does the server match it",
+    "review this diff for bugs",
+    "explain what a PRD is"
+  ],
+  "tasks": [
+    {
+      "name": "lints-what-it-writes",
+      "prompt": "The goal is settled, write the spec to docs/specs/export.md: the two accountants download the rows they currently see on the reports page as a CSV file. File name reports-YYYY-MM-DD.csv. Same rows and order as on screen after filtering. Button disabled when there are no rows. Not doing: Excel, scheduled exports.",
+      "max_turns": 16,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "file-written", "type": "file_exists", "path": "docs/specs/export.md" },
+        { "name": "ran-linter", "type": "tool_used", "tool": "Bash", "input_match": "speclint\\.py.*\\bcheck\\b" },
+        { "name": "has-ids", "type": "regex", "pattern": "R-00[1-9]" }
+      ]
+    },
+    {
+      "name": "refuses-vague-line",
+      "prompt": "Add one more requirement to the spec at docs/specs/export.md and keep it short: 'the export should be fast and user-friendly'. Create the file if it is not there; the goal is a CSV export of the filtered report rows for our accountants, not doing Excel.",
+      "max_turns": 16,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "ran-linter", "type": "tool_used", "tool": "Bash", "input_match": "speclint\\.py.*\\bcheck\\b" },
+        {
+          "name": "no-vague-pass",
+          "type": "llm",
+          "body": "PASS if the reply does not present 'fast' or 'user-friendly' as an accepted requirement: it either asks the user for a measurable limit (a number with a unit and a condition) or reports the result as fail or blocked because those words cannot be checked. FAIL if it says the spec passes with a requirement that still says fast or user-friendly, or if it invents a limit and presents it as the user's."
+        }
+      ]
+    },
+    {
+      "name": "from-code-cites-files",
+      "prompt": "This project has code and no requirements document. Write docs/specs/current.md describing what the code does today, as numbered requirements.",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "surveyed-or-checked-sources", "type": "tool_used", "tool": "Bash", "input_match": "speclint\\.py.*(survey|--from-code)" },
+        {
+          "name": "honest-about-sources",
+          "type": "llm",
+          "body": "PASS if every behaviour the reply or the written spec lists is tied to a file that was read, or the reply states an end state of not verified or blocked because there was no code to read. FAIL if it lists requirements for behaviour with no source file, or claims the spec passed without a lint run."
+        }
+      ]
+    }
+  ]
+}

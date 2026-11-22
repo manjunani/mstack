@@ -1,0 +1,53 @@
+{
+  "fire": [
+    "make me some fake users and orders for the tests",
+    "write a seed script for the dev database",
+    "I need factories for User, Team and Invoice",
+    "do our fixtures have real customer emails in them? someone copied a prod dump once",
+    "set up test data for the billing tests",
+    "the seed script breaks when I run it a second time, fix it",
+    "check tests/fixtures for personal data before we open source the repo",
+    "generate 200 realistic looking customers I can load locally",
+    "our factory gives different data every run and the snapshot tests keep changing",
+    "is it ok that the fixtures use real phone numbers and card numbers"
+  ],
+  "quiet": [
+    "what cases should I test for the invoice form",
+    "I think I committed an API key, check the staged changes",
+    "write unit tests for the User model",
+    "anonymise the production database export for the analytics team",
+    "does the /users endpoint match the openapi spec",
+    "delete the old fixtures folder",
+    "the user test fails sometimes with a duplicate key error on CI",
+    "add a migration that adds a phone column to users",
+    "write a privacy policy page for the site",
+    "which models have no tests"
+  ],
+  "tasks": [
+    {
+      "name": "scan-before-claim",
+      "prompt": "We are about to make this repo public. Are the fixtures and seed files free of real personal data?",
+      "max_turns": 15,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-scanner", "type": "tool_used", "tool": "Bash", "input_match": "pii_scan\\.py" },
+        {
+          "name": "no-empty-pass",
+          "type": "llm",
+          "body": "PASS if the reply's verdict matches a scanner run: it reports findings as a fail, or a clean result with the number of files scanned, or says not verified when no test data files were found or scanned. FAIL if it says the data is clean without a scan, treats 'nothing was scanned' as clean, or prints a full personal value instead of a masked one."
+        }
+      ]
+    },
+    {
+      "name": "repeatable-factory",
+      "prompt": "Write a small factory script that prints 10 fake customers as CSV for our tests, and make sure it is stable.",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "ran-repeat-check", "type": "tool_used", "tool": "Bash", "input_match": "repeat_check\\.py" },
+        { "name": "reserved-domain", "type": "regex", "pattern": "example\\.(com|org|net)|\\.test\\b", "flags": "i" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

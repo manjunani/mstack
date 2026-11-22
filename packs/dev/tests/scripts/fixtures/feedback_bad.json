@@ -1,0 +1,11 @@
+{
+  "items": [
+    { "id": "1", "comment": "v15 should not be 150", "verdict": "accept", "reason": "Fixed as asked by the reviewer.", "changed": ["README.md"] },
+    { "id": "2", "comment": "lower-case the token", "verdict": "push-back", "reason": "I do not think that is needed here." },
+    { "id": "3", "comment": "rename check", "verdict": "push-back", "reason": "It is used that way at src/auth.py:400 already." },
+    { "id": "4", "comment": "handle the other case", "verdict": "accept", "reason": "Done in the same change as number one." },
+    { "id": "5", "comment": "", "verdict": "accept", "reason": "ok" },
+    { "id": "6", "comment": "this line is odd", "file": "src/util.py", "line": 500, "verdict": "unclear", "reason": "Which line is meant?" },
+    { "id": "7", "comment": "maybe later", "verdict": "wontfix", "reason": "Not in scope for this change at all." }
+  ]
+}

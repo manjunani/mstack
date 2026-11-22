@@ -1,0 +1,12 @@
+{
+  "viewport": { "width": 320, "height": 640 },
+  "theme": "light",
+  "state": "default",
+  "url": "http://localhost:5173/story",
+  "document": { "scrollWidth": 320, "clientWidth": 320, "scrollHeight": 640 },
+  "elements": [
+    { "selector": "figure.cover > figcaption", "tag": "figcaption", "role": "", "name": "", "text": "The harbour at six in the morning",
+      "box": { "x": 16, "y": 200, "width": 288, "height": 28 }, "color": "rgb(255, 255, 255)", "background": "rgb(255, 255, 255)", "backgroundKnown": false,
+      "fontSize": 20, "fontWeight": 600, "fontFamily": "Fraunces, serif" }
+  ]
+}

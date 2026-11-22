@@ -1,0 +1,90 @@
+{
+  "ci-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "ci-fix": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "cost-watch": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "dep-upgrade": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "deploy-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "env-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "log-triage": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "migration-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "perf-check": {
+    "trigger": "1/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "restore-test": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "rollback": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  }
+}

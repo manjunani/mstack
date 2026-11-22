@@ -1,0 +1,60 @@
+{
+  "_note": "Lists used by scripts/pii_scan.py. Every entry was written from memory on the checked date and is marked unverified until someone reads the primary source. The scanner prints a line saying so.",
+  "reserved_email_domains": {
+    "value": ["example.com", "example.org", "example.net", "example.edu"],
+    "unit": "domain names reserved for documentation",
+    "source": "IETF RFC 2606 and the IANA reserved domains list",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "reserved_email_tlds": {
+    "value": ["test", "example", "invalid", "localhost"],
+    "unit": "top-level names that never resolve on the public internet",
+    "source": "IETF RFC 2606 and RFC 6761",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "public_mail_domains": {
+    "value": ["gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.uk", "yahoo.co.in", "yahoo.in", "ymail.com", "outlook.com",
+              "hotmail.com", "hotmail.co.uk", "live.com", "msn.com", "icloud.com", "me.com", "mac.com", "aol.com", "proton.me",
+              "protonmail.com", "pm.me", "gmx.com", "gmx.de", "gmx.net", "web.de", "mail.com", "zoho.com", "yandex.com", "yandex.ru",
+              "mail.ru", "qq.com", "163.com", "126.com", "rediffmail.com", "fastmail.com", "hey.com", "tutanota.com", "tuta.io",
+              "orange.fr", "free.fr", "laposte.net", "btinternet.com", "comcast.net", "verizon.net", "att.net", "naver.com"],
+    "unit": "domains where anyone can hold a real mailbox",
+    "source": "common public mail providers; not an official list",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "fictional_phone_prefixes": {
+    "value": ["447700900", "07700900", "442079460", "02079460", "441632960", "01632960", "441134960", "01134960", "61491570", "0491570"],
+    "unit": "leading digits of number ranges set aside for drama and examples (United Kingdom, Australia)",
+    "source": "Ofcom numbers for use in TV and radio drama; ACMA numbers for use in fiction",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "nanp_fictional_line_range": {
+    "value": [100, 199],
+    "unit": "last four digits, with exchange 555, reserved for fictional use in North American numbers",
+    "source": "North American Numbering Plan Administrator, 555 line number guidance",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "published_test_cards": {
+    "value": ["4242424242424242", "4000056655665556", "4111111111111111", "4012888888881881", "4000000000000002",
+              "5555555555554444", "2223003122003222", "5200828282828210", "5105105105105100", "378282246310005",
+              "371449635398431", "6011111111111117", "6011000990139424", "3056930009020004", "36227206271667",
+              "3566002020360505", "6200000000000005"],
+    "unit": "card numbers that payment providers publish for test mode",
+    "source": "payment providers' testing pages (Stripe, PayPal sandbox, Adyen)",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "ssn_never_issued": {
+    "value": { "areas": ["000", "666"], "area_ranges": [[900, 999]], "group": "00", "serial": "0000",
+               "advertising": ["078-05-1120", "219-09-9999"], "advertising_range": ["987-65-4320", "987-65-4329"] },
+    "unit": "United States social security number parts that are never assigned, plus numbers used in advertising",
+    "source": "US Social Security Administration",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

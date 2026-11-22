@@ -1,0 +1,17 @@
+{
+  "_about": "Limits used by scripts/tokens.py. An entry is verified only when the number was read in its primary source on the checked date. These were written from memory, offline, so each is false until someone reads the source.",
+  "contrast_text_min": {
+    "value": 4.5,
+    "unit": "ratio",
+    "source": "WCAG 2.2, success criterion 1.4.3 Contrast (Minimum), level AA, body text",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "contrast_large_min": {
+    "value": 3.0,
+    "unit": "ratio",
+    "source": "WCAG 2.2, success criterion 1.4.3 (large text) and 1.4.11 Non-text Contrast (interface parts), level AA",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

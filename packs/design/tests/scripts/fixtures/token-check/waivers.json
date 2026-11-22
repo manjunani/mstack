@@ -1,0 +1,4 @@
+[
+  { "text": "--muted-foreground", "background": "--muted", "theme": "light", "reason": "Used only for the disabled state, which the contrast rule does not cover." },
+  { "text": "--muted-foreground", "background": "--muted", "theme": "dark", "reason": "Used only for the disabled state, which the contrast rule does not cover." }
+]

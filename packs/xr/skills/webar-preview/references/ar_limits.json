@@ -1,0 +1,8 @@
+{
+  "about": "Tolerances for comparing a model's measured size with the real object and with its USDZ twin. Working values chosen for mstack; none was read from a primary source. Tighten them for products where size matters (furniture, anything that has to fit).",
+  "checked": "2026-11-22",
+  "limits": {
+    "scale_tolerance_pct": { "value": 5.0, "unit": "percent difference allowed between a measured side and the declared real size", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+    "twin_tolerance_pct": { "value": 2.0, "unit": "percent difference allowed between the GLB and the USDZ on any side", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+  }
+}

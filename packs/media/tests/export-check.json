@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "export final.mp4 for youtube",
+    "will this file be accepted as a reel? check it",
+    "encode the video for tiktok and make sure it meets their spec",
+    "convert episode.wav to a podcast mp3 at the right loudness",
+    "is my video loud enough for youtube, check the LUFS",
+    "render a 1080x1920 version for shorts and verify resolution and frame rate",
+    "check codec, pixel format and size of out.mp4 before I upload",
+    "make an instagram ready version of this clip",
+    "what's wrong with this file, the platform keeps rejecting it",
+    "prep the master for upload, the h264 one with aac audio"
+  ],
+  "quiet": [
+    "cut the boring part out of the video",
+    "add subtitles to this video",
+    "remove the long pauses from my podcast",
+    "transcribe the video",
+    "resize all these photos to 1080 square",
+    "write a caption for my instagram post",
+    "check my post before I publish it on linkedin",
+    "trim the first 5 seconds",
+    "make chapters for youtube",
+    "compress this pdf"
+  ],
+  "tasks": [
+    {
+      "name": "plan-first",
+      "prompt": "Export wide.mp4 for YouTube Shorts.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "export_check\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply shows or describes the planned command or the measured result from the script, mentions that the preset numbers are unverified, and states an end state. FAIL if it claims the file meets the platform spec without a measurement."
+        }
+      ]
+    },
+    {
+      "name": "check-existing",
+      "prompt": "Check whether wrong.mp4 is ready for youtube.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "export_check\\.py.*check"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply lists the failing values reported by the script (for example pixel format, sample rate, loudness) with their limits and ends as fail. FAIL if it says the file is ready."
+        }
+      ]
+    }
+  ]
+}

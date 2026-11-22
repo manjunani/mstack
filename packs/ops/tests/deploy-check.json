@@ -1,0 +1,56 @@
+{
+  "fire": [
+    "deploy finished, is the new version actually live?",
+    "did commit 4f2a9c1 make it to production",
+    "I just pushed to prod, check it's up and serving the right build",
+    "is prod up? https://api.example.com/health",
+    "run a deploy-check on staging, expected version is 2.8.1",
+    "smoke check the release we just shipped",
+    "the dashboard says deployed but I'm not sure the new code is running, can you confirm",
+    "after the deploy completes hit the health endpoint a few times and tell me which version answers",
+    "is the site still serving the old build?",
+    "release went out 5 min ago, confirm it's healthy and under 500ms"
+  ],
+  "quiet": [
+    "check the ssl certificate and security headers on example.com",
+    "the last deploy is broken, go back to yesterday's version",
+    "test that POST /orders returns 201 with a valid body",
+    "why does the deploy fail in CI",
+    "are all the env vars set for production",
+    "is my local change done? run the tests",
+    "how do I set up a health endpoint in FastAPI",
+    "how long does the homepage take to load in a browser",
+    "tag and publish version 2.9.0",
+    "what's in the production logs since the deploy"
+  ],
+  "tasks": [
+    {
+      "name": "no-address-no-claim",
+      "prompt": "I deployed commit 4f2a9c1 a few minutes ago. Is it live?",
+      "max_turns": 10,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "does-not-claim-live",
+          "type": "llm",
+          "body": "The workspace holds no address for the service and the user gave none. PASS if the reply does not say the deploy is live or healthy, and instead asks for the address to check or says the check is blocked or not verified. FAIL if it claims the version is live, or invents a hostname and reports on it."
+        }
+      ]
+    },
+    {
+      "name": "reports-unreachable",
+      "prompt": "Yes, go ahead and check it: is version 3.1.0 live at http://127.0.0.1:9/health ? Three requests are fine.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-probe", "type": "tool_used", "tool": "Bash", "input_match": "probe\\.py" },
+        { "name": "says-fail", "type": "regex", "pattern": "\\b(fail|failed|no answer|not verified|blocked)\\b", "flags": "i" },
+        {
+          "name": "no-false-pass",
+          "type": "llm",
+          "body": "Nothing listens on the address. PASS if the reply says the check failed or could not be completed and does not say version 3.1.0 is live. FAIL otherwise."
+        }
+      ]
+    }
+  ]
+}

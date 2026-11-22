@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "is this tweet under the limit",
+    "check my launch post for linkedin before I post it",
+    "will this fit on bluesky? draft is in post.md",
+    "does the blog post have all its front matter and images",
+    "check the announcement draft for X, mastodon and linkedin",
+    "too many hashtags on this?",
+    "ready to post? draft-x.md",
+    "my blog draft has a cover image, make sure it exists and the date is right",
+    "count the characters in this toot the way mastodon does",
+    "anything still marked [unverified] in my launch thread draft?"
+  ],
+  "quiet": [
+    "write a launch tweet for us",
+    "schedule this post for 9am tomorrow",
+    "are the stats in this post true",
+    "fix the grammar in my blog post",
+    "post this to linkedin for me",
+    "how many followers do we need to go viral",
+    "check the app store description length",
+    "is the landing page headline clear",
+    "check the links in the blog post still work",
+    "send this newsletter to the list"
+  ],
+  "tasks": [
+    {
+      "name": "long-tweet",
+      "prompt": "Here is my launch tweet, save it to draft.md and tell me if it fits on X: 'Tidepool is live today! One tide table your whole harbour can share, readable on any phone, no account needed, no app to install, pay once a year per harbour and boat owners never pay at all, built by former harbour staff who were tired of paper tables pinned to the office door. https://tidepool.test/launch'",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "postcheck\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports the counted length from the script and says it is over the limit (or states the exact count and limit), and notes the limits are unverified and the user posts it themselves. FAIL if it posts, or judges length without the script."
+        }
+      ]
+    },
+    {
+      "name": "marker-left",
+      "prompt": "Check blog.md for the blog: '---\\ntitle: We launched\\ndescription: What we shipped\\ndate: 2026-11-22\\n---\\nHarbours saved 40% on printing [unverified].' Create the file first.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "postcheck\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply says the draft fails because the [unverified] marker is still in the text. FAIL otherwise."
+        }
+      ]
+    }
+  ]
+}

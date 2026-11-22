@@ -1,0 +1,91 @@
+{
+  "_about": "Property lists used by scripts/jsonld.py. Each entry is a summary, written from memory, of what a search engine's documentation asks for on one schema.org type. All are unverified: open the source named in the entry and correct the list before trusting a pass. 'required' and 'one_of' produce failures, 'recommended' produces warnings, 'nested' checks objects found at a dotted path, 'also' lists subtypes checked with the same list.",
+  "Article": {
+    "value": {
+      "also": ["NewsArticle", "BlogPosting"],
+      "required": [],
+      "one_of": [],
+      "recommended": ["headline", "image", "datePublished", "author"],
+      "nested": [{ "path": "author", "required": ["name"] }]
+    },
+    "unit": "schema.org property names",
+    "source": "Google Search Central, 'Article structured data'",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "Product": {
+    "value": {
+      "also": [],
+      "required": ["name"],
+      "one_of": ["offers", "review", "aggregateRating"],
+      "recommended": ["image", "description"],
+      "nested": [
+        { "path": "offers", "required": ["price", "priceCurrency"] },
+        { "path": "aggregateRating", "required": ["ratingValue"] }
+      ]
+    },
+    "unit": "schema.org property names",
+    "source": "Google Search Central, 'Product snippet structured data'",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "Organization": {
+    "value": {
+      "also": ["Corporation", "LocalBusiness", "OnlineBusiness"],
+      "required": [],
+      "one_of": [],
+      "recommended": ["name", "url", "logo"],
+      "nested": []
+    },
+    "unit": "schema.org property names",
+    "source": "Google Search Central, 'Organization structured data'",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "BreadcrumbList": {
+    "value": {
+      "also": [],
+      "required": ["itemListElement"],
+      "one_of": [],
+      "recommended": [],
+      "nested": [{ "path": "itemListElement", "required": ["position", "name"] }]
+    },
+    "unit": "schema.org property names",
+    "source": "Google Search Central, 'Breadcrumb structured data'",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "FAQPage": {
+    "value": {
+      "also": [],
+      "required": ["mainEntity"],
+      "one_of": [],
+      "recommended": [],
+      "nested": [
+        { "path": "mainEntity", "required": ["name", "acceptedAnswer"] },
+        { "path": "mainEntity.acceptedAnswer", "required": ["text"] }
+      ],
+      "note": "As far as remembered, the FAQ result is shown only for a narrow set of well-known government and health sites since 2023; valid markup does not mean the result appears"
+    },
+    "unit": "schema.org property names",
+    "source": "Google Search Central, 'FAQ structured data' and the August 2023 notice about FAQ and HowTo results",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "SoftwareApplication": {
+    "value": {
+      "also": ["MobileApplication", "WebApplication"],
+      "required": ["name", "offers"],
+      "one_of": ["aggregateRating", "review"],
+      "recommended": ["applicationCategory", "operatingSystem"],
+      "nested": [
+        { "path": "offers", "required": ["price"] },
+        { "path": "aggregateRating", "required": ["ratingValue"] }
+      ]
+    },
+    "unit": "schema.org property names",
+    "source": "Google Search Central, 'Software app structured data'",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "claim-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "first-screen": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "launch-site-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "mail-domain-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "page-compare": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "post-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "site-audit": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "store-listing-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "structured-data-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "tracking-check": {
+    "trigger": "1/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "response_ms": {
+    "value": 2000,
+    "unit": "ms",
+    "source": "mstack starting value for the median answer time of a health address; not taken from any standard. Replace it with the project's own budget (see nfr-budgets) through --max-ms.",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

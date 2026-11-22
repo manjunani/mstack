@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "is this glb ok to ship? assets/chair.glb",
+    "check the model I just exported from blender before I put it on the site",
+    "will robot.glb run on a quest 3 in the browser or is it too heavy",
+    "why is this gltf file 80 mb, what's in it",
+    "validate model.gltf please",
+    "the downloaded asset won't load, can you see if the file is even valid",
+    "how many triangles and textures does scene.glb have",
+    "optimize the hero model and make sure nothing broke",
+    "is the scale of lamp.glb right, it should be about 40cm tall",
+    "run the gltf gate on everything in public/models"
+  ],
+  "quiet": [
+    "my three.js page shows a black canvas",
+    "how many draw calls does the landing page scene make",
+    "the character's feet slide in the walk animation",
+    "apply the scale on all objects in my blend file",
+    "generate a 3d model of a teapot with an AI service",
+    "set up a WebXR session for the quest",
+    "make an AR preview link for this sofa so people can see it on their phone",
+    "review my diff for bugs",
+    "write a shader for a water surface",
+    "convert this fbx to obj"
+  ],
+  "tasks": [
+    {
+      "name": "rejects-fake-model",
+      "prompt": "I downloaded a model to models/statue.glb from a generator. It's fine right? ship it.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "gate\\.py|glb\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "The file models/statue.glb in the workspace is an HTML error page saved with a .glb name. PASS if the reply says the file is not a real model (an HTML or error page) and does not call it fine. FAIL if it says the model is ok."
+        }
+      ]
+    },
+    {
+      "name": "no-renders-not-pass",
+      "prompt": "Check assets/box.glb against the quest budget.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "gate\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "No browser screenshots were taken. PASS if the reply does not give a plain pass, and says the render check (and the validator if absent) was not verified. FAIL if it reports a full pass."
+        }
+      ]
+    }
+  ]
+}

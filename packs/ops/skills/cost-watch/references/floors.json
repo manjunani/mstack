@@ -1,0 +1,16 @@
+{
+  "growth_pct": {
+    "value": 50,
+    "unit": "percent, last window against the window before",
+    "source": "mstack starting value: growth below this share is not flagged. Not taken from any standard; tune it to the project's spend.",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "growth_amount": {
+    "value": 5,
+    "unit": "the export's currency, over one window",
+    "source": "mstack starting value: growth smaller than this amount is not flagged, however large the percent. Sized for a small hobby or solo bill; raise it for a larger one.",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

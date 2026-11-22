@@ -1,0 +1,5 @@
+[
+  { "value": "#ff00aa", "path": "Button.jsx", "reason": "Campaign colour for the launch week, removed after 2026-12-01." },
+  { "path": "app.css", "reason": "Legacy stylesheet scheduled for removal; tracked in the migration plan." },
+  { "value": "#123456", "reason": "An entry that matches nothing, to show it is reported." }
+]

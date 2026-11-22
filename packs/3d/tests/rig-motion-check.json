@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "the character's feet slide during the walk cycle",
+    "check the rigged model's animations by numbers",
+    "foot goes through the floor in the idle clip",
+    "list the bones and animation clips in hero.glb",
+    "is the run animation planted or is it moonwalking",
+    "the hand drifts when it should be holding the cup",
+    "this generated character came rigged, can you check the motion before we use it",
+    "does the jump clip sink below the ground on landing",
+    "check foot contact for every clip in mixamo_export.glb",
+    "why does the skeleton grow during the dance animation"
+  ],
+  "quiet": [
+    "is this glb within the quest budget",
+    "retarget this animation to another skeleton in blender",
+    "the three.js scene is blank",
+    "make the character walk faster in unity",
+    "generate a rigged model from a prompt",
+    "export the armature from blender",
+    "check if the vr menu text is readable",
+    "review the animation code in my PR",
+    "write an animation state machine",
+    "make a gif of the walk cycle"
+  ],
+  "tasks": [
+    {
+      "name": "names-bone-first",
+      "prompt": "Check the walk animation in models/hero.glb for sliding feet.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "motion\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply lists or names the foot bone it followed, states a per-clip result, and says that the mesh surface was not evaluated. FAIL if it judges the animation without running the script."
+        }
+      ]
+    },
+    {
+      "name": "no-contact-not-pass",
+      "prompt": "Here's models/flyer.glb. Are the feet planted?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "motion\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if, when the script reports no contact or not verified, the reply does not say the feet are planted and asks about the floor height. FAIL if it reports a clean pass without contact evidence."
+        }
+      ]
+    }
+  ]
+}

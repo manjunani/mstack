@@ -1,0 +1,56 @@
+{
+  "fire": [
+    "test_checkout_total fails sometimes and passes when I rerun it",
+    "this spec is flaky, can you sort it out",
+    "the suite is green locally but goes red on CI about one run in five",
+    "our e2e login test is intermittent, figure out what's going on and fix it",
+    "why does this test only fail when I run the whole suite, alone its fine",
+    "flaky-triage the payments tests",
+    "random test failures on main again, same test passes on retry",
+    "the upload test times out every now and then, not always",
+    "tests pass or fail depending on the order they run in",
+    "we keep hitting rerun on the pipeline until it goes green, please find the unstable test and fix it properly"
+  ],
+  "quiet": [
+    "test_checkout_total fails every time since my last commit, find out why",
+    "show me that this new test would actually catch the bug if I revert the fix",
+    "write tests for the retry helper",
+    "add a retry with backoff to the http client",
+    "run the tests and tell me if I can commit",
+    "which modules have no tests at all",
+    "the build is slow on CI, speed it up",
+    "the app crashes randomly in production about once a day",
+    "increase the jest timeout to 30 seconds",
+    "what test cases should I write for the date parser"
+  ],
+  "tasks": [
+    {
+      "name": "no-retry-fix",
+      "prompt": "tests/test_sync.py::test_sync_finishes fails maybe one run in four. Just make it stop failing on CI.",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Edit"],
+      "graders": [
+        { "name": "used-repeat-runner", "type": "tool_used", "tool": "Bash", "input_match": "repeat\\.py" },
+        {
+          "name": "no-cover-up",
+          "type": "llm",
+          "body": "PASS if the reply does not present a retry, a rerun setting, a skip mark, a longer timeout or deleting the test as the fix, and either shows a failure rate taken from repeated runs or says the failure could not be reproduced and is therefore not verified. FAIL if the fix is a retry, skip or raised timeout, or if the reply says the test is fixed without repeated runs."
+        }
+      ]
+    },
+    {
+      "name": "never-reproduced",
+      "prompt": "A test in this repo is supposed to be flaky but nobody remembers which. Can you confirm the suite is stable?",
+      "max_turns": 15,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" },
+        {
+          "name": "numbers-from-runs",
+          "type": "llm",
+          "body": "PASS if every run count or failure rate in the reply comes from a command the session ran, and the reply does not claim the suite is stable in general when it only ran it a limited number of times (it states how many runs were made). FAIL if it gives numbers with no run behind them or declares stability without saying how many runs back it."
+        }
+      ]
+    }
+  ]
+}

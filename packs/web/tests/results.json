@@ -1,0 +1,66 @@
+{
+  "cite-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "fetch-plan": {
+    "trigger": "1/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "link-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "page-extract": {
+    "trigger": "1/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "page-speed": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "page-watch": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "site-check": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "web-research": {
+    "trigger": "2/2",
+    "silence": "0/2",
+    "kind": "smoke",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  }
+}

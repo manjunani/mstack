@@ -1,0 +1,18 @@
+{
+  "viewport": { "width": 768, "height": 1024 },
+  "theme": "light",
+  "state": "default",
+  "url": "http://localhost:5173/orders",
+  "document": { "scrollWidth": 768, "clientWidth": 768, "scrollHeight": 1024 },
+  "elements": [
+    { "selector": "main > h1", "tag": "h1", "role": "heading", "name": "Orders waiting to ship", "text": "Orders waiting to ship",
+      "box": { "x": 32, "y": 80, "width": 704, "height": 40 }, "color": "rgb(17, 24, 39)", "background": "rgb(255, 255, 255)", "backgroundKnown": true,
+      "fontSize": 32, "fontWeight": 600, "fontFamily": "Fraunces, serif" },
+    { "selector": "main > p.lede", "tag": "p", "role": "", "name": "", "text": "14 orders are packed and need a carrier label before 4 pm.",
+      "box": { "x": 32, "y": 136, "width": 704, "height": 24 }, "color": "rgb(55, 65, 81)", "background": "rgb(255, 255, 255)", "backgroundKnown": true,
+      "fontSize": 16, "fontWeight": 400, "fontFamily": "\"IBM Plex Sans\", sans-serif" },
+    { "selector": "#print-labels", "tag": "button", "role": "button", "name": "Print 14 labels", "text": "Print 14 labels",
+      "box": { "x": 32, "y": 184, "width": 180, "height": 44 }, "color": "rgb(255, 255, 255)", "background": "rgb(29, 78, 216)", "backgroundKnown": true,
+      "fontSize": 16, "fontWeight": 600, "fontFamily": "\"IBM Plex Sans\", sans-serif", "interactive": true, "focusable": true }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "tasks": [
+    { "name": "api", "goal": "The API module greets by name.", "files": ["src/api/", "shared.py"] },
+    { "name": "ui", "goal": "The UI module shows the greeting.", "files": ["./src/ui/", "shared.py"] },
+    { "name": "docs", "goal": "Guides.", "files": ["docs/*.md"] },
+    { "name": "docs2", "goal": "More guides.", "files": ["docs/"] },
+    { "name": "tests", "goal": "Test helpers.", "files": ["tests/*.py"] },
+    { "name": "onetest", "goal": "One test.", "files": ["tests/test_api.py"] }
+  ]
+}

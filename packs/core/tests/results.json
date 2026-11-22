@@ -1,0 +1,58 @@
+{
+  "verify": {
+    "trigger": "8/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "debrief": {
+    "trigger": "9/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "handoff": {
+    "trigger": "10/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "mstack": {
+    "trigger": "10/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "remember": {
+    "trigger": "9/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "safe-delete": {
+    "trigger": "9/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "scope-lock": {
+    "trigger": "10/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  },
+  "skill-check": {
+    "trigger": "10/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-22",
+    "with": "Claude Code 2.1.330"
+  }
+}

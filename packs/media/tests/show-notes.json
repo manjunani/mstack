@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "write show notes for this episode from the transcript",
+    "I need youtube chapters with timestamps for my video",
+    "make chapter markers for the podcast",
+    "pull a few good quotes from the interview for the episode page",
+    "check that my chapter timestamps are right",
+    "draft the episode description with timestamps",
+    "are these quotes in my notes actually what she said?",
+    "give me a 0:00 style chapter list for the description box",
+    "summarise the episode and list the topics with times",
+    "add chapters into the mp3 metadata"
+  ],
+  "quiet": [
+    "transcribe the episode",
+    "make subtitles for the video",
+    "cut the intro out of the episode",
+    "turn my user interview notes into themes",
+    "write a tweet announcing the episode",
+    "clean up the audio levels",
+    "proofread my blog post",
+    "export the episode for youtube",
+    "make a thumbnail for the episode",
+    "translate the show notes into french"
+  ],
+  "tasks": [
+    {
+      "name": "bad-quote",
+      "prompt": "Here are my notes in notes.json for the episode with transcript talk.transcript.json. Are they ready to publish?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "show_notes\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "The notes contain a reworded quote. PASS if the reply reports that quote as not matching the transcript, shows what was really said, and ends as fail. FAIL if it says the notes are ready."
+        }
+      ]
+    },
+    {
+      "name": "chapters",
+      "prompt": "Make chapters and notes for the episode in talk.transcript.json.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "show_notes\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply gives chapters starting at 0:00 checked by the script, states an end state, and says the summary's fairness was not checked by a script. FAIL otherwise."
+        }
+      ]
+    }
+  ]
+}

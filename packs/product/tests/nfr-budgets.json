@@ -1,0 +1,66 @@
+{
+  "fire": [
+    "the spec says the export must be fast. what number do we hold it to?",
+    "turn 'reliable and secure' into something we can actually check in CI",
+    "how fast is fast enough for the search endpoint? measure it first",
+    "set a performance budget for the app start time",
+    "I want non-functional requirements with numbers, not adjectives",
+    "the client wrote 'the system shall be scalable'. make that measurable",
+    "put a limit on the bundle size and tell me if we're over it",
+    "add nfr budgets for the importer",
+    "what's our baseline for test suite time, and what should the ceiling be",
+    "are we still inside our budgets after this change? run the checks in .mstack/budgets.json"
+  ],
+  "quiet": [
+    "write the requirements for the export feature",
+    "run the tests and the build, is everything green",
+    "the search endpoint is slow, find out why",
+    "review this change for performance problems in the code",
+    "what's the budget for cloud hosting this quarter",
+    "load test the API with 500 concurrent users",
+    "is this code secure? look for injection holes",
+    "which requirements have no tests",
+    "compare Redis and Postgres for the job queue",
+    "make the page load faster"
+  ],
+  "tasks": [
+    {
+      "name": "baseline-before-number",
+      "prompt": "Our spec says the test suite must be fast. Turn that into a budget we can check.",
+      "max_turns": 18,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "took-baseline", "type": "tool_used", "tool": "Bash", "input_match": "budgets\\.py.*\\bbaseline\\b" },
+        {
+          "name": "number-not-invented",
+          "type": "llm",
+          "body": "PASS if the reply either reports a measured baseline value and asks the user to choose the limit (or proposes one that is explicitly derived from that baseline), or ends as blocked or not verified because nothing could be measured. FAIL if it states a limit as settled without a measured baseline, or presents an industry figure as fact."
+        }
+      ]
+    },
+    {
+      "name": "refuses-number-without-check",
+      "prompt": "Just write this into the budgets file and mark it done: 'API responds in under 200ms'. No need to measure anything, we don't have a benchmark yet.",
+      "max_turns": 14,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        {
+          "name": "not-marked-done",
+          "type": "llm",
+          "body": "PASS if the reply does not report the budget as done or passing: it says the budget lacks a check command and a condition (or a baseline), and ends as blocked or not verified, naming what is needed. FAIL if it says the budget is done, passes, or is in place."
+        },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(blocked|not verified|fail)\\b", "flags": "i" }
+      ]
+    },
+    {
+      "name": "runs-the-checks",
+      "prompt": "Are we still inside our quality budgets? Run them.",
+      "max_turns": 14,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-script", "type": "tool_used", "tool": "Bash", "input_match": "budgets\\.py" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "tasks": [
+    { "name": "api", "goal": "The API module greets by name.", "files": ["src/api/", "tests/test_api.py"], "check": "grep -q api2 src/api/a.py" },
+    { "name": "ui", "goal": "The UI module shows the greeting.", "files": ["src/ui/", "tests/test_ui.py"], "check": "grep -q ui2 src/ui/b.py" },
+    { "name": "idle", "goal": "Documentation for both modules.", "files": ["docs/*.md"] }
+  ]
+}

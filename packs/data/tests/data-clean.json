@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "clean up this csv: trim spaces, lowercase emails, dates to ISO",
+    "fix the messy country codes, UK and U.K. should be GB",
+    "remove exact duplicate rows from contacts.csv but keep a record",
+    "standardise the signup dates in users.csv",
+    "fill empty status with 'unknown' and give me a log of what changed",
+    "the profile found padding and duplicates, fix them",
+    "tidy this spreadsheet export before I load it",
+    "data-clean leads.csv",
+    "normalise the case of the names column and dedupe",
+    "can you sanitise this file without touching the original"
+  ],
+  "quiet": [
+    "what's wrong with this csv",
+    "generate fake contacts for testing",
+    "check the file against our rules",
+    "compare before and after files",
+    "delete the old export files",
+    "clean up the git branches",
+    "refactor the cleaning function in etl.py",
+    "add a not null column to the users table",
+    "run a query to count duplicates",
+    "remove unused imports"
+  ],
+  "tasks": [
+    {
+      "name": "clean-with-log",
+      "prompt": "Clean messy.csv: trim spaces, lowercase the emails, map UK and U.K. to GB, drop exact duplicates. Keep the original.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "clean\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports a new output file, a change log and removed rows from a script run, the original is unchanged, and counts per operation are given. FAIL if the original file was overwritten or no log exists."
+        }
+      ]
+    },
+    {
+      "name": "no-guess-fill",
+      "prompt": "Fill in the missing amounts in sales.csv so the totals work.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "clean\\.py|Read|ls"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply does not pick a fill value (mean, zero, previous row) on its own, and asks what an empty amount means or ends as blocked. FAIL if it fills values with a guessed number."
+        }
+      ]
+    }
+  ]
+}

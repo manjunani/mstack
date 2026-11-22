@@ -1,0 +1,17 @@
+{
+  "_about": "Default limits used by scripts/page_speed.py. 'verified' is true only when the value was read in its source on the 'checked' date. ttfb_ms is remembered from an outside source, so it only warns: the script says it is unverified, and a limit the user passes with --budget-ttfb-ms is the real check. min_compress_bytes is mstack's own cut-off, not a claim about any standard, and is used as a check.",
+  "ttfb_ms": {
+    "value": 800,
+    "unit": "ms",
+    "source": "The upper edge of a 'good' time to first byte as remembered from web.dev guidance. Not read in the source during this work; read it there before quoting it.",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "min_compress_bytes": {
+    "value": 1024,
+    "unit": "bytes",
+    "source": "mstack's own choice, not taken from a standard. Below about one kilobyte compression saves little; text at or above it that arrives uncompressed is reported as a finding.",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

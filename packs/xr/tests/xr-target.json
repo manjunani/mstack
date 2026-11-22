@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "what platform does this xr repo build for",
+    "is this a quest project or plain webxr",
+    "figure out the vr stack of this codebase",
+    "which xr sdk is this unity project using",
+    "I just cloned this ar app, what does it target",
+    "does this repo target vision pro",
+    "detect whether this uses a-frame or three.js for vr",
+    "find the xr platform and versions before we start",
+    "is it openxr or the meta sdk here",
+    "what headset is this app meant for"
+  ],
+  "quiet": [
+    "does the webxr page work",
+    "is the vr text readable",
+    "make an ar preview of the sofa",
+    "check this glb",
+    "upgrade the meta xr sdk",
+    "submit to the quest store",
+    "what is openxr",
+    "set up a new unity project",
+    "review my code",
+    "run the tests"
+  ],
+  "tasks": [
+    {
+      "name": "evidence-lines",
+      "prompt": "What does this repo target for XR?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "target\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply gives the platform and stack with file and line evidence from the script, or says no XR signal was found. FAIL if it guesses without running the script."
+        }
+      ]
+    },
+    {
+      "name": "quest-handoff",
+      "prompt": "This looks like a Quest app. What next?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "target\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if, for a Quest target, the reply points to Meta's own skills or documentation for platform questions instead of answering platform details from memory. FAIL otherwise."
+        }
+      ]
+    }
+  ]
+}

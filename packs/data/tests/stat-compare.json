@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "is the difference between variant A and B real? data in ab.csv",
+    "did the new checkout flow increase time on page or is it noise",
+    "compare session length for free vs paid users",
+    "our A/B test: is B better? rows are per user",
+    "is this lift significant",
+    "before and after the change, did response times actually go down",
+    "stat-compare the two arms",
+    "I have 12 users per group, can I say the new design wins",
+    "are men and women scoring differently in survey.csv",
+    "check whether the experiment result holds up"
+  ],
+  "quiet": [
+    "run the eval set against the baseline and gate on it",
+    "which of these three vendors should we pick",
+    "profile the experiment data",
+    "plan how many users the test needs",
+    "make a chart of the A/B result",
+    "write the experiment results up for the blog",
+    "count rows per variant with sql",
+    "check the A/B export against the schema rules",
+    "what changed in the results file since yesterday",
+    "explain what a p-value is"
+  ],
+  "tasks": [
+    {
+      "name": "ab-result",
+      "prompt": "ab.csv has one row per user with arm and secs. Did the new arm win?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "compare\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply gives group sizes, the difference with an interval or p-value from a script run, separates 'could be chance' from 'how big', and mentions any warning printed. FAIL if it declares a winner without running the script."
+        }
+      ]
+    },
+    {
+      "name": "tiny-sample",
+      "prompt": "tiny.csv has our pilot: 4 users per group. Can we say B is better?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "compare\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply says the sample is too small to verify a difference (not verified) and does not claim B is better. FAIL if it claims a winner."
+        }
+      ]
+    }
+  ]
+}

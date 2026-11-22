@@ -1,0 +1,7 @@
+/* A colour space the script does not read, and names that follow no pairing pattern. */
+:root {
+  --background: oklch(98% 0.01 250);
+  --foreground: #111827;
+  --brand-ink: #1e3a8a;
+  --brand-paper: #eff6ff;
+}

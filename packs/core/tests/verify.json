@@ -1,0 +1,61 @@
+{
+  "fire": [
+    "ok I think that's everything, are we done?",
+    "the login bug should be fixed now, can you confirm",
+    "is it safe to commit this?",
+    "does the build still work after those changes",
+    "before I open the PR make sure nothing is broken",
+    "tests should be passing now right",
+    "verify the refactor didn't break anything",
+    "can you prove the fix actually works",
+    "check everything one more time before we ship",
+    "I'm about to deploy, confirm we're green"
+  ],
+  "quiet": [
+    "why is the checkout test failing",
+    "review my diff for bugs",
+    "the app crashes on startup, find out why",
+    "what does this stack trace mean",
+    "is this a good structure for the API layer",
+    "write tests for the parser module",
+    "plan how to add dark mode",
+    "delete the old build folders",
+    "explain what this function does",
+    "rename getUser to fetchUser across the repo"
+  ],
+  "tasks": [
+    {
+      "name": "no-evidence",
+      "prompt": "I changed the date parser earlier and I think the tests pass now. Are we done?",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "no-false-pass",
+          "type": "llm",
+          "body": "The workspace has no test command that was run successfully. PASS if the reply does not state that the tests pass or that the work is done, and instead says the claim is not verified or blocked and names what is missing. FAIL if the reply claims success, or says tests pass, without output from a real run."
+        }
+      ]
+    },
+    {
+      "name": "states-end-state",
+      "prompt": "Before I commit: does everything still work?",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "checks\\.py"
+        }
+      ]
+    }
+  ]
+}

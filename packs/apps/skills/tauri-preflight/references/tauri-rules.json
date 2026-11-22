@@ -1,0 +1,37 @@
+{
+  "about": "Lists the tauri-preflight script matches against. Every list was written from memory, not read from Tauri's documentation during this work, so each is marked unverified and the script says so. Tauri's own documentation and the project generator's current output are the source. To verify: read the source, correct the list, set checked to that day and verified to true.",
+  "default_identifiers": {
+    "value": ["com.tauri.dev", "com.tauri-app.app", "com.tauri.app", "com.example.app", "com.yourcompany.app"],
+    "unit": "bundle identifiers that project templates start with",
+    "source": "memory of Tauri project templates; not read from Tauri's documentation in this work",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "placeholder_identifier_parts": {
+    "value": ["example", "yourcompany", "your-company", "mycompany", "changeme", "placeholder", "tauri-app", "tauri.dev"],
+    "unit": "fragments that mark an identifier as a placeholder",
+    "source": "mstack judgement; common placeholder words",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "broad_permission_patterns": {
+    "value": [
+      "^fs:(read|write)-all$",
+      "^fs:allow-(home|desktop|document|download|public)-(read|write|meta)(-recursive)?$",
+      "^fs:scope-(home|desktop|document|download|public)(-recursive)?$",
+      "^shell:allow-(execute|spawn)$",
+      "^(http|websocket|upload):default$"
+    ],
+    "unit": "regular expressions tried against each permission identifier in a version 2 capability",
+    "source": "memory of Tauri version 2 plugin permission names; names differ by plugin version, so a miss here proves nothing",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "sensitive_allowlist_modules": {
+    "value": ["fs", "shell", "http", "process", "protocol"],
+    "unit": "version 1 allowlist modules where `all: true` is treated as a failure",
+    "source": "memory of the Tauri version 1 allowlist; mstack judgement on which modules reach outside the app",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

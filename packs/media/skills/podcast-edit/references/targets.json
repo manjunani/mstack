@@ -1,0 +1,27 @@
+{
+  "about": "Loudness targets and edit settings for podcast-edit. Every number was written from memory or chosen by the builder on the date shown; none was read in a standard or a platform's documentation, so every entry says verified false.",
+  "targets": {
+    "podcast": {
+      "about": "Spoken word for podcast apps, stereo file",
+      "loudness": { "value": -16.0, "unit": "LUFS", "source": "a level podcast apps are often said to ask for, written from memory; not read in any platform's documentation during this work", "checked": "2026-11-22", "verified": false },
+      "max_true_peak": { "value": -1.0, "unit": "dBTP", "source": "a common delivery ceiling, written from memory; not read in a standard during this work", "checked": "2026-11-22", "verified": false }
+    },
+    "podcast-mono": {
+      "about": "Spoken word for podcast apps, mono file",
+      "loudness": { "value": -19.0, "unit": "LUFS", "source": "the mono counterpart often quoted beside the stereo level, written from memory; not read in any platform's documentation during this work", "checked": "2026-11-22", "verified": false },
+      "max_true_peak": { "value": -1.0, "unit": "dBTP", "source": "a common delivery ceiling, written from memory; not read in a standard during this work", "checked": "2026-11-22", "verified": false }
+    },
+    "broadcast": {
+      "about": "Programme loudness for European broadcast",
+      "loudness": { "value": -23.0, "unit": "LUFS", "source": "the EBU R 128 programme level as remembered; the recommendation itself was not read during this work", "checked": "2026-11-22", "verified": false },
+      "max_true_peak": { "value": -1.0, "unit": "dBTP", "source": "the EBU R 128 ceiling as remembered; the recommendation itself was not read during this work", "checked": "2026-11-22", "verified": false }
+    }
+  },
+  "loudness_tolerance": { "value": 1.0, "unit": "LU", "source": "mstack default chosen by the builder", "checked": "2026-11-22", "verified": false },
+  "max_silence": { "value": 1.5, "unit": "seconds", "source": "mstack default chosen by the builder: a pause longer than this is shortened", "checked": "2026-11-22", "verified": false },
+  "keep_silence": { "value": 0.6, "unit": "seconds", "source": "mstack default chosen by the builder: how much of a long pause is left", "checked": "2026-11-22", "verified": false },
+  "silence_noise_db": { "value": -35, "unit": "dB", "source": "mstack default chosen by the builder; a noisy room needs a higher value", "checked": "2026-11-22", "verified": false },
+  "crossfade": { "value": 0.02, "unit": "seconds", "source": "mstack default chosen by the builder: the overlap at every join", "checked": "2026-11-22", "verified": false },
+  "filler_pad": { "value": 0.03, "unit": "seconds", "source": "mstack default chosen by the builder: extra time removed each side of a filler word", "checked": "2026-11-22", "verified": false },
+  "duration_tolerance": { "value": 0.15, "unit": "seconds", "source": "mstack default chosen by the builder: lossy encoders pad a file by a few hundredths of a second", "checked": "2026-11-22", "verified": false }
+}

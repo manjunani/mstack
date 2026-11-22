@@ -1,0 +1,23 @@
+{
+  "_about": "Field limits read by scripts/listing.py. Every value was written from memory on the date shown and is unverified: open the store's own documentation named in 'source' and correct the value before submitting. Keys ending in _max_chars limit the field of that name; characters are counted as Unicode code points. screenshots_min and screenshots_max count the screenshots list (per device size in the stores' own rules; this file holds one number for the list as given).",
+  "stores": {
+    "apple": {
+      "required_fields": { "value": ["name", "description", "keywords", "screenshots"], "unit": "listing fields that cannot be empty", "source": "App Store Connect help, 'Required, localizable, and editable properties'", "checked": "2026-11-22", "verified": false },
+      "name_max_chars": { "value": 30, "unit": "characters", "source": "App Store Connect help, 'App information'", "checked": "2026-11-22", "verified": false },
+      "subtitle_max_chars": { "value": 30, "unit": "characters", "source": "App Store Connect help, 'App information'", "checked": "2026-11-22", "verified": false },
+      "promotional_text_max_chars": { "value": 170, "unit": "characters", "source": "App Store Connect help, 'Platform version information'", "checked": "2026-11-22", "verified": false },
+      "description_max_chars": { "value": 4000, "unit": "characters", "source": "App Store Connect help, 'Platform version information'", "checked": "2026-11-22", "verified": false },
+      "keywords_max_chars": { "value": 100, "unit": "characters, commas included", "source": "App Store Connect help, 'Platform version information'", "checked": "2026-11-22", "verified": false },
+      "screenshots_min": { "value": 1, "unit": "screenshots", "source": "App Store Connect help, 'Upload app previews and screenshots'", "checked": "2026-11-22", "verified": false },
+      "screenshots_max": { "value": 10, "unit": "screenshots", "source": "App Store Connect help, 'Upload app previews and screenshots'", "checked": "2026-11-22", "verified": false }
+    },
+    "google": {
+      "required_fields": { "value": ["name", "short_description", "description", "screenshots"], "unit": "listing fields that cannot be empty", "source": "Play Console help, 'Create and set up your app' and 'Add preview assets'", "checked": "2026-11-22", "verified": false },
+      "name_max_chars": { "value": 30, "unit": "characters", "source": "Play Console help, store listing metadata policy", "checked": "2026-11-22", "verified": false },
+      "short_description_max_chars": { "value": 80, "unit": "characters", "source": "Play Console help, 'Create and set up your app'", "checked": "2026-11-22", "verified": false },
+      "description_max_chars": { "value": 4000, "unit": "characters", "source": "Play Console help, 'Create and set up your app'", "checked": "2026-11-22", "verified": false },
+      "screenshots_min": { "value": 2, "unit": "screenshots", "source": "Play Console help, 'Add preview assets to showcase your app'", "checked": "2026-11-22", "verified": false },
+      "screenshots_max": { "value": 8, "unit": "screenshots", "source": "Play Console help, 'Add preview assets to showcase your app'", "checked": "2026-11-22", "verified": false }
+    }
+  }
+}

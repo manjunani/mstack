@@ -1,0 +1,16 @@
+{
+  "max_plan_to_spec_ratio": {
+    "value": 3,
+    "unit": "plan words divided by spec words",
+    "source": "mstack's own first setting; no outside source",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "max_files_per_task": {
+    "value": 6,
+    "unit": "files",
+    "source": "mstack's own first setting; no outside source",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "about": "Working values for a numeric comfort and readability audit. Chosen for mstack as round starting points; NOT copied from any vendor list and NOT read from a primary source. Each one has to be re-sourced from a primary document (the platform's own design guidelines, a published standard or a study) before a fail is treated as final. Taste is not judged here; only geometry.",
+  "checked": "2026-11-22",
+  "thresholds": {
+    "min_distance_m": { "value": 0.5, "unit": "metres from the head; nearer UI is hard to focus on", "source": "mstack working value; re-source from a primary document", "checked": "2026-11-22", "verified": false },
+    "max_distance_m": { "value": 10.0, "unit": "metres from the head; further UI is hard to read and to point at", "source": "mstack working value; re-source from a primary document", "checked": "2026-11-22", "verified": false },
+    "min_text_angle_deg": { "value": 1.0, "unit": "degrees of visual angle for the height of a line of text", "source": "mstack working value; re-source from a primary document", "checked": "2026-11-22", "verified": false },
+    "max_offset_deg": { "value": 40.0, "unit": "degrees between the forward direction and an element; further needs a head turn", "source": "mstack working value; re-source from a primary document", "checked": "2026-11-22", "verified": false },
+    "max_head_locked_offset_deg": { "value": 20.0, "unit": "degrees off centre for UI that moves with the head", "source": "mstack working value; re-source from a primary document", "checked": "2026-11-22", "verified": false },
+    "min_target_angle_deg": { "value": 2.0, "unit": "degrees of visual angle for the smaller side of something the user points at or touches", "source": "mstack working value; re-source from a primary document", "checked": "2026-11-22", "verified": false }
+  }
+}

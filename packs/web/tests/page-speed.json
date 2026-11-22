@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "why is our homepage slow",
+    "how heavy is https://example.test, bytes and requests",
+    "is gzip on for our css and js?",
+    "check the page stays under 1 MB and 40 requests",
+    "measure time to first byte on the landing page",
+    "are our assets cached properly",
+    "page-speed on the docs home",
+    "the site feels sluggish, can you measure the load",
+    "what's the transfer size of the pricing page",
+    "check compression and cache headers on the static files"
+  ],
+  "quiet": [
+    "is the certificate on our site valid",
+    "find broken images on the site",
+    "review the layout and spacing of the homepage",
+    "is the new release live and healthy",
+    "profile the slow sql query in the orders endpoint",
+    "make the python script run faster",
+    "extract the text of this page",
+    "track changes to this page",
+    "load test the api with 1000 users",
+    "research which CDN is fastest"
+  ],
+  "tasks": [
+    {
+      "name": "local-speed",
+      "prompt": "Serve ./site with python3 -m http.server 8771 --bind 127.0.0.1 --directory site in the background and tell me how fast http://127.0.0.1:8771/ is.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "page_speed\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply gives the measured first byte, bytes and requests from the script, names uncompressed or uncached files if reported, and says rendering metrics were not measured. FAIL if it reports a paint or layout-shift number or a speed score."
+        }
+      ]
+    },
+    {
+      "name": "budget",
+      "prompt": "Does http://127.0.0.1:8772/ stay under 50 kB and 5 requests? (serve ./heavy with python3 -m http.server 8772 --bind 127.0.0.1 --directory heavy in the background first)",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "budget"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply ran the check with the user's byte and request budgets and states which budget was exceeded, ending as fail. FAIL if it answers without the budgets being checked by the script."
+        }
+      ]
+    }
+  ]
+}

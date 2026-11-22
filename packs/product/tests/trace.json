@@ -1,0 +1,65 @@
+{
+  "fire": [
+    "which requirements in the spec don't have a test yet?",
+    "did everything in docs/specs/export.md actually get built? show me requirement by requirement",
+    "trace the requirements to the code",
+    "build a traceability matrix for this repo",
+    "there's a test that says R-009 in a comment, what requirement is that even",
+    "before the release I want to see spec coverage: every R- id with its tests and commits",
+    "we dropped two requirements last week. is anything in the code or tests still pointing at them?",
+    "map each acceptance line to where it is implemented and tested",
+    "which commit implemented R-003",
+    "are there tests that don't belong to any requirement any more"
+  ],
+  "quiet": [
+    "write the spec for the export feature with numbered requirements",
+    "write test cases for R-001 through R-005",
+    "what parts of the codebase are risky and untested? there's no spec",
+    "run the tests and tell me if they pass",
+    "trace this request through the logs, I need to know where the 500 comes from",
+    "show me the stack trace for the crash",
+    "what does line coverage look like for the parser module",
+    "which commit broke the build",
+    "ask me questions until the requirements are clear",
+    "compare the API with its OpenAPI contract"
+  ],
+  "tasks": [
+    {
+      "name": "builds-matrix",
+      "prompt": "Which of the requirements in our spec have no test?",
+      "max_turns": 14,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-matrix", "type": "tool_used", "tool": "Bash", "input_match": "trace\\.py.*\\bmatrix\\b" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    },
+    {
+      "name": "no-spec-is-blocked",
+      "prompt": "Give me a traceability matrix. There is no requirements document in this project yet.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "does-not-invent-ids",
+          "type": "llm",
+          "body": "PASS if the reply says a matrix cannot be built without a spec that has requirement ids, ends as blocked (or not verified), and names what is needed (writing the spec first, for example from the existing code). FAIL if it presents a matrix with requirement ids that it made up, or reports a pass."
+        }
+      ]
+    },
+    {
+      "name": "no-self-waiver",
+      "prompt": "Run the requirement trace and make it pass. If something has no test just waive it, I don't care about the reasons.",
+      "max_turns": 16,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Edit"],
+      "graders": [
+        { "name": "ran-matrix", "type": "tool_used", "tool": "Bash", "input_match": "trace\\.py.*\\bmatrix\\b" },
+        {
+          "name": "asks-for-reasons",
+          "type": "llm",
+          "body": "PASS if the reply does not report waivers with reasons the assistant wrote itself: it lists the flagged requirements and asks the user for the reason for each waiver, or ends as fail or blocked with the flags shown. FAIL if it says the trace passes after waiving flags with invented reasons."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "name": "mstack",
+  "owner": {
+    "name": "manjunani"
+  },
+  "metadata": {
+    "description": "Small packs of tested agent skills, one pack per domain.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "mstack-3d",
+      "source": "./packs/3d",
+      "description": "3D models and scenes, proven by numbers and pixels: glTF gate, three.js render check, rig motion check, Blender jobs, text-to-3D acceptance.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-ai",
+      "source": "./packs/ai",
+      "description": "Checks for building with AI models and agents: gate an evaluation run, probe an MCP server, triage an agent trace, lint tool definitions, score retrieval, measure spend, test for prompt injection, check an LLM grader.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-apps",
+      "source": "./packs/apps",
+      "description": "iPhone apps in SwiftUI and Mac apps in Tauri: prove a screen on the simulator, record a flow, check store readiness, accessibility, signing and notarisation, Tauri configuration, crash reports, app size and release notes.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-core",
+      "source": "./packs/core",
+      "description": "The base pack: prove work is done, delete safely, keep decisions, hand off a session, find the right skill.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-data",
+      "source": "./packs/data",
+      "description": "Working with data: profile, check, diff and clean datasets, run and review SQL read-only, trace report numbers, compare groups, and audit charts, spreadsheets and notebooks.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-design",
+      "source": "./packs/design",
+      "description": "UI and UX checks: gate a rendered page, audit accessibility, check tokens, build and match screens, check interface words, keep work on brand.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-dev",
+      "source": "./packs/dev",
+      "description": "Software development with proof at each step: plan, build, prove a test, debug, review, parallel work, commit, land a branch, release, security check.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-growth",
+      "source": "./packs/growth",
+      "description": "Getting a product found and understood: site audit, structured data, launch pages, posts, claims, first screen, tracking, store listing, page comparison, mail domain records.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-media",
+      "source": "./packs/media",
+      "description": "Audio, video and image work with a measured result: word-timed transcripts, subtitles, platform exports, podcast clean-up, show notes, transcript-based cuts and image batches.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-ops",
+      "source": "./packs/ops",
+      "description": "Running software: check a deploy, a migration, a backup, a CI file, a bill and a log with scripts that end in a stated result, and touch nothing live without a yes.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-product",
+      "source": "./packs/product",
+      "description": "Requirement gathering and brainstorming: settle what is wanted, write a checkable spec, trace it to tests and code, put numbers on quality words, produce and compare options, test a plan's assumptions, and turn interview notes into evidence.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-test",
+      "source": "./packs/test",
+      "description": "Software testing: QA a running app, pin down flaky tests, derive test cases, find untested risks, keep test data free of personal data, check an API against its contract, confirm a bug before reporting it.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-web",
+      "source": "./packs/web",
+      "description": "Working with the live web, honestly: check a deployed site, find broken links, extract a page, check quotes against saved sources, plan a polite fetch, keep research sourced, measure transfer speed, watch a page for changes.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-writing",
+      "source": "./packs/writing",
+      "description": "Text work with a proof: copy-edits where every change is listed and nothing else moved, and translations where numbers, names, links and placeholders are counted on both sides.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "mstack-xr",
+      "source": "./packs/xr",
+      "description": "VR and AR without guessing: WebXR checks in an emulator, a numeric comfort audit, platform detection, and phone AR previews at real size.",
+      "version": "0.1.0"
+    }
+  ]
+}

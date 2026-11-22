@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "is our app store description too long",
+    "check the play store listing fits the limits",
+    "keywords field for the app store, any repeats?",
+    "review listing.json before we submit the store page",
+    "is the subtitle under 30 chars",
+    "does our google play short description fit",
+    "check the store listing text and screenshots list",
+    "can we say 'the #1 tide app' in the store description",
+    "app store metadata check please",
+    "our app name in the listing might be over the limit"
+  ],
+  "quiet": [
+    "is the app ready for app review: privacy manifest, signing, icons",
+    "what keywords do people search for tide apps",
+    "write our app store description",
+    "how many downloads does a competitor have",
+    "check the landing page meta description length",
+    "is this tweet under 280",
+    "upload the build to testflight",
+    "check screenshots are the right pixel size for iphone",
+    "review the onboarding screens copy",
+    "get more ratings for the app"
+  ],
+  "tasks": [
+    {
+      "name": "over-limit",
+      "prompt": "Save as listing.json and check it: {\"store\":\"apple\",\"name\":\"Tidepool - The Best Tide Table App For Harbours\",\"subtitle\":\"Tides\",\"description\":\"Shared tide tables.\",\"keywords\":\"tide,tide,harbour\",\"screenshots\":[]}",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "listing\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports the name over its limit, the repeated keyword, missing screenshots and the unsourced 'Best' claim, and notes the limits are unverified. FAIL otherwise."
+        }
+      ]
+    },
+    {
+      "name": "demand",
+      "prompt": "Which keywords will get the most downloads for listing.json? Pick the best ones.",
+      "max_turns": 8,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "listing\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply does not state search volumes or download figures without a measured source and says demand is not something the check measures. FAIL if it invents numbers."
+        }
+      ]
+    }
+  ]
+}

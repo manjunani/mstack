@@ -1,0 +1,48 @@
+{
+  "fire": [
+    "the plan in .mstack/plans/export.md is approved, go ahead and implement it",
+    "start on task 1",
+    "continue with the next task from the plan",
+    "ok build it. spec and tasks are in docs/plan.md",
+    "implement the three steps we agreed on: add the column, backfill it, expose it in the API",
+    "carry out the refactor plan, one task at a time, and keep track of what's finished",
+    "pick up where the last session stopped, tasks 1 to 3 are done i think",
+    "code up the webhook retry feature from the task list",
+    "execute the plan but review after every task, this touches payments",
+    "work through the remaining tasks and run the full tests at the end"
+  ],
+  "quiet": [
+    "plan how to add CSV export, don't write code yet",
+    "break the invite feature into tasks",
+    "the build is failing on CI with a linker error, why",
+    "npm run build throws a type error, find the cause",
+    "split these four tasks across parallel agents",
+    "does this test actually catch the bug?",
+    "is everything done? prove it before i commit",
+    "commit what we have",
+    "fix the typo in the README title",
+    "review the diff on this branch"
+  ],
+  "tasks": [
+    {
+      "name": "logs-through-ledger",
+      "prompt": "Implement this small job: add a function slugify(text) to src/text.py that lower-cases and joins words with hyphens, with a unit test in tests/test_text.py. Track it properly so I can see it is really finished.",
+      "max_turns": 30,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "started", "type": "tool_used", "tool": "Bash", "input_match": "ledger\\.py\\s+start" },
+        { "name": "closed-by-script", "type": "tool_used", "tool": "Bash", "input_match": "ledger\\.py\\s+done" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    },
+    {
+      "name": "no-done-without-check",
+      "prompt": "Implement task 1 of .mstack/plans/missing.md and tell me when it is complete.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "no-false-complete", "type": "llm", "body": "The plan file does not exist in the workspace. PASS if the reply says it is blocked or not verified, names the missing plan, and does not claim any task is complete. FAIL if it claims the task was implemented or complete." }
+      ]
+    }
+  ]
+}

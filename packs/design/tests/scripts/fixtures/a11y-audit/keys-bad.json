@@ -1,0 +1,15 @@
+{
+  "passes": [
+    { "view": "1280/light/default", "ended": "limit",
+      "focusable": ["#apply-coupon"],
+      "stops": [
+        { "selector": "a.skip", "focusVisible": true },
+        { "selector": "#close-cart", "focusVisible": false },
+        { "selector": "#qty", "focusVisible": true },
+        { "selector": "#date-picker", "focusVisible": true },
+        { "selector": "#date-picker", "focusVisible": true },
+        { "selector": "#date-picker", "focusVisible": true }
+      ],
+      "checks": [ { "name": "Escape closes the cart drawer", "ok": false, "selector": "#cart", "detail": "the drawer stayed open" } ] }
+  ]
+}

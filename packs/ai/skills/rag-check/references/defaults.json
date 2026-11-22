@@ -1,0 +1,31 @@
+{
+  "note": "Settings the scorer uses when no flag is given. They are first settings chosen for mstack, not measured values. There is no default floor: what hit rate is good enough depends on the corpus and the questions, so the user sets it or saves a baseline.",
+  "at_k": {
+    "value": 5,
+    "unit": "the k at which the hit rate is judged (the answer passage has to be among the first k ids)",
+    "source": "mstack default, first setting; use the number of passages your application really puts in the prompt",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "k_list": {
+    "value": [1, 3, 5, 10],
+    "unit": "values of k that are reported",
+    "source": "mstack default, first setting",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "min_questions": {
+    "value": 10,
+    "unit": "gold questions needed before a verdict is given",
+    "source": "mstack default, first setting; with fewer, one question moves the hit rate by more than ten points",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "max_drop": {
+    "value": 0.02,
+    "unit": "hit rate or mean reciprocal rank (0 to 1) the run may lose against the baseline before it fails",
+    "source": "mstack default, first setting",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

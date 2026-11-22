@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "what changed between yesterday's export and today's",
+    "compare customers_v1.csv and customers_v2.csv by id",
+    "did my refactor of the pipeline change the output at all",
+    "which rows were added or removed in the new file",
+    "diff these two sqlite tables",
+    "the vendor resent the file, what's different from the first one",
+    "data diff old.csv new.csv key id",
+    "how many rows changed after the cleaning step and in which columns",
+    "prove the migration copied every row unchanged",
+    "rows are in a different order in the new export, are they actually the same data"
+  ],
+  "quiet": [
+    "git diff of my last commit",
+    "what's in this csv",
+    "check the export against the rules",
+    "clean up the duplicates",
+    "is version B better than version A in the experiment",
+    "review this migration",
+    "compare these three databases for our stack",
+    "compare options for a charting library",
+    "run a select on the new table",
+    "why did the test fail"
+  ],
+  "tasks": [
+    {
+      "name": "diff-exports",
+      "prompt": "old.csv and new.csv are two exports of the same customers. What changed?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "diff\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply gives counts of added, removed and changed rows from a script run with a key, names which columns changed, and states that totals add up or not. FAIL if it compares by eye or without a key."
+        }
+      ]
+    },
+    {
+      "name": "no-key",
+      "prompt": "Diff a.csv and b.csv.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "diff\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply does not invent a key silently: it names candidate key columns (from the script) and asks which identifies a row, or states which key it used and why. FAIL if it reports differences by row position without saying so."
+        }
+      ]
+    }
+  ]
+}

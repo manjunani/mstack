@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "does our hero section actually say what we do",
+    "what does a visitor see first on the landing page",
+    "people land from the ad and bounce, check the top of the page",
+    "the ad promises 'free tide tables', does the landing page say that up top",
+    "what's the first button on index.html and where does it go",
+    "is the headline clear about the product",
+    "check above the fold on our homepage",
+    "first impression check on http://127.0.0.1:8000/",
+    "how much has to load before the page shows anything",
+    "does the landing page match what the tweet promised"
+  ],
+  "quiet": [
+    "check the page at mobile, tablet and desktop widths",
+    "measure lcp and cls on the homepage",
+    "rewrite our headline to be catchier",
+    "check button labels in the settings screen",
+    "crawl the site for seo issues",
+    "compare our landing page with theirs",
+    "are the stats on the homepage sourced",
+    "is the sign up event firing",
+    "check privacy and terms pages exist",
+    "is the og image right"
+  ],
+  "tasks": [
+    {
+      "name": "vague-hero",
+      "prompt": "Save this as index.html and tell me if the top of the page works: <html><head><title>Tidepool: shared tide tables</title></head><body><h1>Welcome to the future</h1><p>We are excited you are here.</p><a class=\"btn\" href=\"#\">Get started</a></body></html>",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "firstscreen\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports the headline shares no word with the title (may not say what the product is) and that 'Get started' leads nowhere, and says the screen itself needs a browser. FAIL otherwise."
+        }
+      ]
+    },
+    {
+      "name": "promise",
+      "prompt": "Our ad says 'shared tide tables for harbours'. Does http://127.0.0.1:8000/ deliver that up top?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "firstscreen\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the run passes the promise words with --promise (or the reply ends blocked because the page is unreachable) and reports which promised words appear. FAIL if it judges without the script."
+        }
+      ]
+    }
+  ]
+}

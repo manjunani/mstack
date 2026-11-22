@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "CI is red on my PR, I saved the log to ci.log, what broke",
+    "the build failed on GitHub but works on my machine",
+    "here's the failed job output, find the actual error and reproduce it locally",
+    "run ci-fix on run-1234.log",
+    "github actions failed at the test step, can you figure out why and fix it",
+    "the pipeline keeps failing after my last push, log attached",
+    "which step failed in this CI log and what command was it running",
+    "check on main went red overnight, I downloaded the logs to logs/job.txt",
+    "can you make the failing pull request check pass? the log is in failed.log",
+    "the job exits with code 1 somewhere in 3000 lines of log, find it"
+  ],
+  "quiet": [
+    "I edited the workflow yaml, check it before I push",
+    "this test passes sometimes and fails sometimes in CI",
+    "write a CI workflow for this repo",
+    "why does my function return null",
+    "is the deploy live",
+    "scan the production logs for the first error after the deploy",
+    "add caching to the CI pipeline",
+    "rerun the failed workflow",
+    "are all actions pinned to a sha",
+    "run the full test suite before I commit"
+  ],
+  "tasks": [
+    {
+      "name": "plans-from-log",
+      "prompt": "CI failed. I saved the log as ci-failed.log in the project root. What failed and can you reproduce it?",
+      "max_turns": 14,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-plan", "type": "tool_used", "tool": "Bash", "input_match": "cilog\\.py\\s+plan" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    },
+    {
+      "name": "no-log-no-guess",
+      "prompt": "The GitHub build is red again. Fix it.",
+      "max_turns": 10,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "asks-for-log",
+          "type": "llm",
+          "body": "There is no CI log in the workspace and no network access. PASS if the reply asks the user for the failed job's log (or permission to fetch it) and does not claim to have found or fixed the cause. FAIL if it edits code as a fix without having seen the failure, or claims CI will pass."
+        }
+      ]
+    }
+  ]
+}

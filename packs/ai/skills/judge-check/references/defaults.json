@@ -1,0 +1,31 @@
+{
+  "note": "Floors the check uses when no flag is given. They are first settings chosen for mstack, written from memory of common practice and not read in a primary source during this work. Set your own with the flags of agree.py.",
+  "min_examples": {
+    "value": 30,
+    "unit": "labelled examples",
+    "source": "mstack default, first setting; below this the agreement figure moves several points with every single example",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "min_per_label": {
+    "value": 5,
+    "unit": "examples of each human label",
+    "source": "mstack default, first setting; a grader cannot be judged on a label it has hardly seen",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "min_agreement": {
+    "value": 0.8,
+    "unit": "share of examples where grader and human give the same label (0 to 1)",
+    "source": "mstack default, first setting; agree the floor with the owner of the evaluation",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "min_kappa": {
+    "value": 0.6,
+    "unit": "Cohen's kappa",
+    "source": "a common rule of thumb for 'substantial' agreement, written from memory; the original paper was not opened",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

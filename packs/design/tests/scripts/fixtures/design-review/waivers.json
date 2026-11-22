@@ -1,0 +1,3 @@
+[
+  { "rule": "contrast", "selector": "figure.cover > figcaption", "reason": "Checked by eye on the rendered page: the caption sits on a dark scrim over the photo and reads clearly." }
+]

@@ -1,0 +1,14 @@
+# generated or local
+evals/
+__pycache__/
+.mstack/
+.testrun/
+.DS_Store
+
+# maintainers' working notes, not published
+internal/
+research/
+_draft/
+docs/DESIGN.md
+docs/SKILLS.md
+evals-smoke/

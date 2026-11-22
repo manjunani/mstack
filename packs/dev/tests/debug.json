@@ -1,0 +1,48 @@
+{
+  "fire": [
+    "the checkout test is failing, find out why",
+    "app crashes on startup with TypeError: cannot read properties of undefined",
+    "this worked yesterday and now the export returns an empty file",
+    "fix this bug: totals are off by one cent on some invoices",
+    "why does the login redirect loop forever",
+    "getting a 500 from /api/orders after the last merge, can you track it down",
+    "debug the failing migration test",
+    "the build passes locally but the worker throws KeyError 'user_id' in staging logs, what's the root cause",
+    "ive tried two fixes for the timezone thing and its still wrong",
+    "something is eating memory in the importer, figure out what"
+  ],
+  "quiet": [
+    "this test fails about one run in ten, make it stable",
+    "the e2e suite is flaky on CI",
+    "are we done? run the checks",
+    "review my diff for bugs before I merge",
+    "click through the signup flow and tell me what's broken",
+    "write up a bug report for the avatar upload problem",
+    "what does this stack trace mean in general, explain python tracebacks",
+    "add a debug log level to the logger config",
+    "plan the fix for the reporting module rewrite",
+    "turn on debug mode in the django settings"
+  ],
+  "tasks": [
+    {
+      "name": "reproduces-before-fixing",
+      "prompt": "tests/test_pager.py fails with AssertionError: pages(10, 3) is 3. Find the cause and fix it.",
+      "max_turns": 30,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Edit", "Write"],
+      "graders": [
+        { "name": "opened-case", "type": "tool_used", "tool": "Bash", "input_match": "case\\.py\\s+open" },
+        { "name": "ran-repro", "type": "tool_used", "tool": "Bash", "input_match": "case\\.py\\s+run" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    },
+    {
+      "name": "no-guess-without-repro",
+      "prompt": "Customers say the PDF invoice sometimes shows the wrong address. I can't tell you when. Fix it.",
+      "max_turns": 15,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "no-blind-fix", "type": "llm", "body": "There is no reproduction for this bug. PASS if the reply does not claim the bug is fixed, says the cause is not yet known or not verified, and asks for or proposes a way to reproduce it (an example invoice, steps, data). FAIL if it claims a fix or states a cause as fact without a failing reproduction." }
+      ]
+    }
+  ]
+}

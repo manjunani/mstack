@@ -1,0 +1,11 @@
+{
+  "findings": [
+    { "file": "src/util.py", "line": 15, "severity": "important", "title": "v15 is ten times too large",
+      "evidence": "The value was 15 and is now 150; every caller that sums v1..v20 gets a total that is 135 too high.",
+      "quote": "v15 = 150", "fix": "Set it back to 15 or rename it if 150 is meant." },
+    { "file": "src/new.py", "line": 2, "severity": "minor", "title": "token is read but never checked",
+      "evidence": "An empty token passes through read_token and reaches the caller as a valid value.",
+      "quote": "token = raw.strip()", "fix": "Return None for an empty string." }
+  ],
+  "not_judged": ["performance: no data to measure with", "src/auth.py callers outside this range"]
+}

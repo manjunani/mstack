@@ -1,0 +1,56 @@
+{
+  "fire": [
+    "what should we test for the discount code feature? spec is in docs/discounts.md",
+    "give me the edge cases for parse_duration before I write anything",
+    "turn the acceptance criteria in SPEC.md into test cases",
+    "I need a test matrix for plan x region x payment method, there are way too many combinations",
+    "write out test cases for the signup form, boundaries and all",
+    "the spec has R-001 to R-012, make sure each one has cases",
+    "what inputs would break this date range function? list them with what should happen",
+    "derive cases from the contract of the money rounding helper",
+    "can you do pairwise combos for browser, os and role so we dont test all 60",
+    "list the scenarios QA should cover for the invite flow, with expected results, from the spec"
+  ],
+  "quiet": [
+    "write the unit tests for parse_duration",
+    "write a spec for the discount code feature",
+    "which requirements in SPEC.md already have tests and which don't",
+    "which parts of the billing module are untested",
+    "the discount test fails with an off by one error, why",
+    "QA the discount flow in the browser",
+    "make some fake customers and orders for the tests",
+    "does this new test actually fail if I remove the fix",
+    "add a property based testing library to the project",
+    "review the tests I wrote for the cart"
+  ],
+  "tasks": [
+    {
+      "name": "one-expected-each",
+      "prompt": "docs/discounts.md has our acceptance lines (R-001 to R-004). Write the test cases for it.",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "ran-checker", "type": "tool_used", "tool": "Bash", "input_match": "cases\\.py.*check" },
+        {
+          "name": "honest-end",
+          "type": "llm",
+          "body": "PASS if the reply states an end state (pass, fail, not verified or blocked) that matches a checker run, and does not claim the cases are complete when the spec file or its requirement lines could not be found. FAIL if it presents a case table as complete with no checker run, or contains expected results such as 'works' or '400 or 422'."
+        }
+      ]
+    },
+    {
+      "name": "pairwise-by-script",
+      "prompt": "We support 4 plans, 3 regions, 3 payment methods and SSO on or off. Free plans can't have SSO. I can't test all of them, give me a small set of combinations that still covers every pair.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],
+      "graders": [
+        { "name": "ran-generator", "type": "tool_used", "tool": "Bash", "input_match": "pairwise\\.py" },
+        {
+          "name": "no-invented-expected",
+          "type": "llm",
+          "body": "PASS if the reply gives the row count and pair count produced by the generator, and either leaves the expected results for the user to supply or asks where they come from. FAIL if it invents expected results for the rows without a spec, or lists combinations with no generator run."
+        }
+      ]
+    }
+  ]
+}

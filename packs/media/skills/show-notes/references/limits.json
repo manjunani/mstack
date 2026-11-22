@@ -1,0 +1,17 @@
+{
+  "min_chapter_seconds": {
+    "value": 10, "unit": "seconds",
+    "source": "the shortest chapter YouTube is remembered to accept in a video description; not read in YouTube's help pages during this work",
+    "checked": "2026-11-22", "verified": false
+  },
+  "min_chapters": {
+    "value": 3, "unit": "chapters",
+    "source": "the fewest chapters YouTube is remembered to need before it shows them; not read in YouTube's help pages during this work",
+    "checked": "2026-11-22", "verified": false
+  },
+  "max_title_chars": {
+    "value": 60, "unit": "characters",
+    "source": "mstack default chosen by the builder: longer chapter titles are cut off in many players; a longer title is a warning, not a failure",
+    "checked": "2026-11-22", "verified": false
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "findings": [
+    { "file": "src/draft.py", "line": 1, "severity": "minor", "title": "draft flag is on by default",
+      "evidence": "DRAFT is True at import time, so every caller that reads it sees draft mode.", "quote": "DRAFT = True", "fix": "Default to False." }
+  ],
+  "not_judged": []
+}

@@ -1,0 +1,4 @@
+#!/bin/sh
+# Stand-in for npm in the secure script test. No network. FAKE_AUDIT=vuln makes it report a problem.
+if [ "$FAKE_AUDIT" = "vuln" ]; then echo "lodash  <4.17.21  Prototype Pollution  severity: high"; echo "1 high severity vulnerability"; exit 1; fi
+echo "found 0 vulnerabilities"; exit 0

@@ -1,0 +1,78 @@
+{
+  "fire": [
+    "keep this page on brand",
+    "here are our brand guidelines, set them up so you can check against them",
+    "does the new landing page use our brand colours and fonts",
+    "find anything off-brand in the marketing site css",
+    "capture our brand from our website into a file",
+    "we never say 'seamless' or 'revolutionary', check the copy",
+    "make a brand.json for us",
+    "check this page against brand.json",
+    "which fonts on the site aren't ours",
+    "use our brand colours only, list any that aren't"
+  ],
+  "quiet": [
+    "check our tokens for contrast in dark mode",
+    "design a logo for my startup",
+    "generate a brand identity from scratch",
+    "rewrite the vague button labels",
+    "is the page ok on mobile",
+    "audit accessibility",
+    "make the UI look less generic",
+    "write a tagline",
+    "match this mockup",
+    "copyedit the about page"
+  ],
+  "tasks": [
+    {
+      "name": "no-invented-brand",
+      "prompt": "Set up our brand kit so you can check pages against it.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "brand\\.py"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states one end state (pass, fail, not verified or blocked) and names what was not checked. No brand material is in the workspace. PASS also requires asking for the user's material. FAIL if it fills in colours or fonts itself or marks the file confirmed."
+        }
+      ]
+    },
+    {
+      "name": "check",
+      "prompt": "Check site/ against brand.json and tell me what's off-brand.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "brand\\.py"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states one end state (pass, fail, not verified or blocked) and names what was not checked. PASS also requires listing off-kit values with file and line. FAIL if it changes files without asking."
+        }
+      ]
+    }
+  ]
+}

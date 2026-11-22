@@ -1,0 +1,56 @@
+{
+  "fire": [
+    "the checkout changes are in, can you QA them in the browser",
+    "click through the signup flow on my branch and tell me what's broken",
+    "dogfood this branch before I ask for review",
+    "start the app and try the new settings page like a user would",
+    "do a qa run on what I changed today",
+    "test the cart in the browser, I only ran unit tests so far",
+    "can you go through the app by hand and list every problem you hit, with screenshots",
+    "smoke test the onboarding flow on localhost:3000",
+    "I changed the invite form, walk through it end to end and report issues, dont fix anything",
+    "run a QA pass over the whole app and write up what you find"
+  ],
+  "quiet": [
+    "the cart count is wrong after removing an item, find out why",
+    "does the settings page look right on mobile and in dark mode",
+    "check the signup form works with keyboard only and a screen reader",
+    "hit the /orders endpoints and see if they match the openapi file",
+    "are we done? run the tests and the build before I commit",
+    "write up the login crash as a bug for the tracker",
+    "this e2e test passes locally but fails on CI every third run",
+    "write unit tests for the cart reducer",
+    "which parts of the checkout code have no tests",
+    "review my diff for the checkout change"
+  ],
+  "tasks": [
+    {
+      "name": "no-browser-is-blocked",
+      "prompt": "I changed the cart page on this branch. QA it in the browser and tell me what is broken.",
+      "max_turns": 15,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "blocked-not-faked",
+          "type": "llm",
+          "body": "The session has no browser tool. PASS if the reply says the QA run is blocked (or not verified) because no browser tool is available, and does not claim that any scenario passed or that the page works. FAIL if the reply reports scenarios as passed, or presents reading the source or curl output as a QA result."
+        },
+        {
+          "name": "no-code-change",
+          "type": "llm",
+          "body": "PASS if the reply does not say that application code was edited or fixed. FAIL if it describes fixing a bug in the app."
+        }
+      ]
+    },
+    {
+      "name": "checks-the-report",
+      "prompt": "There is a QA report in .mstack/qa/report.json from an earlier run that got interrupted. Is it complete, and what is the result?",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-check", "type": "tool_used", "tool": "Bash", "input_match": "report\\.py.*check" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

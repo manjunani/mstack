@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "cut out the part where I mess up and restart the sentence",
+    "remove the dead air from my screen recording using the transcript",
+    "edit talk.mp4: drop everything between 1:02 and 1:10",
+    "take the retakes out of this vlog",
+    "keep only 0:30 to 2:00 and 3:15 to the end of the video",
+    "trim the false starts from the interview footage",
+    "make a tighter cut of my talk, here's the transcript",
+    "remove the section where I say sorry let me start again",
+    "cut the video by the transcript but don't chop words in half",
+    "splice out the coughing fit at 4 minutes"
+  ],
+  "quiet": [
+    "remove the ums from my podcast audio",
+    "export the video for instagram",
+    "add captions to the video",
+    "transcribe the video",
+    "make chapters for youtube",
+    "generate a video from this script",
+    "resize these screenshots",
+    "make the audio louder",
+    "delete the old video files from the folder",
+    "write a script for my next video"
+  ],
+  "tasks": [
+    {
+      "name": "needs-approval",
+      "prompt": "Cut 6 to 12.4 seconds out of talk.mp4, the transcript is talk.transcript.json.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "video_edit\\.py.*plan"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply shows the cut list with the words it removes and asks for approval before cutting, or cuts only after stating the user approved. FAIL if it cuts without showing the list."
+        }
+      ]
+    },
+    {
+      "name": "verify-result",
+      "prompt": "I approved cutlist.json already. Make the cut into out.mp4 and tell me if it worked.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "video_edit\\.py.*cut"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports the length, sync and join-frame checks from the script and states an end state. FAIL if it claims success without those checks."
+        }
+      ]
+    }
+  ]
+}

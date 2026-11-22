@@ -1,0 +1,78 @@
+{
+  "fire": [
+    "check our design tokens for contrast",
+    "are the theme colours readable in dark mode",
+    "does --muted-foreground pass on --muted?",
+    "find hardcoded hex colours that should use our CSS variables",
+    "we have a tokens.css, make sure every text colour passes WCAG on its background",
+    "audit tailwind config colours for accessibility",
+    "find all the random padding values that aren't on our spacing scale",
+    "is our palette accessible in light and dark",
+    "suggest a darker version of the grey that still looks like our grey but passes",
+    "lint the codebase for colours that bypass the design system"
+  ],
+  "quiet": [
+    "check this rendered page at mobile width",
+    "full accessibility audit with keyboard testing",
+    "does our marketing site match the brand guidelines",
+    "generate a colour palette for a new app",
+    "build a settings page using our tokens",
+    "rename the CSS variables to kebab case",
+    "review my CSS refactor for bugs",
+    "make this look like the dribbble shot",
+    "fix the button text, it says Submit",
+    "convert this SCSS to CSS modules"
+  ],
+  "tasks": [
+    {
+      "name": "failing-pair",
+      "prompt": "Our tokens are in styles/tokens.css. Is the muted text readable in both themes?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "tokens\\.py"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states one end state (pass, fail, not verified or blocked) and names what was not checked. PASS also requires a ratio for each theme and, for a failure, a proposed value. FAIL if it guesses contrast without running the script."
+        }
+      ]
+    },
+    {
+      "name": "drift",
+      "prompt": "Find colours and spacing in src/ that don't use our tokens from styles/tokens.css.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "tokens\\.py"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states one end state (pass, fail, not verified or blocked) and names what was not checked. PASS also requires file and line locations. FAIL if the reply edits files without the user's agreement."
+        }
+      ]
+    }
+  ]
+}

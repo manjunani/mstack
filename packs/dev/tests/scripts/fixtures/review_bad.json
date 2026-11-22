@@ -1,0 +1,19 @@
+{
+  "findings": [
+    { "file": "README.md", "line": 1, "severity": "minor", "title": "readme is short",
+      "evidence": "The readme has one line and does not explain how to run the project.", "quote": "# sample", "fix": "Write more." },
+    { "file": "src/util.py", "line": 2, "severity": "important", "title": "v2 looks wrong here",
+      "evidence": "The second value is not what the header comment promises to the reader.", "quote": "v2 = 2", "fix": "Change it." },
+    { "file": "src/util.py", "line": 15, "severity": "critical", "title": "v15 is set to 999",
+      "evidence": "The value 999 overflows the table the callers index into with it.", "quote": "v15 = 999", "fix": "Use 15." },
+    { "file": "src/util.py", "line": 15, "severity": "blocker", "title": "severity word is not allowed",
+      "evidence": "This finding uses a severity that the checker does not know about.", "quote": "v15 = 150", "fix": "Use a known word." },
+    { "file": "src/util.py", "line": 15, "severity": "minor", "title": "no fix is given for this one",
+      "evidence": "This finding leaves out the fix field, so it cannot be acted on.", "quote": "v15 = 150" },
+    { "file": "src/gone.py", "line": 1, "severity": "minor", "title": "comment on a deleted file",
+      "evidence": "The file was removed in this range, so there is no line to point at.", "quote": "gone = True", "fix": "None." },
+    { "file": "src/util.py", "line": 15, "severity": "important", "title": "this one is right",
+      "evidence": "The value was 15 and is now 150, which changes every total that includes it.", "quote": "v15 = 150", "fix": "Use 15." }
+  ],
+  "not_judged": []
+}

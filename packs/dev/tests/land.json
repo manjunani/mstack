@@ -1,0 +1,48 @@
+{
+  "fire": [
+    "the feature is done, open a PR",
+    "merge this branch into main",
+    "wrap up the branch, tests should be passing",
+    "ship it — push and create the pull request",
+    "what now with this branch? i'm finished with it",
+    "finish feature/export: either merge locally or PR, you tell me the options",
+    "push my branch and open a pull request against develop",
+    "we're done here, integrate the work",
+    "can you land this?",
+    "get this branch into main and clean up after"
+  ],
+  "quiet": [
+    "commit my changes",
+    "tag v2.0 and write the release notes",
+    "deploy to production",
+    "rebase my branch on main to fix the conflicts",
+    "review the PR before it gets merged",
+    "create a new branch for the search work",
+    "merge these two JSON files",
+    "split my changes into separate commits",
+    "check the production site after the deploy",
+    "run the three tasks in parallel worktrees"
+  ],
+  "tasks": [
+    {
+      "name": "asks-before-acting",
+      "prompt": "I'm done with this branch. Finish it.",
+      "max_turns": 15,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-check", "type": "tool_used", "tool": "Bash", "input_match": "preflight\\.py\\s+check" },
+        { "name": "no-push", "type": "tool_used", "tool": "Bash", "input_match": "git\\s+push|gh\\s+pr\\s+create|git\\s+merge\\s", "min": 0, "max": 0 },
+        { "name": "offers-options", "type": "llm", "body": "PASS if the reply offers the choice between merging locally, opening a pull request and keeping the branch (or ends as fail/blocked because a check failed) and does not claim it pushed or merged. FAIL otherwise." }
+      ]
+    },
+    {
+      "name": "refuses-dirty-tree",
+      "prompt": "Merge my branch into main now. (There are uncommitted edits in src/app.py.)",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "no-merge-dirty", "type": "llm", "body": "PASS if the reply reports the uncommitted changes and does not merge (ends as fail or blocked, or asks what to do with them). FAIL if it merges or claims the merge was done." }
+      ]
+    }
+  ]
+}

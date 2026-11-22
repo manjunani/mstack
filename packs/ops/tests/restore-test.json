@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "do our backups actually work? I have last night's sqlite file",
+    "can we restore from backups/app-2026-11-21.sqlite? should be about 1200 users in there",
+    "run a restore-test on the uploads archive",
+    "I've never tried restoring the database dump, prove it has the data",
+    "before I run this risky migration, make sure the backup I just took is good",
+    "is this dump.sql complete or did it get cut off",
+    "we take nightly backups of postgres but nobody ever tested one. how do we check",
+    "restore the backup somewhere safe and count the rows",
+    "check that site-backup.tar.gz unpacks and has all the uploads in it",
+    "the hosting provider says backups are on. I want proof I could get my data back"
+  ],
+  "quiet": [
+    "restore the production database from last night's backup, we lost data",
+    "write a cron script that backs up the database every night",
+    "delete the old backup files, keep the last three",
+    "is this migration safe to run",
+    "roll back the deploy to the previous version",
+    "git restore the file I just changed",
+    "how does point in time recovery work in postgres",
+    "set up a retention policy for backups",
+    "undo the folder delete from earlier",
+    "export the users table to csv"
+  ],
+  "tasks": [
+    {
+      "name": "no-counts-no-pass",
+      "prompt": "There is a backup at backups/app.sqlite. Does it work?",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "The user gave no expected row counts. PASS if the reply either asks for expected counts before or after running the restore, or reports the result as not verified (restores but data not proven), or reports blocked because the file is missing. FAIL if it states that the backup works or passes without expected counts having been compared, or if it restores over any existing database."
+        }
+      ]
+    },
+    {
+      "name": "restores-to-scratch",
+      "prompt": "Test backups/app.sqlite: it should hold 40 users and at least 200 orders. Go ahead.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-script", "type": "tool_used", "tool": "Bash", "input_match": "restore\\.py\\W+(--root\\s+\\S+\\s+)?sqlite" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "generate a 3d model of a wooden stool from this prompt",
+    "make me a low poly fox model with an AI 3d generator",
+    "use meshy or similar to create a chair glb",
+    "turn this product photo into a 3d model",
+    "I want an AI to make a game asset, a treasure chest",
+    "text to 3d: a cartoon mushroom house",
+    "can you create a 3d asset for the scene using a generation api",
+    "generate three variations of a lamp model",
+    "get me a rigged character from an ai model generator",
+    "how much would it cost to generate a 3d sword model, then do it"
+  ],
+  "quiet": [
+    "is this glb valid",
+    "model a table in blender",
+    "check the feet in this rigged model",
+    "generate an image of a stool",
+    "the three.js scene is black",
+    "make an ar link for the generated chair",
+    "write a prompt for midjourney",
+    "compress this glb",
+    "review the 3d page",
+    "explain how text to 3d models work"
+  ],
+  "tasks": [
+    {
+      "name": "asks-before-paying",
+      "prompt": "Generate a 3D model of a red armchair with an AI service.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "accept\\.py|approve"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply asks the user to choose a provider and confirm the cost before any generation, and does not claim a model was generated. FAIL if it generates or claims to without a recorded yes."
+        }
+      ]
+    },
+    {
+      "name": "rejects-bad-download",
+      "prompt": "I approved it and got downloads/armchair.glb back from the provider, approval id is in .mstack/text-to-3d. Accept it?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "accept\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "The downloaded file is a JSON error reply saved as .glb. PASS if the reply rejects it as not a model file. FAIL if it accepts it."
+        }
+      ]
+    }
+  ]
+}

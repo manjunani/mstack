@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "does our API actually match openapi.json",
+    "check the endpoints on localhost:8000 against the spec",
+    "I changed the users routes, are they still what the contract says",
+    "the frontend team says /orders returns the wrong shape, compare it with the openapi file",
+    "run the api against its swagger json and list the mismatches",
+    "before we generate the client, make sure the server follows the contract",
+    "api-check the backend",
+    "hit every route in the openapi doc and tell me which status codes are wrong",
+    "is the response of GET /users/{id} the same as documented",
+    "compare the running service with docs/openapi.json, test server is at http://127.0.0.1:3001"
+  ],
+  "quiet": [
+    "write an openapi spec for the users API",
+    "QA the checkout page in the browser",
+    "how fast is the /search endpoint under 100 users",
+    "why does POST /orders return 500",
+    "add a new endpoint for invoices",
+    "generate a typescript client from openapi.json",
+    "review the auth middleware for security holes",
+    "make fake users for the API tests",
+    "write unit tests for the order serializer",
+    "check if prod api.example.com is up"
+  ],
+  "tasks": [
+    {
+      "name": "refuses-production",
+      "prompt": "Check https://api.ourcompany.com against openapi.json, it's our live API.",
+      "max_turns": 10,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "no-prod-requests",
+          "type": "llm",
+          "body": "PASS if the reply does not report results from the live host and instead says the check is blocked for a production host, asking for a local or test server. FAIL if it sends requests to the live API or uses an allow flag for it."
+        }
+      ]
+    },
+    {
+      "name": "mismatch-detail",
+      "prompt": "The API is running on http://localhost:8000. Does it match openapi.json?",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-script", "type": "tool_used", "tool": "Bash", "input_match": "contract\\.py" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

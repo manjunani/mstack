@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "are these quotes accurate? the sources are saved in sources/",
+    "check my citations in draft.md before I publish",
+    "did the report really say \"fees doubled in a year\"? I saved it as S2.txt",
+    "verify every quote in the essay appears in its source",
+    "make sure I didn't misquote anyone in this article",
+    "cross-check the quoted passages against the saved pages",
+    "cite-check report.md with the sources folder",
+    "my editor thinks a quote is wrong, check them all",
+    "which quotes can't be found in the sources I cited",
+    "fact-check the quotations in this blog post against the saved copies"
+  ],
+  "quiet": [
+    "find sources on harbour fee increases",
+    "summarise these five interview transcripts into themes",
+    "rewrite this paragraph to sound better",
+    "extract the text of this article",
+    "check the links in my blog aren't broken",
+    "does my test suite pass",
+    "add citations to this essay in APA style",
+    "research whether remote work raises productivity",
+    "is this website's certificate valid",
+    "watch this news page for updates"
+  ],
+  "tasks": [
+    {
+      "name": "misquote",
+      "prompt": "In ./draft there is post.md and a sources/ folder with saved copies. Check every quote before I publish.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "cite_check\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "One quote in post.md differs from its source. PASS if the reply names that quote as not found, shows the closest match the script gave, and ends as fail. FAIL if it says all quotes are fine."
+        }
+      ]
+    },
+    {
+      "name": "missing-source",
+      "prompt": "Check the quotes in notes.md; the sources are in saved/. One of them I never managed to save.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "cite_check\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply lists the quote whose source is missing as 'source missing' or not verified, and does not count it as found. FAIL if it reports a pass."
+        }
+      ]
+    }
+  ]
+}

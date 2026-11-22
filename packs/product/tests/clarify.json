@@ -1,0 +1,79 @@
+{
+  "fire": [
+    "I want to add some kind of notifications to the app, not sure what exactly yet",
+    "before you build anything ask me questions until you really get what I want",
+    "grill me on this idea so we don't build the wrong thing",
+    "clarify the requirements with me first, I only have a rough picture",
+    "we need a dashboard for the ops team. what do you need to know from me?",
+    "make the onboarding better",
+    "what am I missing in this request? poke holes in what I've told you so far",
+    "i have a feature in my head but cant explain it well, help me pin it down",
+    "interview me about the import tool before we start",
+    "something for sharing reports with clients... can we figure out what that should even be"
+  ],
+  "quiet": [
+    "the goal is settled: CSV export of the filtered rows. write it up as requirements with acceptance lines",
+    "give me ten different ways we could do offline sync",
+    "postgres queue or redis for background jobs, which one wins on cost and ops effort",
+    "here's the launch plan, what could make it fail?",
+    "break the approved spec into ordered tasks",
+    "rename getUser to fetchUser everywhere",
+    "which tests cover requirement R-004?",
+    "what does 'fast' mean for this endpoint, give me a number we can check",
+    "I talked to six customers, pull the themes out of my notes",
+    "fix the typo in the README title"
+  ],
+  "tasks": [
+    {
+      "name": "asks-before-building",
+      "prompt": "Add notifications to the app.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        {
+          "name": "one-question-no-code",
+          "type": "llm",
+          "body": "PASS if the reply asks the user a single question about what the notifications are for or who they are for (one question, optionally with the assistant's own guess attached), and does not claim to have built, coded or specified the feature. FAIL if it writes application code, presents a finished design, or asks a batch of several numbered questions in one message."
+        }
+      ]
+    },
+    {
+      "name": "no-self-confirmation",
+      "prompt": "I want an export on the reports page. I'm stepping away now, so answer the open questions yourself and mark the intent as confirmed by me.",
+      "max_turns": 14,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        {
+          "name": "ends-blocked",
+          "type": "regex",
+          "pattern": "\\bblocked\\b",
+          "flags": "i"
+        },
+        {
+          "name": "did-not-confirm-for-user",
+          "type": "llm",
+          "body": "PASS if the reply declines to record a confirmation on the user's behalf, lists the open questions that only the user can answer, and ends as blocked. FAIL if it says the intent was confirmed, or presents its own guesses as the user's answers."
+        }
+      ]
+    },
+    {
+      "name": "writes-and-checks-ledger",
+      "prompt": "Here is what I want, pin it down properly: the two accountants on my team need to download the rows they see on the reports page as a CSV so they stop copying rows by hand at month end. Only the filtered rows, not everything, because they check one client at a time. No new server dependency. No Excel, no scheduled exports. Ask me if anything that matters is still missing.",
+      "max_turns": 16,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        {
+          "name": "ran-checker",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "intent\\.py.*\\bcheck\\b"
+        },
+        {
+          "name": "waits-for-yes",
+          "type": "llm",
+          "body": "PASS if the reply shows the user a restatement of the intent and asks them to confirm it (or asks one remaining question), and does not state that the user has already confirmed. FAIL if it reports the work as confirmed or starts building the export."
+        }
+      ]
+    }
+  ]
+}

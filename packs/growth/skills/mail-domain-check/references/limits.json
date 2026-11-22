@@ -1,0 +1,38 @@
+{
+  "_about": "Numbers read by scripts/maildomain.py. The first three are from mail standards and were written from memory, so they are unverified until someone reads the section named. The last two are mstack working values with no standard behind them.",
+  "spf_max_lookups": {
+    "value": 10,
+    "unit": "DNS-querying terms (include, a, mx, ptr, exists, redirect) allowed while evaluating one SPF record",
+    "source": "RFC 7208, section 4.6.4",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "dkim_min_rsa_bits": {
+    "value": 1024,
+    "unit": "bits; a shorter RSA key fails",
+    "source": "RFC 8301, section 3.2",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "dkim_recommended_rsa_bits": {
+    "value": 2048,
+    "unit": "bits; a shorter RSA key gets a warning",
+    "source": "RFC 8301, section 3.2",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "spf_ip4_prefix_fail": {
+    "value": 8,
+    "unit": "prefix length; an ip4 range wider than this (a smaller number) fails as too permissive",
+    "source": "mstack working value, not from a standard",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "spf_ip4_prefix_warn": {
+    "value": 16,
+    "unit": "prefix length; an ip4 range wider than this gets a warning",
+    "source": "mstack working value, not from a standard",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

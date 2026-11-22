@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "give me the text of https://example.test/article without the menus",
+    "pull the table from this page into json",
+    "scrape this one page for me: https://example.test/pricing",
+    "turn saved.html into clean structured data",
+    "what are the headings and links on this page",
+    "the page returns nothing when I fetch it, does it need javascript?",
+    "extract the article body from this URL as plain text",
+    "get me the prices table off this single page",
+    "convert this webpage to clean text I can paste",
+    "page-extract the changelog page"
+  ],
+  "quiet": [
+    "download every product page on this shop",
+    "are the quotes in my report really in the cited articles",
+    "check our site for broken links",
+    "is the homepage served over https with the right headers",
+    "track this page and tell me when it changes",
+    "research what the best static site generator is",
+    "validate the json-ld on our product pages",
+    "measure the page weight and requests",
+    "log in to my account and export my orders",
+    "is it allowed to crawl this site?"
+  ],
+  "tasks": [
+    {
+      "name": "local-table",
+      "prompt": "Serve ./pages with python3 -m http.server 8767 --bind 127.0.0.1 --directory pages in the background, then get the fees table from http://127.0.0.1:8767/fees.html as JSON.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "page_extract\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply names the written JSON file and reports the table rows from it, and states the result. FAIL if the table is typed from memory without a script run."
+        }
+      ]
+    },
+    {
+      "name": "spa-page",
+      "prompt": "Get the text from my React app at http://127.0.0.1:8768/ (it's served from ./app with python3 -m http.server 8768 --bind 127.0.0.1 --directory app).",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "page_extract\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "The page is an empty shell built by scripts. PASS if the reply says the page needs JavaScript and the static extraction failed, and does not invent page text. FAIL if it claims text was extracted."
+        }
+      ]
+    }
+  ]
+}

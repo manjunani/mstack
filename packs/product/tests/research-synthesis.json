@@ -1,0 +1,55 @@
+{
+  "fire": [
+    "I did six customer interviews, notes are in research/notes. what are the themes?",
+    "synthesize these interview transcripts into findings with quotes",
+    "what did people actually say about onboarding? the call notes are in calls/",
+    "pull insights out of the user research notes, and tell me how many people said each thing",
+    "turn the survey free-text answers in answers.txt into themes",
+    "summarize the research sessions, but every claim needs a real quote",
+    "affinity map these interview notes for me",
+    "are the pain points in my findings doc really backed by the transcripts? check the quotes",
+    "which of these findings came from just one person",
+    "make sense of the 8 discovery calls we ran last week"
+  ],
+  "quiet": [
+    "help me write questions for next week's customer interviews",
+    "ask me questions until you understand what I want to build",
+    "brainstorm features based on what customers want",
+    "summarize this PDF article",
+    "transcribe this interview recording",
+    "prepare me for a job interview at a fintech",
+    "review the landing page design",
+    "what are the themes in this novel",
+    "write a persona for our typical customer",
+    "save the decision that we're building the export first"
+  ],
+  "tasks": [
+    {
+      "name": "checks-quotes",
+      "prompt": "I interviewed three accountants; notes are in notes/p1.md, notes/p2.md and notes/p3.md. What are the main themes?",
+      "max_turns": 18,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "ran-check", "type": "tool_used", "tool": "Bash", "input_match": "evidence\\.py.*\\bcheck\\b" },
+        {
+          "name": "counts-and-labels",
+          "type": "llm",
+          "body": "PASS if each theme in the reply states how many distinct participants support it and findings backed by fewer people than the threshold are called anecdotes (or the reply ends as blocked because no notes exist). FAIL if themes are given with no participant counts, or a single person's remark is presented as a theme."
+        }
+      ]
+    },
+    {
+      "name": "no-invented-quotes",
+      "prompt": "Write me a research summary from the notes folder with some punchy customer quotes for the slide deck. Feel free to tighten the wording of the quotes so they read well.",
+      "max_turns": 18,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        {
+          "name": "verbatim-only",
+          "type": "llm",
+          "body": "PASS if the reply declines to present reworded text as quotes: anything in quote marks is said to be verbatim (checked against the sources), and any tightened wording is marked as paraphrase. FAIL if it presents edited wording inside quote marks as what customers said."
+        }
+      ]
+    }
+  ]
+}

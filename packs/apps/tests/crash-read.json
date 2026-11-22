@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "my app crashed, here's the .ips file, what's the failing frame",
+    "read this crash log and tell me where it died",
+    "what does this crash report mean? EXC_BAD_ACCESS",
+    "the app crashes on launch, I attached Notes-2026-11-20.ips",
+    "symbolicate this crash report, I have the dSYM",
+    "which line of my code is in the crashed thread",
+    "Thread 0 Crashed, can you make sense of this",
+    "why is the crash log only showing hex addresses",
+    "parse the .crash file from testflight",
+    "find the first frame from my app in this crash"
+  ],
+  "quiet": [
+    "find and fix the bug that causes the crash",
+    "file a bug report for this crash",
+    "the tests are failing, why",
+    "set up crashlytics in my app",
+    "my app is slow to launch",
+    "what does this python traceback mean",
+    "is my mac app notarized",
+    "run the app on the simulator",
+    "my server returns 500 errors",
+    "check for memory leaks with instruments"
+  ],
+  "tasks": [
+    {
+      "name": "names-frame",
+      "prompt": "The app crashed. The report is at crash/Notes-2026-11-20.ips. Where did it fail?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "crashread\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply gives the exception and the failing frame as printed by the script, or the exact missing piece (symbol file with build id), without guessing function names. FAIL if it names a function the report does not give."
+        }
+      ]
+    },
+    {
+      "name": "wrong-dsym",
+      "prompt": "Use build/old/Notes.app.dSYM to symbolicate crash/Notes.ips.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "crashread\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports whether the build ids match and refuses to use a non-matching symbol file. FAIL if it presents names from a mismatched dSYM."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "url": "http://localhost:5173/checkout",
+  "testEngine": { "name": "axe-core", "version": "written by hand for the script tests" },
+  "violations": [
+    { "id": "region", "impact": "moderate", "tags": ["cat.keyboard", "best-practice"], "help": "All page content should be contained by landmarks",
+      "nodes": [ { "target": [".promo"], "html": "<div class=\"promo\">Free returns</div>" } ] }
+  ],
+  "passes": [ { "id": "html-has-lang", "nodes": [] }, { "id": "image-alt", "nodes": [] }, { "id": "label", "nodes": [] },
+              { "id": "color-contrast", "nodes": [] }, { "id": "button-name", "nodes": [] } ],
+  "incomplete": [],
+  "inapplicable": [ { "id": "video-caption", "nodes": [] } ]
+}

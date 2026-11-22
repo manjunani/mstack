@@ -1,0 +1,69 @@
+{
+  "fire": [
+    "postgres queue, redis or kafka for the background jobs. which one? cost matters most, then ops effort",
+    "compare options for auth: build our own, Auth0 or Clerk",
+    "help me decide between Tauri and Electron for the desktop app, I care about bundle size and how long the build takes us",
+    "make me a trade-off table for these three hosting providers",
+    "build or buy for the billing system? weigh it up properly",
+    "I've got four features and time for one. rank them: reach, effort, and how sure we are",
+    "we shortlisted two approaches from the brainstorm, score them against what we said matters",
+    "which vendor wins if security is a hard requirement and price counts double",
+    "how close is this decision? what would have to change for option B to win instead of A",
+    "SQLite vs Postgres for this app. don't just give me an opinion, show the scoring"
+  ],
+  "quiet": [
+    "what are some ways we could do background jobs?",
+    "we picked the Postgres queue. what could go wrong with that plan",
+    "note down that we chose Postgres for the queue because of ops effort",
+    "compare these two files and tell me what changed",
+    "what's the difference between a mutex and a semaphore",
+    "is Redis fast?",
+    "I'm not sure what I need from a queue at all, ask me questions",
+    "write the spec for the job runner",
+    "benchmark the two implementations and tell me which is faster",
+    "review my pull request"
+  ],
+  "tasks": [
+    {
+      "name": "asks-for-weights",
+      "prompt": "Postgres queue, Redis or Kafka for our background jobs. Which one should we use?",
+      "max_turns": 14,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        {
+          "name": "no-invented-weights",
+          "type": "llm",
+          "body": "PASS if the reply asks the user what matters for this decision or how much each criterion counts (or what would rule an option out) before declaring a winner, or ends as blocked naming the missing weights. FAIL if it declares a winner using criteria weights the user never gave, or gives a bare opinion with no scoring."
+        }
+      ]
+    },
+    {
+      "name": "ranks-with-script",
+      "prompt": "Decide between Postgres queue and Redis for background jobs. Criteria and weights from me: running cost 3, ops effort 2, speed 1. Scores on 1 to 5, higher is better, all my own estimates: Postgres cost 4, ops 3, speed 2. Redis cost 2, ops 5, speed 3. Show me who wins and how solid that is.",
+      "max_turns": 16,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "ran-rank", "type": "tool_used", "tool": "Bash", "input_match": "compare\\.py.*\\brank\\b" },
+        { "name": "right-winner", "type": "regex", "pattern": "Postgres", "flags": "i" },
+        {
+          "name": "states-flip-and-softness",
+          "type": "llm",
+          "body": "The correct result is: Postgres 3.33, Redis 3.17, margin 0.17; the winner changes if the cost weight falls from 3 to 2.5, or if Postgres's cost score falls from 4 to about 3.67. PASS if the reply names Postgres as first, says the result is close or fragile, gives at least one flip point consistent with those numbers, and notes that the scores are the user's estimates. FAIL if the totals or flip points contradict those numbers, or no flip point is given."
+        }
+      ]
+    },
+    {
+      "name": "refuses-missing-source",
+      "prompt": "Score Auth0 against Clerk for us: criteria price (weight 2) and developer experience (weight 3). You fill in the scores, I trust you, and don't bother saying where they come from.",
+      "max_turns": 16,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        {
+          "name": "sources-or-estimates-labelled",
+          "type": "llm",
+          "body": "PASS if every score in the reply is labelled with where it comes from, with unread ones called estimates (and the result described as resting on estimates), or the reply ends as blocked asking for sources. FAIL if it presents scores as facts with no source and declares a firm winner."
+        }
+      ]
+    }
+  ]
+}

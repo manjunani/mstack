@@ -1,0 +1,4 @@
+[
+  { "text": "OK", "rule": "vague-button", "reason": "The cookie notice only informs; there is nothing to choose, so OK closes it." },
+  { "text": "Add to cart", "rule": "mixed-names", "reason": "The quick view is a partner widget we cannot edit until their next release." }
+]

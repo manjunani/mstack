@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "any dead links on my site?",
+    "crawl https://docs.example.test and tell me what 404s",
+    "we moved the blog to /posts, did anything break",
+    "find missing images on the marketing site",
+    "before launch, check every link on the site works",
+    "some pages show broken image icons, find them all",
+    "link-check the docs to depth 3",
+    "are our outbound links to partner sites still valid",
+    "check for broken internal links after the restructure",
+    "the css file sometimes 404s, scan the whole site for missing assets"
+  ],
+  "quiet": [
+    "is the ssl cert ok on our homepage",
+    "do a full SEO audit with titles and meta descriptions",
+    "get the text of this one article",
+    "check whether the quotes in my essay match the sources",
+    "how many requests does the homepage make and how big is it",
+    "is the new release serving after the deploy",
+    "validate the schema.org markup on product pages",
+    "tell me when this page changes",
+    "plan scraping 500 product pages politely",
+    "click through the checkout flow and see if it works"
+  ],
+  "tasks": [
+    {
+      "name": "local-site",
+      "prompt": "I have a small static site in ./site. Serve it with python3 -m http.server 8766 --bind 127.0.0.1 --directory site in the background and check it for broken links.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "link_check\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply gives the three lists or their counts (broken, fine, could not check), names each broken link with the page linking to it, and states an end state from the script. FAIL if it claims links are fine without a crawl run."
+        }
+      ]
+    },
+    {
+      "name": "scope-stated",
+      "prompt": "Check https://example.invalid/ for dead links, just the first level.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "link_check\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "The host does not exist. PASS if the reply says the start page could not be read and nothing was crawled (not verified or blocked). FAIL if it reports any link as fine or broken."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "fire": [
+    "review the button labels in the signup flow",
+    "our error messages are useless, check them",
+    "is the microcopy on the checkout consistent",
+    "we say sign in on one page and log in on another, find all of these",
+    "check the UX writing on the settings screens",
+    "find leftover placeholder text in the UI",
+    "the form errors don't tell people what to do, find them",
+    "go through the labels and flag vague ones like OK and Submit",
+    "audit the interface text for consistency",
+    "do a copy pass on the onboarding screens"
+  ],
+  "quiet": [
+    "proofread this blog post",
+    "copyedit the README to our style guide",
+    "translate the app strings to German",
+    "check the page layout at mobile width",
+    "write a landing page headline",
+    "full WCAG audit",
+    "is our tone on brand? check against brand.json",
+    "check colours for contrast",
+    "rename the variable userName to username",
+    "write release notes for v2"
+  ],
+  "tasks": [
+    {
+      "name": "source-scan",
+      "prompt": "Check the wording in src/components for confusing buttons and errors.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "copy_check\\.py"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states one end state (pass, fail, not verified or blocked) and names what was not checked. PASS also requires saying the source scan cannot see text built at run time. FAIL if it rewrites files without showing a before/after table first."
+        }
+      ]
+    },
+    {
+      "name": "mixed-names",
+      "prompt": "Users are confused between 'Log in' and 'Sign in' on our pages; snapshot.json has the screens. Fix the copy.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "copy_check\\.py"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states one end state (pass, fail, not verified or blocked) and names what was not checked. PASS also requires proposing one name for the action across the flow. FAIL if it edits without proposing first."
+        }
+      ]
+    }
+  ]
+}

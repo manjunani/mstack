@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collector test page</title>
+<style>
+  body { margin: 0; font-family: Georgia, serif; color: #111827; background: #ffffff; }
+  header { display: flex; gap: 2px; padding: 8px 16px; align-items: center; }
+  .icon { width: 20px; height: 20px; padding: 0; border: 0; background: #e5e7eb; }
+  .muted { color: #9ca3af; font-size: 14px; }
+  .card { width: 160px; overflow: hidden; white-space: nowrap; background: rgba(0, 0, 0, 0.5); color: #ffffff; padding: 8px; }
+  .card h3 { margin: 0; overflow: hidden; width: 120px; }
+  .wide { width: 900px; height: 20px; background: #dbeafe; }
+  .hero { background-image: linear-gradient(135deg, #667eea, #764ba2); color: #ffffff; padding: 16px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  .faded { opacity: 0.4; }
+  #save { min-width: 120px; min-height: 44px; background: #1d4ed8; color: #ffffff; border: 0; font-size: 16px; }
+</style>
+</head>
+<body>
+<header>
+  <a class="sr-only" href="#main">Skip to content</a>
+  <button class="icon" id="bare"></button>
+  <button class="icon" aria-label="Open the menu"></button>
+</header>
+<main id="main">
+  <h1>Orders waiting to ship</h1>
+  <p class="muted">Pale text on white.</p>
+  <p class="faded">Faded by opacity.</p>
+  <div class="hero"><p>Text on a gradient.</p></div>
+  <div class="card"><h3>Quarterly revenue by region and channel</h3></div>
+  <p>Lorem ipsum dolor sit amet.</p>
+  <img src="missing.png" width="40" height="40">
+  <img src="missing.png" width="40" height="40" alt="">
+  <label for="email">Email address</label>
+  <input id="email" type="email" placeholder="you@example.com">
+  <button id="save">Save order</button>
+  <p>Read the <a href="/terms">terms</a> before you ship.</p>
+  <div class="wide">A very wide strip</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "note": "Example prices in US dollars per million tokens. NONE of these was read on a provider's pricing page during this work: they are placeholders written from memory to show the file format. Check the provider's pricing page and replace each value, then set verified to true and the date you checked. The script prints a warning for every price that is not verified.",
+  "currency": "USD",
+  "per_tokens": 1000000,
+  "models": {
+    "example-large": {
+      "input": 15.0,
+      "output": 75.0,
+      "cache_read": 1.5,
+      "cache_write": 18.75,
+      "source": "placeholder written from memory; check the provider's pricing page",
+      "checked": "2026-11-22",
+      "verified": false
+    },
+    "example-medium": {
+      "input": 3.0,
+      "output": 15.0,
+      "cache_read": 0.3,
+      "cache_write": 3.75,
+      "source": "placeholder written from memory; check the provider's pricing page",
+      "checked": "2026-11-22",
+      "verified": false
+    },
+    "example-small": {
+      "input": 0.8,
+      "output": 4.0,
+      "cache_read": 0.08,
+      "cache_write": 1.0,
+      "source": "placeholder written from memory; check the provider's pricing page",
+      "checked": "2026-11-22",
+      "verified": false
+    }
+  }
+}

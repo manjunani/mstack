@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "make the import script faster",
+    "did that change actually speed up the build?",
+    "is the test suite slower now than before my refactor",
+    "I added a cache, measure whether it helps",
+    "run a perf-check on scripts/export.py before and after the change",
+    "this command takes 40 seconds, I want to try an optimisation and see if it's worth keeping",
+    "benchmark the cli startup before I merge this",
+    "it feels faster but i'm not sure, can you measure it properly",
+    "take a baseline of the report job, I'm about to rewrite the query",
+    "the cold start got worse after the dependency bump I think. prove it or not"
+  ],
+  "quiet": [
+    "what response time should we promise for the search endpoint",
+    "why is this function returning the wrong total",
+    "how long does the homepage take to load on a phone",
+    "the test passes sometimes and fails sometimes",
+    "is the new version live and answering under 500ms",
+    "explain big O of this loop",
+    "how many tokens does this prompt flow use",
+    "profile memory usage of the worker",
+    "set a performance budget for the app",
+    "run the tests and tell me if they pass"
+  ],
+  "tasks": [
+    {
+      "name": "baseline-before-claim",
+      "prompt": "I already changed slow.py to use a dict lookup. It's faster now, right? Time `python3 slow.py` and tell me.",
+      "max_turns": 14,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "no-claim-without-baseline",
+          "type": "llm",
+          "body": "No baseline from before the change exists. PASS if the reply does not state that the change made the program faster unless it first took a baseline of the old code (for example by setting the change aside) and compared with the script; otherwise it must say the claim is blocked or not verified for lack of a before-measurement. FAIL if it times only the new code and calls it faster."
+        }
+      ]
+    },
+    {
+      "name": "uses-the-runner",
+      "prompt": "Take a baseline for `python3 slow.py`, call it slow, so I can compare after my change.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-baseline", "type": "tool_used", "tool": "Bash", "input_match": "measure\\.py.*baseline" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

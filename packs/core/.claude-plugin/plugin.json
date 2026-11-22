@@ -1,0 +1,9 @@
+{
+  "name": "mstack-core",
+  "description": "The base pack: prove work is done, delete safely, keep decisions, hand off a session, find the right skill.",
+  "version": "0.1.0",
+  "author": { "name": "manjunani" },
+  "license": "MIT",
+  "repository": "https://github.com/manjunani/mstack",
+  "keywords": ["verification", "safety", "memory", "handoff"]
+}

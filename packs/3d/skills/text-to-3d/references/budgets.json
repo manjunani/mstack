@@ -1,0 +1,39 @@
+{
+  "about": "Budget profiles for ONE model file treated as a whole scene. When a scene holds several models, share the budget between them. Every number is a working value chosen for mstack and none was read from a primary source in this work: measure on the target device or re-source the limit before blocking a release on it.",
+  "checked": "2026-11-22",
+  "profiles": {
+    "quest-webxr": {
+      "triangles": { "value": 200000, "unit": "triangles drawn", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "draw_calls": { "value": 100, "unit": "primitives drawn", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "materials": { "value": 30, "unit": "materials", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "textures": { "value": 24, "unit": "textures", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "max_texture_px": { "value": 2048, "unit": "pixels on the longest side", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "texture_memory_mb": { "value": 128, "unit": "MB, RGBA8 with mip chain", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "file_size_mb": { "value": 25, "unit": "MB on disk", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+    },
+    "phone-ar": {
+      "triangles": { "value": 100000, "unit": "triangles drawn", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "draw_calls": { "value": 50, "unit": "primitives drawn", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "materials": { "value": 12, "unit": "materials", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "textures": { "value": 12, "unit": "textures", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "max_texture_px": { "value": 2048, "unit": "pixels on the longest side", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "texture_memory_mb": { "value": 64, "unit": "MB, RGBA8 with mip chain", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "file_size_mb": { "value": 10, "unit": "MB on disk", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+    },
+    "desktop-web": {
+      "triangles": { "value": 1000000, "unit": "triangles drawn", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "draw_calls": { "value": 300, "unit": "primitives drawn", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "materials": { "value": 60, "unit": "materials", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "textures": { "value": 48, "unit": "textures", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "max_texture_px": { "value": 4096, "unit": "pixels on the longest side", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "texture_memory_mb": { "value": 512, "unit": "MB, RGBA8 with mip chain", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+      "file_size_mb": { "value": 50, "unit": "MB on disk", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+    }
+  },
+  "render": {
+    "min_views": { "value": 4, "unit": "turntable views a render check needs", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+  },
+  "optimise": {
+    "max_bounds_drift_pct": { "value": 1.0, "unit": "percent change of any bounding-box side after optimising", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+  }
+}

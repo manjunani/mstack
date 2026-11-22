@@ -1,0 +1,58 @@
+{
+  "_about": "Word lists used by scripts/copy_check.py. They are mstack's own lists for English interfaces, not taken from a style guide, and they age: review them when they are more than six months old or when the product has its own vocabulary. Lower case; matched against the whole label unless noted.",
+  "_written": "2026-11-22",
+  "vague_action_labels": {
+    "value": ["ok", "okay", "yes", "no", "submit", "go", "proceed", "confirm", "click here", "tap here", "press here", "here", "enter", "button", "link"],
+    "unit": "whole labels of buttons, links, menu items and tabs that block",
+    "source": "mstack's own list, written 2026-11-22",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "vague_link_labels": {
+    "value": ["read more", "learn more", "more", "more info", "details", "this", "view", "see more"],
+    "unit": "whole accessible names of links that block (a link list read out of context has to make sense)",
+    "source": "mstack's own list, written 2026-11-22",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "weak_action_labels": {
+    "value": ["continue", "next", "done", "back", "finish", "accept", "apply", "send"],
+    "unit": "whole labels that only warn",
+    "source": "mstack's own list, written 2026-11-22",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "labels_that_are_not_a_way_forward": {
+    "value": ["ok", "okay", "close", "dismiss", "cancel", "got it", "x", "hide"],
+    "unit": "nearby actions that do not count as recovery from an error",
+    "source": "mstack's own list, written 2026-11-22",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "recovery_cues": {
+    "value": ["try again", "retry", "check (your|the|that|if|whether)", "enter", "choose", "select", "pick", "use (a|an|the|your|only|at least)", "contact", "go back", "refresh", "reload", "sign in", "log in", "reset", "must (be|have|contain|include|match|start|end)", "needs? to", "has to", "should (be|have)", "at least", "at most", "no more than", "up to \\d", "between \\d", "for example", "instead", "wait \\d", "upload a", "shorten", "free up", "turn on", "allow", "enable", "update your", "verify", "confirm your", "reconnect", "restore", "undo", "ask (your|an|the)"],
+    "unit": "regular expression pieces; an error that matches one tells the user what to do or what valid input is",
+    "source": "mstack's own list, written 2026-11-22",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "same_action_words": {
+    "value": [
+      ["sign in", "log in", "login", "signin", "log on"],
+      ["sign up", "register", "create account", "create an account"],
+      ["sign out", "log out", "logout", "signout", "log off"],
+      ["delete", "remove", "erase", "trash"],
+      ["edit", "modify", "change"],
+      ["cancel", "abort", "never mind"],
+      ["search", "find", "look up"],
+      ["settings", "preferences", "options", "configuration"],
+      ["cart", "basket", "bag"],
+      ["email", "e-mail"],
+      ["ok", "okay"]
+    ],
+    "unit": "groups of words that name the same action or thing; two members with the same object block, with different objects warn",
+    "source": "mstack's own list, written 2026-11-22",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

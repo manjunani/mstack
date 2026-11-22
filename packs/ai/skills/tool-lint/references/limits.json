@@ -1,0 +1,38 @@
+{
+  "note": "Thresholds the linter uses when no flag is given. The mstack entries are first settings, not measured values. The name limits are provider rules written from memory: check the tool-use documentation of the provider you send the definitions to.",
+  "min_description_words": {
+    "value": 8,
+    "unit": "words in a tool description below which it is reported as too short",
+    "source": "mstack default, first setting",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "overlap_warn": {
+    "value": 0.5,
+    "unit": "share of description words two tools have in common (0 to 1) from which the pair is reported as a warning",
+    "source": "mstack default, first setting",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "overlap_fail": {
+    "value": 0.85,
+    "unit": "share of description words two tools have in common (0 to 1) from which the pair fails",
+    "source": "mstack default, first setting",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "name_max_length": {
+    "value": 64,
+    "unit": "characters in a tool name",
+    "source": "provider tool-use documentation, written from memory; not opened during this work",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "name_pattern": {
+    "value": "^[A-Za-z0-9_-]+$",
+    "unit": "regular expression a tool name is expected to match",
+    "source": "provider tool-use documentation, written from memory; not opened during this work",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

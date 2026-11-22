@@ -1,0 +1,11 @@
+{
+  "_about": "The one number scripts/firstscreen.py compares against. It is a working value, not a standard, and is unverified. Going over it produces a warning, never a failure. For measured load times use the page-speed skill.",
+  "first_load_kb": {
+    "value": 500,
+    "unit": "kilobytes as stored (not compressed): the HTML, the stylesheets, the scripts in <head> that block rendering, and the first image that is not lazy-loaded",
+    "kind": "guidance",
+    "source": "mstack working value. Not taken from a published standard.",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

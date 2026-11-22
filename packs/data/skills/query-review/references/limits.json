@@ -1,0 +1,16 @@
+{
+  "large_table_rows": {
+    "value": 10000,
+    "unit": "rows",
+    "source": "mstack-data default chosen while writing this skill; not from an outside standard",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "count_seconds": {
+    "value": 5,
+    "unit": "seconds",
+    "source": "mstack-data default chosen while writing this skill; not from an outside standard",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

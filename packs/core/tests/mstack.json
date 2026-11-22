@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "is there a skill for cleaning up podcast audio?",
+    "which skill should I use to check a 3D model?",
+    "what can mstack do?",
+    "list the mstack packs",
+    "do you have something for flaky tests?",
+    "what skills are available for design work",
+    "which mstack pack do I need for VR?",
+    "show me every skill in the test pack",
+    "I don't know which skill fits this, help me pick",
+    "does mstack have anything for database migrations?"
+  ],
+  "quiet": [
+    "fix the flaky test in checkout.spec.ts",
+    "is this third-party skill safe to install?",
+    "are we done?",
+    "delete the old folder",
+    "write a new skill for formatting dates",
+    "why isn't my skill triggering?",
+    "clean up this podcast recording",
+    "explain what a skill is",
+    "install the dependencies",
+    "what changed in the last commit?"
+  ],
+  "tasks": [
+    {
+      "name": "names-one",
+      "prompt": "Is there a skill that can tell me whether my work is really finished before I commit?",
+      "max_turns": 10,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "searched", "type": "tool_used", "tool": "Bash", "input_match": "find\\.py.*\\bsearch\\b" },
+        { "name": "named-verify", "type": "regex", "pattern": "\\bverify\\b", "flags": "i" }
+      ]
+    },
+    {
+      "name": "admits-no-fit",
+      "prompt": "Is there an mstack skill for filing my income tax return?",
+      "max_turns": 10,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "no-stretch",
+          "type": "llm",
+          "body": "PASS if the reply says no mstack skill fits this task and does not recommend an unrelated skill as if it did. FAIL if it stretches a skill over the task."
+        }
+      ]
+    }
+  ]
+}

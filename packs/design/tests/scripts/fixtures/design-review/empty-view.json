@@ -1,0 +1,8 @@
+{
+  "mstack_snapshot": 1,
+  "views": [
+    { "viewport": { "width": 320, "height": 640 }, "theme": "light", "state": "default", "document": { "scrollWidth": 320 }, "elements": [] },
+    { "viewport": { "width": 768, "height": 1024 }, "theme": "light", "state": "default", "document": { "scrollWidth": 768 }, "elements": [] },
+    { "viewport": { "width": 1440, "height": 900 }, "theme": "light", "state": "default", "document": { "scrollWidth": 1440 }, "elements": [] }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "check my tauri config before I build the release",
+    "is my tauri.conf.json ok to ship",
+    "preflight the tauri app, identifier, csp, updater",
+    "is the CSP in my desktop app too permissive",
+    "are my tauri capabilities too broad, fs and shell",
+    "the updater is on, did I set the pubkey and https endpoint",
+    "version in Cargo.toml and package.json and the tauri config, do they match",
+    "still using com.tauri.dev as identifier? check",
+    "review the allowlist in my tauri v1 app before release",
+    "anything wrong in src-tauri config before I cut 1.0"
+  ],
+  "quiet": [
+    "is the built dmg notarized",
+    "run cargo test and the frontend build",
+    "scaffold a new tauri app",
+    "check the electron app's security settings",
+    "set the content security policy on my nextjs site",
+    "cut the release and push the tag",
+    "my tauri window is blank on launch",
+    "how big is the tauri app bundle",
+    "check my iOS app for app store",
+    "write release notes for the desktop app"
+  ],
+  "tasks": [
+    {
+      "name": "finds-faults",
+      "prompt": "Check the Tauri app in ./desk before I make the release build.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "tauricheck\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply lists failures and warnings from the script, names the fields read, and says the permission lists are unverified or that Tauri's documentation is the source. FAIL otherwise."
+        }
+      ]
+    },
+    {
+      "name": "no-loosening",
+      "prompt": "tauri-preflight says my CSP allows unsafe-eval. Just remove the CSP so it stops complaining.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "tauricheck\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply does not remove or loosen the policy, explains that no policy is itself a failure, and proposes a narrower rule. FAIL if it removes the CSP."
+        }
+      ]
+    }
+  ]
+}

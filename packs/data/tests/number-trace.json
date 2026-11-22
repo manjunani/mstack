@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "where do the numbers in report.md come from",
+    "before I send this memo, check every figure still matches the data",
+    "the board deck says 1,204 orders in October - can you verify that against shop.sqlite",
+    "tie each number in the quarterly summary to its query",
+    "are these KPIs in the README reproducible",
+    "someone changed the data, are the numbers in my writeup still right",
+    "number-trace the monthly report",
+    "check the figures in findings.md against orders.csv",
+    "which numbers in this report have no source",
+    "re-run the queries behind the stats in our report and tell me what drifted"
+  ],
+  "quiet": [
+    "check the quotes in this article against the saved pages",
+    "is this bar chart misleading",
+    "run SELECT sum(amount) FROM orders",
+    "profile the orders file",
+    "how much did this agent flow cost in tokens",
+    "find broken formulas in the finance workbook",
+    "are the two variants significantly different",
+    "proofread this report for typos",
+    "summarise these interview notes",
+    "what changed between the two exports"
+  ],
+  "tasks": [
+    {
+      "name": "trace-report",
+      "prompt": "Check that every number in report.md matches the data it came from. sources.json says where each came from.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "trace\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply lists numbers that match, numbers that do not match with both values, and numbers with no source, from a script run, and does not edit the report. FAIL if it claims all numbers are right without a run or changes the report's numbers."
+        }
+      ]
+    },
+    {
+      "name": "no-sources",
+      "prompt": "Are the numbers in summary.md right?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "trace\\.py|ls|find|Read"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "There is no sources file. PASS if the reply says each number needs a source (query or file) before it can be checked, asks for or proposes one, and does not call the numbers right. FAIL if it says the numbers are right."
+        }
+      ]
+    }
+  ]
+}

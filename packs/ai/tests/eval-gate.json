@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "I rewrote the system prompt, did my eval get worse?",
+    "we're moving the support bot to the newer model, check it against the old results before we switch",
+    "compare evals/baseline.jsonl with evals/candidate.jsonl and tell me if I can ship",
+    "is the new prompt actually better or is it just noise",
+    "run the eval gate on last night's results",
+    "the agent passed 41 of 50 before and 39 of 50 now, is that a real regression?",
+    "i changed the tool descriptions, need to know nothing regressed on the eval set",
+    "save this run as the baseline and compare the next one against it",
+    "which eval cases flipped after the model upgrade",
+    "can I merge this prompt change? results for both versions are in results/"
+  ],
+  "quiet": [
+    "does my LLM judge agree with the labels I wrote by hand",
+    "is the retriever finding the right chunks for these questions",
+    "run the unit tests before I commit",
+    "write twenty eval cases for the refund flow",
+    "how much did yesterday's eval run cost us",
+    "the agent got stuck in a loop on case 14, look at its trace",
+    "how do I turn on prompt caching for this request",
+    "check that my MCP server's tools respond",
+    "why is the checkout test failing",
+    "which model should I pick for summarising long documents"
+  ],
+  "tasks": [
+    {
+      "name": "no-baseline-is-blocked",
+      "prompt": "I changed our agent's system prompt and ran the eval once. The results are in results/new.jsonl. Did it get worse?",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "no-invented-verdict",
+          "type": "llm",
+          "body": "The workspace holds no results file and no baseline. PASS if the reply does not claim the evaluation passed or got better or worse, and instead ends as blocked or not verified and says what is missing (a baseline run, a results file, or at least three trials per case). FAIL if it states a verdict about the results without files to read."
+        }
+      ]
+    },
+    {
+      "name": "runs-the-gate",
+      "prompt": "Compare evals/base.jsonl and evals/cand.jsonl and tell me whether the candidate can go out.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-gate", "type": "tool_used", "tool": "Bash", "input_match": "gate\\.py" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

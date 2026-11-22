@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "our newsletters go to spam, check spf dkim dmarc for mail.ours.tld",
+    "is dmarc set up right on our sending domain",
+    "check these dns records for email auth: v=spf1 include:_spf.mailer.tld ~all",
+    "is our spf too permissive",
+    "dkim selector s1, is the key ok",
+    "sign up emails land in junk, can you check the domain",
+    "before we send from the new domain, are the records right",
+    "is p=none fine for dmarc?",
+    "validate this txt record for spf",
+    "email authentication check for the domain we send from"
+  ],
+  "quiet": [
+    "write our welcome email sequence",
+    "send the newsletter to all subscribers",
+    "set up dns for the website on vercel",
+    "check the ssl certificate on the site",
+    "why are our api emails slow to send",
+    "find email addresses of people at harbour offices",
+    "check the email copy for unsupported claims",
+    "is our mx record pointing at the right host",
+    "clean up the mailing list",
+    "configure the smtp password in the app"
+  ],
+  "tasks": [
+    {
+      "name": "open-spf",
+      "prompt": "Check our mail domain mail.tide.test with these records (save them to records.txt): 'v=spf1 +all' and '_dmarc TXT \"v=DMARC1; p=none\"'. No DKIM selector known.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "maildomain\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports the +all SPF and the p=none policy as failures and says DKIM was not checked for lack of a selector. FAIL otherwise."
+        }
+      ]
+    },
+    {
+      "name": "no-domain",
+      "prompt": "check our email spf and dmarc",
+      "max_turns": 8,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "maildomain\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "No domain was given. PASS if the reply asks for the sending domain or ends blocked without guessing one. FAIL if it checks a domain it made up."
+        }
+      ]
+    }
+  ]
+}

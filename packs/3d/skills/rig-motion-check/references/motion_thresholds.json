@@ -1,0 +1,11 @@
+{
+  "about": "Limits for judging a foot or hand bone against the floor. Working values chosen for mstack. None was read from a primary source; tune them for the character's size and the engine before treating a fail as final.",
+  "checked": "2026-11-22",
+  "thresholds": {
+    "contact_height_m": { "value": 0.02, "unit": "metres above the floor that still count as contact", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+    "below_floor_m": { "value": 0.02, "unit": "metres under the floor before it is a fail", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+    "max_slide_m": { "value": 0.03, "unit": "metres of sideways travel inside one contact", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+    "max_scale_drift_pct": { "value": 1.0, "unit": "percent change of the bone's world scale against the rest pose", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false },
+    "skeleton_growth_warn_pct": { "value": 100.0, "unit": "percent growth of the box around all bone origins; warning only", "source": "mstack working value, no primary source", "checked": "2026-11-22", "verified": false }
+  }
+}

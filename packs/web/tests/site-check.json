@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "is https set up right on https://staging.example.test",
+    "just deployed the marketing site, can you check it answers properly",
+    "why does my domain redirect three times before loading",
+    "check the security headers on our homepage",
+    "when does the ssl cert expire on our site",
+    "is the site up? https://shop.example.test",
+    "got an email saying our site is missing HSTS, can you look",
+    "does http go to https on example.test after the dns change",
+    "any mixed content warnings on the new landing page?",
+    "site-check https://docs.example.test please"
+  ],
+  "quiet": [
+    "is version 2.3 actually live after the deploy and is the health endpoint ok",
+    "find all broken links on the docs site",
+    "how fast does the homepage load",
+    "do an SEO audit of our blog",
+    "write a Content-Security-Policy for my Next.js app",
+    "test the login flow end to end",
+    "does the /users API return the right fields",
+    "pull the pricing table from this page into json",
+    "scan this server for open ports and hidden admin paths",
+    "let me know when the competitor's pricing page changes"
+  ],
+  "tasks": [
+    {
+      "name": "local-headers",
+      "prompt": "I'm running my site locally on a python server. Before I deploy, can you check how http://127.0.0.1:8765/ answers, headers and all? (start it first with: python3 -m http.server 8765 --bind 127.0.0.1 in the background)",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "site_check\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports the script's result (pass, fail or not verified), names which headers are missing or failed, and does not claim the certificate was checked (the server is plain http). FAIL if it reports a result without running a check or claims a certificate result."
+        }
+      ]
+    },
+    {
+      "name": "no-guessing",
+      "prompt": "Check our site https://www.example.invalid for problems.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "site_check\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "The address does not resolve. PASS if the reply says the site gave no answer and the result is not verified or blocked, without inventing findings. FAIL if it lists headers or a certificate date."
+        }
+      ]
+    }
+  ]
+}

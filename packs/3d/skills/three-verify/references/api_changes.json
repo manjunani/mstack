@@ -1,0 +1,13 @@
+{
+  "about": "A short list of three.js names and import paths that were removed, renamed or added at some revision. Written from memory, so every entry is unverified. The preflight script treats a hit as confirmed only when the installed package itself agrees (the name is absent from its build, or the path is absent from its folder). Re-read the migration guide for the installed revision before relying on an entry.",
+  "checked": "2026-11-22",
+  "changes": [
+    { "id": "examples-js-folder", "pattern": "three/examples/js/", "kind": "removed", "since": 148, "confirm_path_absent": "examples/js", "use": "ES modules from three/addons/ or three/examples/jsm/", "source": "three.js migration guide, from memory", "checked": "2026-11-22", "verified": false },
+    { "id": "addons-alias", "pattern": "['\"]three/addons/", "kind": "added", "since": 148, "confirm_export_absent": "./addons/*", "use": "three/examples/jsm/ on older revisions", "source": "three.js migration guide, from memory", "checked": "2026-11-22", "verified": false },
+    { "id": "output-encoding", "pattern": "\\.outputEncoding\\b", "kind": "renamed", "since": 152, "confirm_symbol_absent": "outputEncoding", "use": "renderer.outputColorSpace", "source": "three.js migration guide, from memory", "checked": "2026-11-22", "verified": false },
+    { "id": "encoding-constants", "pattern": "\\b(sRGBEncoding|LinearEncoding)\\b", "kind": "renamed", "since": 152, "confirm_symbol_absent": "sRGBEncoding", "use": "SRGBColorSpace, LinearSRGBColorSpace and texture.colorSpace", "source": "three.js migration guide, from memory", "checked": "2026-11-22", "verified": false },
+    { "id": "color-space-names", "pattern": "\\.outputColorSpace\\b|\\bSRGBColorSpace\\b", "kind": "added", "since": 152, "confirm_symbol_absent": "SRGBColorSpace", "use": "outputEncoding and sRGBEncoding on older revisions", "source": "three.js migration guide, from memory", "checked": "2026-11-22", "verified": false },
+    { "id": "geometry-class", "pattern": "\\bnew\\s+(THREE\\.)?(Geometry|Face3)\\s*\\(", "kind": "removed", "since": 125, "confirm_symbol_absent": "Face3", "use": "BufferGeometry", "source": "three.js migration guide, from memory", "checked": "2026-11-22", "verified": false },
+    { "id": "physically-correct-lights", "pattern": "\\.physicallyCorrectLights\\b", "kind": "renamed", "since": 150, "confirm_symbol_absent": "physicallyCorrectLights", "use": "the lighting mode of the installed revision; read its migration notes", "source": "three.js migration guide, from memory", "checked": "2026-11-22", "verified": false }
+  ]
+}

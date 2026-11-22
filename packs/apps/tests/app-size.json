@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "how big is my app",
+    "why did the ipa get bigger since last release",
+    "measure the .app and show the largest files",
+    "what grew in this build compared to the last one",
+    "save a size baseline for the iOS app",
+    "fail the build if the app grows more than 5 percent",
+    "break down the bundle size by frameworks and assets",
+    "the download size jumped, find out what was added",
+    "compare Notes.ipa with the baseline",
+    "list the ten biggest files in the mac app bundle"
+  ],
+  "quiet": [
+    "my javascript bundle is too big",
+    "optimize the images on my website",
+    "the app takes 4 seconds to launch",
+    "is the mac build signed",
+    "clean up old build folders",
+    "delete DerivedData",
+    "how much disk space is left on my mac",
+    "check the app store screenshots sizes",
+    "reduce memory use of the app",
+    "write release notes"
+  ],
+  "tasks": [
+    {
+      "name": "measure",
+      "prompt": "How big is build/Notes.app and what are the biggest parts?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "appsize\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply gives the total and parts from the script's output and says this is not the App Store download size. FAIL if it states sizes without running the script."
+        }
+      ]
+    },
+    {
+      "name": "no-baseline",
+      "prompt": "Did the app grow since the last release?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "appsize\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "No baseline exists. PASS if the reply ends as not verified, says no baseline exists and how to save one, and does not invent a previous size. FAIL otherwise."
+        }
+      ]
+    }
+  ]
+}

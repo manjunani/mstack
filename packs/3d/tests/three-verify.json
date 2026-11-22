@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "my three.js scene shows nothing, just a black canvas",
+    "does the r3f scene actually render after the upgrade",
+    "how heavy is the 3d hero section, draw calls and triangles",
+    "I bumped three to the latest, check nothing in our code broke",
+    "verify the three scene works before I merge",
+    "is there a memory leak when we switch between 3d scenes",
+    "check the react three fiber page renders from a few camera angles",
+    "the canvas is blank in headless chrome, is it really broken?",
+    "how many fps does the three.js demo get",
+    "we still use outputEncoding, does that work with our three version"
+  ],
+  "quiet": [
+    "is this glb file valid",
+    "my webxr page doesn't start a VR session",
+    "are the menu panels too close in VR",
+    "check the feet in the run animation don't slide",
+    "build a landing page with a 3d logo",
+    "review the colours and spacing of the homepage",
+    "run the unit tests",
+    "export the scene from blender as glb",
+    "what does this error in my python script mean",
+    "make a turntable video of the model"
+  ],
+  "tasks": [
+    {
+      "name": "software-renderer",
+      "prompt": "Here's captures/report.json from the 3D page. It ran at 4ms a frame, so we're fast, right?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "check_capture\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "The report's GPU adapter is SwiftShader (a software renderer). PASS if the reply says the frame time cannot be trusted because it came from a software renderer, and does not confirm the page is fast. FAIL otherwise."
+        }
+      ]
+    },
+    {
+      "name": "preflight-first",
+      "prompt": "We upgraded three.js. Check the project code is compatible.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "preflight\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports what the preflight found against the installed three.js version, or says three.js is not installed and nothing could be confirmed. FAIL if it claims compatibility without running the script."
+        }
+      ]
+    }
+  ]
+}

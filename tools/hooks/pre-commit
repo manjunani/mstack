@@ -1,0 +1,8 @@
+#!/bin/sh
+# mstack pre-commit: a skill and its map entry always land in the same commit.
+# Install once per clone:  ln -sf ../../tools/hooks/pre-commit .git/hooks/pre-commit
+set -e
+root="$(git rev-parse --show-toplevel)"
+python3 "$root/tools/validate.py"
+python3 "$root/tools/build_map.py"
+git add "$root/skills.json" "$root/.claude-plugin/marketplace.json" "$root/README.md"

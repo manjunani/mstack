@@ -1,0 +1,78 @@
+{
+  "fire": [
+    "is the new settings page done? check it on mobile too",
+    "does the checkout screen look right before I ship it",
+    "can you look over the pricing page I just built, anything broken?",
+    "check the dashboard at phone, tablet and desktop width",
+    "something looks off on small screens, text gets cut off i think",
+    "before we call the onboarding UI finished make sure it renders properly",
+    "run a design review on localhost:3000/profile",
+    "verify the dark mode version of the cards looks ok",
+    "I changed the header component, does it still render fine everywhere",
+    "QA the visuals of the signup form before I hand it to the client"
+  ],
+  "quiet": [
+    "run a full WCAG 2.2 AA audit with axe on the checkout",
+    "check our colour tokens for contrast in dark mode",
+    "review my diff for bugs before I merge",
+    "build a new landing page for the product",
+    "make this page match the figma screenshot I attached",
+    "the error messages on the form are confusing, rewrite them",
+    "are the tests passing?",
+    "run the end to end tests for the login flow",
+    "does this page use our brand colours",
+    "explain how flexbox wrap works"
+  ],
+  "tasks": [
+    {
+      "name": "no-browser",
+      "prompt": "I built the orders page in src/pages/Orders.jsx. Is the UI done?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "check_page\\.py|collect\\.js"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states one end state (pass, fail, not verified or blocked) and names what was not checked. The workspace has no running page. FAIL if the reply says the page passed or looks right without a snapshot the checker read."
+        }
+      ]
+    },
+    {
+      "name": "judges-snapshot",
+      "prompt": "Here is a snapshot of my page in snapshot.json captured at 320, 768 and 1440 px. Is it ready to ship?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "check_page\\.py"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states one end state (pass, fail, not verified or blocked) and names what was not checked. FAIL if the reply calls a page with blocking findings done, or treats warnings about generic looks as blockers."
+        }
+      ]
+    }
+  ]
+}

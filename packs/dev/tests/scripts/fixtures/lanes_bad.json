@@ -1,0 +1,9 @@
+{
+  "tasks": [
+    { "name": "Bad Name", "goal": "x", "files": ["a.txt"] },
+    { "name": "nofiles", "goal": "No list of files at all." },
+    { "name": "outside", "goal": "Reaches out of the project.", "files": ["../elsewhere/x.py", "/etc/hosts", "*"] },
+    { "name": "nogoal", "files": ["b.txt"] },
+    { "name": "nogoal", "goal": "Same name twice.", "files": ["c.txt"] }
+  ]
+}

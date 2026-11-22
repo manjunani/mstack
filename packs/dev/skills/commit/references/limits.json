@@ -1,0 +1,30 @@
+{
+  "subject_max": {
+    "value": 72,
+    "unit": "characters in the first line of a commit message",
+    "source": "long-standing git convention (git's own documentation suggests about 50; many projects use 72); written from memory",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "body_required_lines": {
+    "value": 150,
+    "unit": "staged lines (added plus removed) above which a message needs a body",
+    "source": "mstack's own first setting; no outside source",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "body_required_files": {
+    "value": 8,
+    "unit": "staged files above which a message needs a body",
+    "source": "mstack's own first setting; no outside source",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "large_file_mb": {
+    "value": 5,
+    "unit": "megabytes; a staged file above this gets a warning",
+    "source": "mstack's own first setting; no outside source",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

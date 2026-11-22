@@ -1,0 +1,22 @@
+/* Hand-written token file where every named pair passes in both themes. */
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --muted: #f3f4f6;
+  --muted-foreground: #4b5563;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-4: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b1020;
+    --foreground: #e5e7eb;
+    --muted: #1f2937;
+    --muted-foreground: #9ca3af;
+    --primary: #1d4ed8;
+  }
+}

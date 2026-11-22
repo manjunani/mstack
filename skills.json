@@ -1,0 +1,2409 @@
+{
+  "name": "mstack",
+  "version": "0.1.0",
+  "marketplace": "manjunani/mstack",
+  "packs": [
+    {
+      "name": "mstack-3d",
+      "description": "3D models and scenes, proven by numbers and pixels: glTF gate, three.js render check, rig motion check, Blender jobs, text-to-3D acceptance.",
+      "version": "0.1.0",
+      "source": "./packs/3d",
+      "skills": [
+        "blender-task",
+        "gltf-gate",
+        "rig-motion-check",
+        "text-to-3d",
+        "three-verify"
+      ],
+      "install": "/plugin install mstack-3d --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-ai",
+      "description": "Checks for building with AI models and agents: gate an evaluation run, probe an MCP server, triage an agent trace, lint tool definitions, score retrieval, measure spend, test for prompt injection, check an LLM grader.",
+      "version": "0.1.0",
+      "source": "./packs/ai",
+      "skills": [
+        "eval-gate",
+        "injection-test",
+        "judge-check",
+        "mcp-check",
+        "rag-check",
+        "spend-check",
+        "tool-lint",
+        "trace-triage"
+      ],
+      "install": "/plugin install mstack-ai --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-apps",
+      "description": "iPhone apps in SwiftUI and Mac apps in Tauri: prove a screen on the simulator, record a flow, check store readiness, accessibility, signing and notarisation, Tauri configuration, crash reports, app size and release notes.",
+      "version": "0.1.0",
+      "source": "./packs/apps",
+      "skills": [
+        "app-release-notes",
+        "app-size",
+        "crash-read",
+        "ios-a11y-check",
+        "ios-submit-check",
+        "mac-release-verify",
+        "sim-flow",
+        "sim-proof",
+        "tauri-preflight"
+      ],
+      "install": "/plugin install mstack-apps --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-core",
+      "description": "The base pack: prove work is done, delete safely, keep decisions, hand off a session, find the right skill.",
+      "version": "0.1.0",
+      "source": "./packs/core",
+      "skills": [
+        "debrief",
+        "handoff",
+        "mstack",
+        "remember",
+        "safe-delete",
+        "scope-lock",
+        "skill-check",
+        "verify"
+      ],
+      "install": "/plugin install mstack-core --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-data",
+      "description": "Working with data: profile, check, diff and clean datasets, run and review SQL read-only, trace report numbers, compare groups, and audit charts, spreadsheets and notebooks.",
+      "version": "0.1.0",
+      "source": "./packs/data",
+      "skills": [
+        "chart-check",
+        "data-check",
+        "data-clean",
+        "data-diff",
+        "data-profile",
+        "notebook-check",
+        "number-trace",
+        "query-review",
+        "sheet-audit",
+        "sql-run",
+        "stat-compare"
+      ],
+      "install": "/plugin install mstack-data --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-design",
+      "description": "UI and UX checks: gate a rendered page, audit accessibility, check tokens, build and match screens, check interface words, keep work on brand.",
+      "version": "0.1.0",
+      "source": "./packs/design",
+      "skills": [
+        "a11y-audit",
+        "brand-kit",
+        "design-review",
+        "token-check",
+        "ui-build",
+        "ui-copy",
+        "ui-match"
+      ],
+      "install": "/plugin install mstack-design --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-dev",
+      "description": "Software development with proof at each step: plan, build, prove a test, debug, review, parallel work, commit, land a branch, release, security check.",
+      "version": "0.1.0",
+      "source": "./packs/dev",
+      "skills": [
+        "build",
+        "commit",
+        "debug",
+        "land",
+        "parallel",
+        "plan",
+        "prove-test",
+        "release",
+        "review",
+        "secure"
+      ],
+      "install": "/plugin install mstack-dev --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-growth",
+      "description": "Getting a product found and understood: site audit, structured data, launch pages, posts, claims, first screen, tracking, store listing, page comparison, mail domain records.",
+      "version": "0.1.0",
+      "source": "./packs/growth",
+      "skills": [
+        "claim-check",
+        "first-screen",
+        "launch-site-check",
+        "mail-domain-check",
+        "page-compare",
+        "post-check",
+        "site-audit",
+        "store-listing-check",
+        "structured-data-check",
+        "tracking-check"
+      ],
+      "install": "/plugin install mstack-growth --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-media",
+      "description": "Audio, video and image work with a measured result: word-timed transcripts, subtitles, platform exports, podcast clean-up, show notes, transcript-based cuts and image batches.",
+      "version": "0.1.0",
+      "source": "./packs/media",
+      "skills": [
+        "captions",
+        "export-check",
+        "image-batch",
+        "podcast-edit",
+        "show-notes",
+        "transcribe",
+        "video-edit"
+      ],
+      "install": "/plugin install mstack-media --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-ops",
+      "description": "Running software: check a deploy, a migration, a backup, a CI file, a bill and a log with scripts that end in a stated result, and touch nothing live without a yes.",
+      "version": "0.1.0",
+      "source": "./packs/ops",
+      "skills": [
+        "ci-check",
+        "ci-fix",
+        "cost-watch",
+        "dep-upgrade",
+        "deploy-check",
+        "env-check",
+        "log-triage",
+        "migration-check",
+        "perf-check",
+        "restore-test",
+        "rollback"
+      ],
+      "install": "/plugin install mstack-ops --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-product",
+      "description": "Requirement gathering and brainstorming: settle what is wanted, write a checkable spec, trace it to tests and code, put numbers on quality words, produce and compare options, test a plan's assumptions, and turn interview notes into evidence.",
+      "version": "0.1.0",
+      "source": "./packs/product",
+      "skills": [
+        "clarify",
+        "compare-options",
+        "ideate",
+        "nfr-budgets",
+        "premortem",
+        "research-synthesis",
+        "spec",
+        "trace"
+      ],
+      "install": "/plugin install mstack-product --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-test",
+      "description": "Software testing: QA a running app, pin down flaky tests, derive test cases, find untested risks, keep test data free of personal data, check an API against its contract, confirm a bug before reporting it.",
+      "version": "0.1.0",
+      "source": "./packs/test",
+      "skills": [
+        "api-check",
+        "bug-report",
+        "flaky-triage",
+        "qa-run",
+        "test-cases",
+        "test-data",
+        "test-gaps"
+      ],
+      "install": "/plugin install mstack-test --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-web",
+      "description": "Working with the live web, honestly: check a deployed site, find broken links, extract a page, check quotes against saved sources, plan a polite fetch, keep research sourced, measure transfer speed, watch a page for changes.",
+      "version": "0.1.0",
+      "source": "./packs/web",
+      "skills": [
+        "cite-check",
+        "fetch-plan",
+        "link-check",
+        "page-extract",
+        "page-speed",
+        "page-watch",
+        "site-check",
+        "web-research"
+      ],
+      "install": "/plugin install mstack-web --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-writing",
+      "description": "Text work with a proof: copy-edits where every change is listed and nothing else moved, and translations where numbers, names, links and placeholders are counted on both sides.",
+      "version": "0.1.0",
+      "source": "./packs/writing",
+      "skills": [
+        "copyedit",
+        "translate-check"
+      ],
+      "install": "/plugin install mstack-writing --marketplace manjunani/mstack"
+    },
+    {
+      "name": "mstack-xr",
+      "description": "VR and AR without guessing: WebXR checks in an emulator, a numeric comfort audit, platform detection, and phone AR previews at real size.",
+      "version": "0.1.0",
+      "source": "./packs/xr",
+      "skills": [
+        "webar-preview",
+        "webxr-verify",
+        "xr-comfort-review",
+        "xr-target"
+      ],
+      "install": "/plugin install mstack-xr --marketplace manjunani/mstack"
+    }
+  ],
+  "skills": [
+    {
+      "name": "blender-task",
+      "pack": "mstack-3d",
+      "description": "Runs a Blender job in background mode with a script and proves the result from a state file of objects, sizes, polygon counts, modifiers and applied scale, checked against facts from the request. Use when the user wants something modelled, cleaned up, decimated or exported in Blender, or asks to apply scale or modifiers in a .blend. Not for checking an exported model alone (use gltf-gate).",
+      "needs": [
+        "python3",
+        "Blender"
+      ],
+      "version": "0.1.0",
+      "path": "packs/3d/skills/blender-task",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "gltf-gate",
+      "pack": "mstack-3d",
+      "description": "Stops a .glb or .gltf model from shipping until it is a real file, sound in structure, inside a budget and looked at. Reports triangles, materials, textures and size in metres, then writes a manifest. Use when a model was exported, downloaded, generated or optimised, or the user asks \"is this model ok\", \"will it run on Quest\" or \"why is it so big\". Not for checking a whole three.js page (use three-verify).",
+      "needs": [
+        "python3; optional gltf_validator",
+        "gltf-transform",
+        "a browser for renders"
+      ],
+      "version": "0.1.0",
+      "path": "packs/3d/skills/gltf-gate",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "rig-motion-check",
+      "pack": "mstack-3d",
+      "description": "Checks a rigged or animated .glb by numbers: lists bones and clips, then follows a foot or hand bone through each clip and reports height above the floor, sliding while planted, sinking and scale drift, with a per-sample table. Use when a character's feet slide or sink, an animation looks wrong, or a rigged model came from a generator or export. Not for file structure or budget checks (use gltf-gate).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/3d/skills/rig-motion-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "text-to-3d",
+      "pack": "mstack-3d",
+      "description": "Gets one 3D model from a text-to-3D provider the user picked, with the cost agreed first, then accepts or rejects the downloaded file by running real-file, structure and budget checks and recording the spend. Use when the user asks to generate a 3D model or asset from a prompt or image with an AI service. Not for checking a model you already have (use gltf-gate).",
+      "needs": [
+        "python3",
+        "the provider's own tool or account"
+      ],
+      "version": "0.1.0",
+      "path": "packs/3d/skills/text-to-3d",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "three-verify",
+      "pack": "mstack-3d",
+      "description": "Proves a three.js or React Three Fiber scene renders and reports its cost. Checks the code against the installed three.js version, then judges a capture of screenshots per camera pose, console errors, draw calls and a dispose leak test. Use when a 3D page was built or changed, the canvas is black, or the user asks \"does the scene work\" or \"how heavy is it\". Not for checking one model file (use gltf-gate).",
+      "needs": [
+        "python3",
+        "a browser with a screenshot tool; node optional"
+      ],
+      "version": "0.1.0",
+      "path": "packs/3d/skills/three-verify",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "eval-gate",
+      "pack": "mstack-ai",
+      "description": "Decides whether a change to a prompt, model, tool or agent made results worse, by comparing a new evaluation run with a saved baseline, case by case over repeated trials. Use when a prompt was edited, a model is being swapped or upgraded, or the user asks \"did my eval get worse?\", \"is the new prompt better?\" or \"can I ship this agent change?\". Not for checking the grader itself (use judge-check), for retrieval scores alone (use rag-check) or for ordinary code tests (use verify).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ai/skills/eval-gate",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "injection-test",
+      "pack": "mstack-ai",
+      "description": "Tests whether planted instructions in documents can steer an agent, using eight harmless test documents that ask for a marker word or a forbidden tool call, then reads the saved transcripts and reports which documents the agent obeyed. Use when an agent reads web pages, files, emails or tool results, or the user asks \"can my agent be prompt-injected?\" or \"does it follow instructions hidden in documents?\". Not for reviewing an app's code for security holes (use secure) or for vetting a third-party skill (use skill-check).",
+      "needs": [
+        "python3",
+        "the user's own agent"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ai/skills/injection-test",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "judge-check",
+      "pack": "mstack-ai",
+      "description": "Tests whether an LLM grader can be trusted, by comparing its verdicts with examples a person labelled and reporting agreement, a confusion table, Cohen's kappa and every disagreement. Use when an eval is scored by a model, a judge prompt or rubric was written or changed, or the user asks \"can I trust my LLM judge?\" or \"does the grader agree with me?\". Not for comparing two eval runs (use eval-gate) or for writing the cases to grade (use test-cases).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ai/skills/judge-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "mcp-check",
+      "pack": "mstack-ai",
+      "description": "Proves a stdio MCP server works by starting it, running the initialize and tools/list exchange, checking that every tool's input schema is well formed, and calling the tools the user names to compare each answer with its schema. Use when an MCP server was built or changed, a client reports \"no tools\" or a tool call errors, or the user asks \"does my MCP server work?\". Not for linting a tool definition file with no server running (use tool-lint) or for testing a REST API (use api-check).",
+      "needs": [
+        "python3",
+        "the server's own runtime"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ai/skills/mcp-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "rag-check",
+      "pack": "mstack-ai",
+      "description": "Measures whether retrieval returns the passage that holds the answer, from a gold set of questions and the ranked ids a retriever returned, with hit rate at k, mean reciprocal rank, the misses and the change against a saved baseline. Use when chunking, embeddings, an index or a reranker changed, or the user asks \"is my RAG finding the right chunks?\" or \"did retrieval get worse?\". Not for judging the generated answers (use eval-gate) or for checking an LLM grader (use judge-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ai/skills/rag-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "spend-check",
+      "pack": "mstack-ai",
+      "description": "Measures the tokens and cost of an AI flow from its own usage log and compares them with a budget, with totals by model or feature tag, the cache read share, and rows without a price kept apart. Use when the user asks \"how much does this agent cost per run?\", \"are we over budget on tokens?\" or \"did caching cut the bill?\", or before a flow goes to production. Not for a cloud or hosting bill (use cost-watch) or for how to set up prompt caching (use the provider's own documentation or skill).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ai/skills/spend-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "tool-lint",
+      "pack": "mstack-ai",
+      "description": "Checks tool definitions before a model sees them and flags names that are unclear or collide, descriptions that do not say when to use the tool, missing required lists, untyped parameters and pairs of tools whose descriptions overlap. Use when tools or function schemas for an agent were written or changed, the model keeps picking the wrong tool, or the user asks \"are my tool definitions good?\". Not for a running MCP server (use mcp-check) or for vetting someone else's skill or plugin (use skill-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ai/skills/tool-lint",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "trace-triage",
+      "pack": "mstack-ai",
+      "description": "Reads the saved trace of an agent run and names where it went wrong, with line numbers for the first failing step, repeated identical tool calls, tool errors the agent ignored, turns with no progress and the largest context contributors. Use when an agent got stuck, looped, burned its turns, gave up or claimed success after an error, or the user asks \"why did the agent do that?\". Not for server or application logs (use log-triage), for bugs in ordinary code (use debug) or for token cost against a budget (use spend-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ai/skills/trace-triage",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "app-release-notes",
+      "pack": "mstack-apps",
+      "description": "Drafts \"What's New\" notes for an app version from the real commits between two tags and checks them: each line names a commit in the range, and each user-facing feat, fix or perf commit appears or is skipped on purpose. Use when the user asks for release notes, a changelog for the App Store or TestFlight, or \"what changed since 1.2\". Not for cutting the release itself (use release) or for the store listing text (use store-listing-check).",
+      "needs": [
+        "python3",
+        "git"
+      ],
+      "version": "0.1.0",
+      "path": "packs/apps/skills/app-release-notes",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "app-size",
+      "pack": "mstack-apps",
+      "description": "Measures a built .app or .ipa by part (executable, frameworks, Assets.car, resources) and lists the largest files, keeps a baseline under .mstack, and shows what grew, what is new and what was removed since that baseline. Use when the user asks \"how big is the app\", \"why did the download get bigger\", \"what grew in this build\" or wants a size limit on an iPhone or Mac build. Not for web bundle size (use verify with the project's own budget check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/apps/skills/app-size",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "crash-read",
+      "pack": "mstack-apps",
+      "description": "Reads an Apple crash report (.ips or .crash) and names the failing frame from the app's own code. Use when an iPhone or Mac app crashed and the user points to a crash log, says \"it crashed on launch\" or asks \"what does this crash report mean\". Prints the exception type, crashed thread, whether frames are symbolicated, and checks a dSYM's build id matches before resolving addresses with atos. Not for finding the bug's cause in code (use debug).",
+      "needs": [
+        "python3; dwarfdump and atos (Xcode command-line tools) only for unsymbolicated reports"
+      ],
+      "version": "0.1.0",
+      "path": "packs/apps/skills/crash-read",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "ios-a11y-check",
+      "pack": "mstack-apps",
+      "description": "Finds SwiftUI code that breaks VoiceOver and Dynamic Type, with file and line. Use when the user asks about VoiceOver labels, Dynamic Type, larger text or accessibility of an iPhone app. Flags icon buttons and images with no accessibility label, fixed font sizes, state shown by colour alone, and checks the largest-text screenshots exist and are not blank. Not for web pages (use a11y-audit) or for visual taste (use design-review).",
+      "needs": [
+        "python3; the simulator only for the screenshots"
+      ],
+      "version": "0.1.0",
+      "path": "packs/apps/skills/ios-a11y-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "ios-submit-check",
+      "pack": "mstack-apps",
+      "description": "Finds the mechanical reasons an iPhone app upload or App Store review would bounce: missing purpose strings for camera, location or photos, an incomplete privacy manifest, mismatched version and build numbers, a bad 1024 icon, wrong screenshot sizes. Use when the user is about to archive or upload to App Store Connect or TestFlight, or asks \"is the app ready to submit\". Not for the store listing text (use store-listing-check) or for a full release checklist (use release).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/apps/skills/ios-submit-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "mac-release-verify",
+      "pack": "mstack-apps",
+      "description": "Checks that a built Mac app or .dmg will open on other people's Macs: runs codesign strict verification, a Gatekeeper assessment with spctl and stapler validate for the notarisation ticket, and reports each as pass, fail or could not check. Use when a Mac build or disk image is ready to share, or the user asks \"is it signed\", \"is it notarized\", \"will Gatekeeper block it\" or \"damaged and can't be opened\". Not for iPhone builds (use ios-submit-check) or for checking a deployed web service (use deploy-check).",
+      "needs": [
+        "python3",
+        "macOS",
+        "codesign",
+        "spctl",
+        "xcrun stapler"
+      ],
+      "version": "0.1.0",
+      "path": "packs/apps/skills/mac-release-verify",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "sim-flow",
+      "pack": "mstack-apps",
+      "description": "Records a user flow on the iPhone simulator step by step and checks the record: each step has an action, the screen expected, what was seen and a non-blank screenshot, with one result for the whole flow. Use when the user asks to walk through sign-up, checkout or onboarding on the simulator, \"tap through the app and check each screen\" or \"test this flow on iPhone\". Not for proving one launch screen (use sim-proof) or for web flows in a browser (use qa-run).",
+      "needs": [
+        "python3",
+        "a tool that can tap on the simulator (the host agent's simulator tool or the project's UI tests)"
+      ],
+      "version": "0.1.0",
+      "path": "packs/apps/skills/sim-flow",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "sim-proof",
+      "pack": "mstack-apps",
+      "description": "Proves an iPhone app launches on the simulator and shows a real screen: installs the built .app on a booted simulator, launches it, checks the process stays alive and takes a screenshot that a pixel check confirms is not blank. Use when a SwiftUI change needs simulator evidence, or the user asks \"does it run\", \"show me it on the iPhone simulator\" or \"screenshot the app\". Not for driving a multi-step flow with taps (use sim-flow) or for judging how the screen looks (use design-review).",
+      "needs": [
+        "python3",
+        "Xcode command-line tools (xcrun simctl)",
+        "a booted simulator",
+        "a simulator build of the app"
+      ],
+      "version": "0.1.0",
+      "path": "packs/apps/skills/sim-proof",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "tauri-preflight",
+      "pack": "mstack-apps",
+      "description": "Flags release blockers in a Tauri app's tauri.conf.json and capabilities. Use when a Tauri desktop app is about to get a release build or the user asks \"is my Tauri config ok to ship\". Checks a default bundle identifier, versions that disagree with Cargo.toml and package.json, a missing or permissive CSP, broad fs, shell or http permissions, an updater without a public key or on plain http, missing icons. Not for checking the built, signed .app (use mac-release-verify).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/apps/skills/tauri-preflight",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "debrief",
+      "pack": "mstack-core",
+      "description": "Explains what a task really changed, built from the actual diff and the checks on record, at the user's level, including what is not done and not verified. Use when the user asks what you just did, what changed, which files you touched and why, for a summary of the work on this task, to walk them through it, or did not follow the work that was just finished. Not for proving the work passes (use verify) or for handing unfinished work to a new session (use handoff).",
+      "needs": [
+        "python3",
+        "git"
+      ],
+      "version": "0.1.0",
+      "path": "packs/core/skills/debrief",
+      "tests": {
+        "trigger": "9/10",
+        "silence": "0/10",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "handoff",
+      "pack": "mstack-core",
+      "description": "Writes one file that lets a fresh session continue unfinished work without the old conversation, with the goal, what is done, the next steps and the exact code state. Use when the user is stopping for now, the conversation is getting long, a limit is close, or they ask to hand off, save progress or pick this up later. Also use to resume from a handoff. Not for lasting decisions (use remember) or for explaining finished work (use debrief).",
+      "needs": [
+        "python3",
+        "git"
+      ],
+      "version": "0.1.0",
+      "path": "packs/core/skills/handoff",
+      "tests": {
+        "trigger": "10/10",
+        "silence": "0/10",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "mstack",
+      "pack": "mstack-core",
+      "description": "Looks up which mstack skill or pack fits a task, from the generated map of every skill, and gives the install line for a pack that is missing. Use when the user asks \"is there a skill for this?\", \"which skill should I use?\", \"what can mstack do?\", or wants to see the list of packs or skills. Not for doing the task itself: this only names a skill, it never starts one.",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/core/skills/mstack",
+      "tests": {
+        "trigger": "10/10",
+        "silence": "0/10",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "remember",
+      "pack": "mstack-core",
+      "description": "Saves a decision or a lesson as a short record in a plain file in the repository, so the next session, agent or person does not ask again or repeat a mistake. Use when the user settles something that lasts (\"we'll use Postgres\", \"from now on\", \"never do X again\"), corrects the way work is done, or asks to note or remember something. Not for passing the current task to a new session (use handoff) or for explaining what changed (use debrief).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/core/skills/remember",
+      "tests": {
+        "trigger": "9/10",
+        "silence": "0/10",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "safe-delete",
+      "pack": "mstack-core",
+      "description": "Removes files and folders so the removal can be undone. Lists exactly what would go, what refers to it and what git cannot bring back, then moves it to a trash folder with an undo command. Use when asked to delete, remove, clean up, clear out or get rid of files, folders, old code or build output, or before any command that destroys or overwrites. Not for reverting a code change (use git) or for finishing a branch (use land).",
+      "needs": [
+        "python3",
+        "git"
+      ],
+      "version": "0.1.0",
+      "path": "packs/core/skills/safe-delete",
+      "tests": {
+        "trigger": "9/10",
+        "silence": "0/10",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "scope-lock",
+      "pack": "mstack-core",
+      "description": "Keeps file edits inside one folder until released, so a task cannot change files elsewhere by accident. Sets a lock that the guard hook enforces on Write and Edit calls. Use when the user says to touch only one folder, to stay out of a part of the code, or to work on one module without changing anything else. Not for removing files (use safe-delete) or for checking a finished change (use review).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/core/skills/scope-lock",
+      "tests": {
+        "trigger": "10/10",
+        "silence": "0/10",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "skill-check",
+      "pack": "mstack-core",
+      "description": "Reads a third-party skill, plugin or skills repository before install and reports what could harm the user, such as downloads piped into a shell, credential reads, hidden text and instructions aimed at the agent. Never runs what it reads. Use when the user wants to install, add or try a skill or plugin from someone else, or asks whether one is safe. Not for reviewing the user's own code changes (use review or secure).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/core/skills/skill-check",
+      "tests": {
+        "trigger": "10/10",
+        "silence": "0/10",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "verify",
+      "pack": "mstack-core",
+      "description": "Proves a \"done\" claim with fresh evidence. Runs the project's own test, type, lint and build commands and writes a record of each result tied to the exact code state. Use when work is about to be called finished, fixed or passing, before a commit, pull request or deploy, or when the user asks \"is it done?\" or \"does it still work?\". Not for finding why a check fails (use debug) or for judging code quality (use review).",
+      "needs": [
+        "python3",
+        "git"
+      ],
+      "version": "0.1.0",
+      "path": "packs/core/skills/verify",
+      "tests": {
+        "trigger": "8/10",
+        "silence": "0/10",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "chart-check",
+      "pack": "mstack-data",
+      "description": "Checks a chart from its JSON spec for a truncated bar axis, missing labels or units, clipped data, too many series, crowded pies, dual axes, categories out of order, values that differ from the source data. Use when a chart or dashboard panel is about to be shared, or someone asks \"is this chart misleading\" or \"does this plot match the data\". Not for numbers in report text (use number-trace) or for drawing the chart.",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/data/skills/chart-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "data-check",
+      "pack": "mstack-data",
+      "description": "Runs written rules against a dataset like tests (not null, unique, allowed values, range, pattern, row count, foreign key into another file) and reports each rule as pass, fail or not run, with the failing row numbers. Use when data has to meet agreed rules before loading, publishing or handing over, or the user asks \"does this file meet the spec\" or wants a data quality gate. Not for a first look at an unknown file (use data-profile) or for fixing values (use data-clean).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/data/skills/data-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "data-clean",
+      "pack": "mstack-data",
+      "description": "Cleans a CSV with named operations (trim, change case, dates to ISO, drop exact duplicates, map values, fill with a stated value) into a new file, and writes a log with row, column, before and after for every change, replayed to prove it. Use when asked to tidy, standardise, fix or deduplicate messy data, \"clean up this CSV\", or fix the problems a profile found. It never guesses a fill value. Not for finding the problems first (use data-profile) or for fake test data (use test-data).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/data/skills/data-clean",
+      "tests": {
+        "trigger": "1/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "data-diff",
+      "pack": "mstack-data",
+      "description": "Compares two versions of a dataset by key and reports rows added, removed and changed, which columns changed and how often, with before and after values; reordered rows and columns are not counted as changes, and the totals are checked to add up. Use when asking \"what changed between yesterday's export and today's\", after a pipeline or cleaning run, or to prove a refactor left the output the same. Not for a first look at one file (use data-profile) or for code diffs (use git).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/data/skills/data-diff",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "data-profile",
+      "pack": "mstack-data",
+      "description": "Describes a CSV, JSON-lines file or SQLite table as it really is, giving row count, per-column type, empty share, distinct count, min and max, top values, duplicate rows, and columns that look like identifiers or personal data. Use when someone hands over a dataset, asks \"what's in this file\", or before trusting, analysing or sharing data nobody has looked at yet. Not for checking data against written rules (use data-check) or comparing two versions (use data-diff).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/data/skills/data-profile",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "notebook-check",
+      "pack": "mstack-data",
+      "description": "Checks a Jupyter .ipynb file for cells run out of order or never run, error outputs, names used before they are defined, machine-only paths, credentials; re-runs a copy when Jupyter is there. Use when a notebook is shared or its results quoted, or someone asks \"will this notebook run for me\" or \"is this notebook reproducible\". Not for numbers in a written report (use number-trace) or the project's test suite (use verify).",
+      "needs": [
+        "python3",
+        "jupyter (optional",
+        "for the re-run)"
+      ],
+      "version": "0.1.0",
+      "path": "packs/data/skills/notebook-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "number-trace",
+      "pack": "mstack-data",
+      "description": "Ties every number in a report to the query or file aggregate that produced it, re-runs each one, and lists numbers that match, do not match, or have no source. Use when a report, memo, slide text or README quotes figures and someone asks \"where does this number come from\", \"are these numbers still right\", or before sending a report with data in it. Not for checking quotes and claims against saved web sources (use cite-check) or for checking a chart's drawing (use chart-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/data/skills/number-trace",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "query-review",
+      "pack": "mstack-data",
+      "description": "Reviews one SELECT query without running it, flagging SELECT star, joins with no condition, filters wrapped in a function, no LIMIT, and on SQLite the query plan's full scans and missing indexes. Use when a query is slow, before a query goes into code or a dashboard, or when asked \"is this SQL ok\" or \"why is this query slow\". Not for getting the query's results (use sql-run) or reviewing schema migrations (use migration-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/data/skills/query-review",
+      "tests": {
+        "trigger": "1/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "sheet-audit",
+      "pack": "mstack-data",
+      "description": "Audits an .xlsx workbook from the file for error cells, numbers typed over formulas, formulas that break their row or column, links to empty cells or other workbooks, hidden sheets, and what it did not read. Use when asked \"can I trust this spreadsheet\", \"check this Excel model\", or before numbers from a workbook go into a report. Not for building or editing spreadsheets, or for CSV files (use data-profile).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/data/skills/sheet-audit",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "sql-run",
+      "pack": "mstack-data",
+      "description": "Runs one SQL query read-only with the limits inside the runner, with a single SELECT or WITH only, the SQLite file opened read-only, a row cap, a time limit, the query plan printed with the rows. Use when the user wants an answer pulled from a database, says \"run this query\", \"how many orders last month\", or asks to look at a SQLite file. For Postgres, MySQL and others it only checks the statement and hands it over. Not for judging a query's plan and risks (use query-review) or changing data.",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/data/skills/sql-run",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "stat-compare",
+      "pack": "mstack-data",
+      "description": "Compares two groups from the raw rows (A/B test, before and after, two segments), giving sizes, means, medians, a seeded permutation test, an interval, an effect size, and warnings on small samples, skew and spread. Use when asked \"is this difference real\", \"did variant B win\", or whether a change moved a metric. Says not verified when a group is too small. Not for AI eval runs (use eval-gate) or scoring options (use compare-options).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/data/skills/stat-compare",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "a11y-audit",
+      "pack": "mstack-design",
+      "description": "Finds accessibility failures on a rendered page with axe-core and a Tab-key walk, fixes them, then proves the fix by running the same scan against a saved baseline. Use when the user asks for an accessibility or WCAG audit, screen reader or keyboard support, says \"can blind users use this\", or a page failed an a11y check. Not for a visual check of layout and contrast before release (use design-review) or for colour tokens alone (use token-check).",
+      "needs": [
+        "python3",
+        "node",
+        "Playwright with Chromium and axe-core in the project (or a host browser tool that can run axe)"
+      ],
+      "version": "0.1.0",
+      "path": "packs/design/skills/a11y-audit",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "brand-kit",
+      "pack": "mstack-design",
+      "description": "Captures the user's own brand into one brand.json file (colours with use and never rules, fonts, voice with banned phrases) and checks pages, stylesheets or copy against it, listing every off-brand colour, font and phrase with its location. Use when the user says \"keep it on brand\", \"use our brand colours\", shares brand guidelines or a style guide, or asks whether a page matches the brand. Not for contrast of design tokens (use token-check) or general interface wording (use ui-copy).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/design/skills/brand-kit",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "design-review",
+      "pack": "mstack-design",
+      "description": "Gates a rendered page before it is called done, from what the browser drew at phone, tablet and desktop width. Use when a page, screen or component was built or changed and someone asks \"does it look right?\", \"is the UI done?\" or wants it checked on mobile. Blocks on cut-off or overflowing content, low contrast, controls with no name, tiny tap targets and placeholder text, in each theme and state. Not for a full WCAG audit (use a11y-audit) or for reviewing code (use review).",
+      "needs": [
+        "python3",
+        "a browser the agent can drive (host browser tool or Playwright)"
+      ],
+      "version": "0.1.0",
+      "path": "packs/design/skills/design-review",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "token-check",
+      "pack": "mstack-design",
+      "description": "Measures every text-on-background colour token pair in light and dark mode, proposes a passing value with the same hue for each failure, and lists hard-coded colours and off-scale sizes in the code. Use when the user asks if the palette or theme colours are readable, wants dark mode contrast checked, or asks to find colours and spacing that ignore the design tokens or CSS variables. Not for checking a rendered page (use design-review) or for brand rules (use brand-kit).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/design/skills/token-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "ui-build",
+      "pack": "mstack-design",
+      "description": "Builds a new screen, or reworks one that looks generic, so it fits this product: a short written direction first, then the build, a lint for unfinished work and default-look traits, and at most three render-and-inspect rounds. Use when the user asks to build, make or redesign a page, landing page, dashboard or component, or says the UI looks like every AI template. Not for checking a finished page (use design-review) or copying a mockup exactly (use ui-match).",
+      "needs": [
+        "python3",
+        "a browser the agent can drive for the render step"
+      ],
+      "version": "0.1.0",
+      "path": "packs/design/skills/ui-build",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "ui-copy",
+      "pack": "mstack-design",
+      "description": "Checks the words in an interface from a list of every visible label, button and message. Use when the user asks to review button labels, microcopy, error messages or UX writing, or says the wording on a screen is confusing. Flags one action with several names, buttons like \"OK\" or \"Submit\" that do not say what happens, errors with no way forward, raw error codes and leftover placeholder text. Not for editing long prose or docs (use copyedit) or for a visual page check (use design-review).",
+      "needs": [
+        "python3; a browser for the best evidence"
+      ],
+      "version": "0.1.0",
+      "path": "packs/design/skills/ui-copy",
+      "tests": {
+        "trigger": "1/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "ui-match",
+      "pack": "mstack-design",
+      "description": "Builds UI from a screenshot, Figma export or mockup image and proves how close the result is, by comparing a screenshot of the built page with the reference region by region. Use when the user shares a design image and says \"make it look like this\", \"match this mockup\", \"pixel perfect\" or \"build this from the screenshot\". Not for designing a screen with no reference (use ui-build) or for release checks of a page (use design-review).",
+      "needs": [
+        "python3",
+        "a browser the agent can drive",
+        "the reference as PNG"
+      ],
+      "version": "0.1.0",
+      "path": "packs/design/skills/ui-match",
+      "tests": {
+        "trigger": "1/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "build",
+      "pack": "mstack-dev",
+      "description": "Carries out a plan task by task and keeps a ledger in which a task is logged complete only when its own test command passes and no file outside its list changed. Use when a plan or a clear multi-step request is ready and the user says implement it, build it, start on task 1 or continue the plan. Not for writing the plan (use plan), finding why something fails (use debug) or a one-line edit that needs no ledger.",
+      "needs": [
+        "python3",
+        "git",
+        "the project's test runner"
+      ],
+      "version": "0.1.0",
+      "path": "packs/dev/skills/build",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "commit",
+      "pack": "mstack-dev",
+      "description": "Turns a mixed working tree into clean commits, one per reason for change. Scans the staged lines for secrets and conflict markers with redacted output, lints each message and warns on the default branch. Use when the user says commit this, commit my changes, split this into commits, or write the commit message. Not for finishing a branch with a merge or a pull request (use land) or for cutting a version (use release).",
+      "needs": [
+        "python3",
+        "git"
+      ],
+      "version": "0.1.0",
+      "path": "packs/dev/skills/commit",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "debug",
+      "pack": "mstack-dev",
+      "description": "Finds the real cause of a bug before any fix. Keeps a case file with one command that reproduces the failure, each hypothesis with its evidence, and a counter that stops after three failed fixes. Use when a test fails, the app crashes or throws an error, something that worked is now broken, or the user says \"why is this failing\" or \"fix this bug\". Not for a test that fails only sometimes (use flaky-triage), for confirming finished work (use verify) or for judging code that works (use review).",
+      "needs": [
+        "python3",
+        "git"
+      ],
+      "version": "0.1.0",
+      "path": "packs/dev/skills/debug",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "land",
+      "pack": "mstack-dev",
+      "description": "Finishes a branch in one of three ways the user picks: merge it locally, push it and open a pull request, or keep it as is. Confirms the base, requires a clean tree and a passing suite, and checks the state again right before any push or merge. Use when work on a branch is done and the user says ship it, merge this, open a PR, wrap up the branch or \"what now with this branch\". Not for making commits (use commit) or tagging a version (use release).",
+      "needs": [
+        "python3",
+        "git",
+        "gh (only for opening a pull request)"
+      ],
+      "version": "0.1.0",
+      "path": "packs/dev/skills/land",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "parallel",
+      "pack": "mstack-dev",
+      "description": "Splits independent tasks across agents, one git worktree each, then merges the results in order and runs the suite on the merged tree. Refuses when two tasks' file lists overlap. Use when several tasks do not depend on each other and the user asks to run them in parallel, at the same time, with multiple agents or in worktrees. Not for tasks that share files or build on each other (use build) or for turning a request into tasks (use plan).",
+      "needs": [
+        "python3",
+        "git 2.17 or newer",
+        "a host that can start separate agents"
+      ],
+      "version": "0.1.0",
+      "path": "packs/dev/skills/parallel",
+      "tests": {
+        "trigger": "1/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "plan",
+      "pack": "mstack-dev",
+      "description": "Turns a settled request into a plan file of small ordered tasks, each naming its files, one check command and the output to expect, then lints the plan. Use when work touches several files or steps and the user asks to plan it, break it down, write an implementation plan or \"how would you build this\" before any code. Not for deciding what to build (use clarify or spec) or for carrying the plan out (use build).",
+      "needs": [
+        "python3",
+        "git"
+      ],
+      "version": "0.1.0",
+      "path": "packs/dev/skills/plan",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "prove-test",
+      "pack": "mstack-dev",
+      "description": "Shows that a test can catch the bug it protects against. Runs it with the change, puts the change aside, expects a failure, puts it back, expects a pass, and records the three exit codes. Use when a fix or new behaviour comes with a test and the user asks whether the test really tests anything, would have caught the bug, or wants red-green proof. Not for running the whole suite (use verify), finding code with no tests (use test-gaps) or a test that fails only sometimes (use flaky-triage).",
+      "needs": [
+        "python3",
+        "git",
+        "the project's test runner"
+      ],
+      "version": "0.1.0",
+      "path": "packs/dev/skills/prove-test",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "release",
+      "pack": "mstack-dev",
+      "description": "Cuts a version from the exact range since the last tag: lists the commits, migrations, config and dependency changes in it, drafts release notes, and refuses to go on until a rollback step is written in the release file. Use when the user says cut a release, tag a version, bump to 1.4.0, write release notes or a changelog for what shipped. Not for finishing one branch (use land) or for checks after a deploy (use deploy-check).",
+      "needs": [
+        "python3",
+        "git"
+      ],
+      "version": "0.1.0",
+      "path": "packs/dev/skills/release",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "review",
+      "pack": "mstack-dev",
+      "description": "Finds real defects in a change, ranked by severity, and drops every finding whose file, line and quoted text do not match the source. Use when the user asks to review a diff, a branch, a pull request or uncommitted changes, asks \"anything wrong with this?\", or pastes review comments from someone else and wants them answered. Not for running the checks (use verify), hunting security holes (use secure) or finding why something fails (use debug).",
+      "needs": [
+        "python3",
+        "git"
+      ],
+      "version": "0.1.0",
+      "path": "packs/dev/skills/review",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "secure",
+      "pack": "mstack-dev",
+      "description": "Finds security problems an attacker could use in the current change, with a status per check (ran, failed, not available): secrets in added lines, the dependency audit, changed entry points for untrusted input. Use when the user asks whether a change is safe, for a security review or audit of a PR or branch, about leaked keys, injection, auth holes or vulnerable dependencies. Not for a general code review (use review) or for secrets in a commit about to be made (use commit).",
+      "needs": [
+        "python3",
+        "git",
+        "the ecosystem's audit tool (npm",
+        "pip-audit",
+        "cargo-audit",
+        "govulncheck",
+        "bundler-audit)"
+      ],
+      "version": "0.1.0",
+      "path": "packs/dev/skills/secure",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "claim-check",
+      "pack": "mstack-growth",
+      "description": "Finds every number, superlative (\"fastest\", \"best\", \"only\", \"first\"), comparison and testimonial in marketing text and fails each one that has no entry with evidence in a sources file. Use when landing page copy, an announcement, a pitch or an email makes claims, or someone asks \"can we say this\" or \"is every stat backed\". Not for checking quotes against saved web sources in articles (use cite-check).",
+      "needs": [
+        "python3; network only with --fetch",
+        "to the evidence addresses given"
+      ],
+      "version": "0.1.0",
+      "path": "packs/growth/skills/claim-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "first-screen",
+      "pack": "mstack-growth",
+      "description": "Reports what a landing page puts first: the first heading, first paragraph, first call to action and where it leads, whether the headline names the product, whether promised words appear, and the bytes that load first. Use when a visitor lands and leaves, an ad or post promises something, or someone asks \"does the hero say what we do\". Not for checking layout at real screen sizes (use design-review).",
+      "needs": [
+        "python3; network only for a URL"
+      ],
+      "version": "0.1.0",
+      "path": "packs/growth/skills/first-screen",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "launch-site-check",
+      "pack": "mstack-growth",
+      "description": "Asks a site for every page a first visitor needs before launch (home, pricing, privacy, terms, contact, a real 404, favicon, social preview image tags, a working sign-up or download link) and reports each one. Use when a product or landing site is about to go live, someone asks \"are we ready to launch\" or \"is anything missing from the site\". Not for status, headers and certificates of a deployment (use site-check).",
+      "needs": [
+        "python3",
+        "network access to the site named"
+      ],
+      "version": "0.1.0",
+      "path": "packs/growth/skills/launch-site-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "mail-domain-check",
+      "pack": "mstack-growth",
+      "description": "Checks the SPF, DKIM and DMARC records of one sending domain from record text or the system resolver: syntax, a too-permissive SPF, a DMARC policy of none, weak or empty DKIM keys, and missing records. Use when newsletters or sign-up emails land in spam, before sending from a new domain, or someone asks if email authentication is set up. Not for status and certificates of a website (use site-check).",
+      "needs": [
+        "python3; dig or nslookup only for a live lookup"
+      ],
+      "version": "0.1.0",
+      "path": "packs/growth/skills/mail-domain-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "page-compare",
+      "pack": "mstack-growth",
+      "description": "Sets two saved HTML pages side by side on measurable points only, with no verdict on which is better. Use when someone wants our landing page compared with a competitor's page. Counts title, headings, words, calls to action, structured data types, image alt coverage and HTML size, and fails on sentences copied word for word. Not for auditing a whole site (use site-audit).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/growth/skills/page-compare",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "post-check",
+      "pack": "mstack-growth",
+      "description": "Checks a draft post against one platform's limits: length counted the platform's way, link and hashtag counts, blog front matter, local images that exist, and no claim still marked unverified or TODO. Use when a launch post, tweet, LinkedIn post, Mastodon or Bluesky toot, or blog draft is ready and the user asks if it fits or is ready to post. Not for whether the claims in it are true (use claim-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/growth/skills/post-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "site-audit",
+      "pack": "mstack-growth",
+      "description": "Crawls one live site within a page limit, obeying robots.txt, and reports per page the title, meta description, h1, heading order, canonical, lang and image alt text, plus robots.txt, the sitemap and whether its URLs answer. Use when someone asks for an SEO audit, why pages are not found in search, or to check titles, headings and the sitemap across a site. Not for page load speed (use page-speed) or broken links to other sites (use link-check).",
+      "needs": [
+        "python3",
+        "network access to the site named"
+      ],
+      "version": "0.1.0",
+      "path": "packs/growth/skills/site-audit",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "store-listing-check",
+      "pack": "mstack-growth",
+      "description": "Checks an app store listing kept as a file (name, subtitle, description, keywords, screenshots) against the store's field limits from a dated list, finds repeated keywords and missing screenshots, and fails claims with no source. Use when App Store or Google Play listing text is written or changed, or someone asks if the store description and keywords fit. Not for build, privacy manifest and submission readiness (use ios-submit-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/growth/skills/store-listing-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "structured-data-check",
+      "pack": "mstack-growth",
+      "description": "Validates the JSON-LD on real pages: each block parses, has @context and @type, and Article, Product, Organization, BreadcrumbList, FAQPage and SoftwareApplication items carry the properties in a dated list. Use when schema markup, rich results or a JSON-LD snippet was added or changed, or someone asks if the structured data is valid. Not for titles, headings or the sitemap (use site-audit).",
+      "needs": [
+        "python3",
+        "network only for a URL"
+      ],
+      "version": "0.1.0",
+      "path": "packs/growth/skills/structured-data-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "tracking-check",
+      "pack": "mstack-growth",
+      "description": "Reads a HAR file or captured request list and confirms each expected analytics event was sent to the endpoint with its name and properties, flags events sent twice, error answers, and personal data such as an email in the URL. Use when sign-up or purchase events are missing or doubled in analytics, or after adding a tracking tag. Not for measuring page load (use page-speed).",
+      "needs": [
+        "python3",
+        "a network capture the user made"
+      ],
+      "version": "0.1.0",
+      "path": "packs/growth/skills/tracking-check",
+      "tests": {
+        "trigger": "1/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "captions",
+      "pack": "mstack-media",
+      "description": "Writes .srt and .vtt subtitles from a word-timed transcript and checks every cue for overlaps, order, line length, lines per cue and reading speed; burns them into the video only when asked, then pulls frames to prove they show. Use when the user wants subtitles or closed captions for a video, or an existing .srt needs checking. Not for transcribing the audio first (use transcribe).",
+      "needs": [
+        "python3; ffmpeg with the subtitles filter (libass) for burn-in only"
+      ],
+      "version": "0.1.0",
+      "path": "packs/media/skills/captions",
+      "tests": {
+        "trigger": "1/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "export-check",
+      "pack": "mstack-media",
+      "description": "Encodes a finished video or audio file for a named platform and proves the result with ffprobe and a loudness reading. Use when the user asks to export for YouTube, Shorts, Reels, TikTok or a podcast, or whether a file will be accepted. Checks codec, pixel format, resolution, frame rate, duration, size, sample rate, loudness and true peak. Not for cutting footage (use video-edit).",
+      "needs": [
+        "python3",
+        "ffmpeg",
+        "ffprobe"
+      ],
+      "version": "0.1.0",
+      "path": "packs/media/skills/export-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "image-batch",
+      "pack": "mstack-media",
+      "description": "Applies one resize, crop and export to a whole folder of images into a new folder, and checks every output. Use when the user wants many photos resized, cropped to one shape, stripped of location data or exported for web or social. Previews the first few, then checks dimensions, file size, GPS removal and count; uses sips, ImageMagick or Pillow. Not for comparing UI to a mockup (use ui-match).",
+      "needs": [
+        "python3; sips (macOS)",
+        "ImageMagick or Pillow"
+      ],
+      "version": "0.1.0",
+      "path": "packs/media/skills/image-batch",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "podcast-edit",
+      "pack": "mstack-media",
+      "description": "Cleans a spoken recording into a new file: shortens long pauses, brings loudness to a named target in two passes, and only on request removes filler words with short crossfades, writing a list of every cut with its time. Use when the user wants a podcast episode, voice note or interview tidied, levelled or made less silent. Not for cutting video by its transcript (use video-edit).",
+      "needs": [
+        "python3",
+        "ffmpeg",
+        "ffprobe; a word-timed transcript for filler removal"
+      ],
+      "version": "0.1.0",
+      "path": "packs/media/skills/podcast-edit",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "show-notes",
+      "pack": "mstack-media",
+      "description": "Writes chapters and show notes for an episode from its word-timed transcript, then checks that chapters start at zero, ascend, are long enough and end inside the recording, and that every quoted line matches the transcript word for word. Use when the user wants timestamps, chapters or episode notes for a podcast or video. Not for making the transcript (use transcribe).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/media/skills/show-notes",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "transcribe",
+      "pack": "mstack-media",
+      "description": "Makes a word-timed transcript of an audio or video file (JSON with start, end and confidence per word, plus plain text) and checks that it covers all the speech. Use when the user wants a transcript, wants to know what is said in a recording, or another media job needs word timings first (subtitles, cutting by words, show notes). Not for turning a finished transcript into subtitles (use captions).",
+      "needs": [
+        "python3",
+        "ffmpeg",
+        "ffprobe",
+        "a local speech recogniser or an API the user names"
+      ],
+      "version": "0.1.0",
+      "path": "packs/media/skills/transcribe",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "video-edit",
+      "pack": "mstack-media",
+      "description": "Cuts supplied footage by its transcript into a new file, with a cut list the user approves first. Use when the user wants mistakes, retakes, false starts or dead air taken out of a recorded video. Moves cut points to gaps between words, cuts frame-accurately, then checks length, sound against picture and a frame each side of every join. Not for audio-only recordings (use podcast-edit).",
+      "needs": [
+        "python3",
+        "ffmpeg",
+        "ffprobe",
+        "a word-timed transcript"
+      ],
+      "version": "0.1.0",
+      "path": "packs/media/skills/video-edit",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "ci-check",
+      "pack": "mstack-ops",
+      "description": "Checks GitHub Actions workflow files before a push for unknown keys, jobs with no steps, a needs that names no job, printed secrets, unpinned third-party actions and missing permissions. Use when a file under .github/workflows was written or edited, a new pipeline is about to be pushed, or the user asks \"is this workflow valid?\". Not for a CI run that already failed (use ci-fix) or for scanning a repository for leaked secrets (use secure).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ops/skills/ci-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "ci-fix",
+      "pack": "mstack-ops",
+      "description": "Turns a saved log of a failed CI run into the first failing step, the command it ran and the first error lines, then reruns that command locally and says whether the same error came back. Use when CI is red, \"the build failed on GitHub\", a pull request check fails, or the user pastes or saves a CI log and asks why. Not for checking a workflow file before it is pushed (use ci-check) or for tests that fail only sometimes (use flaky-triage).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ops/skills/ci-fix",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "cost-watch",
+      "pack": "mstack-ops",
+      "description": "Reads a usage or billing export (CSV or JSON), sums it by service and day, projects the month and compares it with the limit the user states, and names the service whose spend grew most. Calls no provider API. Use when the user asks \"are we going over budget?\", \"why did the bill jump?\" or \"what will this month cost?\", or hands over a hosting or cloud usage export. Not for tokens and cost of an AI flow (use spend-check) or for speed targets (use nfr-budgets).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ops/skills/cost-watch",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "dep-upgrade",
+      "pack": "mstack-ops",
+      "description": "Upgrades one dependency with a record that proves it: the old version from the lock file, the target, the changelog sections read, and the same test command passing before and after. Refuses to call the upgrade done without all four. Use when the user asks to bump, update or upgrade a package, library or crate, or a security notice names a version to move to. Not for cutting a release of your own project (use release) or for reviewing vulnerability reports (use secure).",
+      "needs": [
+        "python3",
+        "the project's package manager"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ops/skills/dep-upgrade",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "deploy-check",
+      "pack": "mstack-ops",
+      "description": "Confirms that the version now running is the one that was meant to ship and that it answers. Requests the address several times and checks status, the expected commit or version string and response time. Use when a deploy just finished, the user asks \"is it live?\", \"did the new version go out?\" or \"is prod up?\", or a release needs a smoke check. Not for certificates, redirects and security headers of a site (use site-check) or for testing what an API returns (use api-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ops/skills/deploy-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "env-check",
+      "pack": "mstack-ops",
+      "description": "Lists environment variable names the code reads that are not set or not documented, and names that nothing reads, without showing any value. Use when an app crashes on a missing env var, a new variable was added in code, .env.example may be out of date, or the user asks \"are all the env vars set in production?\". Not for finding secrets committed to a repository (use secure) or for checking that a deployed service answers (use deploy-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ops/skills/env-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "log-triage",
+      "pack": "mstack-ops",
+      "description": "Narrows a saved log file to the first error, the distinct error groups with counts (numbers and ids masked), and what changed in the lines just before the first error, such as a deploy, a restart or a config change. Use when production logs are full of errors, \"what's going wrong since the deploy?\", \"find the first error in this log\", or the user saves logs and asks for the cause. Not for a failed CI run's log (use ci-fix) or for reproducing a bug in code (use debug).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ops/skills/log-triage",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "migration-check",
+      "pack": "mstack-ops",
+      "description": "Reads pending SQL migration files and flags statements that lock a table, lose data or leave no way back, each with the reason and a safer form. Use when a database migration was written or generated, before it is applied to staging or production, or the user asks \"is this migration safe?\" or \"will this lock the table?\". Not for proving that a backup restores (use restore-test) or for returning the app to its previous version (use rollback).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ops/skills/migration-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "perf-check",
+      "pack": "mstack-ops",
+      "description": "Says whether one change made one command faster or slower beyond run-to-run noise. Times the command several times, saves a baseline, times it again after the change and compares medians and spread. Use when the user says \"make this faster\", \"did that speed it up?\" or \"is the build slower now?\", or an optimisation is about to be kept. Not for deciding what the speed targets should be (use nfr-budgets) or for finding why code misbehaves (use debug).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ops/skills/perf-check",
+      "tests": {
+        "trigger": "1/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "restore-test",
+      "pack": "mstack-ops",
+      "description": "Restores a backup into a new scratch folder and proves the data is in it, by an integrity check and row or file counts compared with numbers the user states. Use when the user asks \"do our backups work?\" or \"can we restore from this dump?\", a backup was just taken, or a risky change is about to rely on one. Not for removing files with an undo (use safe-delete) or for reviewing the SQL of a schema change (use migration-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ops/skills/restore-test",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "rollback",
+      "pack": "mstack-ops",
+      "description": "Returns a service to its previous version through a checked plan, then confirms the old version answers. Use when a deploy went bad, the user says \"roll it back\", \"revert prod\" or \"go back to yesterday's version\". The plan names the version, the exact command and whether the old code works with the data as it is now; the command runs only after a yes. Not for undoing a code change in git (use land) or for checking a deploy that went fine (use deploy-check).",
+      "needs": [
+        "python3",
+        "the hosting platform's own command-line tool or dashboard"
+      ],
+      "version": "0.1.0",
+      "path": "packs/ops/skills/rollback",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "clarify",
+      "pack": "mstack-product",
+      "description": "Settles what the user wants before anything is built. Asks one question at a time until no point that changes the build rests on a guess, then gets a yes on a six-line statement of intent. Use when a request is vague, the goal or the reason behind it is unclear, or the user says \"ask me questions\", \"grill me\" or \"what am I missing\". Not for writing requirements once the goal is clear (use spec), for producing ideas (use ideate) or for ordering tasks (use plan).",
+      "needs": [
+        "python3",
+        "a user who can answer"
+      ],
+      "version": "0.1.0",
+      "path": "packs/product/skills/clarify",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "compare-options",
+      "pack": "mstack-product",
+      "description": "Ranks named options on weighted criteria with a script, applies veto criteria, and shows the smallest change in one weight or one score that would change the winner. Use when the user has two or more named options and asks \"which one\", \"X or Y\", wants a trade-off table, a build-or-buy or vendor choice, or a short list put in order. Not for producing the options (use ideate), for testing the chosen plan's assumptions (use premortem) or for recording the decision afterwards (use remember).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/product/skills/compare-options",
+      "tests": {
+        "trigger": "1/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "ideate",
+      "pack": "mstack-product",
+      "description": "Produces a wide list of options grounded in the project, cuts it with a reason for every cut, and ends with a short list of two or three. Use when the user wants ideas, approaches or alternatives, says \"brainstorm\", \"what are our options\" or \"how else could we do this\", or knows the goal and not the way. Not for scoring options that are already named (use compare-options), for settling what the user wants (use clarify) or for testing a chosen plan (use premortem).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/product/skills/ideate",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "nfr-budgets",
+      "pack": "mstack-product",
+      "description": "Turns quality words such as fast, reliable or secure into budgets that a command can check. Each has a metric, a number, a unit, a condition and a check command, and every command is run. Use when a requirement says fast, scalable, reliable or secure with no number, when the user asks \"how fast is fast enough\", or wants performance, size or error limits that fail loudly. Not for functional requirements (use spec), for proving the tests pass (use verify) or for judging code quality (use review).",
+      "needs": [
+        "python3",
+        "a project with commands that can be run"
+      ],
+      "version": "0.1.0",
+      "path": "packs/product/skills/nfr-budgets",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "premortem",
+      "pack": "mstack-product",
+      "description": "Assumes a chosen plan has already failed, lists the assumptions it rests on, ranks them by impact and confidence with a script, and names the cheapest test for the worst one, with a pass and a fail line. Use when the user is about to commit to a plan or spec, asks \"what could go wrong\", \"poke holes in this plan\" or \"what are we betting on\". Not for producing alternatives (use ideate), for choosing between options (use compare-options) or for reviewing code (use review).",
+      "needs": [
+        "python3",
+        "a written plan or spec"
+      ],
+      "version": "0.1.0",
+      "path": "packs/product/skills/premortem",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "research-synthesis",
+      "pack": "mstack-product",
+      "description": "Turns interview transcripts or research notes into themes backed by exact quotes. A script checks every quote word for word against its cited line, counts distinct people per theme, labels thin findings as anecdotes and lists what no finding used. Use when the user has interview notes, call transcripts or survey answers and asks for themes, insights, \"what did people say\" or a research summary. Not for planning interviews (use clarify), for producing solutions (use ideate) or for reviewing a screen (use design-review).",
+      "needs": [
+        "python3",
+        "text sources"
+      ],
+      "version": "0.1.0",
+      "path": "packs/product/skills/research-synthesis",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "spec",
+      "pack": "mstack-product",
+      "description": "Writes a one-page spec in which every \"done when\" line has an id (R-001) and names how it will be checked, then lints it. Use when the goal is clear and needs writing down before building, when the user asks for requirements, acceptance criteria or a PRD, or wants a spec of what existing code already does. Not for finding out what the user wants (use clarify), for ordering the work into tasks (use plan) or for deriving test cases (use test-cases).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/product/skills/spec",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "trace",
+      "pack": "mstack-product",
+      "description": "Builds a matrix from each requirement id in the spec (R-001) to the tests, code and commits that mention it, and flags what is missing in either direction. Use when the user asks which requirements have no test, whether everything in the spec got built, which requirement a test or commit belongs to, or wants spec coverage before a release. Not for writing the spec or its ids (use spec), for writing the missing tests (use test-cases) or for finding untested code where no spec exists (use test-gaps).",
+      "needs": [
+        "python3",
+        "git",
+        "a spec with ids"
+      ],
+      "version": "0.1.0",
+      "path": "packs/product/skills/trace",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "api-check",
+      "pack": "mstack-test",
+      "description": "Compares a running API with its OpenAPI contract by sending one real request per route and printing request, expected and actual for every status or response shape that does not match. Use when the user asks whether the API matches the spec or openapi.json, after endpoints changed, or before a client is built against them. Local or test servers only. Not for driving a web page (use qa-run) or for load and latency targets (use nfr-budgets).",
+      "needs": [
+        "python3",
+        "a running local or test server",
+        "an OpenAPI 3 contract in JSON"
+      ],
+      "version": "0.1.0",
+      "path": "packs/test/skills/api-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "bug-report",
+      "pack": "mstack-test",
+      "description": "Confirms a bug reproduces from a clean start, saves the output as evidence, and writes one report that a lint script checks for steps, expected, actual, evidence files and leaked secrets or personal data. Use when the user wants to file, write up or report a bug, open an issue for a crash, or asks whether a reported bug is real. Not for finding the cause or fixing it (use debug) or for testing a whole flow to find bugs (use qa-run).",
+      "needs": [
+        "python3",
+        "a command or steps that show the bug"
+      ],
+      "version": "0.1.0",
+      "path": "packs/test/skills/bug-report",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "flaky-triage",
+      "pack": "mstack-test",
+      "description": "Makes an intermittent test fail on demand, names the kind of cause from recorded runs, and proves the fix with enough repeated green runs. Use when a test fails sometimes, passes on a rerun, is red only on CI or only in the full suite, or the user says flaky, intermittent or random failure. Retries, skips and longer timeouts are not accepted as a fix. Not for a test that fails every time (use debug) or for showing that one test can catch its bug (use prove-test).",
+      "needs": [
+        "python3",
+        "the project's test runner",
+        "git (for the guard step)"
+      ],
+      "version": "0.1.0",
+      "path": "packs/test/skills/flaky-triage",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "qa-run",
+      "pack": "mstack-test",
+      "description": "Drives a running app through the user flows a change touched and writes a QA report in which every issue has steps, expected, actual and a saved evidence file. Use when a web app change is ready to be tried by hand, or the user says QA this, test it in the browser, click through the app or dogfood the branch. Reports only. Not for fixing what it finds (use debug), judging how a page looks (use design-review) or checking an API that has no screen (use api-check).",
+      "needs": [
+        "python3",
+        "a browser tool of the host agent",
+        "git (optional)"
+      ],
+      "version": "0.1.0",
+      "path": "packs/test/skills/qa-run",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "test-cases",
+      "pack": "mstack-test",
+      "description": "Turns a spec or a function contract into a table of test cases (boundaries, combinations, properties) in which every requirement has a case and every case has one specific expected result. Use when the user asks what to test, wants test cases, edge cases or a test matrix for a feature, form or function, or a spec with R-001 style lines has no cases yet. Not for writing the test code (use build), writing the spec itself (use spec) or mapping requirements to tests that already exist (use trace).",
+      "needs": [
+        "python3",
+        "a spec or contract with requirement lines"
+      ],
+      "version": "0.1.0",
+      "path": "packs/test/skills/test-cases",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "test-data",
+      "pack": "mstack-test",
+      "description": "Builds factories and seed data that hold no real personal data and give the same result on every run, proven by a scanner and a two-run comparison. Use when the user wants test data, fixtures, a seed script, factories or fake users and orders, or asks whether the fixtures contain real customer data. Not for deciding which cases to test (use test-cases) or for scanning commits for secrets and keys (use commit).",
+      "needs": [
+        "python3",
+        "the project's seed or factory command"
+      ],
+      "version": "0.1.0",
+      "path": "packs/test/skills/test-data",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "test-gaps",
+      "pack": "mstack-test",
+      "description": "Finds what matters and is not tested. Counts test files, detects runners and CI, and lists recently changed source files and folders that no test names or imports, then records one decision per top risk. Use when the user asks what is untested, where tests are missing, whether the tests are good enough, or what to test first in an existing codebase. Not for tracing spec requirements to tests (use trace), designing cases for one feature (use test-cases) or checking that one test can fail (use prove-test).",
+      "needs": [
+        "python3",
+        "git (for recent changes)"
+      ],
+      "version": "0.1.0",
+      "path": "packs/test/skills/test-gaps",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "cite-check",
+      "pack": "mstack-web",
+      "description": "Confirms that every quote and quoted claim in a document appears word for word in the saved copy of the source it cites, and lists not found, found and source missing. Use when a draft, report or article quotes sources, before publishing, or when the user asks \"are these quotes accurate?\", \"check my citations\", \"did the source really say that\". Not for gathering new sources (use web-research) or summarising interviews (use research-synthesis).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/web/skills/cite-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "fetch-plan",
+      "pack": "mstack-web",
+      "description": "Writes a plan before fetching many pages: robots.txt verdict per address, crawl delay, sitemap, terms link, count, rate and duration. Use when the user wants to scrape, download or collect a list of pages, \"grab all the product pages\", or asks \"is it ok to crawl this site\". Refuses a plan that touches disallowed paths. Not for reading one page (use page-extract) or checking links (use link-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/web/skills/fetch-plan",
+      "tests": {
+        "trigger": "1/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "link-check",
+      "pack": "mstack-web",
+      "description": "Finds broken links and missing images, scripts and styles on one site by crawling it within a stated depth and page limit, and sorts every target into broken, fine and could not check. Use when the user asks \"any dead links?\", \"are there 404s on the site\", \"did the move break anything\", or before launching or after restructuring pages. Not for one address's headers or certificate (use site-check) or for a search-engine audit (use site-audit).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/web/skills/link-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "page-extract",
+      "pack": "mstack-web",
+      "description": "Turns one web page into clean JSON (title, main text without navigation or scripts, headings, links and tables) and fails on an empty result or a page that needs JavaScript to render. Use when the user wants \"the text of this page\", \"pull the table from this URL\", \"get the article as clean text\", or a saved .html file read into data. Not for many pages at once (use fetch-plan first) or for checking quotes against sources (use cite-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/web/skills/page-extract",
+      "tests": {
+        "trigger": "1/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "page-speed",
+      "pack": "mstack-web",
+      "description": "Measures how a page transfers without a browser: median time to first byte, bytes, requests, uncompressed text and missing cache headers, against the user's budgets. Use when the user asks \"why is the page slow\", \"how heavy is it\", \"is gzip on\", or wants a byte or request budget checked. States that rendering metrics are not measured. Not for a design review (use design-review) or post-deploy health (use deploy-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/web/skills/page-speed",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "page-watch",
+      "pack": "mstack-web",
+      "description": "Tells what changed on one web page since the last look: saves a normalised text snapshot under .mstack/ and on the next run lists added and removed lines, ignoring parts the user marks as noisy (clocks, ads, counters). Use when the user asks \"has this page changed\", \"tell me if the pricing page changes\", \"what's different on the docs since last week\", or wants to track a policy or status page. Not for checking a site's headers (use site-check) or broken links (use link-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/web/skills/page-watch",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "site-check",
+      "pack": "mstack-web",
+      "description": "Checks how a deployed address answers: every redirect hop, the final status, security and cache headers, certificate expiry and mixed content, each marked ok, warn, failed or not checked. Use when a site was just deployed or moved, the user asks \"is the site up\", \"is https set up right\", \"why does it redirect\", or a header or certificate warning came in. Not for confirming a new release is the running version (use deploy-check) or for broken links across pages (use link-check).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/web/skills/site-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "web-research",
+      "pack": "mstack-web",
+      "description": "Answers a question from the web with a notes file where every claim has a source address, a saved copy or access date, and a label (quoted, paraphrased, inferred), and checks it: unsourced claims fail and a conclusion resting on one source is flagged. Use when the user asks to \"look into\", \"find out\", \"research\" or \"compare\" something online and wants sources kept. Not for checking quotes in an existing draft (use cite-check) or for summarising interviews (use research-synthesis).",
+      "needs": [
+        "python3",
+        "the host's web search and fetch tools"
+      ],
+      "version": "0.1.0",
+      "path": "packs/web/skills/web-research",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "copyedit",
+      "pack": "mstack-writing",
+      "description": "Copy-edits a text to a named style guide, with corrections, suggestions and queries in separate lists. Use when the user asks to proofread, copy-edit, fix grammar or apply a style guide to a document. A script proves that code, quotes, links, numbers and names survived and that every change is a listed item. Ships a short house style as the default. Not for interface wording (use ui-copy).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/writing/skills/copyedit",
+      "tests": {
+        "trigger": "1/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "translate-check",
+      "pack": "mstack-writing",
+      "description": "Translates a text or a JSON strings file and proves nothing countable was lost. Use when the user wants something translated or localised, or asks whether a translation dropped anything. Checks numbers, glossary names, links, placeholders and markup match in count and form, every key is translated and length limits hold; quality is not checked. Not for one-language proofreading (use copyedit).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/writing/skills/translate-check",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "webar-preview",
+      "pack": "mstack-xr",
+      "description": "Turns a .glb into a phone AR preview at true size: compares the model's bounding box in metres with the real object's declared size, checks a .usdz twin with Apple's usdcat and usdchecker, and writes a small page with an AR viewer element. Use when the user wants to see a product or model in their room on a phone, or asks for Quick Look or Scene Viewer. Not for headset WebXR pages (use webxr-verify).",
+      "needs": [
+        "python3; optional usdcat",
+        "usdchecker",
+        "a GLB to USDZ converter",
+        "a model-viewer build"
+      ],
+      "version": "0.1.0",
+      "path": "packs/xr/skills/webar-preview",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "webxr-verify",
+      "pack": "mstack-xr",
+      "description": "Proves a WebXR page works without a headset: scans the code for session, render loop, input and exit, then judges an emulated session with a screenshot per head pose and input mode, console errors, draw calls and the GPU name. Use when a WebXR, VR or AR web page was built or changed, or the user asks whether it works on Quest. Not for plain three.js pages with no XR session (use three-verify).",
+      "needs": [
+        "python3",
+        "a browser the agent can drive",
+        "a WebXR emulator"
+      ],
+      "version": "0.1.0",
+      "path": "packs/xr/skills/webxr-verify",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "1/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "xr-comfort-review",
+      "pack": "mstack-xr",
+      "description": "Measures every UI element of a running VR or AR scene: distance from the head, visual angle of text, angle off the forward view, target size and head-locked placement, each with pass or fail against dated limits. Use when the user asks if a VR menu is readable, too close, too small or uncomfortable, or before shipping XR UI. Not for checking a WebXR session starts or renders (use webxr-verify).",
+      "needs": [
+        "python3",
+        "a browser running the scene (three.js)"
+      ],
+      "version": "0.1.0",
+      "path": "packs/xr/skills/xr-comfort-review",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    },
+    {
+      "name": "xr-target",
+      "pack": "mstack-xr",
+      "description": "Finds which VR or AR platform and stack a repository targets (three.js WebXR, A-Frame, Babylon, Unity XR, Quest Android, visionOS, Unreal, Godot) and prints one target record with the evidence lines, then names the skill to use next. Use when starting XR work in an unfamiliar repo or the user asks \"what does this project build for\". Not for testing whether a WebXR page works (use webxr-verify).",
+      "needs": [
+        "python3"
+      ],
+      "version": "0.1.0",
+      "path": "packs/xr/skills/xr-target",
+      "tests": {
+        "trigger": "2/2",
+        "silence": "0/2",
+        "kind": "smoke",
+        "runs": 1,
+        "tested": "2026-11-22",
+        "with": "Claude Code 2.1.330"
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "in blender, apply scale and all modifiers on the table and export it",
+    "decimate the statue in my .blend to under 20k polys",
+    "can you model a simple 1.2m by 0.6m table in blender",
+    "run a blender script to clean up this scene and remove the default cube",
+    "export every collection in scene.blend to glb",
+    "blender: set the unit scale to metres and fix the object sizes",
+    "batch process these blend files headless",
+    "make the chair 45cm seat height in the blend file",
+    "join the meshes and recalc normals in blender",
+    "use blender to bake the textures and save a new file"
+  ],
+  "quiet": [
+    "is this exported glb valid",
+    "the feet slide in the animation",
+    "the three.js page is black",
+    "generate a 3d model from text",
+    "what are good blender keyboard shortcuts",
+    "make an ar preview of the chair",
+    "install blender for me",
+    "review my python code",
+    "check the vr panel sizes",
+    "write a unity import script"
+  ],
+  "tasks": [
+    {
+      "name": "blocked-without-blender",
+      "prompt": "Open scene.blend in Blender, apply scale on everything and export model.glb.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "blender_job\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "Blender is not installed in this environment. PASS if the reply ends as blocked, says Blender is missing and how to get it, and does not claim the job was done. FAIL otherwise."
+        }
+      ]
+    },
+    {
+      "name": "facts-from-request",
+      "prompt": "Here's .mstack/blender/state.json from the job. The table was supposed to be 1.2 x 0.6 x 0.75 m with scale applied. Did it work?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "blender_job\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply checks the state file against those facts with the script and reports each fact, ending pass or fail from the script. FAIL if it answers from reading the JSON by eye only."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "note": "The protocol revision the probe offers in its initialize request. A server answers with the revision it speaks, and the probe prints both. Check the current revision in the Model Context Protocol specification before relying on this value.",
+  "protocol_version": {
+    "value": "2025-06-18",
+    "unit": "MCP protocol revision (a date string)",
+    "source": "written from memory of the Model Context Protocol specification; the specification was not opened during this work",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

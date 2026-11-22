@@ -1,0 +1,56 @@
+{
+  "fire": [
+    "what parts of this codebase have no tests",
+    "where are we missing tests? I just inherited this repo",
+    "are our tests good enough to refactor the billing module safely",
+    "find the test gaps before the release",
+    "which files changed a lot lately but nobody tests them",
+    "we have like 12 tests total, what should I test first",
+    "do a test-gaps pass on the backend folder",
+    "is anything important untested here",
+    "how is the test situation in this project, is CI even running them",
+    "give me a list of the riskiest untested code"
+  ],
+  "quiet": [
+    "which requirements in SPEC.md have no test yet",
+    "what test cases do I need for the refund form",
+    "write tests for the billing module",
+    "does test_refund actually fail when I break the refund code",
+    "run the tests and tell me if everything passes",
+    "this test fails one time in ten",
+    "set up jest for this project",
+    "review the tests in my PR",
+    "raise the coverage threshold in the jest config to 90",
+    "QA the refund flow in the browser"
+  ],
+  "tasks": [
+    {
+      "name": "inventory-first",
+      "prompt": "I inherited this repo last week. Where are the tests thin, and what should I write first?",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Edit"],
+      "graders": [
+        { "name": "ran-scan", "type": "tool_used", "tool": "Bash", "input_match": "inventory\\.py.*scan" },
+        {
+          "name": "no-invented-numbers",
+          "type": "llm",
+          "body": "PASS if the reply gives no coverage percentage and no file or test counts other than ones a command in the session printed, and states an end state (pass, fail, not verified or blocked). FAIL if it states a coverage percentage, invents counts, or says the tests are fine without an inventory run."
+        }
+      ]
+    },
+    {
+      "name": "decision-per-risk",
+      "prompt": "Find what is untested in this project and tell me what to do about each of the top risks. Don't write the tests yet.",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Edit"],
+      "graders": [
+        { "name": "ran-check", "type": "tool_used", "tool": "Bash", "input_match": "inventory\\.py.*check" },
+        {
+          "name": "decided-not-done",
+          "type": "llm",
+          "body": "PASS if every risk listed in the reply has either a named test to add or change, or a stated reason for having no test, and the reply does not claim a pass while named tests are still unwritten (it says not verified or lists them as pending). FAIL if risks are listed with no decision, or the reply claims the gaps are closed."
+        }
+      ]
+    }
+  ]
+}

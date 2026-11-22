@@ -1,0 +1,6 @@
+[
+  { "text": "Add to cart", "role": "button", "where": "product page" },
+  { "text": "Add to basket", "role": "button", "where": "quick view" },
+  { "text": "Your basket is empty. Browse the catalogue to add something.", "role": "status", "where": "basket page" },
+  { "text": "OK", "role": "button", "where": "cookie notice" }
+]

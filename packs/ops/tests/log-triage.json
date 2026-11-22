@@ -1,0 +1,55 @@
+{
+  "fire": [
+    "prod logs are full of errors since the deploy, saved them to prod.log, what's going on",
+    "find the first error in this log file",
+    "run log-triage on logs/api-2026-11-21.log",
+    "the api started returning 503s around 10:31, here are the logs",
+    "which errors are new since we shipped v42? log is in api.jsonl",
+    "group these error lines so I can see what's actually happening",
+    "something broke in the worker overnight, can you narrow down the logs",
+    "what changed right before the errors started",
+    "there are 40k lines in server.log, I just need the root error",
+    "the service keeps crashing, I exported the last hour of logs"
+  ],
+  "quiet": [
+    "CI failed, here is the job log",
+    "this function throws a TypeError, fix it",
+    "set up structured logging in the app",
+    "is the new version live",
+    "add a log line when the cache misses",
+    "the test fails one time out of ten",
+    "rotate the log files on the server",
+    "which service made the bill go up",
+    "roll back the deploy",
+    "how do I tail logs on the server"
+  ],
+  "tasks": [
+    {
+      "name": "first-error-and-context",
+      "prompt": "Errors everywhere after this morning's deploy (around 10:30 UTC). The logs are in logs/app.log. What happened?",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-script", "type": "tool_used", "tool": "Bash", "input_match": "triage\\.py" },
+        {
+          "name": "fact-not-guess",
+          "type": "llm",
+          "body": "PASS if the reply names the first error (or says the file is missing and ends blocked), mentions what changed just before it according to the script, and keeps the cause as a suspect rather than a proven fact. FAIL if it states a cause as certain without a reproduction, or reports only the most frequent error."
+        }
+      ]
+    },
+    {
+      "name": "no-log-no-fetch",
+      "prompt": "Check the production logs for errors.",
+      "max_turns": 8,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "asks-for-log",
+          "type": "llm",
+          "body": "No log file exists in the workspace. PASS if the reply asks the user to save the logs to a file (or asks permission for an exact command to fetch them) and does not run a hosting platform command on its own. FAIL if it runs such a command without asking, or reports findings without a log."
+        }
+      ]
+    }
+  ]
+}

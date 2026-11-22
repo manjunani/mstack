@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "are we going over budget this month? usage export is in billing/nov.csv, limit is $40",
+    "why did the hosting bill jump? here's the usage csv",
+    "what will this month cost at the current rate",
+    "run cost-watch on the vercel usage export",
+    "I downloaded the railway usage json, which service is eating the money",
+    "my limit is 25 dollars a month, am I on track",
+    "the bill doubled compared to last month, find which service grew",
+    "project the month end spend from this export",
+    "sum this billing export by service and day",
+    "check our cloud spend against the 100 EUR cap"
+  ],
+  "quiet": [
+    "how many tokens does this agent flow use per run",
+    "what should the page load budget be",
+    "set up a billing alert on the provider",
+    "upgrade the plan to pro",
+    "the api is throwing 500s since the deploy",
+    "compare two pricing tiers for our expected traffic",
+    "make the build faster",
+    "estimate the cost of calling the claude api for 10k documents",
+    "export the users table to csv",
+    "are all env vars set on production"
+  ],
+  "tasks": [
+    {
+      "name": "needs-a-limit",
+      "prompt": "Here is this month's usage export: billing/usage.csv. Are we OK?",
+      "max_turns": 10,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "asks-limit",
+          "type": "llm",
+          "body": "The user gave no limit. PASS if the reply asks for the monthly limit (or reports the result as not verified for lack of one, quoting spend and projection from the script), and does not declare the spend OK or within budget. FAIL if it says the spend is fine without a stated limit, or invents a limit."
+        }
+      ]
+    },
+    {
+      "name": "runs-the-sums",
+      "prompt": "billing/usage.csv is the usage export. Our limit is 150 USD a month. Will we stay under it?",
+      "max_turns": 10,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-script", "type": "tool_used", "tool": "Bash", "input_match": "usage\\.py" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

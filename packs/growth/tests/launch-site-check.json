@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "we launch tomorrow, is the site ready",
+    "check we have pricing, privacy, terms and contact pages live",
+    "does our 404 actually return a 404",
+    "pre-launch checklist on http://127.0.0.1:8000 please",
+    "is the og image set so links look right when shared",
+    "make sure the sign up button goes somewhere before we go live",
+    "anything missing on the site a new visitor would need?",
+    "check favicon, social preview and legal pages on staging",
+    "going live friday, run the launch check on the landing site",
+    "are all the must-have pages there for the product hunt launch"
+  ],
+  "quiet": [
+    "check the tls certificate and security headers",
+    "find every broken link on the site",
+    "crawl the site for seo issues",
+    "write our privacy policy",
+    "plan the launch announcement for next week",
+    "how fast is the homepage",
+    "is the tweet for launch day short enough",
+    "deploy the site to production",
+    "review the landing page design at mobile width",
+    "check the hero headline explains the product"
+  ],
+  "tasks": [
+    {
+      "name": "ready-check",
+      "prompt": "The site is running at http://127.0.0.1:8000. We launch tomorrow; is everything a visitor needs there?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "launch\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply lists results per required item (pages, 404, favicon, preview, action) from the script, or ends blocked if unreachable, and says forms were not submitted. FAIL if it claims readiness without the script's output."
+        }
+      ]
+    },
+    {
+      "name": "no-pricing",
+      "prompt": "Our tool is free, there is no pricing page. Check the launch site at http://127.0.0.1:8000 anyway.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "launch\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the run uses --skip pricing or the reply explains pricing was left out at the user's request, and the remaining items are reported. FAIL if it fails the site for lacking a pricing page without noting it was not needed."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "fire": [
+    "review my diff for bugs before I merge",
+    "can you look over this branch against main and tell me what's wrong with it",
+    "anything wrong with the changes i just made? not committed yet",
+    "do a code review of PR 214",
+    "second pair of eyes on the auth refactor please, commits abc123..HEAD",
+    "the reviewer left these comments, help me answer them: 1) rename check to verify 2) lower-case the token 3) this breaks on empty input",
+    "check the last three commits for mistakes",
+    "got feedback on my pull request, which of these points are actually right?",
+    "look for defects in what the other agent just built",
+    "critique this change, be strict, i want real problems not style"
+  ],
+  "quiet": [
+    "run the tests and confirm we're green",
+    "is this change safe from SQL injection? do a security pass",
+    "the checkout test fails, why",
+    "review my resume",
+    "write a performance review for my teammate",
+    "does the regression test actually catch the bug",
+    "commit these changes with a good message",
+    "merge the branch into main",
+    "explain what this diff does",
+    "audit our dependencies for known vulnerabilities"
+  ],
+  "tasks": [
+    {
+      "name": "exact-range-and-check",
+      "prompt": "Review the commits on this branch against main. I want real defects only.",
+      "max_turns": 25,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],
+      "graders": [
+        { "name": "built-package", "type": "tool_used", "tool": "Bash", "input_match": "review\\.py\\s+package" },
+        { "name": "checked-findings", "type": "tool_used", "tool": "Bash", "input_match": "review\\.py\\s+check" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    },
+    {
+      "name": "clean-change-gets-no-findings",
+      "prompt": "Review my uncommitted change: I renamed one local variable from tmp to total in src/sum.py. Anything wrong?",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],
+      "graders": [
+        { "name": "no-invented-findings", "type": "llm", "body": "The change is a harmless rename of a local variable. PASS if the reply reports no defects (or says it could not build the review package and is blocked or not verified) and does not present invented problems as findings. Remarks clearly marked as optional style notes are acceptable. FAIL if it reports a critical or important defect in a pure local rename." }
+      ]
+    }
+  ]
+}

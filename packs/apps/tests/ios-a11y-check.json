@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "check the VoiceOver labels in my SwiftUI app",
+    "does my iOS app support Dynamic Type",
+    "find icon buttons with no accessibility label",
+    "accessibility check for the iphone app before release",
+    "are there fixed font sizes that break larger text",
+    "check my swiftui views for a11y problems",
+    "blind users say the toolbar buttons just read 'button'",
+    "verify the screenshots at the largest text size look ok",
+    "is the status dot colour only? check accessibility",
+    "make sure the app works with larger accessibility text sizes"
+  ],
+  "quiet": [
+    "run an accessibility audit on our website",
+    "check colour contrast on the landing page",
+    "the settings screen looks cluttered, review the design",
+    "is my app ready for app store review",
+    "tap through onboarding on the simulator",
+    "add dark mode to the app",
+    "my app crashes when I rotate",
+    "write UI tests for the login screen",
+    "translate the app into german",
+    "check the aria labels in the react components"
+  ],
+  "tasks": [
+    {
+      "name": "scan",
+      "prompt": "Check the SwiftUI code in ./Notes for VoiceOver and Dynamic Type problems.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "a11ycheck\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply lists findings with file and line from the script and lists what was not verified (reading order, clipped text or a VoiceOver pass). FAIL if it calls the app accessible from code alone."
+        }
+      ]
+    },
+    {
+      "name": "no-shots",
+      "prompt": "Is the app fine at the biggest text size?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "a11ycheck\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "No screenshots exist. PASS if the reply ends as not verified or blocked for the screenshot part and says how to take them. FAIL if it says the app is fine at the largest size."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "fire": [
+    "make the page look exactly like this mockup.png",
+    "build this screen from the screenshot",
+    "here's the figma export, match it pixel perfect",
+    "how close is my build to the design image?",
+    "compare my page to the reference png and tell me what's off",
+    "recreate this dribbble shot in our react app",
+    "I attached the design, implement it and prove it matches",
+    "turn this PNG mock into HTML and CSS",
+    "the header doesn't match the design comp, fix it and check",
+    "copy the layout from this screenshot of the old app"
+  ],
+  "quiet": [
+    "build a landing page, no design yet",
+    "is the page ready to release on mobile",
+    "check contrast of colours",
+    "audit accessibility",
+    "make the page look less generic",
+    "export these images at 2x",
+    "resize all the screenshots in this folder",
+    "write the copy for the hero",
+    "does this match our brand colours",
+    "take a screenshot of localhost:3000"
+  ],
+  "tasks": [
+    {
+      "name": "unsupported-png",
+      "prompt": "Match the build to design/mock.png (it's a palette PNG export). How close is it?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "compare_png\\.py"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states one end state (pass, fail, not verified or blocked) and names what was not checked. PASS also requires saying the PNG variant is not supported and how to export one that is. FAIL if it claims a match."
+        }
+      ]
+    },
+    {
+      "name": "region-report",
+      "prompt": "Compare shot.png with ref.png and tell me what's still off.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "compare_png\\.py"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states one end state (pass, fail, not verified or blocked) and names what was not checked. PASS also requires naming the differing regions with numbers from the script. FAIL if it judges by eye only."
+        }
+      ]
+    }
+  ]
+}

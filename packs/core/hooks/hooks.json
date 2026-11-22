@@ -1,0 +1,13 @@
+{
+  "description": "mstack guard: stops destructive commands, destructive-looking MCP tools, and edits outside an active scope lock. Off switch: MSTACK_GUARD=off",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Write|Edit|MultiEdit|NotebookEdit|mcp__.*",
+        "hooks": [
+          { "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}\"/hooks/guard.py", "timeout": 10 }
+        ]
+      }
+    ]
+  }
+}

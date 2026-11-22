@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "can I trust my LLM judge? I labelled 40 answers by hand",
+    "does the grader agree with me on these examples",
+    "I changed the rubric prompt for the grader model, check it against my labels",
+    "our eval is scored by another model and I don't believe the scores",
+    "compute cohen's kappa between my labels and the judge verdicts in graded.jsonl",
+    "the auto-grader passes almost everything, is it any good?",
+    "run judge check on labels.jsonl and verdicts.jsonl",
+    "where does the model grader disagree with the human labels",
+    "before we rely on the llm-as-judge scores, validate the judge",
+    "is my grader too lenient? here are 50 examples I marked myself"
+  ],
+  "quiet": [
+    "did the new prompt make the eval worse than the baseline",
+    "write 30 test cases for the summariser",
+    "is the retriever returning the right passage for these questions",
+    "grade these five answers for me",
+    "write a rubric for judging support replies",
+    "how much does it cost to run the judge on 500 examples",
+    "which eval cases flipped after the model upgrade",
+    "review my pull request",
+    "the agent ignored a tool error, look at the trace",
+    "what is cohen's kappa"
+  ],
+  "tasks": [
+    {
+      "name": "no-labels-is-blocked",
+      "prompt": "We use a model to grade our eval answers. Tell me if that grader is reliable.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "asks-for-human-labels",
+          "type": "llm",
+          "body": "The workspace holds no labelled examples and no grader verdicts. PASS if the reply does not say the grader is reliable or unreliable, ends as blocked or not verified, and says that examples labelled by a person (and the grader's verdicts on them) are needed. FAIL if it gives a verdict on the grader, or offers to label the examples itself and count that as the human labels."
+        }
+      ]
+    },
+    {
+      "name": "runs-agreement",
+      "prompt": "graded.jsonl has my labels and the judge's verdicts. Does the judge agree with me well enough?",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-agree", "type": "tool_used", "tool": "Bash", "input_match": "agree\\.py" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

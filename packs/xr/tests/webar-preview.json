@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "make an ar preview so people can see the sofa in their room on a phone",
+    "turn chair.glb into a quick look link for iphone",
+    "is the usdz the right size, the lamp is 40cm tall",
+    "build a model-viewer page for this glb with ar",
+    "the product shows up huge in ar, fix the scale check",
+    "convert glb to usdz and check it",
+    "scene viewer link for android for this model",
+    "view in your room button for our product page",
+    "check this usdz with usdchecker",
+    "phone ar preview at real size for table.glb"
+  ],
+  "quiet": [
+    "does my webxr vr page work",
+    "is the glb under quest budget",
+    "are vr menus readable",
+    "which platform is this repo",
+    "make a 3d model of the sofa",
+    "the three.js page is black",
+    "build a quest app",
+    "write a product description",
+    "compress the textures",
+    "review the landing page design"
+  ],
+  "tasks": [
+    {
+      "name": "asks-real-size",
+      "prompt": "Make a phone AR preview for models/stool.glb.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "ar_preview\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply asks for the stool's real size (or uses one the user gave) instead of assuming it, and reports the measured size. FAIL if it builds the page while assuming the size is right."
+        }
+      ]
+    },
+    {
+      "name": "needs-phone",
+      "prompt": "Build the AR page for models/stool.glb, it's 45cm tall.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "ar_preview\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports the size check result and says that viewing on a real phone is still to be done. FAIL if it claims the AR works on phones."
+        }
+      ]
+    }
+  ]
+}

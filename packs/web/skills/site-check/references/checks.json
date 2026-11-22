@@ -1,0 +1,55 @@
+{
+  "_about": "Limits and the header list used by scripts/site_check.py. Every entry is dated. 'verified' is true only when the value was read in its source on the 'checked' date; false means it was written from memory and the script says so when it runs. Edit a level or a limit here, or pass --checks-file with your own copy.",
+  "certificate_fail_days": {
+    "value": 7, "unit": "days",
+    "source": "mstack default. No standard sets this; it is the point where a missed renewal becomes an outage within a week.",
+    "checked": "2026-11-22", "verified": false
+  },
+  "certificate_warn_days": {
+    "value": 30, "unit": "days",
+    "source": "mstack default. Automated renewal usually acts about 30 days before expiry, so less than this suggests renewal is not running.",
+    "checked": "2026-11-22", "verified": false
+  },
+  "hsts_min_max_age": {
+    "value": 15552000, "unit": "seconds",
+    "source": "About six months, the lower bound often advised for Strict-Transport-Security. Written from memory; read the current advice at developer.mozilla.org before relying on it.",
+    "checked": "2026-11-22", "verified": false
+  },
+  "redirect_hops_warn": {
+    "value": 2, "unit": "hops",
+    "source": "mstack default. More than two redirects before a page is usually a configuration left over from a move.",
+    "checked": "2026-11-22", "verified": false
+  },
+  "headers": [
+    {
+      "name": "strict-transport-security", "value": "required", "unit": "level", "applies": "https",
+      "why": "without it a visitor's first request can be downgraded to plain http",
+      "source": "RFC 6797; level chosen by mstack", "checked": "2026-11-22", "verified": false
+    },
+    {
+      "name": "x-content-type-options", "value": "required", "unit": "level",
+      "why": "without 'nosniff' a browser may run a file as a type the server did not state",
+      "source": "WHATWG Fetch standard (nosniff); level chosen by mstack", "checked": "2026-11-22", "verified": false
+    },
+    {
+      "name": "content-security-policy", "value": "advised", "unit": "level",
+      "why": "limits where scripts, styles and frames may load from",
+      "source": "W3C Content Security Policy Level 3; level chosen by mstack", "checked": "2026-11-22", "verified": false
+    },
+    {
+      "name": "x-frame-options", "value": "advised", "unit": "level",
+      "why": "stops other sites showing the page inside a frame; frame-ancestors in the policy also counts",
+      "source": "RFC 7034 and CSP frame-ancestors; level chosen by mstack", "checked": "2026-11-22", "verified": false
+    },
+    {
+      "name": "referrer-policy", "value": "advised", "unit": "level",
+      "why": "controls how much of the address is sent to other sites",
+      "source": "W3C Referrer Policy; level chosen by mstack", "checked": "2026-11-22", "verified": false
+    },
+    {
+      "name": "permissions-policy", "value": "advised", "unit": "level",
+      "why": "switches off browser features the page does not use",
+      "source": "W3C Permissions Policy; level chosen by mstack", "checked": "2026-11-22", "verified": false
+    }
+  ]
+}

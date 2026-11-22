@@ -1,0 +1,31 @@
+{
+  "_about": "Length guidance used by scripts/audit.py. None of these is a rule a search engine publishes; they are working values for when a result is likely to be cut or rewritten. Every value was written from memory and is unverified. A finding built on them is a warning, never a failure.",
+  "title_min_chars": {
+    "value": 15,
+    "unit": "characters",
+    "source": "mstack working value: shorter titles rarely name both the page and the site. Not from a published standard.",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "title_max_chars": {
+    "value": 60,
+    "unit": "characters",
+    "source": "Common guidance for when a result title is cut. Search engines cut by pixel width, not by a character count; see Google Search Central, 'Influencing your title links'.",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "description_min_chars": {
+    "value": 70,
+    "unit": "characters",
+    "source": "mstack working value. Not from a published standard.",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "description_max_chars": {
+    "value": 160,
+    "unit": "characters",
+    "source": "Common guidance for when a result snippet is cut. Google states no length limit; see Google Search Central, 'Control your snippets in search results'.",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

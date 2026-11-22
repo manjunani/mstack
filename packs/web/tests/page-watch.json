@@ -1,0 +1,92 @@
+{
+  "fire": [
+    "has the pricing page changed since last time?",
+    "tell me if https://example.test/terms changes",
+    "what's different on the status page since yesterday",
+    "keep an eye on this page and show me what changed",
+    "snapshot this page so I can compare later",
+    "the diff keeps showing the clock, ignore it",
+    "did they update the privacy policy?",
+    "page-watch the changelog",
+    "compare this page to the last time we looked",
+    "track the competitor's plan page for edits"
+  ],
+  "quiet": [
+    "is the site up and is https right",
+    "find dead links on the docs",
+    "get the text of this page as json",
+    "diff these two local files",
+    "set up uptime monitoring with alerts",
+    "what changed in my git branch",
+    "how heavy is the homepage",
+    "research news about the company",
+    "schedule a cron job that runs every hour",
+    "check the quotes in my report"
+  ],
+  "tasks": [
+    {
+      "name": "first-look",
+      "prompt": "Start python3 -m http.server 8773 --bind 127.0.0.1 --directory site in the background, then watch http://127.0.0.1:8773/notices.html for changes.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "page_watch\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply says a first snapshot was saved, there is nothing to compare yet (not verified), and where the snapshot is. FAIL if it says the page is unchanged or changed."
+        }
+      ]
+    },
+    {
+      "name": "noisy",
+      "prompt": "I've been watching http://127.0.0.1:8774/status.html (served from ./status, start it with python3 -m http.server 8774 --bind 127.0.0.1 --directory status). It always says it changed because of the timestamp line. Fix that and tell me if anything real changed.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash",
+        "Write"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "ignore"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply adds an ignore rule for the timestamp through the script and then reports whether any other line changed, with the end state. FAIL if it edits snapshots by hand or claims no change without a script run."
+        }
+      ]
+    }
+  ]
+}

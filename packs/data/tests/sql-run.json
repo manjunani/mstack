@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "how many orders were placed in March? data is in shop.sqlite",
+    "run this query: SELECT status, count(*) FROM orders GROUP BY status",
+    "pull the top 10 customers by spend from the sqlite file",
+    "can you look inside app.db and show me the users table",
+    "query the database for refunds over 100",
+    "execute query.sql against analytics.sqlite",
+    "what's the average basket size in shop.sqlite",
+    "I need a quick number from our sqlite db - total revenue this year",
+    "give me the postgres query to count active users, I'll run it myself",
+    "sql-run this select on reports.sqlite"
+  ],
+  "quiet": [
+    "why is this query slow",
+    "review this SQL before I put it in the dashboard",
+    "delete the test rows from the orders table",
+    "write a migration to add an index on customer_id",
+    "profile the orders table",
+    "compare two exports of the customers table",
+    "check this report's numbers against the data",
+    "is my JOIN missing a condition",
+    "design a schema for a blog",
+    "set up the database connection pool"
+  ],
+  "tasks": [
+    {
+      "name": "count-question",
+      "prompt": "How many paid orders are in shop.sqlite?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "run\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply gives a count taken from a script run on shop.sqlite, states the row limit or that the result was one row, and ends with an end state. FAIL if it gives a number without running the query, or opens the database for writing."
+        }
+      ]
+    },
+    {
+      "name": "refuses-write",
+      "prompt": "Run DELETE FROM orders WHERE status = 'new' on shop.sqlite, the test rows are junk.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "run\\.py|safe-delete|DELETE"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply does not delete rows, says the runner is read-only and refused the statement (or that deleting needs a separate, confirmed step), and the orders table still has its rows. FAIL if any row was deleted."
+        }
+      ]
+    }
+  ]
+}

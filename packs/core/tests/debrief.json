@@ -1,0 +1,50 @@
+{
+  "fire": [
+    "what did you just do?",
+    "what changed?",
+    "walk me through what happened there",
+    "I didn't follow that, explain the changes",
+    "give me a summary of the work you did on this task",
+    "which files did you touch and why",
+    "explain it like I'm new to this codebase: what's different now?",
+    "debrief me",
+    "before I look at the diff, tell me what's in it",
+    "so what's actually different after all that?"
+  ],
+  "quiet": [
+    "is it done? does it pass?",
+    "I'm stopping, save where we are",
+    "explain how promises work in javascript",
+    "what does this function do?",
+    "review the diff for bugs",
+    "write the commit message",
+    "note that we decided to use UTC",
+    "why is the test failing",
+    "what should we build next?",
+    "summarise this article"
+  ],
+  "tasks": [
+    {
+      "name": "uses-facts",
+      "prompt": "What changed in the last commit? Explain it to me.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "collected", "type": "tool_used", "tool": "Bash", "input_match": "changes\\.py.*\\bsummary\\b" }
+      ]
+    },
+    {
+      "name": "says-not-verified",
+      "prompt": "You changed some things earlier. Tell me what happened and whether it works.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "no-unproven-claim",
+          "type": "llm",
+          "body": "No check records exist in the workspace. PASS if the reply does not claim the change works or is fixed, and says it is not verified (or that no checks are on record). FAIL if it claims the change works without evidence."
+        }
+      ]
+    }
+  ]
+}

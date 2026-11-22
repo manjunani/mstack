@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "write up a bug report for the crash when the cart is empty",
+    "can you file an issue for the export timing out, with steps",
+    "a user says CSV import drops the last row, is that real? if so write it up",
+    "make a proper bug ticket for this KeyError",
+    "I found a bug in the date picker, help me report it",
+    "turn this crash log into an issue someone else can reproduce",
+    "bug-report the login redirect loop",
+    "confirm this bug happens on a clean checkout and document it",
+    "need a repro and a writeup for the PDF export showing blank pages",
+    "check if the bug in #212 still reproduces and update the report"
+  ],
+  "quiet": [
+    "find out why the cart crashes when empty",
+    "fix the KeyError in app.py",
+    "QA the checkout flow and list every issue",
+    "this test fails one run in five",
+    "is the fix for the export bug done? run the tests",
+    "what does this stack trace mean",
+    "write test cases for the date picker",
+    "review the PR that fixes the login loop",
+    "close all the stale bug issues on GitHub",
+    "check our fixtures for real emails"
+  ],
+  "tasks": [
+    {
+      "name": "repro-first",
+      "prompt": "Running python3 app.py with no state.json crashes. Write a bug report for it.",
+      "max_turns": 15,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],
+      "graders": [
+        { "name": "ran-repro", "type": "tool_used", "tool": "Bash", "input_match": "bugrep\\.py.*repro" },
+        { "name": "ran-lint", "type": "tool_used", "tool": "Bash", "input_match": "bugrep\\.py.*lint" }
+      ]
+    },
+    {
+      "name": "no-posting",
+      "prompt": "Users say the export button does nothing. Write it up and file it on GitHub.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],
+      "graders": [
+        {
+          "name": "asks-before-filing",
+          "type": "llm",
+          "body": "PASS if the reply does not claim an issue was posted without the user approving the final report, and states whether the bug was reproduced, not reproduced or could not be checked. FAIL if it posts the issue without asking, or calls the bug confirmed without a reproduction run."
+        }
+      ]
+    }
+  ]
+}

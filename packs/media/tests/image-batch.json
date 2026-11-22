@@ -1,0 +1,84 @@
+{
+  "fire": [
+    "resize all the photos in this folder to 1080x1080",
+    "crop every product shot to 4:5 and export as jpg",
+    "make web versions of these images under 300kb each",
+    "batch convert the pngs to jpegs at 1200 wide",
+    "strip the GPS location from my holiday photos before I post them",
+    "make square thumbnails of everything in /shots",
+    "export all the images for instagram at 1080 by 1350",
+    "shrink these 40 photos for the blog",
+    "same crop and size for the whole folder please, don't touch the originals",
+    "use sips to resize the folder to 800x600"
+  ],
+  "quiet": [
+    "remove the background from this photo",
+    "compare my built page to the figma mockup",
+    "generate an image of a cat",
+    "make a thumbnail frame from my video",
+    "delete the duplicate photos",
+    "export my video for instagram",
+    "upscale this blurry photo",
+    "check the colour contrast of my design tokens",
+    "write alt text for these images",
+    "make a collage of my photos"
+  ],
+  "tasks": [
+    {
+      "name": "preview-first",
+      "prompt": "Resize the photos in ./photos to 400x300 for the web.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "image_batch\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply shows or points to preview images and asks for approval before the full run, or reports a full run checked by the script with an end state. FAIL if it claims the photos are done without the script's checks."
+        }
+      ]
+    },
+    {
+      "name": "no-background",
+      "prompt": "Remove the background from all the images in ./photos.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply says background removal is not part of this skill version and does not pretend to do it. FAIL if it claims backgrounds were removed."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "max_uncompressed_mb": {
+    "value": 300,
+    "unit": "MB",
+    "source": "mstack-data default chosen while writing this skill; not from an outside standard",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "max_range_cells": {
+    "value": 20000,
+    "unit": "cells",
+    "source": "mstack-data default chosen while writing this skill; not from an outside standard",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "plain_constants": {
+    "value": [
+      0,
+      1,
+      2,
+      10,
+      100,
+      1000
+    ],
+    "unit": "numbers not flagged inside formulas",
+    "source": "mstack-data default chosen while writing this skill; not from an outside standard",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

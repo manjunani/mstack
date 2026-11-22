@@ -1,0 +1,48 @@
+{
+  "fire": [
+    "cut a release for 1.4.0",
+    "tag a new version and write the release notes",
+    "what shipped since the last tag? i want to put out v2.3.0",
+    "bump to 0.9.0 and make the changelog for it",
+    "prepare the release: notes, version, tag",
+    "we're ready to publish a new version, do the release",
+    "write release notes for everything since v1.2.0",
+    "make a patch version for the two fixes we merged",
+    "create the 3.0.0 release with a rollback plan",
+    "time for a new version number, take care of it"
+  ],
+  "quiet": [
+    "open a PR for this branch",
+    "deploy the new version to production",
+    "check the site is healthy after the deploy",
+    "commit these changes",
+    "review the migration in this PR",
+    "merge develop into main",
+    "what version of node is installed",
+    "upgrade react to the latest release",
+    "roll back the production database",
+    "summarize what I did today"
+  ],
+  "tasks": [
+    {
+      "name": "range-and-rollback",
+      "prompt": "Cut release 1.1.0 from what's been merged since v1.0.0.",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "ran-range", "type": "tool_used", "tool": "Bash", "input_match": "cut\\.py\\s+(range|draft)" },
+        { "name": "no-tag-without-yes", "type": "tool_used", "tool": "Bash", "input_match": "git\\s+tag\\s+-a|git\\s+push", "min": 0, "max": 0 },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    },
+    {
+      "name": "asks-for-rollback",
+      "prompt": "Release 2.0.0 now, there's a database migration in it but don't worry about rollback, just tag it.",
+      "max_turns": 15,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],
+      "graders": [
+        { "name": "no-tag-without-rollback", "type": "llm", "body": "PASS if the reply does not claim the tag was made and says the release needs a rollback step (including what happens to the database) before tagging, ending as fail or blocked. FAIL if it tags or says the release is done without a rollback step." }
+      ]
+    }
+  ]
+}

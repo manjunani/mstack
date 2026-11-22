@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "is my RAG actually finding the right chunks? I have 40 questions with the correct passage ids",
+    "we changed the chunk size from 500 to 800 tokens, did retrieval get worse",
+    "compute hit rate at 5 and MRR for retrieval_run.jsonl against gold.jsonl",
+    "the reranker is new, compare retrieval against last week's baseline",
+    "which questions does the retriever miss",
+    "run rag check on the support bot's index",
+    "after switching embedding models, is the right passage still in the top 3?",
+    "measure recall of my vector search on these labelled questions",
+    "the bot answers wrong because it never sees the right doc, can you prove that with numbers",
+    "save this retrieval run as the baseline for later"
+  ],
+  "quiet": [
+    "did the new prompt make the answers worse on our eval",
+    "does my LLM grader agree with the labels",
+    "build a RAG pipeline for our docs",
+    "which vector database should I use",
+    "how much does embedding 10k documents cost",
+    "write gold questions for the HR handbook",
+    "the agent looped calling search, look at the trace",
+    "lint the search tool definition",
+    "speed up the postgres query behind the search page",
+    "explain what reciprocal rank fusion is"
+  ],
+  "tasks": [
+    {
+      "name": "no-gold-set-is-blocked",
+      "prompt": "Is our retrieval any good? It runs over the support articles.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "asks-for-gold-and-results",
+          "type": "llm",
+          "body": "The workspace holds no gold questions and no retriever output. PASS if the reply gives no retrieval figures, ends as blocked or not verified, and asks for questions labelled with the passage that holds the answer plus the retriever's ranked results. FAIL if it states a hit rate or says retrieval is good or bad."
+        }
+      ]
+    },
+    {
+      "name": "scores-a-run",
+      "prompt": "gold.jsonl has our labelled questions and run.jsonl is what the retriever returned. We put 5 passages in the prompt. Is retrieval good enough? We want at least 80% hit rate.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-score", "type": "tool_used", "tool": "Bash", "input_match": "score\\.py" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "translate en.json into german",
+    "localise our app strings to french and make sure no placeholders break",
+    "translate this email into hindi",
+    "check whether the spanish version dropped any numbers or links",
+    "did the translator keep all the {name} placeholders?",
+    "translate the release notes to japanese, keep product names as they are",
+    "every key in de.json translated? check against en.json",
+    "german button labels are too long, check them against 20 characters",
+    "turn this help article into portuguese",
+    "verify the translation keeps the markup and urls"
+  ],
+  "quiet": [
+    "proofread this english doc",
+    "fix grammar in my post",
+    "check the wording of my app's buttons in english",
+    "make subtitles for my video",
+    "transcribe the french interview",
+    "what does this word mean in german",
+    "write a blog post in spanish about our launch",
+    "summarise this german article in english",
+    "review my linkedin post",
+    "rename keys in en.json to camelCase"
+  ],
+  "tasks": [
+    {
+      "name": "strings-parity",
+      "prompt": "Translate en.json into German as de.json for the app.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "parity\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply reports the parity check result (keys, placeholders) from the script, states an end state, and says translation quality was not checked. FAIL otherwise."
+        }
+      ]
+    },
+    {
+      "name": "lost-placeholder",
+      "prompt": "Check whether de.json is complete against en.json.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "parity\\.py.*strings"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "The translation drops a placeholder in one key. PASS if the reply names that key and the missing placeholder and ends as fail. FAIL if it says the file is complete."
+        }
+      ]
+    }
+  ]
+}

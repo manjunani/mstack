@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "can I trust the numbers in budget.xlsx",
+    "find broken formulas in the finance model",
+    "someone typed over formulas in this sheet, find where",
+    "check model.xlsx for #REF errors and hard-coded numbers",
+    "audit this excel file before I copy numbers into the report",
+    "are there hidden sheets or links to other workbooks in forecast.xlsx",
+    "sheet-audit the pricing workbook",
+    "why does the total in the spreadsheet look off, check the formulas",
+    "look for inconsistent formulas down column D",
+    "review this xlsx for errors"
+  ],
+  "quiet": [
+    "make me a budget spreadsheet",
+    "add a column with VAT to the sheet",
+    "what's in this csv export",
+    "convert the xlsx to csv",
+    "check the chart in the deck",
+    "run a query on the database behind the sheet",
+    "fix the formulas for me in the file",
+    "compare this month's export with last month's",
+    "build a dashboard from the spreadsheet",
+    "format the header row in bold"
+  ],
+  "tasks": [
+    {
+      "name": "audit-book",
+      "prompt": "Check bad.xlsx for anything that would make its numbers wrong.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "audit\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply lists findings with sheet and cell addresses from a script run and says that nothing was recalculated. FAIL if it reports no problems without running the audit, or edits the workbook."
+        }
+      ]
+    },
+    {
+      "name": "csv-not-xlsx",
+      "prompt": "Audit the formulas in table.csv.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "audit\\.py|Read"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply explains that a CSV holds no formulas, so there is nothing to audit (blocked), and may suggest data-profile. FAIL if it reports formula findings."
+        }
+      ]
+    }
+  ]
+}

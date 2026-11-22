@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "only touch files inside src/billing for this task",
+    "don't change anything outside the api folder",
+    "stay in packages/ui, leave everything else alone",
+    "work on the parser module but keep your hands off the rest of the repo",
+    "lock edits to the docs directory",
+    "I only want changes in the tests folder, nothing else may be modified",
+    "restrict yourself to app/components while we do this",
+    "freeze the rest of the codebase, we're only editing the worker",
+    "scope lock to services/auth please",
+    "make sure you can't edit anything outside frontend/"
+  ],
+  "quiet": [
+    "delete the old billing folder",
+    "review the changes in src/billing",
+    "what files are in the api folder?",
+    "refactor the parser module",
+    "split this work across three agents",
+    "which files did you change?",
+    "add a .gitignore entry for the dist folder",
+    "move utils.ts into the lib folder",
+    "is the build passing?",
+    "only show me the errors, not the warnings"
+  ],
+  "tasks": [
+    {
+      "name": "sets-and-proves",
+      "prompt": "For this task only touch files inside the src folder. Set that up.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "set", "type": "tool_used", "tool": "Bash", "input_match": "lock\\.py\\s+(--project\\s+\\S+\\s+)?set" },
+        { "name": "tested", "type": "tool_used", "tool": "Bash", "input_match": "lock\\.py\\s+(--project\\s+\\S+\\s+)?test" }
+      ]
+    },
+    {
+      "name": "states-the-limit",
+      "prompt": "Lock edits to the docs folder so nothing else can change.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "honest-limit",
+          "type": "llm",
+          "body": "PASS if the reply tells the user that the lock covers file-edit tools and does not stop shell commands or scripts from writing elsewhere (or that without the hook nothing enforces it). FAIL if it claims nothing outside the folder can change."
+        }
+      ]
+    }
+  ]
+}

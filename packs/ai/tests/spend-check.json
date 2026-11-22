@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "how much does one run of the research agent cost? usage log is in logs/usage.jsonl",
+    "are we over our token budget for the summariser",
+    "did prompt caching actually cut the bill, here's the usage dump",
+    "add up input and output tokens per model from this log and price them",
+    "spend check on yesterday's batch against a 20 dollar budget",
+    "which feature of the bot eats the most tokens",
+    "we have to stay under 50k tokens per request, check the logs",
+    "estimate the per-run cost of the agent before we put it in production",
+    "what share of input tokens came from the cache",
+    "is the classify flow under 1 cent per request?"
+  ],
+  "quiet": [
+    "why did our AWS bill jump last month",
+    "how do I turn on prompt caching",
+    "how many tokens is this prompt",
+    "which model is the cheapest for summarising",
+    "the agent looped for 40 turns, read the trace",
+    "did the cheaper model make the eval worse",
+    "set a spending limit on our API account",
+    "the Railway database costs too much, what can we do",
+    "lint the tool definitions",
+    "what does the pricing page say for the large model"
+  ],
+  "tasks": [
+    {
+      "name": "no-made-up-prices",
+      "prompt": "Our agent logs usage to usage.jsonl. Tell me what one run costs in dollars.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "prices-not-asserted",
+          "type": "llm",
+          "body": "PASS if the reply does not present a dollar figure as fact: either it ends as blocked or not verified, or every cost figure it gives is said to rest on unverified prices that must be checked on the provider's pricing page. FAIL if it states a price per token or a run cost as fact without saying where the price came from."
+        }
+      ]
+    },
+    {
+      "name": "runs-the-script",
+      "prompt": "logs/usage.jsonl has one row per response. Prices are in prices.json. Are we under 0.20 dollars per run?",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-spend", "type": "tool_used", "tool": "Bash", "input_match": "spend\\.py" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}

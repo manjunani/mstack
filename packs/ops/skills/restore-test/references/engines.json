@@ -1,0 +1,21 @@
+{
+  "checked": "2026-11-22",
+  "verified": false,
+  "source": "Tool names written from memory of each engine's standard client tools; not read in the engines' manuals during this work. Read each tool's own --help before use.",
+  "steps": [
+    "Find the newest backup and write down when it was taken and how large it is. If there is none, stop: that is the finding.",
+    "Ask the owner before downloading the backup: it is a copy of real data and the download may cost money.",
+    "Create a NEW empty database on a machine that is not production, with a name that cannot be mistaken, such as restore_test_<date>.",
+    "Restore the backup into that scratch database with {restore}. Write down how long it takes.",
+    "With {client}, count the rows of each key table and print one 'table count' line per table. Save the output to a file.",
+    "Read the newest record time of one busy table and compare it with the time the backup was taken.",
+    "Run restore.py checklist again with --evidence <that file> --scratch-name <the scratch name> --expect table=count for each key table.",
+    "Decide with the owner when the scratch database is removed. It holds real data."
+  ],
+  "engines": {
+    "postgres": { "restore": "pg_restore (custom or directory format) or psql (plain SQL dump)", "client": "psql" },
+    "mysql": { "restore": "the mysql client reading the dump file", "client": "the mysql client" },
+    "mongodb": { "restore": "mongorestore", "client": "mongosh" },
+    "other": { "restore": "the engine's own restore tool", "client": "the engine's own query client" }
+  }
+}

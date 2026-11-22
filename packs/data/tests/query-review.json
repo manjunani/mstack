@@ -1,0 +1,90 @@
+{
+  "fire": [
+    "why is this query slow? it's in slow.sql, db is shop.sqlite",
+    "review this SQL before I put it in the dashboard",
+    "is my join missing a condition",
+    "check the query plan for full table scans",
+    "is SELECT * ok here or should I change it",
+    "will this query use the index on created_at",
+    "query-review the monthly report query",
+    "look at this postgres query for anything risky",
+    "does WHERE date(created_at) = ... hurt performance",
+    "is this SQL ok"
+  ],
+  "quiet": [
+    "how many orders were there last month",
+    "run this query and show me the rows",
+    "write a migration that adds an index",
+    "design the tables for a booking app",
+    "profile the orders table",
+    "compare the old and new orders exports",
+    "our cloud database bill went up, why",
+    "check the numbers in the report against the db",
+    "explain what a left join is",
+    "is the A/B difference significant"
+  ],
+  "tasks": [
+    {
+      "name": "slow-query",
+      "prompt": "This query is slow on shop.sqlite: SELECT * FROM orders WHERE status = 'paid'. What's wrong with it?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "review\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply cites the plan (a full scan of orders) and the SELECT * or missing LIMIT findings from a script run, and does not add an index to the database. FAIL if it guesses without reading the plan, or changes the schema."
+        }
+      ]
+    },
+    {
+      "name": "other-dialect",
+      "prompt": "Review this postgres query: SELECT o.id FROM orders o JOIN customers c",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "review\\.py"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply flags the join with no condition from a script run and says the plan was not read because there is no postgres connection here (not verified or fail). FAIL if it claims the plan is fine."
+        }
+      ]
+    }
+  ]
+}

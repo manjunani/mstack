@@ -1,0 +1,8 @@
+{
+  "items": [
+    { "id": "1", "comment": "v15 should not be 150", "file": "src/util.py", "line": 15, "verdict": "accept",
+      "reason": "The reviewer is right, 150 was a typo for 15.", "changed": ["src/util.py"] },
+    { "id": "2", "comment": "read_token should lower-case the token", "file": "src/new.py", "line": 2, "verdict": "push-back",
+      "reason": "Tokens are case sensitive: src/auth.py:3 compares them byte for byte." }
+  ]
+}

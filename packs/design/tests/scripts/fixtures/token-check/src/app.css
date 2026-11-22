@@ -1,0 +1,7 @@
+/* #abcdef in a comment is not a use */
+.card { color: #111827; padding: 13px; margin: 8px 16px; background: var(--muted); }
+.hero {
+  background: rgb(37, 99, 235);
+  font-size: 15px;
+}
+.fine { color: var(--foreground); gap: 12px; border: 1px solid var(--muted); }

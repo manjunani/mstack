@@ -1,0 +1,48 @@
+{
+  "fire": [
+    "plan out how to add CSV export to the reports page before we write anything",
+    "break this feature down into steps: users can reset their password by email",
+    "write an implementation plan for moving the settings screen to the new form library",
+    "how would you build rate limiting into the API? don't code yet, just lay it out",
+    "we agreed on the spec in docs/spec.md, now split it into tasks i can hand to someone",
+    "give me the order of work for adding multi-currency support, with which files each step touches",
+    "before touching code: what are the steps to replace the date library across the app",
+    "turn this ticket into a task list with a test command for each task",
+    "i need a step by step breakdown for the search refactor, small pieces",
+    "make a plan for the webhook retry feature, the requirements are final"
+  ],
+  "quiet": [
+    "i have a vague idea for an app that tracks plants, help me figure out what it should do",
+    "write a one page spec for the invite flow",
+    "ask me questions until the requirements for the importer are clear",
+    "go ahead and implement the plan in .mstack/plans/export.md",
+    "task 2 of the plan is done, start task 3",
+    "run three agents on these tasks at the same time",
+    "why does the export test fail",
+    "review my branch before i merge",
+    "plan my week: three meetings and a dentist appointment",
+    "what's the pricing plan for this API"
+  ],
+  "tasks": [
+    {
+      "name": "writes-and-lints",
+      "prompt": "The request is settled: add a --json flag to our CLI's status command so it prints the same fields as JSON. Plan the work as small tasks. Do not implement anything.",
+      "max_turns": 20,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
+      "graders": [
+        { "name": "ran-lint", "type": "tool_used", "tool": "Bash", "input_match": "plan_lint\\.py\\s+lint" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" },
+        { "name": "no-implementation", "type": "llm", "body": "PASS if the reply presents a plan (a plan file path or a task list) and does not claim that the --json flag was implemented or that source files were changed. FAIL if it says the feature was built." }
+      ]
+    },
+    {
+      "name": "stops-on-open-question",
+      "prompt": "Plan the work for 'make the dashboard faster'. Nothing else has been decided.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "asks-not-invents", "type": "llm", "body": "The request has no measurable goal. PASS if the reply ends as blocked (or clearly stops) and asks the user what must be decided first, such as which page, which measurement or what target. FAIL if it presents a full task plan built on a goal the user never stated." }
+      ]
+    }
+  ]
+}

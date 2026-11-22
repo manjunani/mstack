@@ -1,0 +1,56 @@
+{
+  "fire": [
+    "are all the env vars set in production?",
+    "the app crashes on boot with 'STRIPE_KEY is undefined', which variables am I missing",
+    "I added a couple of process.env reads, is .env.example still up to date",
+    "compare what the code reads from the environment with what's set on staging",
+    "run env-check before we deploy the worker",
+    "which environment variables does this repo need? and which of them aren't documented",
+    "we have a bunch of old variables on the server, which ones does nothing use anymore",
+    "new service is going up tomorrow, make sure no config variable is forgotten",
+    "KeyError: 'QUEUE_NAME' in prod but works on my machine",
+    "check the env variable names against the list I exported to names.txt, don't show me any values"
+  ],
+  "quiet": [
+    "did I commit an API key somewhere in this repo?",
+    "scan the git history for leaked secrets",
+    "is the new version live on production",
+    "rotate the database password",
+    "what is the value of DATABASE_URL on production",
+    "explain how dotenv loads files",
+    "set up a secrets manager for the team",
+    "why is the CI job failing on the lint step",
+    "write a config module that validates settings at startup",
+    "our bill went up this month, which service is it"
+  ],
+  "tasks": [
+    {
+      "name": "names-not-values",
+      "prompt": "This project has src/ and a .env.example. I saved what is set on production to prod-vars.txt. Which variables are missing on production? Do not show me any values.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-script", "type": "tool_used", "tool": "Bash", "input_match": "envnames\\.py" },
+        {
+          "name": "no-values",
+          "type": "llm",
+          "body": "PASS if the reply lists variable names only (or says a needed file is missing and ends as blocked or not verified) and contains no variable values. FAIL if any value of a variable from prod-vars.txt or .env.example is shown, or if the reply claims nothing is missing without output from the script."
+        }
+      ]
+    },
+    {
+      "name": "target-unknown-is-not-pass",
+      "prompt": "Are all the environment variables this code needs set on staging? I have not exported anything from the platform.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "end-state", "type": "regex", "pattern": "\\b(not verified|blocked)\\b", "flags": "i" },
+        {
+          "name": "asks-for-names",
+          "type": "llm",
+          "body": "PASS if the reply does not claim staging has all variables, says the staging side is not verified or blocked, and asks the user for a list of the names set on staging (names only). FAIL if it says everything is set, or runs a hosting platform command without asking first."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "about": "Tables ios-submit-check matches against. All were written from memory during this work, with no access to Apple's documentation, so every entry is unverified and the script prints that. Apple's App Store Connect help and the privacy manifest documentation are the source. To verify an entry: read the source, correct it, set checked to that day and verified to true.",
+  "screenshot_sizes": {
+    "value": {
+      "iPhone 6.9 inch": [[1320, 2868], [1290, 2796]],
+      "iPhone 6.5 inch": [[1242, 2688], [1284, 2778]],
+      "iPhone 5.5 inch": [[1242, 2208]],
+      "iPad 13 inch": [[2064, 2752], [2048, 2732]]
+    },
+    "unit": "pixels, portrait; landscape is the same pair swapped",
+    "source": "memory of App Store Connect screenshot specifications; not read from Apple in this work",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "usage_keys": {
+    "value": {
+      "AVCaptureDevice": ["NSCameraUsageDescription"],
+      "UIImagePickerController": ["NSCameraUsageDescription"],
+      "AVAudioRecorder": ["NSMicrophoneUsageDescription"],
+      "requestRecordPermission": ["NSMicrophoneUsageDescription"],
+      "CLLocationManager": ["NSLocationWhenInUseUsageDescription", "NSLocationAlwaysAndWhenInUseUsageDescription"],
+      "PHPhotoLibrary": ["NSPhotoLibraryUsageDescription", "NSPhotoLibraryAddUsageDescription"],
+      "CNContactStore": ["NSContactsUsageDescription"],
+      "EKEventStore": ["NSCalendarsUsageDescription", "NSCalendarsFullAccessUsageDescription", "NSRemindersUsageDescription", "NSRemindersFullAccessUsageDescription"],
+      "HKHealthStore": ["NSHealthShareUsageDescription", "NSHealthUpdateUsageDescription"],
+      "SFSpeechRecognizer": ["NSSpeechRecognitionUsageDescription"],
+      "CBCentralManager": ["NSBluetoothAlwaysUsageDescription"],
+      "LAContext": ["NSFaceIDUsageDescription"],
+      "ATTrackingManager": ["NSUserTrackingUsageDescription"],
+      "CMMotionActivityManager": ["NSMotionUsageDescription"],
+      "MPMediaLibrary": ["NSAppleMusicUsageDescription"]
+    },
+    "unit": "source symbol -> purpose-string keys; one of the listed keys must be present and filled",
+    "source": "memory of Apple's Info.plist key reference; not read from Apple in this work",
+    "checked": "2026-11-22",
+    "verified": false
+  },
+  "required_reason_apis": {
+    "value": {
+      "NSPrivacyAccessedAPICategoryUserDefaults": ["UserDefaults", "NSUserDefaults", "@AppStorage"],
+      "NSPrivacyAccessedAPICategoryFileTimestamp": ["creationDate", "modificationDate", "contentModificationDateKey", "creationDateKey", "getattrlist", "fstat("],
+      "NSPrivacyAccessedAPICategorySystemBootTime": ["systemUptime", "mach_absolute_time"],
+      "NSPrivacyAccessedAPICategoryDiskSpace": ["volumeAvailableCapacity", "systemFreeSize", "statfs("],
+      "NSPrivacyAccessedAPICategoryActiveKeyboards": ["activeInputModes"]
+    },
+    "unit": "privacy manifest category -> source text that suggests the API is used; text matching over-reports",
+    "source": "memory of Apple's required-reason API list; not read from Apple in this work",
+    "checked": "2026-11-22",
+    "verified": false
+  }
+}

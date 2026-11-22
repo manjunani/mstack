@@ -1,0 +1,53 @@
+{
+  "fire": [
+    "I'm stopping for today, save where we are",
+    "this chat is getting long, write a handoff so I can start fresh",
+    "I'll pick this up tomorrow in a new session",
+    "save progress, I'm about to hit my usage limit",
+    "write up the state so another session can continue",
+    "hand this off",
+    "continue from the handoff",
+    "I need to switch to my laptop, capture everything needed to resume",
+    "pause here. what do I tell the next session?",
+    "pick up where the last session stopped"
+  ],
+  "quiet": [
+    "what did you change?",
+    "note that we chose Postgres",
+    "split this between two agents",
+    "is everything passing?",
+    "commit and push",
+    "summarise this file",
+    "explain the last change to me",
+    "what's left on the todo list in TODO.md?",
+    "write release notes for v2",
+    "remember never to edit the generated files"
+  ],
+  "tasks": [
+    {
+      "name": "writes-handoff",
+      "prompt": "I have to stop now. We were adding CSV export; the writer is done but the download button is not wired up and tests have not been run. Hand off.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "wrote", "type": "tool_used", "tool": "Bash", "input_match": "handoff\\.py.*\\bwrite\\b" },
+        { "name": "file", "type": "file_exists", "path": ".mstack/handoff.md" }
+      ]
+    },
+    {
+      "name": "keeps-not-done",
+      "prompt": "Stop here and hand off. Status: migration script written, never run against real data, rollback not written.",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "honest-state",
+          "type": "regex",
+          "target": { "source": "file", "path": ".mstack/handoff.md" },
+          "pattern": "(never run|not (been )?run|not written|no rollback)",
+          "flags": "i"
+        }
+      ]
+    }
+  ]
+}

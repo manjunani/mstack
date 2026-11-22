@@ -1,0 +1,2 @@
+.page { color: var(--foreground); background: var(--background); padding: var(--space-4); gap: 8px; }
+.page a { color: var(--primary); margin: 0 12px; border-radius: var(--radius); }

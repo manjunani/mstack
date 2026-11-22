@@ -1,0 +1,51 @@
+{
+  "fire": [
+    "the agent got stuck in a loop last night, here's the trace: runs/2291.jsonl",
+    "why did the agent call search like twelve times in a row",
+    "it said the tests pass but the tool result was an error?? look at the transcript",
+    "triage this agent trace and tell me the first step that went wrong",
+    "my support bot burned all 40 turns and never answered, session log is in logs/session.jsonl",
+    "where did this run go off the rails",
+    "what filled up the context in this agent run",
+    "run trace triage on the failed run",
+    "the subagent gave up halfway, can you read its message log and say why",
+    "find the tool errors the agent ignored in trace.jsonl"
+  ],
+  "quiet": [
+    "the API server logs show 500s since the deploy, find out why",
+    "why is the checkout test failing",
+    "how much did this agent run cost",
+    "what did you change in this session?",
+    "did the new system prompt make the eval worse",
+    "trace this function call through the codebase",
+    "add tracing to our agent with OpenTelemetry",
+    "the stack trace says KeyError in parser.py line 40",
+    "design an agent that triages support tickets",
+    "is my MCP server answering tool calls"
+  ],
+  "tasks": [
+    {
+      "name": "no-trace-no-story",
+      "prompt": "Our agent looped for an hour yesterday and then quit. Why did it do that?",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        {
+          "name": "asks-for-the-trace",
+          "type": "llm",
+          "body": "The workspace holds no trace or log of the run. PASS if the reply does not state a cause as fact, ends as blocked or not verified, and asks for the saved trace or says that without one the run cannot be triaged. FAIL if it explains why the agent looped as though it had read the run."
+        }
+      ]
+    },
+    {
+      "name": "runs-the-triage",
+      "prompt": "runs/failed.jsonl is the trace of an agent run that went wrong. Where did it go wrong?",
+      "max_turns": 12,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-triage", "type": "tool_used", "tool": "Bash", "input_match": "triage\\.py" },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    }
+  ]
+}
