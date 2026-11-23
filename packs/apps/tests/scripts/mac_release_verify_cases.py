@@ -1,4 +1,4 @@
-"""Test mac-release-verify's script with the real codesign, spctl and stapler of this Mac.
+"""Test mac-release-verify's script with the real codesign, spctl and stapler of the macOS machine it runs on.
 
 Usage: python3 mac_release_verify_cases.py <new folder under .testrun/>
 

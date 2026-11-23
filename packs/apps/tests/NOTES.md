@@ -1,7 +1,7 @@
 # mstack-apps: what was tested and what was not
 
 Date: 2026-11-22. Machine: macOS 27.0.1, Xcode command-line tools present (`xcrun` 72), Python 3.14 and 3.9.
-No simulator runtime is installed on this machine (`simctl list devices --json` returns no devices).
+The build machine had no simulator runtime installed (`simctl list devices --json` returned no devices).
 
 ## How to repeat
 
@@ -52,7 +52,7 @@ decoded through `sips` (only the "cannot judge without sips" path). Thresholds a
 
 **sim-proof.** Tested: `check` on images; blocked paths (no xcrun, no booted simulator, two booted,
 unknown or shut-down udid, device build, bundle without executable or id, not an .app); `devices` on the
-real `xcrun simctl list devices --json` of this machine (read-only, zero devices, blocked as expected);
+real `xcrun simctl list devices --json` of the build machine (read-only, zero devices, blocked as expected);
 the `run` sequence through a stand-in xcrun the test writes (install fail, launch fail, no pid, process
 gone, no screenshot, blank screenshot, pass, records never overwritten). **Not run:** a real install,
 launch and `simctl io screenshot`. Whether a real `simctl launch` prints its pid in the parsed form
@@ -65,7 +65,7 @@ of steps without screenshot, observation or reason, with blank, missing or repea
 broken JSON). **Not run:** any real driving; the skill depends on the host's tapping tool, which was not
 available or used.
 
-**mac-release-verify.** Tested with the real `codesign`, `spctl` and `stapler` of this Mac, read-only:
+**mac-release-verify.** Tested with the real `codesign`, `spctl` and `stapler` of a macOS build machine, read-only:
 an unsigned bundle (3 fail), Calculator.app (signature and Gatekeeper pass, no staple: fail), a notarised
 app with a stapled ticket from /Applications (3 pass), a notarised app without a staple (fails on the
 staple only), a wrong `--expect-team`, version match and mismatch, an unsigned `.dmg` made with
@@ -81,13 +81,13 @@ read (pass with 4 warnings). **Not verified:** the identifier, permission and al
 `references/tauri-rules.json` are from memory (`"verified": false`); the samples were not produced by
 Tauri's generator; no build, `cargo` or `node` command was run.
 
-**crash-read.** Tested: .ips samples using the field names seen in this Mac's real reports (named and
+**crash-read.** Tested: .ips samples using the field names of real macOS crash reports (named and
 address-only own frames, frameworks inside the .app, `--binary`, last exception backtrace, bad thread
 index, empty thread, bad image index, deep frame, a non-crash JSON report, body-only file); text `.crash`
-samples written from memory of that format; `--dsym` against a binary and dSYM compiled here with clang
-(match resolved by `atos` to `boom.c:4`; mismatch refused with both build ids). Also run read-only on the
-69 real `.ips` files on this Mac: 12 pass, 55 not verified (system processes with no own frame), 1
-address-only, 1 non-crash report, no tracebacks. **Not tested:** a real iOS device or TestFlight report,
+samples written from memory of that format; `--dsym` against a binary and dSYM compiled with clang
+(match resolved by `atos` to `boom.c:4`; mismatch refused with both build ids). Also run read-only on a
+batch of real `.ips` crash reports from a macOS machine: every one parsed without the script crashing;
+most were system processes with no app frame and ended as not verified. **Not tested:** a real iOS device or TestFlight report,
 a real older-format `.crash` file, Objective-C exception reports with `lastExceptionBacktrace` from a
 real app.
 
