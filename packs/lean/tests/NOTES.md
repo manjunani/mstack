@@ -65,3 +65,7 @@ all five finished with a `RESULT` line and no error. Their output is not recorde
 - fanout-budget does not add `.mstack/.gitignore`: the pack's brief limits it to writing its own budget file.
   Users who do not want the file committed add it to their own ignore file.
 - Names follow the agreed skill list; no renames.
+
+## Hooks
+
+- `hooks/session_notice.py` (Stop) and `hooks/agent_budget.py` (PreToolUse on Agent and Task): 15 script cases in `tests/scripts/hook_cases.py`, all passing: silence below the limit, one notice per step, the budget ask with numbers, recording of allowed launches, the off switch, and failing open on bad input or a broken budget file. The session notice was also run once, read-only, on a real session transcript. Not tested: the hooks inside a live Claude Code session; the Stop hook reads only the last reply's usage, so a session that just compacted is measured after its next reply.

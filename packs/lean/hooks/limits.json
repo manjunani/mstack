@@ -1,0 +1,6 @@
+{
+  "_about": "Limits for the mstack-lean hooks. Working values chosen by mstack, not taken from any vendor. Switch both hooks off with MSTACK_LEAN=off.",
+  "session_first_notice_tokens": 300000,
+  "session_notice_step_tokens": 200000,
+  "agents_warning_count": 10
+}

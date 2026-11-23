@@ -87,6 +87,10 @@ mstack-level: beginner
 
 `mstack-core` ships a hook for Claude Code that looks at commands before they run. It denies a recursive delete and points to `safe-delete`, asks before commands such as `git reset --hard`, a forced push or `DROP TABLE`, and asks before MCP tools whose names look destructive. It is a seat belt, not a security boundary: it matches patterns and can be wrong in both directions. Switch it off with `MSTACK_GUARD=off`.
 
+### The lean hooks
+
+`mstack-lean` ships two hooks for Claude Code that keep token use in view. After each reply, one checks how much of the conversation the next message will re-read; past 300,000 tokens, and again every further 200,000, it prints one line suggesting a fresh session through the `handoff` skill. Before an agent is launched, the other checks the budget set with the `fanout-budget` skill and asks you when the launch would go over it. Neither blocks on its own, both fail open, and `MSTACK_LEAN=off` switches them off. The limits live in `packs/lean/hooks/limits.json`.
+
 ## Packs and skills
 
 The table is generated from the skills themselves by `tools/build_map.py`. "Tests" shows measured results: `trigger` is how many of ten fitting requests started the skill, `silence` is how many of ten unfitting requests started it (lower is better). "not tested" means exactly that.
@@ -107,7 +111,7 @@ The table is generated from the skills themselves by `tools/build_map.py`. "Test
 | `gltf-gate` | Stops a .glb or .gltf model from shipping until it is a real file, sound in structure, inside a budget and looked at. | python3; optional gltf_validator, gltf-transform, a browser for renders | trigger 8/10, silence 0/10 |
 | `rig-motion-check` | Checks a rigged or animated .glb by numbers: lists bones and clips, then follows a foot or hand bone through each clip and reports height above the floor, sliding while planted, sinking and scale drift, with a per-sample table. | python3 | trigger 8/10, silence 0/10 |
 | `text-to-3d` | Gets one 3D model from a text-to-3D provider the user picked, with the cost agreed first, then accepts or rejects the downloaded file by running real-file, structure and budget checks and recording the spend. | python3, the provider's own tool or account | trigger 9/10, silence 0/10 |
-| `three-verify` | Proves a three.js or React Three Fiber scene renders and reports its cost. | python3, a browser with a screenshot tool; node optional | trigger 6/10, silence 0/10 |
+| `three-verify` | Proves a three.js or React Three Fiber scene renders and reports fps or frame time, draw calls, triangles and a memory leak test when scenes are switched. | python3, a browser with a screenshot tool; node optional | trigger 6/10, silence 0/10 |
 
 ### mstack-ai
 
@@ -146,7 +150,7 @@ iPhone apps in SwiftUI and Mac apps in Tauri: prove a screen on the simulator, r
 | `mac-release-verify` | Checks that a built Mac app or .dmg will open on other people's Macs: runs codesign strict verification, a Gatekeeper assessment with spctl and stapler validate for the notarisation ticket, and reports each as pass, fail or could not check. | python3, macOS, codesign, spctl, xcrun stapler | trigger 8/10, silence 0/10 |
 | `sim-flow` | Records a user flow on the iPhone simulator step by step and checks the record: each step has an action, the screen expected, what was seen and a non-blank screenshot, with one result for the whole flow. | python3, a tool that can tap on the simulator (the host agent's simulator tool or the project's UI tests) | trigger 10/10, silence 0/10 |
 | `sim-proof` | Proves an iPhone app launches on the simulator and shows a real screen: installs the built .app on a booted simulator, launches it, checks the process stays alive and takes a screenshot that a pixel check confirms is not blank. | python3, Xcode command-line tools (xcrun simctl), a booted simulator, a simulator build of the app | trigger 10/10, silence 0/10 |
-| `tauri-preflight` | Flags release blockers in a Tauri app's tauri.conf.json and capabilities. | python3 | trigger 7/10, silence 0/10 |
+| `tauri-preflight` | Flags release blockers in a Tauri desktop app's tauri.conf.json and capabilities. | python3 | trigger 7/10, silence 0/10 |
 
 ### mstack-core
 
@@ -184,10 +188,10 @@ Working with data: profile, check, diff and clean datasets, run and review SQL r
 | `data-profile` | Describes a CSV, JSON-lines file or SQLite table as it really is, giving row count, per-column type, empty share, distinct count, min and max, top values, duplicate rows, and columns that look like identifiers or personal data. | python3 | trigger 8/10, silence 0/10 |
 | `notebook-check` | Checks a Jupyter .ipynb file for cells run out of order or never run, error outputs, names used before they are defined, machine-only paths, credentials; re-runs a copy when Jupyter is there. | python3, jupyter (optional, for the re-run) | trigger 8/10, silence 0/10 |
 | `number-trace` | Ties every number in a report to the query or file aggregate that produced it, re-runs each one, and lists numbers that match, do not match, or have no source. | python3 | trigger 9/10, silence 0/10 |
-| `query-review` | Reviews one SQL query without running it and flags SELECT *, joins with no condition, filters wrapped in a function, no LIMIT and, on SQLite, the query plan's full scans and missing indexes. | python3 | trigger 3/10, silence 0/10 |
+| `query-review` | Reviews one SQL query without running it: SELECT *, a join missing its condition, WHERE date(created_at) or other functions that stop an index being used, no LIMIT, and on SQLite the query plan's full scans. | python3 | trigger 3/10, silence 0/10 |
 | `sheet-audit` | Audits an .xlsx workbook from the file for error cells, numbers typed over formulas, formulas that break their row or column, links to empty cells or other workbooks, hidden sheets, and what it did not read. | python3 | trigger 8/10, silence 0/10 |
 | `sql-run` | Runs one SQL query read-only with the limits inside the runner, with a single SELECT or WITH only, the SQLite file opened read-only, a row cap, a time limit, the query plan printed with the rows. | python3 | trigger 8/10, silence 0/10 |
-| `stat-compare` | Compares two groups from the raw rows (A/B test, before and after, two segments), giving sizes, means, medians, a seeded permutation test, an interval, an effect size, and warnings on small samples, skew and spread. | python3 | trigger 3/10, silence 0/10 |
+| `stat-compare` | Compares two groups from the raw rows (A/B test, before and after, free vs paid) with sizes, means, medians, a permutation test, an interval and an effect size, and warns on small samples. | python3 | trigger 3/10, silence 0/10 |
 
 ### mstack-design
 
@@ -225,7 +229,7 @@ Software development with proof at each step: plan, build, prove a test, debug, 
 | `plan` | Turns a settled request into a plan file of small ordered tasks, each naming its files, one check command and the output to expect, then lints the plan. | python3, git | trigger 8/10, silence 0/10 |
 | `prove-test` | Shows that a test can catch the bug it protects against. | python3, git, the project's test runner | trigger 10/10, silence 0/10 |
 | `release` | Cuts a version from the exact range since the last tag: lists the commits, migrations, config and dependency changes in it, drafts release notes, and refuses to go on until a rollback step is written in the release file. | python3, git | trigger 10/10, silence 0/10 |
-| `review` | Finds real defects in a change, ranked by severity, and drops every finding whose file, line and quoted text do not match the source. | python3, git | trigger 6/10, silence 0/10 |
+| `review` | Finds real bugs in a code change, ranked by severity, and keeps only findings whose file, line and quoted text match the source. | python3, git | trigger 6/10, silence 0/10 |
 | `secure` | Finds security problems an attacker could use in the current change, with a status per check (ran, failed, not available): secrets in added lines, the dependency audit, changed entry points for untrusted input. | python3, git, the ecosystem's audit tool (npm, pip-audit, cargo-audit, govulncheck, bundler-audit) | trigger 9/10, silence 0/10 |
 
 ### mstack-growth
@@ -240,10 +244,10 @@ Getting a product found and understood: site audit, structured data, launch page
 |---|---|---|---|
 | `claim-check` | Finds every number, superlative ("fastest", "best", "only", "first"), comparison and testimonial in marketing text and fails each one that has no entry with evidence in a sources file. | python3; network only with --fetch, to the evidence addresses given | trigger 10/10, silence 0/10 |
 | `first-screen` | Reports what a landing page puts first: the first heading, first paragraph, first call to action and where it leads, whether the headline names the product, whether promised words appear, and the bytes that load first. | python3; network only for a URL | trigger 9/10, silence 0/10 |
-| `launch-site-check` | Asks a site for every page a first visitor needs before launch (home, pricing, privacy, terms, contact, a real 404, favicon, social preview image tags, a working sign-up or download link) and reports each one. | python3, network access to the site named | trigger 7/10, silence 0/10 |
+| `launch-site-check` | Asks a site for every page a first visitor needs before launch: pricing, privacy, terms, contact, a 404 that really returns 404, favicon, og image tags, a sign up button that goes somewhere. | python3, network access to the site named | trigger 7/10, silence 0/10 |
 | `mail-domain-check` | Checks the SPF, DKIM and DMARC records of one sending domain from record text or the system resolver: syntax, a too-permissive SPF, a DMARC policy of none, weak or empty DKIM keys, and missing records. | python3; dig or nslookup only for a live lookup | trigger 8/10, silence 0/10 |
 | `page-compare` | Sets two saved HTML pages side by side on measurable points only, with no verdict on which is better. | python3 | trigger 10/10, silence 0/10 |
-| `post-check` | Checks a draft post against one platform's limits: length counted the platform's way, link and hashtag counts, blog front matter, local images that exist, and no claim still marked unverified or TODO. | python3 | trigger 7/10, silence 0/10 |
+| `post-check` | Checks a draft post against one platform's limits: characters counted the platform's way (X, a Mastodon toot, Bluesky, LinkedIn), too many hashtags or links, blog front matter and images, and anything still marked [unverified] or TODO. | python3 | trigger 7/10, silence 0/10 |
 | `site-audit` | Crawls one live site within a page limit, obeying robots.txt, and reports per page the title, meta description, h1, heading order, canonical, lang and image alt text, plus robots.txt, the sitemap and whether its URLs answer. | python3, network access to the site named | trigger 9/10, silence 0/10 |
 | `store-listing-check` | Checks an app store listing kept as a file (name, subtitle, description, keywords, screenshots) against the store's field limits from a dated list, finds repeated keywords and missing screenshots, and fails claims with no source. | python3 | trigger 9/10, silence 1/10 |
 | `structured-data-check` | Validates the JSON-LD on real pages: each block parses, has @context and @type, and Article, Product, Organization, BreadcrumbList, FAQPage and SoftwareApplication items carry the properties in a dated list. | python3, network only for a URL | trigger 9/10, silence 0/10 |
@@ -259,11 +263,11 @@ Cut token use in Claude Code: measure what loads at the start, how big a session
 
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
-| `context-audit` | Measures what Claude Code loads before the first message, ranks the biggest items in estimated tokens and says what to switch off. | python3 | not tested |
-| `fanout-budget` | Estimates the token cost of a batch of subagents or eval runs from past runs, sets a limit the user agrees to, and checks it before each new launch so a fan-out stops before it overshoots. | python3 | not tested |
-| `mcp-trim` | Lists the MCP servers Claude Code loads and counts how often each one's tools were really called in past transcripts, then prints the exact command or setting to turn off the idle ones. | python3 | not tested |
-| `session-check` | Reads the current Claude Code session's transcript and reports how many tokens each new message re-reads, how fast that grew and the file size, then says whether to hand off and start fresh. | python3 | not tested |
-| `usage-report` | Turns local Claude Code transcripts into a token table per project and per day (input, output, cache read, cache write) and lists the sessions that used the most. | python3 | not tested |
+| `context-audit` | Measures what Claude Code loads before the first message, ranks the biggest items in estimated tokens and says what to switch off. | python3 | trigger 10/10, silence 0/10 |
+| `fanout-budget` | Estimates the token cost of a batch of subagents or eval runs from past runs, sets a limit the user agrees to, and checks it before each new launch so a fan-out stops before it overshoots. | python3 | trigger 10/10, silence 0/10 |
+| `mcp-trim` | Lists the MCP servers Claude Code loads and counts how often each one's tools were really called in past transcripts, then prints the exact command or setting to turn off the idle ones. | python3 | trigger 10/10, silence 0/10 |
+| `session-check` | Reads the current Claude Code session's transcript and reports how many tokens each new message re-reads, how fast that grew and the file size, then says whether to hand off and start fresh. | python3 | trigger 10/10, silence 0/10 |
+| `usage-report` | Turns local Claude Code transcripts into a token table per project and per day (input, output, cache read, cache write) and lists the sessions that used the most. | python3 | trigger 10/10, silence 0/10 |
 
 ### mstack-media
 
@@ -281,7 +285,7 @@ Audio, video and image work with a measured result: word-timed transcripts, subt
 | `podcast-edit` | Cleans a spoken recording into a new file: shortens long pauses, brings loudness to a named target in two passes, and only on request removes filler words with short crossfades, writing a list of every cut with its time. | python3, ffmpeg, ffprobe; a word-timed transcript for filler removal | trigger 10/10, silence 0/10 |
 | `show-notes` | Writes chapters and show notes for an episode from its word-timed transcript, then checks that chapters start at zero, ascend, are long enough and end inside the recording, and that every quoted line matches the transcript word for word. | python3 | trigger 8/10, silence 0/10 |
 | `transcribe` | Makes a word-timed transcript of an audio or video file (JSON with start, end and confidence per word, plus plain text) and checks that it covers all the speech. | python3, ffmpeg, ffprobe, a local speech recogniser or an API the user names | trigger 9/10, silence 0/10 |
-| `video-edit` | Cuts supplied footage by its transcript into a new file, with a cut list the user approves first. | python3, ffmpeg, ffprobe, a word-timed transcript | trigger 6/10, silence 0/10 |
+| `video-edit` | Cuts supplied video by its transcript or by time ranges into a new file, with a cut list the user approves first. | python3, ffmpeg, ffprobe, a word-timed transcript | trigger 6/10, silence 0/10 |
 
 ### mstack-ops
 
@@ -316,7 +320,7 @@ Requirement gathering and brainstorming: settle what is wanted, write a checkabl
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
 | `clarify` | Settles what the user wants before anything is built. | python3, a user who can answer | trigger 8/10, silence 0/10 |
-| `compare-options` | Ranks named options on weighted criteria with a script, applies vetoes, and shows the smallest change that would flip the winner. | python3 | trigger 7/10, silence 0/10 |
+| `compare-options` | Ranks named options on weighted criteria with a script, applies vetoes, and shows how close the call is and what would flip the winner. | python3 | trigger 7/10, silence 0/10 |
 | `ideate` | Produces a wide list of options grounded in the project, cuts it with a reason for every cut, and ends with a short list of two or three. | python3 | trigger 10/10, silence 0/10 |
 | `nfr-budgets` | Turns quality words such as fast, reliable or secure into budgets that a command can check. | python3, a project with commands that can be run | trigger 10/10, silence 0/10 |
 | `premortem` | Assumes a chosen plan has already failed, lists the assumptions it rests on, ranks them by impact and confidence with a script, and names the cheapest test for the worst one, with a pass and a fail line. | python3, a written plan or spec | trigger 9/10, silence 0/10 |
@@ -334,13 +338,13 @@ Software testing: QA a running app, pin down flaky tests, derive test cases, fin
 
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
-| `api-check` | Compares a running API with its OpenAPI contract by sending one real request per route and printing request, expected and actual for every status or response shape that does not match. | python3, a running local or test server, an OpenAPI 3 contract in JSON | smoke: trigger 2/2, silence 0/2 |
-| `bug-report` | Confirms a bug reproduces from a clean start, saves the output as evidence, and writes one report that a lint script checks for steps, expected, actual, evidence files and leaked secrets or personal data. | python3, a command or steps that show the bug | smoke: trigger 2/2, silence 0/2 |
-| `flaky-triage` | Makes an intermittent test fail on demand, names the kind of cause from recorded runs, and proves the fix with enough repeated green runs. | python3, the project's test runner, git (for the guard step) | smoke: trigger 2/2, silence 0/2 |
-| `qa-run` | Drives a running app through the user flows a change touched and writes a QA report in which every issue has steps, expected, actual and a saved evidence file. | python3, a browser tool of the host agent, git (optional) | smoke: trigger 2/2, silence 0/2 |
-| `test-cases` | Turns a spec or a function contract into a table of test cases (boundaries, combinations, properties) in which every requirement has a case and every case has one specific expected result. | python3, a spec or contract with requirement lines | smoke: trigger 2/2, silence 0/2 |
-| `test-data` | Builds factories and seed data that hold no real personal data and give the same result on every run, proven by a scanner and a two-run comparison. | python3, the project's seed or factory command | smoke: trigger 2/2, silence 0/2 |
-| `test-gaps` | Finds what matters and is not tested. | python3, git (for recent changes) | smoke: trigger 2/2, silence 0/2 |
+| `api-check` | Compares a running API with its OpenAPI contract by sending one real request per route and printing request, expected and actual for every status or response shape that does not match. | python3, a running local or test server, an OpenAPI 3 contract in JSON | trigger 10/10, silence 0/10 |
+| `bug-report` | Confirms a bug reproduces from a clean start, saves the output as evidence, and writes one report that a lint script checks for steps, expected, actual, evidence files and leaked secrets or personal data. | python3, a command or steps that show the bug | trigger 10/10, silence 0/10 |
+| `flaky-triage` | Makes an intermittent test fail on demand, names the kind of cause from recorded runs, and proves the fix with enough repeated green runs. | python3, the project's test runner, git (for the guard step) | trigger 10/10, silence 0/10 |
+| `qa-run` | Drives a running app through the user flows a change touched and writes a QA report in which every issue has steps, expected, actual and a saved evidence file. | python3, a browser tool of the host agent, git (optional) | trigger 10/10, silence 1/10 |
+| `test-cases` | Turns a spec or a function contract into a table of test cases (boundaries, combinations, properties) in which every requirement has a case and every case has one specific expected result. | python3, a spec or contract with requirement lines | trigger 9/10, silence 0/10 |
+| `test-data` | Builds factories and seed data that hold no real personal data and give the same result on every run, proven by a scanner and a two-run comparison. | python3, the project's seed or factory command | trigger 9/10, silence 0/10 |
+| `test-gaps` | Finds what matters and is not tested. | python3, git (for recent changes) | trigger 10/10, silence 0/10 |
 
 ### mstack-web
 
@@ -352,14 +356,14 @@ Working with the live web, honestly: check a deployed site, find broken links, e
 
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
-| `cite-check` | Confirms that every quote and quoted claim in a document appears word for word in the saved copy of the source it cites, and lists not found, found and source missing. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `fetch-plan` | Writes a plan before fetching many pages: robots.txt verdict per address, crawl delay, sitemap, terms link, count, rate and duration; refuses a plan that touches disallowed paths. | python3 | smoke: trigger 1/2, silence 0/2 |
-| `link-check` | Finds broken links and missing images, scripts and styles on one site by crawling it within a stated depth and page limit, and sorts every target into broken, fine and could not check. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `page-extract` | Turns one web page into clean JSON: title, main text without navigation or scripts, headings, links and tables; fails on an empty result or a page that needs JavaScript. | python3 | smoke: trigger 1/2, silence 0/2 |
-| `page-speed` | Measures how a page transfers without a browser: median time to first byte, bytes, requests, uncompressed text and missing cache headers, against the user's budgets. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `page-watch` | Tells what changed on one web page since the last look: saves a normalised text snapshot under .mstack/ and on the next run lists added and removed lines, ignoring parts the user marks as noisy (clocks, ads, counters). | python3 | smoke: trigger 2/2, silence 0/2 |
-| `site-check` | Checks how a deployed address answers: every redirect hop, the final status, security and cache headers, certificate expiry and mixed content, each marked ok, warn, failed or not checked. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `web-research` | Answers a question from the web with a notes file where every claim has a source address, a saved copy or access date, and a label (quoted, paraphrased, inferred), and checks it: unsourced claims fail and a conclusion resting on one source is flagged. | python3, the host's web search and fetch tools | smoke: trigger 2/2, silence 0/2 |
+| `cite-check` | Confirms that every quote and quoted claim in a document appears word for word in the saved copy of the source it cites, and lists not found, found and source missing. | python3 | trigger 9/10, silence 0/10 |
+| `fetch-plan` | Writes a plan before fetching many pages: robots.txt verdict per address, crawl delay, sitemap, terms link, count, rate and duration; refuses a plan that touches disallowed paths. | python3 | trigger 5/10, silence 0/10 |
+| `link-check` | Finds broken links and missing images, scripts and styles on one site by crawling it within a stated depth and page limit, and sorts every target into broken, fine and could not check. | python3 | trigger 10/10, silence 0/10 |
+| `page-extract` | Turns one web page into clean JSON: title, main text without navigation or scripts, headings, links and tables; fails on an empty result or a page that needs JavaScript. | python3 | trigger 4/10, silence 0/10 |
+| `page-speed` | Measures how a page transfers without a browser: median time to first byte, bytes, requests, uncompressed text and missing cache headers, against the user's budgets. | python3 | trigger 9/10, silence 0/10 |
+| `page-watch` | Tells what changed on one web page since the last look: saves a normalised text snapshot under .mstack/ and on the next run lists added and removed lines, ignoring parts the user marks as noisy (clocks, ads, counters). | python3 | trigger 8/10, silence 0/10 |
+| `site-check` | Checks how a deployed address answers: every redirect hop, the final status, security and cache headers, certificate expiry and mixed content, each marked ok, warn, failed or not checked. | python3 | trigger 9/10, silence 0/10 |
+| `web-research` | Answers a question from the web with a notes file where every claim has a source address, a saved copy or access date, and a label (quoted, paraphrased, inferred), and checks it: unsourced claims fail and a conclusion resting on one source is flagged. | python3, the host's web search and fetch tools | trigger 8/10, silence 0/10 |
 
 ### mstack-writing
 
@@ -371,8 +375,8 @@ Text work with a proof: copy-edits where every change is listed and nothing else
 
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
-| `copyedit` | Proofreads and copy-edits a document to a style guide, house style by default, listing corrections, suggestions and queries apart and proving code, quotes, links and numbers survived. | python3 | smoke: trigger 1/2, silence 0/2 |
-| `translate-check` | Translates a text or a JSON strings file and proves nothing countable was lost. | python3 | smoke: trigger 2/2, silence 0/2 |
+| `copyedit` | Proofreads and copy-edits a document to a style guide, house style by default, listing corrections, suggestions and queries apart and proving code, quotes, links and numbers survived. | python3 | trigger 9/10, silence 0/10 |
+| `translate-check` | Translates a text or a JSON strings file and proves nothing countable was lost. | python3 | trigger 8/10, silence 0/10 |
 
 ### mstack-xr
 

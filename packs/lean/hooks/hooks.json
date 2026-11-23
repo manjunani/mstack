@@ -1,0 +1,20 @@
+{
+  "description": "mstack-lean: one-line notice when a session gets expensive to continue, and a budget check before subagent launches. Off switch: MSTACK_LEAN=off",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}\"/hooks/session_notice.py", "timeout": 10 }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Agent|Task",
+        "hooks": [
+          { "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}\"/hooks/agent_budget.py", "timeout": 10 }
+        ]
+      }
+    ]
+  }
+}
