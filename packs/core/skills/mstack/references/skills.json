@@ -266,11 +266,10 @@
       "version": "0.1.0",
       "path": "packs/3d/skills/blender-task",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -286,11 +285,10 @@
       "version": "0.1.0",
       "path": "packs/3d/skills/gltf-gate",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "8/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -304,11 +302,10 @@
       "version": "0.1.0",
       "path": "packs/3d/skills/rig-motion-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "8/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -323,11 +320,10 @@
       "version": "0.1.0",
       "path": "packs/3d/skills/text-to-3d",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "9/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -342,11 +338,10 @@
       "version": "0.1.0",
       "path": "packs/3d/skills/three-verify",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "6/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -360,11 +355,10 @@
       "version": "0.1.0",
       "path": "packs/ai/skills/eval-gate",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -379,11 +373,10 @@
       "version": "0.1.0",
       "path": "packs/ai/skills/injection-test",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -397,11 +390,10 @@
       "version": "0.1.0",
       "path": "packs/ai/skills/judge-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -416,11 +408,10 @@
       "version": "0.1.0",
       "path": "packs/ai/skills/mcp-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -434,11 +425,10 @@
       "version": "0.1.0",
       "path": "packs/ai/skills/rag-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -452,11 +442,10 @@
       "version": "0.1.0",
       "path": "packs/ai/skills/spend-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -470,11 +459,10 @@
       "version": "0.1.0",
       "path": "packs/ai/skills/tool-lint",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "9/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -488,11 +476,10 @@
       "version": "0.1.0",
       "path": "packs/ai/skills/trace-triage",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -507,11 +494,10 @@
       "version": "0.1.0",
       "path": "packs/apps/skills/app-release-notes",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -525,11 +511,10 @@
       "version": "0.1.0",
       "path": "packs/apps/skills/app-size",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "9/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -543,11 +528,10 @@
       "version": "0.1.0",
       "path": "packs/apps/skills/crash-read",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -561,11 +545,10 @@
       "version": "0.1.0",
       "path": "packs/apps/skills/ios-a11y-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "6/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -579,11 +562,10 @@
       "version": "0.1.0",
       "path": "packs/apps/skills/ios-submit-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "8/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -601,11 +583,10 @@
       "version": "0.1.0",
       "path": "packs/apps/skills/mac-release-verify",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "8/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -620,11 +601,10 @@
       "version": "0.1.0",
       "path": "packs/apps/skills/sim-flow",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -641,11 +621,10 @@
       "version": "0.1.0",
       "path": "packs/apps/skills/sim-proof",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -659,11 +638,10 @@
       "version": "0.1.0",
       "path": "packs/apps/skills/tauri-preflight",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "7/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -730,10 +708,10 @@
       "version": "0.1.0",
       "path": "packs/core/skills/remember",
       "tests": {
-        "trigger": "9/10",
+        "trigger": "10/10",
         "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -748,10 +726,10 @@
       "version": "0.1.0",
       "path": "packs/core/skills/safe-delete",
       "tests": {
-        "trigger": "9/10",
+        "trigger": "10/10",
         "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -800,10 +778,10 @@
       "version": "0.1.0",
       "path": "packs/core/skills/verify",
       "tests": {
-        "trigger": "8/10",
+        "trigger": "10/10",
         "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -817,11 +795,10 @@
       "version": "0.1.0",
       "path": "packs/data/skills/chart-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "8/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -835,11 +812,10 @@
       "version": "0.1.0",
       "path": "packs/data/skills/data-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "9/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -853,11 +829,10 @@
       "version": "0.1.0",
       "path": "packs/data/skills/data-clean",
       "tests": {
-        "trigger": "1/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "9/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -871,11 +846,10 @@
       "version": "0.1.0",
       "path": "packs/data/skills/data-diff",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "9/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -889,11 +863,10 @@
       "version": "0.1.0",
       "path": "packs/data/skills/data-profile",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "8/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -909,11 +882,10 @@
       "version": "0.1.0",
       "path": "packs/data/skills/notebook-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "8/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -927,11 +899,10 @@
       "version": "0.1.0",
       "path": "packs/data/skills/number-trace",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "9/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -945,11 +916,10 @@
       "version": "0.1.0",
       "path": "packs/data/skills/query-review",
       "tests": {
-        "trigger": "1/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "3/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -963,11 +933,10 @@
       "version": "0.1.0",
       "path": "packs/data/skills/sheet-audit",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "8/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -981,11 +950,10 @@
       "version": "0.1.0",
       "path": "packs/data/skills/sql-run",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "8/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -999,11 +967,10 @@
       "version": "0.1.0",
       "path": "packs/data/skills/stat-compare",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "3/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -1019,11 +986,10 @@
       "version": "0.1.0",
       "path": "packs/design/skills/a11y-audit",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -1037,11 +1003,10 @@
       "version": "0.1.0",
       "path": "packs/design/skills/brand-kit",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -1056,11 +1021,10 @@
       "version": "0.1.0",
       "path": "packs/design/skills/design-review",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -1074,11 +1038,10 @@
       "version": "0.1.0",
       "path": "packs/design/skills/token-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -1093,11 +1056,10 @@
       "version": "0.1.0",
       "path": "packs/design/skills/ui-build",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "9/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -1111,11 +1073,10 @@
       "version": "0.1.0",
       "path": "packs/design/skills/ui-copy",
       "tests": {
-        "trigger": "1/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -1131,11 +1092,10 @@
       "version": "0.1.0",
       "path": "packs/design/skills/ui-match",
       "tests": {
-        "trigger": "1/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "8/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -1151,11 +1111,10 @@
       "version": "0.1.0",
       "path": "packs/dev/skills/build",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "8/10",
+        "silence": "0/10",
         "runs": 1,
-        "tested": "2026-11-22",
+        "tested": "2026-11-23",
         "with": "Claude Code 2.1.330"
       }
     },
@@ -1533,9 +1492,8 @@
       "version": "0.1.0",
       "path": "packs/media/skills/captions",
       "tests": {
-        "trigger": "1/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "9/10",
+        "silence": "0/10",
         "runs": 1,
         "tested": "2026-11-22",
         "with": "Claude Code 2.1.330"
@@ -1553,9 +1511,8 @@
       "version": "0.1.0",
       "path": "packs/media/skills/export-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "9/10",
+        "silence": "0/10",
         "runs": 1,
         "tested": "2026-11-22",
         "with": "Claude Code 2.1.330"
@@ -1572,9 +1529,8 @@
       "version": "0.1.0",
       "path": "packs/media/skills/image-batch",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
         "tested": "2026-11-22",
         "with": "Claude Code 2.1.330"
@@ -1670,9 +1626,8 @@
       "version": "0.1.0",
       "path": "packs/ops/skills/ci-check",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "8/10",
+        "silence": "0/10",
         "runs": 1,
         "tested": "2026-11-22",
         "with": "Claude Code 2.1.330"
@@ -1688,9 +1643,8 @@
       "version": "0.1.0",
       "path": "packs/ops/skills/ci-fix",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
         "tested": "2026-11-22",
         "with": "Claude Code 2.1.330"
@@ -1706,9 +1660,8 @@
       "version": "0.1.0",
       "path": "packs/ops/skills/cost-watch",
       "tests": {
-        "trigger": "2/2",
-        "silence": "0/2",
-        "kind": "smoke",
+        "trigger": "10/10",
+        "silence": "0/10",
         "runs": 1,
         "tested": "2026-11-22",
         "with": "Claude Code 2.1.330"
