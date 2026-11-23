@@ -1,7 +1,7 @@
 {
   "name": "mstack-test",
   "description": "Software testing: QA a running app, pin down flaky tests, derive test cases, find untested risks, keep test data free of personal data, check an API against its contract, confirm a bug before reporting it.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": { "name": "manjunani" },
   "license": "MIT",
   "repository": "https://github.com/manjunani/mstack",

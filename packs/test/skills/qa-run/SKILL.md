@@ -4,7 +4,7 @@ description: Drives a running app through the user flows a change touched and wr
 license: MIT
 metadata:
   pack: test
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, a browser tool of the host agent, git (optional)
 ---
 

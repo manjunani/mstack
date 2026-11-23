@@ -4,7 +4,7 @@ description: Restores a backup into a new scratch folder and proves the data is 
 license: MIT
 metadata:
   pack: ops
-  version: 0.1.0
+  version: 0.2.0
   needs: python3
 ---
 

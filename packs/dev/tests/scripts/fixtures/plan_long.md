@@ -6,6 +6,7 @@ Spec: docs/spec.md
 ## Task 1: Change the banner
 
 Files: src/dates.py
+Context: none
 Check: `python3 -c "import sys; sys.exit(0)"`
 Expect: exit code 0
 

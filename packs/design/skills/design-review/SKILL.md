@@ -4,7 +4,7 @@ description: Gates a rendered page before it is called done, from what the brows
 license: MIT
 metadata:
   pack: design
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, a browser the agent can drive (host browser tool or Playwright)
 ---
 

@@ -4,7 +4,7 @@ description: Writes chapters and show notes for an episode from its word-timed t
 license: MIT
 metadata:
   pack: media
-  version: 0.1.0
+  version: 0.2.0
   needs: python3
 ---
 

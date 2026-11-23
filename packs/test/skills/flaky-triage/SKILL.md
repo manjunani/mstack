@@ -4,7 +4,7 @@ description: Makes an intermittent test fail on demand, names the kind of cause 
 license: MIT
 metadata:
   pack: test
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, the project's test runner, git (for the guard step)
 ---
 

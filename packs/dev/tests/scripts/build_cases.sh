@@ -17,9 +17,24 @@ t 0 "help prints" python3 "$L" --help
 t 2 "status with no ledger is not verified" python3 "$L" status
 t 2 "done before any start is blocked" python3 "$L" done 1
 t 2 "start for a task the plan lacks is blocked" python3 "$L" start 9 --plan "$PLAN"
+t 0 "brief prints task 2 as a standalone brief" python3 "$L" brief 2 --plan "$PLAN"
+has "# Brief: task 2 of 2: Command line"
+has "Goal: The calculator adds and has a command line."
+has "1. src/cli.py reads two numbers and prints their sum."
+has "Touch only these files: src/cli.py."
+has "Run the check until it prints what Expect says: \`python3 src/cli.py 2 3\`"
+has "STATUS: done | failed | blocked"
+hasnt "Add numbers"
+t 0 "brief for task 1 names the later task as not its own" python3 "$L" brief 1 --plan "$PLAN"
+has "Later tasks (2) are not yours"
+t 2 "brief for a task the plan lacks is blocked" python3 "$L" brief 9 --plan "$PLAN"
+t 2 "brief with no plan and no ledger is blocked" python3 "$L" brief 1
+same "brief wrote nothing" "$(ls .mstack)" "plans"
 t 0 "start task 1 from the plan" python3 "$L" start 1 --plan "$PLAN"
 has "files: src/calc.py, tests/test_calc.py, tests/__init__.py"
 has "check: python3 -m unittest tests.test_calc"
+t 0 "brief with no --plan reads the plan from the ledger" python3 "$L" brief 2
+has "# Brief: task 2 of 2: Command line"
 t 2 "start task 2 while task 1 is open is blocked" python3 "$L" start 2 --plan "$PLAN"
 t 2 "starting task 1 twice is blocked" python3 "$L" start 1 --plan "$PLAN"
 

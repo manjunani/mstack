@@ -1,10 +1,10 @@
 ---
 name: ios-a11y-check
-description: Finds SwiftUI code that breaks VoiceOver and Dynamic Type, with file and line. Use when the user asks about VoiceOver labels, Dynamic Type, larger text or accessibility of an iPhone app. Flags icon buttons and images with no accessibility label, fixed font sizes, state shown by colour alone, and checks the largest-text screenshots exist and are not blank. Not for web pages (use a11y-audit) or for visual taste (use design-review).
+description: Finds SwiftUI code that breaks VoiceOver and Dynamic Type, with file and line. Use when the user asks about VoiceOver, a missing accessibility label on icon buttons, toolbar buttons that just read "button", a status dot shown by colour only, or larger accessibility text sizes in an iPhone or iOS app. Also checks the largest-text screenshots exist and are not blank. Not for web pages or aria labels (use a11y-audit) or visual taste (use design-review).
 license: MIT
 metadata:
   pack: apps
-  version: 0.1.0
+  version: 0.2.0
   needs: python3; the simulator only for the screenshots
 ---
 

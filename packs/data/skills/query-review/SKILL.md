@@ -1,10 +1,10 @@
 ---
 name: query-review
-description: Reviews one SQL query without running it and flags SELECT *, joins with no condition, filters wrapped in a function, no LIMIT and, on SQLite, the query plan's full scans and missing indexes. Use when asked to "review this SQL", "is this SQL ok" or "why is this query slow", or before a query goes into code, a report or a dashboard. Not for getting the query's results (use sql-run) or reviewing schema migrations (use migration-check).
+description: Reviews one SQL query without running it: SELECT *, a join missing its condition, WHERE date(created_at) or other functions that stop an index being used, no LIMIT, and on SQLite the query plan's full scans. Use when asked "is this SQL ok", "review this SQL", "is my join missing a condition", "will this query use the index", "anything risky in this postgres query" or why a query is slow. Not for getting the results (use sql-run) or migrations that add indexes (use migration-check).
 license: MIT
 metadata:
   pack: data
-  version: 0.1.0
+  version: 0.2.0
   needs: python3
 ---
 

@@ -1,10 +1,10 @@
 ---
 name: review
-description: Finds real defects in a change, ranked by severity, and drops every finding whose file, line and quoted text do not match the source. Use when the user asks to review a diff, a branch, a pull request or uncommitted changes, asks "anything wrong with this?", or pastes review comments from someone else and wants them answered. Not for running the checks (use verify), hunting security holes (use secure) or finding why something fails (use debug).
+description: Finds real bugs in a code change, ranked by severity, and keeps only findings whose file, line and quoted text match the source. Use when the user says "review my diff for bugs", "code review of PR 214", "check the last three commits for mistakes", "anything wrong with my changes", wants a branch checked before merge, or got pull request feedback and asks which points are right. Not for running the tests (use verify), a security pass (use secure) or finding why something fails (use debug).
 license: MIT
 metadata:
   pack: dev
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, git
 ---
 

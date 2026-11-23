@@ -4,7 +4,7 @@ description: Finds security problems an attacker could use in the current change
 license: MIT
 metadata:
   pack: dev
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, git, the ecosystem's audit tool (npm, pip-audit, cargo-audit, govulncheck, bundler-audit)
 ---
 

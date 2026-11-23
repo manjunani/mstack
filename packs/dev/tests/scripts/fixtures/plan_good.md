@@ -6,6 +6,7 @@ Spec: docs/spec.md
 ## Task 1: Parse the date header
 
 Files: src/dates.py, tests/test_dates.py (new)
+Context: a header looks like "Date: 2026-11-02". A header with no date raises DateError; it never returns None.
 Uses: read_header
 Makes: parse_date, DateError
 Check: `python3 -m unittest tests.test_dates -v`
@@ -19,6 +20,7 @@ Expect: Ran 2 tests, OK
 Files:
 - src/report.py
 - tests/test_report.py (new)
+Context: none
 Uses: parse_date
 Makes: report_line
 Check: `python3 -m unittest tests.test_report -v`

@@ -1,0 +1,37 @@
+{
+  "context-audit": {
+    "trigger": "10/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-23",
+    "with": "Claude Code 2.1.330"
+  },
+  "fanout-budget": {
+    "trigger": "10/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-23",
+    "with": "Claude Code 2.1.330"
+  },
+  "mcp-trim": {
+    "trigger": "10/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-23",
+    "with": "Claude Code 2.1.330"
+  },
+  "session-check": {
+    "trigger": "10/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-23",
+    "with": "Claude Code 2.1.330"
+  },
+  "usage-report": {
+    "trigger": "10/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-23",
+    "with": "Claude Code 2.1.330"
+  }
+}

@@ -1,10 +1,10 @@
 ---
 name: tauri-preflight
-description: Flags release blockers in a Tauri app's tauri.conf.json and capabilities. Use when a Tauri desktop app is about to get a release build or the user asks "is my Tauri config ok to ship". Checks a default bundle identifier, versions that disagree with Cargo.toml and package.json, a missing or permissive CSP, broad fs, shell or http permissions, an updater without a public key or on plain http, missing icons. Not for checking the built, signed .app (use mac-release-verify).
+description: Flags release blockers in a Tauri desktop app's tauri.conf.json and capabilities. Use when the user asks if the CSP in the desktop app is too permissive, whether the version in Cargo.toml, package.json and the tauri config match, if the identifier is still com.tauri.dev, or "is my Tauri config ok to ship". Also checks broad fs, shell or http permissions, an updater without a pubkey or on plain http, and missing icons. Not for the built, signed .app or dmg (use mac-release-verify).
 license: MIT
 metadata:
   pack: apps
-  version: 0.1.0
+  version: 0.2.0
   needs: python3
 ---
 

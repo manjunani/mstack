@@ -1,10 +1,10 @@
 ---
 name: video-edit
-description: Cuts supplied footage by its transcript into a new file, with a cut list the user approves first. Use when the user wants mistakes, retakes, false starts or dead air taken out of a recorded video. Moves cut points to gaps between words, cuts frame-accurately, then checks length, sound against picture and a frame each side of every join. Not for audio-only recordings (use podcast-edit).
+description: Cuts supplied video by its transcript or by time ranges into a new file, with a cut list the user approves first. Use when the user wants retakes, false starts, "sorry let me start again", a coughing fit or dead air removed, asks to keep only 0:30 to 2:00, splice out a section at a time, or make a tighter cut of a talk. Cuts at gaps between words, frame-accurately, then checks length and sync at every join. Not for audio-only recordings (use podcast-edit) or adding captions (use captions).
 license: MIT
 metadata:
   pack: media
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, ffmpeg, ffprobe, a word-timed transcript
 ---
 

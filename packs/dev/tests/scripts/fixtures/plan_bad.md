@@ -13,6 +13,7 @@ Expect: works
 
 1. Add `parseDate` and handle edge cases.
 2. TODO decide the error type.
+3. Use the date format as we discussed.
 
 ## Task 3: Show the date in the report
 

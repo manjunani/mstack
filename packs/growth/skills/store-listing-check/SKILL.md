@@ -4,7 +4,7 @@ description: Checks an app store listing kept as a file (name, subtitle, descrip
 license: MIT
 metadata:
   pack: growth
-  version: 0.1.0
+  version: 0.2.0
   needs: python3
 ---
 

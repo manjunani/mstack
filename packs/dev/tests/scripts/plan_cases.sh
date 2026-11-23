@@ -28,6 +28,9 @@ has "'various' is not a file path"
 has "Check is not a command"
 has "task 4 has no Files"
 has "task 4 has no Check"
+has "task 1 has no Context"
+has "task 4 has no numbered steps"
+has "task 1 points at the conversation ('as discussed')"
 has "uses \`format_day\`, which task 4 makes later"
 has "uses \`parse-date\`, but the plan makes \`parse_date\`"
 has "uses \`read_headers\`: no earlier task makes it and it is not in the project"
@@ -47,6 +50,9 @@ t 2 "no command given" python3 "$L"
 t 0 "tasks prints JSON" python3 "$L" tasks .mstack/plans/plan_good.md
 has '"check": "python3 -m unittest tests.test_report -v"'
 has '"tests/test_report.py"'
+has '"context": "none"'
+has '"steps": ['
+
 
 t 1 "paths are judged against --root, not the current folder" python3 "$L" lint .mstack/plans/plan_good.md --root docs
 has "src/dates.py does not exist"

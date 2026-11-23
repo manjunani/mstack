@@ -1,66 +1,58 @@
 {
   "clarify": {
-    "trigger": "2/2",
-    "silence": "0/2",
-    "kind": "smoke",
+    "trigger": "8/10",
+    "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-22",
+    "tested": "2026-11-23",
     "with": "Claude Code 2.1.330"
   },
   "compare-options": {
-    "trigger": "1/2",
-    "silence": "0/2",
-    "kind": "smoke",
+    "trigger": "10/10",
+    "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-22",
+    "tested": "2026-11-23",
     "with": "Claude Code 2.1.330"
   },
   "ideate": {
-    "trigger": "2/2",
-    "silence": "0/2",
-    "kind": "smoke",
+    "trigger": "10/10",
+    "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-22",
+    "tested": "2026-11-23",
     "with": "Claude Code 2.1.330"
   },
   "nfr-budgets": {
-    "trigger": "2/2",
-    "silence": "0/2",
-    "kind": "smoke",
+    "trigger": "10/10",
+    "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-22",
+    "tested": "2026-11-23",
     "with": "Claude Code 2.1.330"
   },
   "premortem": {
-    "trigger": "2/2",
-    "silence": "0/2",
-    "kind": "smoke",
+    "trigger": "9/10",
+    "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-22",
+    "tested": "2026-11-23",
     "with": "Claude Code 2.1.330"
   },
   "research-synthesis": {
-    "trigger": "2/2",
-    "silence": "0/2",
-    "kind": "smoke",
+    "trigger": "9/10",
+    "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-22",
+    "tested": "2026-11-23",
     "with": "Claude Code 2.1.330"
   },
   "spec": {
-    "trigger": "2/2",
-    "silence": "0/2",
-    "kind": "smoke",
+    "trigger": "9/10",
+    "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-22",
+    "tested": "2026-11-23",
     "with": "Claude Code 2.1.330"
   },
   "trace": {
-    "trigger": "2/2",
-    "silence": "0/2",
-    "kind": "smoke",
+    "trigger": "9/10",
+    "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-22",
+    "tested": "2026-11-23",
     "with": "Claude Code 2.1.330"
   }
 }

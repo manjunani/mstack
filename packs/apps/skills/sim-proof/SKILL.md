@@ -4,7 +4,7 @@ description: Proves an iPhone app launches on the simulator and shows a real scr
 license: MIT
 metadata:
   pack: apps
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, Xcode command-line tools (xcrun simctl), a booted simulator, a simulator build of the app
 ---
 

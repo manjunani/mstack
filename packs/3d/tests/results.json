@@ -28,7 +28,7 @@
     "with": "Claude Code 2.1.330"
   },
   "three-verify": {
-    "trigger": "6/10",
+    "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
     "tested": "2026-11-23",

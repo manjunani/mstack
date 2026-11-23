@@ -4,7 +4,7 @@ description: Builds a new screen, or reworks one that looks generic, so it fits 
 license: MIT
 metadata:
   pack: design
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, a browser the agent can drive for the render step
 ---
 

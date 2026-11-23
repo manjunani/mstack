@@ -1,10 +1,10 @@
 ---
 name: stat-compare
-description: Compares two groups from the raw rows (A/B test, before and after, two segments), giving sizes, means, medians, a seeded permutation test, an interval, an effect size, and warnings on small samples, skew and spread. Use when asked "is this difference real", "did variant B win", or whether a change moved a metric. Says not verified when a group is too small. Not for AI eval runs (use eval-gate) or scoring options (use compare-options).
+description: Compares two groups from the raw rows (A/B test, before and after, free vs paid) with sizes, means, medians, a permutation test, an interval and an effect size, and warns on small samples. Use when asked "is this lift significant", "is B better", "or is it noise", "did response times actually go down", "compare session length for X vs Y", or whether an experiment result holds up with few users per group. Not for AI eval runs (use eval-gate) or scoring options (use compare-options).
 license: MIT
 metadata:
   pack: data
-  version: 0.1.0
+  version: 0.2.0
   needs: python3
 ---
 

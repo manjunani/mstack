@@ -63,6 +63,8 @@ def yaml_value(value):
         return str(value)
     if isinstance(value, list):
         return "[" + ", ".join(yaml_value(v) for v in value) + "]"
+    if isinstance(value, dict):  # flow mapping, for example a grader target {source: file, path: ...}
+        return "{" + ", ".join(f"{k}: {yaml_value(v)}" for k, v in value.items()) + "}"
     text = str(value)
     if text and all(c.isalnum() or c in "_-./" for c in text):
         return text

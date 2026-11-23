@@ -1,10 +1,10 @@
 ---
 name: compare-options
-description: Ranks named options on weighted criteria with a script, applies vetoes, and shows the smallest change that would flip the winner. Use when the user names two or more options and asks "which one?", "X or Y" or "X vs Y" for a database, queue, vendor, tool or build-or-buy choice, says what matters most (cost, effort, speed), or wants a trade-off table or a short list ranked. Not for producing the options (use ideate), testing the chosen plan (use premortem), timing code (use perf-check) or recording the decision (use remember).
+description: Ranks named options on weighted criteria with a script, applies vetoes, and shows how close the call is and what would flip the winner. Use when the user asks "X or Y", "X vs Y" or "which one", wants a trade-off table for vendors, hosting providers or tools, asks to rank features by reach, effort and how sure we are, or asks "what would have to change for B to win". Not for producing the options (use ideate), testing the chosen plan (use premortem), timing code (use perf-check) or recording the decision (use remember).
 license: MIT
 metadata:
   pack: product
-  version: 0.1.0
+  version: 0.2.0
   needs: python3
 ---
 

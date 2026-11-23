@@ -1,10 +1,10 @@
 ---
 name: three-verify
-description: Proves a three.js or React Three Fiber scene renders and reports its cost. Checks the code against the installed three.js version, then judges a capture of screenshots per camera pose, console errors, draw calls and a dispose leak test. Use when a 3D page was built or changed, the canvas is black, or the user asks "does the scene work" or "how heavy is it". Not for checking one model file (use gltf-gate).
+description: Proves a three.js or React Three Fiber scene renders and reports fps or frame time, draw calls, triangles and a memory leak test when scenes are switched. Use when the canvas is black, after bumping three to a new version, or asked "does the scene work", "how many fps", "how heavy is it" or whether old APIs like outputEncoding still work. Checks code against the installed three version and screenshots per camera pose. Not for one model file (use gltf-gate) or a WebXR session (use webxr-verify).
 license: MIT
 metadata:
   pack: 3d
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, a browser with a screenshot tool; node optional
 ---
 

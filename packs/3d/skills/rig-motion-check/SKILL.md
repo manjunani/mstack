@@ -4,7 +4,7 @@ description: Checks a rigged or animated .glb by numbers: lists bones and clips,
 license: MIT
 metadata:
   pack: 3d
-  version: 0.1.0
+  version: 0.2.0
   needs: python3
 ---
 

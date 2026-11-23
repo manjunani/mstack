@@ -4,16 +4,23 @@
   lint <plan.md>    check the plan; print one line per problem
   tasks <plan.md>   print the tasks the script found, as JSON (what a builder or another script will see)
 
-A plan is a Markdown file. Each task is a heading and five fields:
+A plan is a Markdown file. Each task is a heading, six fields and numbered steps. Each task must stand alone:
+a fresh agent that never saw the conversation gets only the plan header and that one task, and must be able to
+do it.
 
   ## Task 1: Parse the date header
   Files: src/dates.py, tests/test_dates.py (new)
+  Context: headers look like "Date: 2026-11-02"; a missing date raises DateError, never returns None
   Uses: read_header
   Makes: parse_date, DateError
   Check: `python3 -m pytest tests/test_dates.py -q`
   Expect: 4 passed
 
+  1. Add parse_date(text) to src/dates.py ...
+
   Files    every file the task may touch; mark a file the task creates with (new)
+  Context  what a builder who never saw the conversation must know: decisions, formats, the reason; "none"
+           when the files, steps and check already say it all
   Uses     names (functions, types, tables, routes) the task needs from an earlier task or from the code
   Makes    names the task creates for later tasks
   Check    one command that proves the task
@@ -22,7 +29,8 @@ A plan is a Markdown file. Each task is a heading and five fields:
 A field may be one line with commas, or the field name followed by "- item" lines. Uses and Makes may be left out.
 The header may carry "Spec: <path>"; the plan is then compared with the spec for size.
 
-lint fails when: a task lacks Files, Check or Expect; Expect says nothing checkable; a listed file is missing and
+lint fails when: a task lacks Files, Context, Check, Expect or numbered steps; a task points at the conversation
+("as discussed", "see above") instead of saying the thing; Expect says nothing checkable; a listed file is missing and
 not marked (new); a filler phrase stands in for a decision; a name is used before a task makes it, is made by no
 task and is not in the project, or is spelled differently in two places; task numbers are out of order.
 lint warns on: a plan several times longer than its spec, a task with many files, a check program that is not
@@ -45,8 +53,17 @@ import sys
 GIT = os.environ.get("MSTACK_GIT") or "git"
 HERE = pathlib.Path(__file__).resolve().parent
 TASK = re.compile(r"^##\s+Task\s+(\d+)\s*[:.\-]?\s*(.*?)\s*$", re.I)
-FIELD = re.compile(r"^\**(Files|Uses|Makes|Check|Expect)\**\s*:\**\s*(.*)$", re.I)
-HEADER = re.compile(r"^\**(Goal|Spec)\**\s*:\**\s*(.*)$", re.I)
+FIELD = re.compile(r"^\**(Files|Context|Uses|Makes|Check|Expect)\**\s*:\**\s*(.*)$", re.I)
+STEP = re.compile(r"^\s*\d+[.)]\s+\S")
+# A task is handed to a builder that never saw the conversation, so it must not point back at it.
+CONVERSATION = [
+    (r"\bas (we )?(discussed|agreed|decided|mentioned)\b", "as discussed"),
+    (r"\b(discussed|agreed|mentioned|said) (earlier|before|above|in (the|this) (chat|conversation|session))\b", "said earlier"),
+    (r"\b(see|as|per) (above|earlier)\b", "see above"), (r"\blike (before|last time)\b", "like before"),
+    (r"\bthe (user|owner) (said|wants|asked)\b", "the user said"),
+    (r"\b(in|from) (the|this|our) (chat|conversation|discussion)\b", "from the conversation"),
+]
+HEADER = re.compile(r"^\**(Goal|Spec|Limits)\**\s*:\**\s*(.*)$", re.I)
 BULLET = re.compile(r"^\s*[-*]\s+(.*)$")
 IDENT = re.compile(r"`([A-Za-z_][A-Za-z0-9_\-]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*)(?:\(\))?`")
 FILLER = [
@@ -95,7 +112,7 @@ def parse(text):
         match = None if fence else TASK.match(line)
         if match:
             current = {"number": int(match.group(1)), "title": match.group(2), "line": number, "body": [],
-                       "files": [], "uses": [], "makes": [], "check": "", "expect": "", "seen": {}}
+                       "files": [], "uses": [], "makes": [], "check": "", "expect": "", "context": "", "seen": {}}
             tasks.append(current)
             field = None
             continue
@@ -115,7 +132,7 @@ def parse(text):
             field = match.group(1).lower()
             value = match.group(2).strip()
             current["seen"][field] = number
-            if field in ("check", "expect"):
+            if field in ("check", "expect", "context"):
                 current[field] = value.strip("`").strip() if field == "check" else value
             else:
                 current[field].extend(split_items(value))
@@ -123,6 +140,8 @@ def parse(text):
         bullet = BULLET.match(line)
         if field in ("files", "uses", "makes") and bullet:
             current[field].extend(split_items(bullet.group(1)))
+        elif field == "context" and line.strip() and not STEP.match(line):
+            current["context"] = (current["context"] + " " + line.strip()).strip()
         elif field in ("check", "expect") and bullet and not current[field]:
             current[field] = bullet.group(1).strip().strip("`").strip()
         elif line.strip():
@@ -196,9 +215,20 @@ def lint(plan_path, root):
 
     for task in tasks:
         where = f"task {task['number']}"
-        for field in ("files", "check", "expect"):
+        for field in ("files", "context", "check", "expect"):
             if not task[field]:
-                problems.append((task["seen"].get(field, task["line"]), f"{where} has no {field.capitalize()}"))
+                extra = " (write what a builder who never saw the conversation must know, or 'none')" if field == "context" else ""
+                problems.append((task["seen"].get(field, task["line"]), f"{where} has no {field.capitalize()}{extra}"))
+        if not any(STEP.match(line) for _, line, fence in task["body"] if not fence):
+            problems.append((task["line"], f"{where} has no numbered steps; a builder gets only this task"))
+        for number, line, fence in task["body"]:
+            if fence:
+                continue
+            for pattern, label in CONVERSATION:
+                if re.search(pattern, line, re.I):
+                    problems.append((number, f"{where} points at the conversation ('{label}'); a builder gets only this "
+                                             f"task, so write the thing itself: {line.strip()[:70]}"))
+                    break
         if not task["title"]:
             problems.append((task["line"], f"{where} has no title"))
 
@@ -302,7 +332,7 @@ def cmd_lint(args):
         print(f"FAIL line {line}: {message}")
     for line, message in warnings:
         print(f"warn line {line}: {message}")
-    print(f"checked: fields, files, filler, names across tasks, order, size. {len(problems)} problems, {len(warnings)} warnings")
+    print(f"checked: fields, steps, files, filler, references to the conversation, names across tasks, order, size. {len(problems)} problems, {len(warnings)} warnings")
     if problems:
         print(f"RESULT fail: {len(problems)} problems in the plan")
         return 1
@@ -320,8 +350,10 @@ def cmd_tasks(args):
         print("RESULT blocked: no tasks found")
         return 2
     out = [{"number": t["number"], "title": t["title"], "files": [file_entry(f)[0] for f in t["files"]],
-            "uses": t["uses"], "makes": t["makes"], "check": t["check"], "expect": t["expect"]} for t in tasks]
-    print(json.dumps({"goal": header.get("goal", ""), "spec": header.get("spec", ""), "tasks": out}, indent=2))
+            "context": t["context"], "uses": t["uses"], "makes": t["makes"], "check": t["check"], "expect": t["expect"],
+            "steps": [line.strip() for _, line, fence in t["body"] if not fence and STEP.match(line)]} for t in tasks]
+    print(json.dumps({"goal": header.get("goal", ""), "spec": header.get("spec", ""), "limits": header.get("limits", ""),
+                      "tasks": out}, indent=2))
     return 0
 
 

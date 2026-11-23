@@ -1,10 +1,10 @@
 ---
 name: launch-site-check
-description: Asks a site for every page a first visitor needs before launch (home, pricing, privacy, terms, contact, a real 404, favicon, social preview image tags, a working sign-up or download link) and reports each one. Use when a product or landing site is about to go live, someone asks "are we ready to launch" or "is anything missing from the site". Not for status, headers and certificates of a deployment (use site-check).
+description: Asks a site for every page a first visitor needs before launch: pricing, privacy, terms, contact, a 404 that really returns 404, favicon, og image tags, a sign up button that goes somewhere. Use when a site is about to go live, "are we ready to launch", "does our 404 return a 404" or "is the og image set so links look right when shared". Not for TLS, headers and status of a deployment (use site-check), every broken link (use link-check) or speed (use page-speed).
 license: MIT
 metadata:
   pack: growth
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, network access to the site named
 ---
 

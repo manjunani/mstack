@@ -4,7 +4,7 @@ description: Finds which VR or AR platform and stack a repository targets (three
 license: MIT
 metadata:
   pack: xr
-  version: 0.1.0
+  version: 0.2.0
   needs: python3
 ---
 

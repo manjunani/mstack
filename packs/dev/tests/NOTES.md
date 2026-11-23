@@ -20,8 +20,8 @@ Use a new folder under `.testrun/` every time (the scripts refuse an existing fo
 
 | Skill | Script | Cases | Result |
 |---|---|---|---|
-| plan | plan_lint.py | 34 | 34 ok |
-| build | ledger.py | 53 | 53 ok |
+| plan | plan_lint.py | 39 | 39 ok (2026-11-23, after the standalone-brief change) |
+| build | ledger.py | 68 | 68 ok (2026-11-23, after `brief` was added) |
 | prove-test | prove.py | 55 | 55 ok |
 | debug | case.py | 69 | 69 ok |
 | review | review.py | 53 | 53 ok |
@@ -55,13 +55,18 @@ Use a new folder under `.testrun/` every time (the scripts refuse an existing fo
 
 **plan**: tested: good plan, a bad plan with 16 kinds of problem (missing fields, missing files, filler,
 vague Expect, name used before it is made, misspelt names across tasks, task numbering, missing spec), a plan
-much longer than its spec, not-a-plan, missing file, `--root`, JSON task output. Not tested: very large
+much longer than its spec, not-a-plan, missing file, `--root`, JSON task output. Added 2026-11-23: a task
+with no Context, a task with no numbered steps, a task that points at the conversation ("as we discussed"),
+Context and steps in the JSON output. Not tested: very large
 projects (the name search stops after 4,000 files and then only warns).
 
 **build**: tested: start from a plan and without one, failing check, check that runs no tests, check that
 cannot run, files outside the list (and the reason needed to accept them), a file dirty before the task,
 finish with failing / empty / missing / passing suite, review recording, stale status after a later commit,
-per-task review mode blocking the next task. Not tested: plans with tasks named other than numbers in a plan
+per-task review mode blocking the next task. Added 2026-11-23: `brief` for a task (plan header, that task only,
+the file list, the check, the five-line report), the later-tasks line, a task the plan lacks, no plan and no
+ledger, the plan read from the ledger, and that `brief` writes nothing. Not tested by a script: that a fresh
+agent can build from the brief alone (the build benefit test covers that). Not tested: plans with tasks named other than numbers in a plan
 file; a check that takes longer than the timeout.
 
 **prove-test**: tested: uncommitted fix with untracked test, test that proves nothing, test that fails with
@@ -130,3 +135,13 @@ their output where it matters.
 
 The skill names are as given. `debug` shares its name with a Claude Code built-in skill; its description is
 about the case file and the three-fix stop so that it can be told apart, but that has not been measured.
+
+## 2026-11-23: build runs each task in a fresh agent
+
+`build` now hands each task of a plan with 3 or more tasks to a fresh agent with the output of `ledger.py brief`,
+and the main session keeps only the ledger and a five-line report per task. One context stays for small plans.
+This replaces "one context builds every task" as the default. The owner's rule that full test suites run once at
+the end of a build (not after every task) is unchanged: it governs when the full suite runs, not where the work
+happens. `plan` now requires each task to stand alone (Context, numbered steps, no references to the
+conversation), so a brief needs nothing else. The trigger examples and benefit tasks in `build.json` and
+`plan.json` keep their meaning and were not changed.

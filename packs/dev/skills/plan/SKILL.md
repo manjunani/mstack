@@ -1,16 +1,16 @@
 ---
 name: plan
-description: Turns a settled request into a plan file of small ordered tasks, each naming its files, one check command and the output to expect, then lints the plan. Use when work touches several files or steps and the user asks to plan it, break it down, write an implementation plan or "how would you build this" before any code. Not for deciding what to build (use clarify or spec) or for carrying the plan out (use build).
+description: Turns a settled request into a plan file of small ordered tasks, each a brief a fresh agent can carry out alone: its files, the context it needs, one check command and the output to expect; then lints the plan. Use when work touches several files or steps and the user asks to plan it, lay it out before coding, list the steps, break it down or turn a ticket into a task list, write an implementation plan, or asks "how would you build this" before any code. Not for deciding what to build (use clarify or spec) or for carrying the plan out (use build).
 license: MIT
 metadata:
   pack: dev
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, git
 ---
 
 # Plan
 
-Produces one plan file a builder can follow without the conversation, and a lint result that says the plan is complete.
+Produces one plan file whose every task is a standalone brief, and a lint result that says the plan is complete. `build` hands each task to a fresh agent that sees only the plan header and that one task, never the conversation.
 
 ## Done when
 
@@ -38,6 +38,7 @@ The script is `scripts/plan_lint.py` in this skill's folder. In Claude Code that
 4. **Write the plan** to `.mstack/plans/<short-name>.md`, starting from `assets/plan-template.md`.
    - A task is one change a reviewer could accept alone. Order tasks so each one's check can pass when it is reached.
    - `Files` lists every file the task may touch; a file the task creates gets `(new)`.
+   - `Context` holds what a builder who never saw the conversation must know: decisions made, formats, the reason for the change. Write `none` when the files, steps and check already say it all. Never write "as discussed" or "see above": write the thing itself.
    - `Uses` and `Makes` carry the exact names that cross from one task to another.
    - `Check` is one command. `Expect` is what it prints when the task is right.
    - Copy the user's limits word for word into the header.
@@ -50,12 +51,13 @@ The script is `scripts/plan_lint.py` in this skill's folder. In Claude Code that
    ```
    python3 scripts/plan_lint.py tasks .mstack/plans/<short-name>.md
    ```
-   If a task cannot be done from that output plus its numbered steps, the plan is missing a decision. Add it.
+   Read each task as a fresh agent would: only the header, that task's fields and its numbered steps. If it cannot be done from that alone, the plan is missing a decision. Add it to that task's `Context` or steps.
 7. **Ask.** Show the plan path, the task titles and any warnings. Wait for approval or changes.
 8. **Report.** End state first, then the plan path, the number of tasks, warnings left, and what the plan does not cover.
 
 ## Rules
 
+- Every task stands alone. A builder gets the plan header and one task, nothing else; anything it needs from the conversation goes into that task.
 - The plan holds decisions the builder cannot make alone: order, names, file boundaries, checks. It leaves out what the code and the test already decide.
 - Write code in the plan only where a signature and a check do not settle the shape.
 - A check that cannot fail proves nothing. Prefer a test that exercises the new behaviour over "the module loads".

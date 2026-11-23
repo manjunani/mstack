@@ -4,7 +4,7 @@ description: Returns a service to its previous version through a checked plan, t
 license: MIT
 metadata:
   pack: ops
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, the hosting platform's own command-line tool or dashboard
 ---
 

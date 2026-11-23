@@ -4,7 +4,7 @@ description: Finds the mechanical reasons an iPhone app upload or App Store revi
 license: MIT
 metadata:
   pack: apps
-  version: 0.1.0
+  version: 0.2.0
   needs: python3
 ---
 

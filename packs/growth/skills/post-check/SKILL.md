@@ -1,10 +1,10 @@
 ---
 name: post-check
-description: Checks a draft post against one platform's limits: length counted the platform's way, link and hashtag counts, blog front matter, local images that exist, and no claim still marked unverified or TODO. Use when a launch post, tweet, LinkedIn post, Mastodon or Bluesky toot, or blog draft is ready and the user asks if it fits or is ready to post. Not for whether the claims in it are true (use claim-check).
+description: Checks a draft post against one platform's limits: characters counted the platform's way (X, a Mastodon toot, Bluesky, LinkedIn), too many hashtags or links, blog front matter and images, and anything still marked [unverified] or TODO. Use when the user asks "is this tweet under the limit", "too many hashtags?", "count the characters in this toot", or whether a draft is ready to post. Not for whether the claims are true (use claim-check) or links that still work (use link-check).
 license: MIT
 metadata:
   pack: growth
-  version: 0.1.0
+  version: 0.2.0
   needs: python3
 ---
 

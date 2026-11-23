@@ -1,34 +1,30 @@
 {
   "webar-preview": {
-    "trigger": "2/2",
-    "silence": "0/2",
-    "kind": "smoke",
+    "trigger": "8/10",
+    "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-22",
+    "tested": "2026-11-23",
     "with": "Claude Code 2.1.330"
   },
   "webxr-verify": {
-    "trigger": "2/2",
-    "silence": "1/2",
-    "kind": "smoke",
+    "trigger": "9/10",
+    "silence": "1/10",
     "runs": 1,
-    "tested": "2026-11-22",
+    "tested": "2026-11-23",
     "with": "Claude Code 2.1.330"
   },
   "xr-comfort-review": {
-    "trigger": "2/2",
-    "silence": "0/2",
-    "kind": "smoke",
+    "trigger": "9/10",
+    "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-22",
+    "tested": "2026-11-23",
     "with": "Claude Code 2.1.330"
   },
   "xr-target": {
-    "trigger": "2/2",
-    "silence": "0/2",
-    "kind": "smoke",
+    "trigger": "10/10",
+    "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-22",
+    "tested": "2026-11-23",
     "with": "Claude Code 2.1.330"
   }
 }

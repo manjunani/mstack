@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Keep a ledger of a build: which task started on which commit, and which tasks are proven done.
 
+  brief <task>     print the task as a standalone brief for a fresh agent: the plan header, the task as written,
+                   how to work and the short report to return. Writes nothing.
   start <task>     record that a task starts: its files, its check command and the current commit
   done <task>      run the task's own check command; log the task as complete only if the check passes
                    and no file outside the task's list changed since start
@@ -11,7 +13,11 @@
 The task's files and check come from a plan file (start --plan <plan.md>, the shape plan_lint.py checks) or,
 for a request with no plan file, from --files and --check.
 
-Two ways to review. The default is "end": one context builds every task, then one suite run and one review of
+Where the work happens is the skill's choice, not this script's: with a plan of three or more tasks each task goes
+to a fresh agent with the output of "brief", and the main session keeps only this ledger and one-line results; a
+small plan may be built in one context. Either way only "done" logs a task complete.
+
+Two ways to review. The default is "end": every task is built, then one suite run and one review of
 the whole range. With start --review per-task, a task must be reviewed before the next one may start.
 
 The ledger is .mstack/build/<name>.jsonl. Its first line says which plan, branch and base commit it belongs to.
@@ -206,6 +212,82 @@ def allowed(path, files):
         if path == entry or (entry.endswith("/") and path.startswith(entry)) or fnmatch.fnmatch(path, entry):
             return True
     return False
+
+
+def plan_sections(path):
+    """Split a plan file into its header text and the raw text of each task, keyed by task number."""
+    header, sections, current, fence = [], {}, None, False
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.strip().startswith("```"):
+            fence = not fence
+        match = None if fence else TASK.match(line)
+        if match:
+            current = match.group(1)
+            sections[current] = [line]
+            continue
+        if current is None:
+            header.append(line)
+        elif not fence and line.startswith("## "):
+            current = None
+        else:
+            sections[current].append(line)
+    return "\n".join(header).strip(), {k: "\n".join(v).strip() for k, v in sections.items()}
+
+
+def cmd_brief(root, args):
+    plan = args.plan
+    if not plan:
+        ledger = open_ledger(root, args)
+        plan = ledger.head.get("plan") if ledger is not None and ledger.head else None
+        plan = str(root / plan) if plan else None
+    if not plan or not pathlib.Path(plan).is_file():
+        print("RESULT blocked: give --plan <plan.md>; a brief is read from a plan file")
+        return 2
+    header, sections = plan_sections(pathlib.Path(plan))
+    task = plan_tasks(pathlib.Path(plan)).get(args.task)
+    if task is None:
+        print(f"RESULT blocked: {plan} has no '## Task {args.task}'")
+        return 2
+    if not task["files"] or not task["check"]:
+        print(f"RESULT blocked: task {args.task} needs Files and a Check in the plan before it can be handed over")
+        return 2
+    later = [n for n in sections if n.isdigit() and int(n) > int(args.task)]
+    lines = [
+        f"# Brief: task {args.task} of {len(sections)}" + (f": {task['title']}" if task["title"] else ""),
+        "",
+        "You build one task of a plan. This brief is all you get: you did not see the conversation, and you need",
+        "nothing from it. If something you need is missing here, stop and report it as a question.",
+        "",
+        "## The plan",
+        "",
+        header,
+        "",
+        sections[args.task],
+        "",
+        "## How to work",
+        "",
+        f"- Touch only these files: {', '.join(task['files'])}. If another file must change, stop and report it.",
+        "- Read those files and one nearby example first. Follow the code's style. Add no dependency.",
+        "- When the check is a test, write or extend that test first.",
+        f"- Run the check until it prints what Expect says: `{task['check']}`",
+        "- Never change the check, delete a test or loosen an assertion to get a pass.",
+        "- Mark a deliberate shortcut with a comment that starts with SHORTCUT: and says what was skipped.",
+        "- Do not commit, and write nothing under .mstack/. After three failed attempts, stop and report.",
+    ]
+    if later:
+        lines.append(f"- Later tasks ({', '.join(later)}) are not yours; do not start them.")
+    lines += [
+        "",
+        "## Report: exactly these five lines, nothing else",
+        "",
+        "STATUS: done | failed | blocked",
+        "FILES: <the files you changed>",
+        "CHECK: <the last line the check printed>",
+        "SHORTCUTS: <none, or each SHORTCUT: comment>",
+        "QUESTION: <none, or the one decision only the user can make>",
+    ]
+    print("\n".join(lines))
+    return 0
 
 
 def cmd_start(root, args):
@@ -483,6 +565,11 @@ def main():
     def named(p):
         p.add_argument("--name", help="ledger name (default: the plan's file name, or the ledger used last)")
         return p
+
+    brief = named(sub.add_parser("brief", help="print a task as a standalone brief for a fresh agent"))
+    brief.add_argument("task")
+    brief.add_argument("--plan", help="plan file (default: the plan of the current ledger)")
+    brief.set_defaults(run=cmd_brief)
 
     one = named(sub.add_parser("start", help="record that a task starts"))
     one.add_argument("task")

@@ -1,10 +1,10 @@
 ---
 name: page-extract
-description: Turns one web page into clean JSON: title, main text without navigation or scripts, headings, links and tables; fails on an empty result or a page that needs JavaScript. Use when the user wants the text, the article, a table or the links from one page or URL as JSON or clean text, says "pull the table from this page into json", or has a saved .html file to read into data. Not for many pages at once (use fetch-plan first) or for checking quotes against sources (use cite-check).
+description: Turns one web page or URL into clean JSON or plain text: title, main article body without navigation or scripts, headings, links and tables (for example a prices table); reports an empty result or a page that needs JavaScript. Use when the user wants to extract, pull, convert or get the text, article body, a table, the headings or the links from a single page, wants a webpage as clean text to paste, asks why a fetched page returns nothing, or has a saved .html file to read into data. Not for many pages at once (use fetch-plan first) or for checking quotes against sources (use cite-check).
 license: MIT
 metadata:
   pack: web
-  version: 0.1.0
+  version: 0.2.0
   needs: python3
 ---
 

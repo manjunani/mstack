@@ -20,10 +20,14 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import common  # noqa: E402
 
 
-def failed(run):
+def failed(run, kind=""):
     """A run that never really happened: usage limit, sign-in, network or API error.
-    Running out of turns is a real outcome (the model did not start the skill), so it is not a failure."""
+    Running out of turns is a real outcome (the model did not start the skill), so it is not a failure.
+    A quiet case that hit the time limit is also a real outcome: the model worked on the request for the whole
+    time and its grader judged whether the skill started in that time."""
     error = str(run.get("error") or "")
+    if kind == "quiet" and error.startswith("timed out"):
+        return False
     return bool(error) and "maximum number of turns" not in error
 
 
@@ -37,6 +41,9 @@ def main():
     parser.add_argument("files", nargs="+", type=pathlib.Path)
     parser.add_argument("--root", type=pathlib.Path, default=common.ROOT)
     parser.add_argument("--smoke", action="store_true", help="mark these results as a smoke test (a few prompts per skill)")
+    parser.add_argument("--partial-ok", action="store_true",
+                        help="use a run the cost ceiling cut short: cases are judged on the runs that finished, and "
+                             "every case with fewer runs than the others is listed")
     args = parser.parse_args()
 
     counts = collections.defaultdict(lambda: collections.defaultdict(lambda: [0, 0]))
@@ -44,9 +51,16 @@ def main():
     cost, version, runs_per_case = 0.0, "", set()
     for path in args.files:
         data = json.loads(path.read_text(encoding="utf-8"))
-        if data.get("partial"):
-            print(f"skipped {path.name}: the run was partial (cost ceiling or sign-in problem)")
+        if data.get("partial") and not args.partial_ok:
+            print(f"skipped {path.name}: the run was partial (cost ceiling or sign-in problem); "
+                  f"--partial-ok uses the runs that finished")
             continue
+        if data.get("partial"):
+            full = max((len(r) for c in data.get("cases", []) for r in c["arms"].values()), default=0)
+            for case in data.get("cases", []):
+                for arm, runs in case["arms"].items():
+                    if len(runs) < full:
+                        print(f"SHORT {case['name']} ({arm}): {len(runs)} of {full} runs finished before the cost ceiling")
         cost += data.get("costUsd", 0)
         version = data.get("claudeVersion", version)
         for case in data.get("cases", []):
@@ -55,9 +69,9 @@ def main():
                 continue
             skill, kind = parts[0], parts[1]
             all_runs = case["arms"].get("with", [])
-            with_runs = [r for r in all_runs if not failed(r)]
-            broken[skill] += len(all_runs) - len(with_runs) + sum(1 for r in case["arms"].get("without", []) if failed(r))
-            runs_per_case.add(len(all_runs))
+            with_runs = [r for r in all_runs if not failed(r, kind)]
+            broken[skill] += len(all_runs) - len(with_runs) + sum(1 for r in case["arms"].get("without", []) if failed(r, kind))
+            runs_per_case.add((kind == "task", len(all_runs)))
             if not with_runs:
                 continue
             case_passed = sum(1 for r in with_runs if r.get("passed")) * 2 > len(with_runs)  # majority of runs
@@ -95,7 +109,12 @@ def main():
             entry["kind"] = "smoke"
         else:
             entry.pop("kind", None)
-        entry["runs"] = max(runs_per_case) if runs_per_case else 1
+        trigger_runs = [n for is_task, n in runs_per_case if not is_task]
+        task_runs = [n for is_task, n in runs_per_case if is_task]
+        if kinds["trigger"][1] or kinds["silence"][1]:
+            entry["runs"] = max(trigger_runs) if trigger_runs else 1
+        if kinds["benefit"][1]:
+            entry["benefit_runs"] = max(task_runs) if task_runs else 1
         entry["tested"] = datetime.date.today().isoformat()
         entry["with"] = f"Claude Code {version}"
         results[skill] = entry

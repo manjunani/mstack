@@ -4,7 +4,7 @@ description: Compares a running API with its OpenAPI contract by sending one rea
 license: MIT
 metadata:
   pack: test
-  version: 0.1.0
+  version: 0.2.0
   needs: python3, a running local or test server, an OpenAPI 3 contract in JSON
 ---
 
