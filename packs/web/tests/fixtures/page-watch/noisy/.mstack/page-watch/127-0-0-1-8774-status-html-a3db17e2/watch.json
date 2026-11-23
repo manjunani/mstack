@@ -1,0 +1,14 @@
+{
+  "url": "http://127.0.0.1:8774/status.html",
+  "rules": {
+    "ignore_lines": [],
+    "ignore_ids": [],
+    "ignore_classes": []
+  },
+  "latest": "20261123T020519Z-2",
+  "last_checked": "2026-11-23T02:05:19+00:00",
+  "last_changed": "2026-11-23T02:05:19+00:00",
+  "looks": 2,
+  "latest_type": "text/html",
+  "latest_sha256": "972f13556d6ba5432799b82df8ac64bd1f2337c08156c501fd85fce4a923c874"
+}

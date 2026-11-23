@@ -1,0 +1,22 @@
+/* Design tokens for the Parcel Desk web app. Light theme on :root, dark theme on .dark. */
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --muted: #f3f4f6;
+  --muted-foreground: #9ca3af;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --accent: 262 83% 58%; /* bare HSL triplet, the way some kits store colours */
+  --accent-foreground: 0 0% 100%;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 1rem; --space-6: 24px;
+  --radius: 8px;
+}
+
+.dark {
+  --background: #0b1020;
+  --foreground: #e5e7eb;
+  --muted: #1f2937;
+  --muted-foreground: #4b5563;
+}
+
+.card { --card-pad: 20px; }

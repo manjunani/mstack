@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "make-and-check",
+      "fixture": "fixtures/captions/make-and-check",
       "prompt": "Make subtitles for talk.mp4 from talk.transcript.json. Plain sidecar files are fine.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "burn-without-libass",
+      "fixture": "fixtures/captions/burn-without-libass",
       "prompt": "Burn the captions in subs.srt into talk.mp4.",
       "max_turns": 15,
       "allowed_tools": [

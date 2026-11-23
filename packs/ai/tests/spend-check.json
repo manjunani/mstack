@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "no-made-up-prices",
+      "fixture": "fixtures/spend-check/no-made-up-prices",
       "prompt": "Our agent logs usage to usage.jsonl. Tell me what one run costs in dollars.",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
@@ -39,6 +40,7 @@
     },
     {
       "name": "runs-the-script",
+      "fixture": "fixtures/spend-check/runs-the-script",
       "prompt": "logs/usage.jsonl has one row per response. Prices are in prices.json. Are we under 0.20 dollars per run?",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

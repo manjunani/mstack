@@ -1,0 +1,74 @@
+{
+  "tool": "mstack blender-task state dump",
+  "blender_version": "4.2.1 LTS",
+  "file": "workshop.blend",
+  "scene": "Scene",
+  "unit_system": "METRIC",
+  "unit_scale": 1.0,
+  "frame": 1,
+  "objects": [
+    {
+      "name": "Table",
+      "type": "MESH",
+      "dimensions": [
+        1.2,
+        0.6,
+        0.75
+      ],
+      "scale": [
+        1.2,
+        0.6,
+        0.75
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.375
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "modifiers": [],
+      "materials": [
+        "Oak"
+      ],
+      "hide_render": false,
+      "polygons": 6,
+      "vertices": 8,
+      "uv_layers": 1,
+      "polygons_evaluated": 6,
+      "triangles_evaluated": 12
+    },
+    {
+      "name": "Camera",
+      "type": "CAMERA",
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "location": [
+        3.0,
+        -3.0,
+        2.0
+      ],
+      "rotation_euler": [
+        1.1,
+        0.0,
+        0.8
+      ],
+      "parent": null,
+      "modifiers": [],
+      "materials": [],
+      "hide_render": false
+    }
+  ]
+}

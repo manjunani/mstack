@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "ab-result",
+      "fixture": "fixtures/stat-compare/ab-result",
       "prompt": "ab.csv has one row per user with arm and secs. Did the new arm win?",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "tiny-sample",
+      "fixture": "fixtures/stat-compare/tiny-sample",
       "prompt": "tiny.csv has our pilot: 4 users per group. Can we say B is better?",
       "max_turns": 15,
       "allowed_tools": [

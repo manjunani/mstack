@@ -1,0 +1,53 @@
+{
+  "title": "Cart page after the quantity change",
+  "created": "2026-11-23T02:07:16+00:00",
+  "driver": "playwright",
+  "scope": {
+    "mode": "diff",
+    "base": "main",
+    "changed_files": [
+      "web/cart.html"
+    ],
+    "note": ""
+  },
+  "nothing_to_test": "",
+  "suite": null,
+  "scenarios": [
+    {
+      "id": "S1",
+      "flow": "cart",
+      "name": "Add one boat cover to the cart; the total shows 45.00",
+      "state": "pass",
+      "reason": ""
+    },
+    {
+      "id": "S2",
+      "flow": "cart",
+      "name": "Change the quantity to 3; the total updates to 135.00",
+      "state": "fail",
+      "reason": ""
+    },
+    {
+      "id": "S3",
+      "flow": "cart",
+      "name": "Remove the last item; the empty-cart message shows",
+      "state": "",
+      "reason": ""
+    }
+  ],
+  "issues": [
+    {
+      "id": "I1",
+      "scenario": "S2",
+      "title": "Total does not update after changing quantity",
+      "severity": "high",
+      "steps": [
+        "Open /cart with one boat cover",
+        "Set quantity to 3"
+      ],
+      "expected": "Total 135.00",
+      "actual": "Total stays 45.00",
+      "evidence": []
+    }
+  ]
+}

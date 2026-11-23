@@ -1,0 +1,19 @@
+{
+  "name": "Parcel Desk",
+  "confirmed": true,
+  "colors": [
+    { "name": "ink", "value": "#111827", "use": "body text", "never": "on the navy background" },
+    { "name": "navy", "value": "#1d4ed8", "use": "main actions and links", "never": "for body text" },
+    { "name": "paper", "value": "#ffffff", "use": "page background", "never": "text on paper-coloured panels" },
+    { "name": "slate", "value": "#374151", "use": "secondary text", "never": "as an action colour" }
+  ],
+  "allow_neutrals": true,
+  "tolerance": 6,
+  "fonts": [ { "family": "IBM Plex Sans", "use": "everything" }, { "family": "Fraunces", "use": "page headings" } ],
+  "pairs": [ { "text": "ink", "background": "paper", "min": 4.5 }, { "text": "paper", "background": "navy", "min": 4.5 } ],
+  "voice": {
+    "we_say": ["label", "parcel", "carrier"],
+    "never_say": ["seamless", "revolutionary", "best-in-class", "synergy"],
+    "examples": [ { "off": "Seamless shipping, revolutionised.", "on": "Print every label for today in one go." } ]
+  }
+}

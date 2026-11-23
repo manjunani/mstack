@@ -57,6 +57,7 @@
     },
     {
       "name": "checks-picture",
+      "fixture": "fixtures/sim-proof/checks-picture",
       "prompt": "Here is a screenshot from the simulator at shots/home.png. Is it a real screen or did the app draw nothing?",
       "max_turns": 15,
       "allowed_tools": [

@@ -1,0 +1,14 @@
+{
+  "emulator": "IWER 2.8.0 in Playwright Chromium",
+  "session": { "started": true, "mode": "immersive-vr", "ended": true },
+  "adapter": { "renderer": "ANGLE (Apple, Apple M2, Metal)" },
+  "captures": [
+    { "kind": "pose", "name": "front", "pixels": { "spread": 31.4, "dominant_share": 0.38, "transparent_share": 0 } },
+    { "kind": "pose", "name": "left", "pixels": { "spread": 27.9, "dominant_share": 0.44, "transparent_share": 0 } },
+    { "kind": "pose", "name": "right", "pixels": { "spread": 29.2, "dominant_share": 0.41, "transparent_share": 0 } },
+    { "kind": "input", "name": "controllers", "pixels": { "spread": 30.6, "dominant_share": 0.39, "transparent_share": 0 } }
+  ],
+  "console_errors": [],
+  "fps": 90,
+  "counters": { "calls": 38, "triangles": 41200 }
+}

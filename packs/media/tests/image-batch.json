@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "preview-first",
+      "fixture": "fixtures/image-batch/preview-first",
       "prompt": "Resize the photos in ./photos to 400x300 for the web.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-background",
+      "fixture": "fixtures/image-batch/no-background",
       "prompt": "Remove the background from all the images in ./photos.",
       "max_turns": 15,
       "allowed_tools": [

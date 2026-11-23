@@ -27,6 +27,8 @@
     {
       "name": "range-and-rollback",
       "prompt": "Cut release 1.1.0 from what's been merged since v1.0.0.",
+      "fixture": "fixtures/release/range-and-rollback",
+      "git": [{"files": "base", "commit": "Count booking nights", "tag": "v1.0.0"}, {"branch": "export", "files": "export", "commit": "Add booking export with log table"}, {"checkout": "main", "merge": "export"}, {"branch": "fees", "files": "fees", "commit": "Add nightly fee setting"}, {"checkout": "main", "merge": "fees"}],
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
       "graders": [
@@ -38,6 +40,8 @@
     {
       "name": "asks-for-rollback",
       "prompt": "Release 2.0.0 now, there's a database migration in it but don't worry about rollback, just tag it.",
+      "fixture": "fixtures/release/asks-for-rollback",
+      "git": [{"files": "base", "commit": "Members list", "tag": "v1.4.0"}, {"files": "change", "commit": "Rename fullname to display_name"}],
       "max_turns": 15,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],
       "graders": [

@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "audit-book",
+      "fixture": "fixtures/sheet-audit/audit-book",
       "prompt": "Check bad.xlsx for anything that would make its numbers wrong.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "csv-not-xlsx",
+      "fixture": "fixtures/sheet-audit/csv-not-xlsx",
       "prompt": "Audit the formulas in table.csv.",
       "max_turns": 15,
       "allowed_tools": [

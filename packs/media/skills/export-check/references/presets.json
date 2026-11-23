@@ -305,70 +305,80 @@
           "unit": "codec",
           "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false,
+          "note": "developers.tiktok.com (Content Posting API media transfer guide) timed out on 2026-11-22 to curl and WebFetch, so TikTok's own media requirements could not be read"
         },
         "pixel_format": {
           "value": "yuv420p",
           "unit": "pixel format",
           "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false,
+          "note": "developers.tiktok.com (Content Posting API media transfer guide) timed out on 2026-11-22 to curl and WebFetch, so TikTok's own media requirements could not be read"
         },
         "width": {
           "value": 1080,
           "unit": "pixels",
           "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false,
+          "note": "developers.tiktok.com (Content Posting API media transfer guide) timed out on 2026-11-22 to curl and WebFetch, so TikTok's own media requirements could not be read"
         },
         "height": {
           "value": 1920,
           "unit": "pixels",
           "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false,
+          "note": "developers.tiktok.com (Content Posting API media transfer guide) timed out on 2026-11-22 to curl and WebFetch, so TikTok's own media requirements could not be read"
         },
         "max_fps": {
           "value": 60,
           "unit": "frames per second",
           "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false,
+          "note": "developers.tiktok.com (Content Posting API media transfer guide) timed out on 2026-11-22 to curl and WebFetch, so TikTok's own media requirements could not be read"
         },
         "max_duration": {
           "value": 600,
           "unit": "seconds",
           "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false,
+          "note": "developers.tiktok.com (Content Posting API media transfer guide) timed out on 2026-11-22 to curl and WebFetch, so TikTok's own media requirements could not be read"
         },
         "max_size_mb": {
           "value": 287,
           "unit": "megabytes",
           "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false,
+          "note": "developers.tiktok.com (Content Posting API media transfer guide) timed out on 2026-11-22 to curl and WebFetch, so TikTok's own media requirements could not be read"
         },
         "audio_codec": {
           "value": "aac",
           "unit": "codec",
           "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false,
+          "note": "developers.tiktok.com (Content Posting API media transfer guide) timed out on 2026-11-22 to curl and WebFetch, so TikTok's own media requirements could not be read"
         },
         "sample_rate": {
           "value": 48000,
           "unit": "Hz",
           "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false,
+          "note": "developers.tiktok.com (Content Posting API media transfer guide) timed out on 2026-11-22 to curl and WebFetch, so TikTok's own media requirements could not be read"
         },
         "loudness": {
           "value": -14.0,
           "unit": "LUFS",
           "source": "written from memory of TikTok upload guidance; not read in the platform's own documentation during this work; platforms publish playback normalisation levels, not upload rules, so treat this as a target the user may change",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false,
+          "note": "developers.tiktok.com (Content Posting API media transfer guide) timed out on 2026-11-22 to curl and WebFetch, so TikTok's own media requirements could not be read; TikTok is not known to publish a loudness target, so this stays a target the user may change"
         },
         "loudness_tolerance": {
           "value": 1.0,
@@ -382,7 +392,8 @@
           "unit": "dBTP",
           "source": "a common delivery ceiling, written from memory; not read in a standard during this work",
           "checked": "2026-11-22",
-          "verified": false
+          "verified": false,
+          "note": "developers.tiktok.com (Content Posting API media transfer guide) timed out on 2026-11-22 to curl and WebFetch, so TikTok's own media requirements could not be read; TikTok is not known to publish a true-peak ceiling, so this stays a common delivery ceiling"
         }
       }
     },

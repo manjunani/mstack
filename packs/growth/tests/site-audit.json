@@ -26,7 +26,8 @@
   "tasks": [
     {
       "name": "audit-local-site",
-      "prompt": "Our site is served at http://127.0.0.1:8000/ (it's running already). Audit it for SEO problems and tell me what to fix first.",
+      "prompt": "Our site is in ./site. Serve it with python3 -m http.server 8784 --bind 127.0.0.1 --directory site in the background, then audit http://127.0.0.1:8784/ for SEO problems and tell me what to fix first.",
+      "fixture": "fixtures/site-audit/audit-local-site",
       "max_turns": 15,
       "allowed_tools": [
         "Read",

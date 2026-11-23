@@ -27,6 +27,7 @@
     {
       "name": "local-site",
       "prompt": "I have a small static site in ./site. Serve it with python3 -m http.server 8766 --bind 127.0.0.1 --directory site in the background and check it for broken links.",
+      "fixture": "fixtures/link-check/local-site",
       "max_turns": 15,
       "allowed_tools": [
         "Read",

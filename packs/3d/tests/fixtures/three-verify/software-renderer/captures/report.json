@@ -1,0 +1,46 @@
+{
+  "adapter": {
+    "vendor": "Google Inc. (Google)",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "masked": false
+  },
+  "poses": [
+    {
+      "name": "front",
+      "screenshot": "front.png"
+    },
+    {
+      "name": "side",
+      "screenshot": "side.png"
+    }
+  ],
+  "console_errors": [],
+  "counters": {
+    "before": {
+      "calls": 0,
+      "triangles": 0,
+      "geometries": 0,
+      "textures": 0,
+      "programs": 0
+    },
+    "loaded": {
+      "calls": 18,
+      "triangles": 24000,
+      "geometries": 9,
+      "textures": 4,
+      "programs": 3
+    },
+    "after_dispose": {
+      "calls": 0,
+      "triangles": 0,
+      "geometries": 0,
+      "textures": 0,
+      "programs": 3
+    }
+  },
+  "frame_time_ms": {
+    "median": 4.0,
+    "p95": 5.2,
+    "samples": 120
+  }
+}

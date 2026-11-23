@@ -40,6 +40,8 @@
     {
       "name": "states-end-state",
       "prompt": "Before I commit: does everything still work?",
+      "fixture": "fixtures/verify/states-end-state",
+      "git": [{"files": "base", "commit": "Add date parser"}, {"files": "change"}],
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [

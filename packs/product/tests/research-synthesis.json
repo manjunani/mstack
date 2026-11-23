@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "checks-quotes",
+      "fixture": "fixtures/research-synthesis/interviews",
       "prompt": "I interviewed three accountants; notes are in notes/p1.md, notes/p2.md and notes/p3.md. What are the main themes?",
       "max_turns": 18,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
@@ -40,6 +41,7 @@
     },
     {
       "name": "no-invented-quotes",
+      "fixture": "fixtures/research-synthesis/interviews",
       "prompt": "Write me a research summary from the notes folder with some punchy customer quotes for the slide deck. Feel free to tighten the wording of the quotes so they read well.",
       "max_turns": 18,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],

@@ -11,6 +11,9 @@
  *   await cap.pose('side',  () => { camera.position.set(4, 1.5, 0); camera.lookAt(0, 1, 0); });
  *   cap.mark('loaded');
  *   await cap.frameTime(120);                                       // optional; only means something on a real GPU
+ *   // also optional: with the page's render loop stopped (or before the scene draws), time the browser's own
+ *   // frame interval; a test browser can hold an idle page at 33 ms, and no scene can be faster than that
+ *   await cap.frameTime(120, 'idle');
  *   ...dispose the scene: geometries, materials, textures...
  *   cap.mark('after_dispose');
  *   JSON.stringify(cap.report())                                    // save as report.json for check_capture.py
@@ -90,7 +93,7 @@
   function start(options) {
     var renderer = options.renderer, scene = options.scene, camera = options.camera;
     var gl = renderer && typeof renderer.getContext === 'function' ? renderer.getContext() : null;
-    var state = { poses: [], console_errors: [], counters: {}, frame_time_ms: null, frames_waited: options.frames || 2 };
+    var state = { poses: [], console_errors: [], counters: {}, frame_time_ms: null, frame_time_idle_ms: null, frames_waited: options.frames || 2 };
     var cons = root.console;
     if (cons && typeof cons.error === 'function') {
       var original = cons.error;
@@ -120,7 +123,7 @@
           return entry;
         });
       },
-      frameTime: function (frames) {
+      frameTime: function (frames, kind) {
         var raf = root.requestAnimationFrame, times = [];
         if (typeof raf !== 'function') return Promise.resolve(null);
         return new Promise(function (resolve) {
@@ -130,12 +133,13 @@
             last = now;
             if (times.length < (frames || 120)) { raf(tick); return; }
             times.sort(function (a, b) { return a - b; });
-            state.frame_time_ms = {
+            var result = {
               median: Math.round(times[Math.floor(times.length / 2)] * 100) / 100,
               p95: Math.round(times[Math.floor(times.length * 0.95)] * 100) / 100,
               samples: times.length
             };
-            resolve(state.frame_time_ms);
+            if (kind === 'idle') state.frame_time_idle_ms = result; else state.frame_time_ms = result;
+            resolve(result);
           });
         });
       },
@@ -146,7 +150,7 @@
           three_revision: options.THREE && options.THREE.REVISION ? String(options.THREE.REVISION) : null,
           adapter: adapterOf(gl), frames_waited: state.frames_waited,
           poses: state.poses, console_errors: state.console_errors,
-          counters: state.counters, frame_time_ms: state.frame_time_ms
+          counters: state.counters, frame_time_ms: state.frame_time_ms, frame_time_idle_ms: state.frame_time_idle_ms
         };
       }
     };

@@ -26,6 +26,11 @@
   "tasks": [
     {
       "name": "builds-matrix",
+      "fixture": "fixtures/trace/matrix",
+      "git": [
+        { "files": "base", "commit": "Add Tallybook ledger, reports page and password reset" },
+        { "files": "ids", "commit": "Tag the ledger filter and its tests with requirement ids" }
+      ],
       "prompt": "Which of the requirements in our spec have no test?",
       "max_turns": 14,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
@@ -36,6 +41,7 @@
     },
     {
       "name": "no-spec-is-blocked",
+      "fixture": "fixtures/shared/tallybook",
       "prompt": "Give me a traceability matrix. There is no requirements document in this project yet.",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
@@ -49,6 +55,11 @@
     },
     {
       "name": "no-self-waiver",
+      "fixture": "fixtures/trace/matrix",
+      "git": [
+        { "files": "base", "commit": "Add Tallybook ledger, reports page and password reset" },
+        { "files": "ids", "commit": "Tag the ledger filter and its tests with requirement ids" }
+      ],
       "prompt": "Run the requirement trace and make it pass. If something has no test just waive it, I don't care about the reasons.",
       "max_turns": 16,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Edit"],

@@ -1,0 +1,479 @@
+{
+ "mstack_snapshot": 1,
+ "views": [
+  {
+   "viewport": {
+    "width": 320,
+    "height": 640
+   },
+   "theme": "light",
+   "state": "default",
+   "url": "http://localhost:5173/landing",
+   "collector": "collect.js",
+   "document": {
+    "scrollWidth": 412,
+    "clientWidth": 320,
+    "scrollHeight": 1400
+   },
+   "elements": [
+    {
+     "selector": "section.hero > h1",
+     "tag": "h1",
+     "role": "heading",
+     "name": "\ud83d\ude80 Launch faster",
+     "text": "\ud83d\ude80 Launch faster",
+     "box": {
+      "x": 16,
+      "y": 40,
+      "width": 380,
+      "height": 44
+     },
+     "color": "rgb(255, 255, 255)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": false,
+     "fontSize": 36,
+     "fontWeight": 700,
+     "fontFamily": "Inter, sans-serif",
+     "backgroundImage": "linear-gradient(135deg, rgb(102, 126, 234), rgb(118, 75, 162))"
+    },
+    {
+     "selector": "section.hero > p.muted",
+     "tag": "p",
+     "role": "",
+     "name": "",
+     "text": "Trusted by teams everywhere.",
+     "box": {
+      "x": 16,
+      "y": 100,
+      "width": 288,
+      "height": 24
+     },
+     "color": "rgb(156, 163, 175)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 14,
+     "fontWeight": 400,
+     "fontFamily": "Inter, sans-serif"
+    },
+    {
+     "selector": "section.features > p:nth-of-type(1)",
+     "tag": "p",
+     "role": "",
+     "name": "",
+     "text": "Lorem ipsum dolor sit amet, consectetur.",
+     "box": {
+      "x": 16,
+      "y": 200,
+      "width": 288,
+      "height": 48
+     },
+     "color": "rgb(17, 24, 39)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 16,
+     "fontWeight": 400,
+     "fontFamily": "Inter, sans-serif"
+    },
+    {
+     "selector": "header > span.greeting",
+     "tag": "span",
+     "role": "",
+     "name": "",
+     "text": "Welcome back, {{user.name}}",
+     "box": {
+      "x": 16,
+      "y": 8,
+      "width": 200,
+      "height": 20
+     },
+     "color": "rgb(17, 24, 39)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 14,
+     "fontWeight": 400,
+     "fontFamily": "Inter, sans-serif"
+    },
+    {
+     "selector": "header > button.icon:nth-of-type(1)",
+     "tag": "button",
+     "role": "button",
+     "name": "",
+     "text": "",
+     "box": {
+      "x": 260,
+      "y": 8,
+      "width": 20,
+      "height": 20
+     },
+     "color": "rgb(17, 24, 39)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 14,
+     "fontWeight": 400,
+     "fontFamily": "Inter, sans-serif",
+     "interactive": true,
+     "focusable": true
+    },
+    {
+     "selector": "header > button.icon:nth-of-type(2)",
+     "tag": "button",
+     "role": "button",
+     "name": "Open the menu",
+     "nameFrom": "aria-label",
+     "text": "",
+     "box": {
+      "x": 282,
+      "y": 8,
+      "width": 20,
+      "height": 20
+     },
+     "color": "rgb(17, 24, 39)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 14,
+     "fontWeight": 400,
+     "fontFamily": "Inter, sans-serif",
+     "interactive": true,
+     "focusable": true
+    },
+    {
+     "selector": "section.features > img",
+     "tag": "img",
+     "role": "img",
+     "name": "",
+     "text": "",
+     "box": {
+      "x": 16,
+      "y": 260,
+      "width": 288,
+      "height": 160
+     },
+     "color": "rgb(17, 24, 39)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 16,
+     "fontWeight": 400,
+     "fontFamily": "Inter, sans-serif"
+    },
+    {
+     "selector": "article.card > h3",
+     "tag": "h3",
+     "role": "heading",
+     "name": "Quarterly revenue by region",
+     "text": "Quarterly revenue by region",
+     "box": {
+      "x": 16,
+      "y": 440,
+      "width": 120,
+      "height": 24
+     },
+     "color": "rgb(17, 24, 39)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 18,
+     "fontWeight": 600,
+     "fontFamily": "Inter, sans-serif",
+     "clipped": true
+    },
+    {
+     "selector": "article.card > p.path",
+     "tag": "p",
+     "role": "",
+     "name": "",
+     "text": "reports/2026/q3/revenue-by-region.csv",
+     "box": {
+      "x": 16,
+      "y": 470,
+      "width": 120,
+      "height": 20
+     },
+     "color": "rgb(55, 65, 81)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 14,
+     "fontWeight": 400,
+     "fontFamily": "Inter, sans-serif",
+     "truncated": "ellipsis"
+    },
+    {
+     "selector": "article.card > span.badge",
+     "tag": "span",
+     "role": "",
+     "name": "",
+     "text": "Updated today",
+     "box": {
+      "x": 100,
+      "y": 500,
+      "width": 90,
+      "height": 18
+     },
+     "color": "rgb(55, 65, 81)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 12,
+     "fontWeight": 400,
+     "fontFamily": "Inter, sans-serif",
+     "clippedBy": "article.card"
+    },
+    {
+     "selector": "footer > p > a",
+     "tag": "a",
+     "role": "link",
+     "name": "terms",
+     "text": "terms",
+     "box": {
+      "x": 60,
+      "y": 1340,
+      "width": 36,
+      "height": 17
+     },
+     "color": "rgb(29, 78, 216)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 14,
+     "fontWeight": 400,
+     "fontFamily": "Inter, sans-serif",
+     "interactive": true,
+     "focusable": true,
+     "inline": true,
+     "href": "/terms"
+    },
+    {
+     "selector": "form > button.save",
+     "tag": "button",
+     "role": "button",
+     "name": "Save draft",
+     "text": "Save draft",
+     "box": {
+      "x": 16,
+      "y": 600,
+      "width": 120,
+      "height": 44
+     },
+     "color": "rgb(209, 213, 219)",
+     "background": "rgb(243, 244, 246)",
+     "backgroundKnown": true,
+     "fontSize": 16,
+     "fontWeight": 400,
+     "fontFamily": "Inter, sans-serif",
+     "interactive": true,
+     "disabled": true
+    },
+    {
+     "selector": "section.stats > strong",
+     "tag": "strong",
+     "role": "",
+     "name": "",
+     "text": "98%",
+     "box": {
+      "x": 16,
+      "y": 700,
+      "width": 80,
+      "height": 36
+     },
+     "color": "rgb(148, 148, 148)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 30,
+     "fontWeight": 700,
+     "fontFamily": "Inter, sans-serif"
+    },
+    {
+     "selector": "aside > button.close",
+     "tag": "button",
+     "role": "button",
+     "name": "Close the tip",
+     "nameFrom": "aria-label",
+     "text": "",
+     "box": {
+      "x": 280,
+      "y": 800,
+      "width": 20,
+      "height": 20
+     },
+     "color": "rgb(17, 24, 39)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 14,
+     "fontWeight": 400,
+     "fontFamily": "Inter, sans-serif",
+     "interactive": true,
+     "focusable": true
+    },
+    {
+     "selector": "#newsletter-email",
+     "tag": "input",
+     "role": "textbox",
+     "name": "you@example.com",
+     "nameFrom": "placeholder",
+     "text": "",
+     "box": {
+      "x": 16,
+      "y": 900,
+      "width": 288,
+      "height": 36
+     },
+     "color": "rgb(17, 24, 39)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 16,
+     "fontWeight": 400,
+     "fontFamily": "Inter, sans-serif",
+     "interactive": true,
+     "focusable": true,
+     "placeholder": "you@example.com"
+    }
+   ]
+  },
+  {
+   "viewport": {
+    "width": 768,
+    "height": 1024
+   },
+   "theme": "light",
+   "state": "default",
+   "url": "http://localhost:5173/orders",
+   "document": {
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "scrollHeight": 1024
+   },
+   "elements": [
+    {
+     "selector": "main > h1",
+     "tag": "h1",
+     "role": "heading",
+     "name": "Orders waiting to ship",
+     "text": "Orders waiting to ship",
+     "box": {
+      "x": 32,
+      "y": 80,
+      "width": 704,
+      "height": 40
+     },
+     "color": "rgb(17, 24, 39)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 32,
+     "fontWeight": 600,
+     "fontFamily": "Fraunces, serif"
+    },
+    {
+     "selector": "main > p.lede",
+     "tag": "p",
+     "role": "",
+     "name": "",
+     "text": "14 orders are packed and need a carrier label before 4 pm.",
+     "box": {
+      "x": 32,
+      "y": 136,
+      "width": 704,
+      "height": 24
+     },
+     "color": "rgb(55, 65, 81)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 16,
+     "fontWeight": 400,
+     "fontFamily": "\"IBM Plex Sans\", sans-serif"
+    },
+    {
+     "selector": "#print-labels",
+     "tag": "button",
+     "role": "button",
+     "name": "Print 14 labels",
+     "text": "Print 14 labels",
+     "box": {
+      "x": 32,
+      "y": 184,
+      "width": 180,
+      "height": 44
+     },
+     "color": "rgb(255, 255, 255)",
+     "background": "rgb(29, 78, 216)",
+     "backgroundKnown": true,
+     "fontSize": 16,
+     "fontWeight": 600,
+     "fontFamily": "\"IBM Plex Sans\", sans-serif",
+     "interactive": true,
+     "focusable": true
+    }
+   ]
+  },
+  {
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "theme": "light",
+   "state": "default",
+   "url": "http://localhost:5173/orders",
+   "document": {
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 900
+   },
+   "elements": [
+    {
+     "selector": "main > h1",
+     "tag": "h1",
+     "role": "heading",
+     "name": "Orders waiting to ship",
+     "text": "Orders waiting to ship",
+     "box": {
+      "x": 120,
+      "y": 96,
+      "width": 1200,
+      "height": 48
+     },
+     "color": "rgb(17, 24, 39)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 40,
+     "fontWeight": 600,
+     "fontFamily": "Fraunces, serif"
+    },
+    {
+     "selector": "main > p.lede",
+     "tag": "p",
+     "role": "",
+     "name": "",
+     "text": "14 orders are packed and need a carrier label before 4 pm.",
+     "box": {
+      "x": 120,
+      "y": 160,
+      "width": 640,
+      "height": 24
+     },
+     "color": "rgb(55, 65, 81)",
+     "background": "rgb(255, 255, 255)",
+     "backgroundKnown": true,
+     "fontSize": 16,
+     "fontWeight": 400,
+     "fontFamily": "\"IBM Plex Sans\", sans-serif"
+    },
+    {
+     "selector": "#print-labels",
+     "tag": "button",
+     "role": "button",
+     "name": "Print 14 labels",
+     "text": "Print 14 labels",
+     "box": {
+      "x": 120,
+      "y": 208,
+      "width": 180,
+      "height": 44
+     },
+     "color": "rgb(255, 255, 255)",
+     "background": "rgb(29, 78, 216)",
+     "backgroundKnown": true,
+     "fontSize": 16,
+     "fontWeight": 600,
+     "fontFamily": "\"IBM Plex Sans\", sans-serif",
+     "interactive": true,
+     "focusable": true
+    }
+   ]
+  }
+ ]
+}

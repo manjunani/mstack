@@ -9,7 +9,8 @@ This script fails the page when:
     win over the numbers the page reported; a successful screenshot command proves nothing by itself
   - the page logged console errors
   - the renderer's counters after loading are over the budget profile
-  - geometries or textures do not return to the starting count after the scene is disposed (a leak)
+  - geometries or textures do not return to the starting count after the scene is disposed (a leak). With a
+    second load and dispose ('after_dispose_2'), only growth from one cycle to the next counts as a leak
   - a frame time is claimed but the GPU adapter is a software renderer
 It ends as not verified when something needed for a claim is missing: no poses, no adapter name with a
 frame time, no counters, no dispose step.
@@ -131,11 +132,23 @@ def main():
         unverified.append("frame time is to be claimed but the report holds none")
     elif not claimed:
         print("  frame time not measured; say so, do not estimate it")
+    # The snippet times requestAnimationFrame. That interval is never shorter than the browser's own frame
+    # schedule, which in a test browser can be 33 ms on an idle page. frameTime(120, 'idle') measures that floor.
+    idle = report.get("frame_time_idle_ms") if isinstance(report.get("frame_time_idle_ms"), dict) else None
+    idle_median = idle.get("median") if idle else None
+    if idle:
+        print(f"  idle frame interval (no scene drawn): median {idle_median} ms over {idle.get('samples')} frames")
     if frame and not fragment and name and args.refresh_hz:
         budget = 1000.0 / args.refresh_hz
         median = frame.get("median")
-        if isinstance(median, (int, float)) and median > budget:
-            failures.append(f"median frame time {median} ms is over the {budget:.2f} ms budget of {args.refresh_hz:g} Hz")
+        floor = isinstance(idle_median, (int, float)) and isinstance(median, (int, float)) and median <= idle_median * 1.1 + 0.5
+        if isinstance(median, (int, float)) and median > budget and floor:
+            print(f"  the scene's frame time equals the idle page's ({idle_median} ms): the browser's frame schedule is the limit, not the scene")
+            unverified.append(f"frame time: this browser does not draw faster than {idle_median} ms even with no scene, "
+                              f"so the {budget:.2f} ms budget cannot be judged here; measure in a browser whose idle interval is under the budget")
+        elif isinstance(median, (int, float)) and median > budget:
+            failures.append(f"median frame time {median} ms is over the {budget:.2f} ms budget of {args.refresh_hz:g} Hz"
+                            + ("" if idle else "; if the page is idle-bound, measure frameTime(120, 'idle') with no scene drawn to tell them apart"))
 
     print(f"== renderer counters, profile {args.profile}")
     counters = report.get("counters") if isinstance(report.get("counters"), dict) else {}
@@ -159,6 +172,10 @@ def main():
     print("== leak check")
     before = counters.get("before") if isinstance(counters.get("before"), dict) else None
     after = counters.get("after_dispose") if isinstance(counters.get("after_dispose"), dict) else None
+    # Optional second cycle: load the scene again, dispose it again, mark('after_dispose_2'). Some objects belong
+    # to the renderer, not the scene (three.js keeps a lookup texture for physically based materials once one was
+    # drawn), so they stay after the first dispose. A leak grows with every load; a renderer-owned object does not.
+    again = counters.get("after_dispose_2") if isinstance(counters.get("after_dispose_2"), dict) else None
     if before is None or after is None:
         print("  not run: the report needs counters 'before' loading and 'after_dispose'")
         unverified.append("leak check (no before and after_dispose counters)")
@@ -168,9 +185,22 @@ def main():
             if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
                 unverified.append(f"leak check: {key} not reported")
                 continue
-            print(f"  {key:<11} before {a}, after dispose {b} -> {'LEAK' if b > a else 'ok'}")
-            if b > a:
-                failures.append(f"{b - a} {key} are still in memory after the scene was disposed")
+            c = again.get(key) if again is not None else None
+            if again is not None and not isinstance(c, (int, float)):
+                unverified.append(f"leak check: {key} not reported after the second dispose")
+                continue
+            if b <= a and (c is None or c <= a):
+                print(f"  {key:<11} before {a}, after dispose {b}" + (f", after a second load and dispose {c}" if c is not None else "") + " -> ok")
+            elif c is None:
+                print(f"  {key:<11} before {a}, after dispose {b} -> LEAK (or owned by the renderer; a second load and dispose tells them apart)")
+                failures.append(f"{b - a} {key} are still in memory after the scene was disposed; if the page cannot be fixed, "
+                                "load and dispose the scene a second time and mark('after_dispose_2'): an object that does not grow is the renderer's own")
+            elif c > b:
+                print(f"  {key:<11} before {a}, after dispose {b}, after a second load and dispose {c} -> LEAK (grows on each load)")
+                failures.append(f"{key} grow with each load: {a} before, {b} after the first dispose, {c} after the second")
+            else:
+                print(f"  {key:<11} before {a}, after dispose {b}, after a second load and dispose {c} -> ok, "
+                      f"{b - a} stayed but did not grow: owned by the renderer, not the scene")
         a, b = before.get("programs"), after.get("programs")
         if isinstance(a, (int, float)) and isinstance(b, (int, float)) and b > a:
             print(f"  warning: {b - a} shader programs stayed after dispose (programs can be cached; check if it grows on each load)")

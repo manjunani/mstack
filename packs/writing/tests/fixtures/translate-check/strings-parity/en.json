@@ -1,0 +1,9 @@
+{
+  "welcome": "Welcome back, {name}!",
+  "boards": {
+    "count": "You have {count} boards in {harbour}.",
+    "limit": "Each account can hold 3 boards."
+  },
+  "sync": "Last sync: %s",
+  "help": "Read the <b>setup guide</b> at https://docs.example.test/setup"
+}

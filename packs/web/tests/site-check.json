@@ -27,6 +27,7 @@
     {
       "name": "local-headers",
       "prompt": "I'm running my site locally on a python server. Before I deploy, can you check how http://127.0.0.1:8765/ answers, headers and all? (start it first with: python3 -m http.server 8765 --bind 127.0.0.1 in the background)",
+      "fixture": "fixtures/site-check/local-headers",
       "max_turns": 15,
       "allowed_tools": [
         "Read",

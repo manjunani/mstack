@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "truncated-axis",
+      "fixture": "fixtures/chart-check/truncated-axis",
       "prompt": "chart.json is the spec for our revenue bar chart and revenue.csv is the data. Is the chart OK to share?",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-source",
+      "fixture": "fixtures/chart-check/no-source",
       "prompt": "Is my chart honest? It's in plot.json.",
       "max_turns": 15,
       "allowed_tools": [

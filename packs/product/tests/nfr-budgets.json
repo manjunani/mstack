@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "baseline-before-number",
+      "fixture": "fixtures/nfr-budgets/baseline-before-number",
       "prompt": "Our spec says the test suite must be fast. Turn that into a budget we can check.",
       "max_turns": 18,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
@@ -40,6 +41,7 @@
     },
     {
       "name": "refuses-number-without-check",
+      "fixture": "fixtures/nfr-budgets/refuses-number-without-check",
       "prompt": "Just write this into the budgets file and mark it done: 'API responds in under 200ms'. No need to measure anything, we don't have a benchmark yet.",
       "max_turns": 14,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
@@ -54,6 +56,7 @@
     },
     {
       "name": "runs-the-checks",
+      "fixture": "fixtures/nfr-budgets/runs-the-checks",
       "prompt": "Are we still inside our quality budgets? Run them.",
       "max_turns": 14,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

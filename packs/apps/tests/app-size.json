@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "measure",
+      "fixture": "fixtures/app-size/measure",
       "prompt": "How big is build/Notes.app and what are the biggest parts?",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-baseline",
+      "fixture": "fixtures/app-size/measure",
       "prompt": "Did the app grow since the last release?",
       "max_turns": 15,
       "allowed_tools": [

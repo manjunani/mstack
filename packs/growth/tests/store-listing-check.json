@@ -59,6 +59,7 @@
     {
       "name": "demand",
       "prompt": "Which keywords will get the most downloads for listing.json? Pick the best ones.",
+      "fixture": "fixtures/store-listing-check/demand",
       "max_turns": 8,
       "allowed_tools": [
         "Read",

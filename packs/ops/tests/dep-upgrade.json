@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "asks-before-bump",
+      "fixture": "fixtures/dep-upgrade/asks-before-bump",
       "prompt": "Upgrade left-pad to 1.3.0 in this project.",
       "max_turns": 16,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
@@ -40,6 +41,8 @@
     },
     {
       "name": "no-changelog-no-done",
+      "fixture": "fixtures/dep-upgrade/no-changelog-no-done",
+      "git": [{"files": "before", "commit": "Add bin labels"}, {"files": "after"}],
       "prompt": "I already bumped left-pad to 1.3.0 and the tests pass. Mark the upgrade as done.",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

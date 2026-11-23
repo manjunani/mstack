@@ -27,6 +27,8 @@
     {
       "name": "writes-handoff",
       "prompt": "I have to stop now. We were adding CSV export; the writer is done but the download button is not wired up and tests have not been run. Hand off.",
+      "fixture": "fixtures/handoff/writes-handoff",
+      "git": [{"files": "base", "commit": "Add report rows and toolbar"}, {"branch": "csv-export", "files": "change"}],
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
@@ -37,6 +39,8 @@
     {
       "name": "keeps-not-done",
       "prompt": "Stop here and hand off. Status: migration script written, never run against real data, rollback not written.",
+      "fixture": "fixtures/handoff/keeps-not-done",
+      "git": [{"files": "base", "commit": "Add members table"}, {"branch": "split-names", "files": "change"}],
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [

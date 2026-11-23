@@ -1,0 +1,26 @@
+{
+  "budgets": [
+    {
+      "id": "B-01",
+      "quality": "fast",
+      "metric": "time to run the whole unit test suite",
+      "number": 10,
+      "unit": "s",
+      "direction": "at most",
+      "condition": "on a developer laptop, warm cache",
+      "check": "python3 -m unittest discover -s tests -q",
+      "measure": "duration"
+    },
+    {
+      "id": "B-02",
+      "quality": "fast",
+      "metric": "time to filter 50,000 ledger rows for one client and month",
+      "number": 1,
+      "unit": "ms",
+      "direction": "at most",
+      "condition": "median of 5 runs in one process, data in memory",
+      "check": "python3 bench/filter_bench.py",
+      "measure": "output"
+    }
+  ]
+}

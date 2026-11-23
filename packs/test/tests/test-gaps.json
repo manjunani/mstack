@@ -26,6 +26,8 @@
   "tasks": [
     {
       "name": "inventory-first",
+      "fixture": "fixtures/test-gaps/inventory-first",
+      "git": [{"files": "base", "commit": "Add berth booking modules"}, {"files": "change", "commit": "Handle declined payments and refund checks"}],
       "prompt": "I inherited this repo last week. Where are the tests thin, and what should I write first?",
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Edit"],
@@ -40,6 +42,8 @@
     },
     {
       "name": "decision-per-risk",
+      "fixture": "fixtures/test-gaps/decision-per-risk",
+      "git": [{"files": "base", "commit": "Add berth booking modules"}, {"files": "change", "commit": "Handle declined payments and refund checks"}],
       "prompt": "Find what is untested in this project and tell me what to do about each of the top risks. Don't write the tests yet.",
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Edit"],

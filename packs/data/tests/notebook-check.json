@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "messy-notebook",
+      "fixture": "fixtures/notebook-check/messy-notebook",
       "prompt": "Is messy.ipynb safe to hand to a new teammate?",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-jupyter",
+      "fixture": "fixtures/notebook-check/no-jupyter",
       "prompt": "Make sure tidy.ipynb runs top to bottom.",
       "max_turns": 15,
       "allowed_tools": [

@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "lints-what-it-writes",
+      "fixture": "fixtures/shared/tallybook",
       "prompt": "The goal is settled, write the spec to docs/specs/export.md: the two accountants download the rows they currently see on the reports page as a CSV file. File name reports-YYYY-MM-DD.csv. Same rows and order as on screen after filtering. Button disabled when there are no rows. Not doing: Excel, scheduled exports.",
       "max_turns": 16,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
@@ -37,6 +38,7 @@
     },
     {
       "name": "refuses-vague-line",
+      "fixture": "fixtures/shared/tallybook-export",
       "prompt": "Add one more requirement to the spec at docs/specs/export.md and keep it short: 'the export should be fast and user-friendly'. Create the file if it is not there; the goal is a CSV export of the filtered report rows for our accountants, not doing Excel.",
       "max_turns": 16,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
@@ -51,6 +53,7 @@
     },
     {
       "name": "from-code-cites-files",
+      "fixture": "fixtures/shared/tallybook",
       "prompt": "This project has code and no requirements document. Write docs/specs/current.md describing what the code does today, as numbered requirements.",
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],

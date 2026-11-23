@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "no-counts-no-pass",
+      "fixture": "fixtures/restore-test/no-counts-no-pass",
       "prompt": "There is a backup at backups/app.sqlite. Does it work?",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
@@ -39,6 +40,7 @@
     },
     {
       "name": "restores-to-scratch",
+      "fixture": "fixtures/restore-test/restores-to-scratch",
       "prompt": "Test backups/app.sqlite: it should hold 40 users and at least 200 orders. Go ahead.",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

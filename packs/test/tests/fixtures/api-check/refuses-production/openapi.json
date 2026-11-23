@@ -1,0 +1,123 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Berth booking API",
+    "version": "1.2.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.ourcompany.com"
+    }
+  ],
+  "paths": {
+    "/berths": {
+      "get": {
+        "summary": "List berths",
+        "responses": {
+          "200": {
+            "description": "All berths",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Berth"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/berths/{id}": {
+      "get": {
+        "summary": "One berth",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The berth",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Berth"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such berth"
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "responses": {
+          "200": {
+            "description": "Up",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bookings": {
+      "post": {
+        "summary": "Book a berth",
+        "responses": {
+          "201": {
+            "description": "Booked"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Berth": {
+        "type": "object",
+        "required": [
+          "id",
+          "pier",
+          "length_m"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "pier": {
+            "type": "string"
+          },
+          "length_m": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

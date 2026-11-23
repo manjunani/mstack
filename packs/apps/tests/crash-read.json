@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "names-frame",
+      "fixture": "fixtures/crash-read/names-frame",
       "prompt": "The app crashed. The report is at crash/Notes-2026-11-20.ips. Where did it fail?",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "wrong-dsym",
+      "fixture": "fixtures/crash-read/wrong-dsym",
       "prompt": "Use build/old/Notes.app.dSYM to symbolicate crash/Notes.ips.",
       "max_turns": 15,
       "allowed_tools": [

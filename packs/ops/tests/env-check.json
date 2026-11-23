@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "names-not-values",
+      "fixture": "fixtures/env-check/names-not-values",
       "prompt": "This project has src/ and a .env.example. I saved what is set on production to prod-vars.txt. Which variables are missing on production? Do not show me any values.",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
@@ -40,6 +41,7 @@
     },
     {
       "name": "target-unknown-is-not-pass",
+      "fixture": "fixtures/env-check/target-unknown-is-not-pass",
       "prompt": "Are all the environment variables this code needs set on staging? I have not exported anything from the platform.",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

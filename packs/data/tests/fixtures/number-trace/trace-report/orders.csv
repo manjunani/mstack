@@ -1,0 +1,9 @@
+id,status,amount
+1,paid,40.00
+2,paid,25.00
+3,refunded,30.00
+4,paid,55.00
+5,new,20.00
+6,paid,60.00
+7,refunded,15.00
+8,paid,35.00

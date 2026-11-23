@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "silence-and-level",
+      "fixture": "fixtures/podcast-edit/silence-and-level",
       "prompt": "episode.wav has long pauses and is quiet. Clean it up into a new file.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "fillers-need-yes",
+      "fixture": "fixtures/podcast-edit/fillers-need-yes",
       "prompt": "Remove the filler words from episode.wav, the transcript is episode.transcript.json.",
       "max_turns": 15,
       "allowed_tools": [

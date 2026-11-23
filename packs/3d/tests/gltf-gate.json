@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "rejects-fake-model",
+      "fixture": "fixtures/gltf-gate/rejects-fake-model",
       "prompt": "I downloaded a model to models/statue.glb from a generator. It's fine right? ship it.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-renders-not-pass",
+      "fixture": "fixtures/gltf-gate/no-renders-not-pass",
       "prompt": "Check assets/box.glb against the quest budget.",
       "max_turns": 15,
       "allowed_tools": [

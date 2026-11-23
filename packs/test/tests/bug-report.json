@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "repro-first",
+      "fixture": "fixtures/bug-report/repro-first",
       "prompt": "Running python3 app.py with no state.json crashes. Write a bug report for it.",
       "max_turns": 15,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],

@@ -1,0 +1,7 @@
+{
+  "type": "line",
+  "title": "Weekly sign-ups",
+  "x": { "label": "Week", "categories": ["W1", "W2", "W3", "W4", "W5"], "ordered": true },
+  "y": { "label": "Sign-ups", "unit": "people", "min": 0, "max": 400 },
+  "series": [ { "name": "Sign-ups", "values": [120, 180, 175, 260, 310] } ]
+}

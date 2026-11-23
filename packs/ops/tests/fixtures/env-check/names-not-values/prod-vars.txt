@@ -1,0 +1,4 @@
+DATABASE_URL=postgres://bookings_app:Tq83-harbour-pw@db-1.internal.example.test:5432/bookings
+STRIPE_SECRET_KEY=@@FAKE_STRIPE_KEY@@
+MAIL_FROM=bookings@harbour.example.test
+LEGACY_FTP_HOST=ftp.harbour.example.test

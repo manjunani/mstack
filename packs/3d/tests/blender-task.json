@@ -26,6 +26,9 @@
   "tasks": [
     {
       "name": "blocked-without-blender",
+      "fixture": "fixtures/blender-task/blocked-without-blender",
+      "needs": "no-blender",
+      "skip_reason": "Tests the blocked path, so it only means something on a machine where Blender cannot be found; the eval run inherits PATH, and Blender is now installed on the test machine.",
       "prompt": "Open scene.blend in Blender, apply scale on everything and export model.glb.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +60,7 @@
     },
     {
       "name": "facts-from-request",
+      "fixture": "fixtures/blender-task/facts-from-request",
       "prompt": "Here's .mstack/blender/state.json from the job. The table was supposed to be 1.2 x 0.6 x 0.75 m with scale applied. Did it work?",
       "max_turns": 15,
       "allowed_tools": [

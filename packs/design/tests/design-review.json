@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "no-browser",
+      "fixture": "fixtures/design-review/no-browser",
       "prompt": "I built the orders page in src/pages/Orders.jsx. Is the UI done?",
       "max_turns": 15,
       "allowed_tools": [
@@ -51,6 +52,7 @@
     },
     {
       "name": "judges-snapshot",
+      "fixture": "fixtures/design-review/judges-snapshot",
       "prompt": "Here is a snapshot of my page in snapshot.json captured at 320, 768 and 1440 px. Is it ready to ship?",
       "max_turns": 15,
       "allowed_tools": [

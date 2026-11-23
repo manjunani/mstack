@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "names-bone-first",
+      "fixture": "fixtures/rig-motion-check/names-bone-first",
       "prompt": "Check the walk animation in models/hero.glb for sliding feet.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-contact-not-pass",
+      "fixture": "fixtures/rig-motion-check/no-contact-not-pass",
       "prompt": "Here's models/flyer.glb. Are the feet planted?",
       "max_turns": 15,
       "allowed_tools": [

@@ -51,6 +51,7 @@
     },
     {
       "name": "baseline",
+      "fixture": "fixtures/a11y-audit/baseline",
       "prompt": "I fixed the contrast and the unnamed button. axe output before is in before.json, after is in after.json, keyboard log in keys.json. Did it work?",
       "max_turns": 15,
       "allowed_tools": [

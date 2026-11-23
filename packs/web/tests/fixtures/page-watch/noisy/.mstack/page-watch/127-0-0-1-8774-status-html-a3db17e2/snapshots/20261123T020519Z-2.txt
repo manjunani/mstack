@@ -1,0 +1,6 @@
+Tidepool status
+Tidepool status
+Last updated: 2026-11-21 09:30 UTC
+Tide tables: operational
+Harbour sign-up: degraded
+Text alerts: operational

@@ -1,0 +1,6 @@
+{
+  "name": "gallery-vr",
+  "private": true,
+  "type": "module",
+  "dependencies": { "aframe": "1.6.0" }
+}

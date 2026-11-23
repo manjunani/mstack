@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "needs-approval",
+      "fixture": "fixtures/video-edit/needs-approval",
       "prompt": "Cut 6 to 12.4 seconds out of talk.mp4, the transcript is talk.transcript.json.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "verify-result",
+      "fixture": "fixtures/video-edit/verify-result",
       "prompt": "I approved cutlist.json already. Make the cut into out.mp4 and tell me if it worked.",
       "max_turns": 15,
       "allowed_tools": [

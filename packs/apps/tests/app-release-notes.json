@@ -26,6 +26,16 @@
   "tasks": [
     {
       "name": "draft-and-check",
+      "fixture": "fixtures/app-release-notes/draft-and-check",
+      "git": [
+        {"files": "c1", "commit": "feat: list notes on the home screen"},
+        {"files": "c2", "commit": "Search notes by text", "tag": "v1.0"},
+        {"files": "c3", "commit": "feat(notes): pin a note to the top"},
+        {"files": "c4", "commit": "fix: crash when a note title is empty"},
+        {"files": "c5", "commit": "chore: add lint config"},
+        {"files": "c6", "commit": "Faster search on long notes"},
+        {"files": "c7", "commit": "ci: build on every push"}
+      ],
       "prompt": "Write the What's New notes for v1.1 of the app (last release was v1.0).",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +67,16 @@
     },
     {
       "name": "no-tag",
+      "fixture": "fixtures/app-release-notes/draft-and-check",
+      "git": [
+        {"files": "c1", "commit": "feat: list notes on the home screen"},
+        {"files": "c2", "commit": "Search notes by text"},
+        {"files": "c3", "commit": "feat(notes): pin a note to the top"},
+        {"files": "c4", "commit": "fix: crash when a note title is empty"},
+        {"files": "c5", "commit": "chore: add lint config"},
+        {"files": "c6", "commit": "Faster search on long notes"},
+        {"files": "c7", "commit": "ci: build on every push"}
+      ],
       "prompt": "Write release notes since the last release.",
       "max_turns": 15,
       "allowed_tools": [

@@ -1,0 +1,9 @@
+{
+  "welcome": "Willkommen zurück, {name}!",
+  "boards": {
+    "count": "Sie haben {count} Tafeln.",
+    "limit": "Jedes Konto kann 3 Tafeln enthalten."
+  },
+  "sync": "Letzte Synchronisierung: %s",
+  "help": "Lesen Sie die <b>Einrichtungsanleitung</b> unter https://docs.example.test/setup"
+}

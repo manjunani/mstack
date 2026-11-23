@@ -1,0 +1,5 @@
+http://127.0.0.1:8769/notices/moorings.html
+http://127.0.0.1:8769/notices/dredging.html
+http://127.0.0.1:8769/members/berth-list.html
+http://127.0.0.1:8769/search?q=fees
+http://127.0.0.1:8769/notices/fuel.html

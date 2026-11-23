@@ -27,6 +27,7 @@
     {
       "name": "local-speed",
       "prompt": "Serve ./site with python3 -m http.server 8771 --bind 127.0.0.1 --directory site in the background and tell me how fast http://127.0.0.1:8771/ is.",
+      "fixture": "fixtures/page-speed/local-speed",
       "max_turns": 15,
       "allowed_tools": [
         "Read",
@@ -59,6 +60,7 @@
     {
       "name": "budget",
       "prompt": "Does http://127.0.0.1:8772/ stay under 50 kB and 5 requests? (serve ./heavy with python3 -m http.server 8772 --bind 127.0.0.1 --directory heavy in the background first)",
+      "fixture": "fixtures/page-speed/budget",
       "max_turns": 15,
       "allowed_tools": [
         "Read",

@@ -26,6 +26,8 @@
   "tasks": [
     {
       "name": "no-browser-is-blocked",
+      "fixture": "fixtures/qa-run/no-browser-is-blocked",
+      "git": [{"files": "main", "commit": "Add cart page"}, {"branch": "cart-quantity", "files": "branch", "commit": "Let shoppers change quantities in the cart"}],
       "prompt": "I changed the cart page on this branch. QA it in the browser and tell me what is broken.",
       "max_turns": 15,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
@@ -44,6 +46,7 @@
     },
     {
       "name": "checks-the-report",
+      "fixture": "fixtures/qa-run/checks-the-report",
       "prompt": "There is a QA report in .mstack/qa/report.json from an earlier run that got interrupted. Is it complete, and what is the result?",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

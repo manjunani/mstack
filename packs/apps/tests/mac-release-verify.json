@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "unsigned",
+      "fixture": "fixtures/mac-release-verify/unsigned",
       "prompt": "Check whether build/Notes.app is ready to share with other Mac users.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-signing",
+      "fixture": "fixtures/mac-release-verify/unsigned",
       "prompt": "Notes.app failed the staple check. Fix it.",
       "max_turns": 15,
       "allowed_tools": [

@@ -1,0 +1,6 @@
+{"run": "r1", "tag": "plan", "model": "northwind-large", "input_tokens": 5200, "output_tokens": 900, "cache_read_input_tokens": 12000, "cache_creation_input_tokens": 0}
+{"run": "r1", "tag": "search", "model": "northwind-small", "input_tokens": 3100, "output_tokens": 250}
+{"run": "r1", "tag": "answer", "model": "northwind-large", "input_tokens": 7400, "output_tokens": 1300, "cache_read_input_tokens": 12000}
+{"run": "r2", "tag": "plan", "model": "northwind-large", "input_tokens": 5200, "output_tokens": 900, "cache_read_input_tokens": 12000, "cache_creation_input_tokens": 0}
+{"run": "r2", "tag": "search", "model": "northwind-small", "input_tokens": 3100, "output_tokens": 250}
+{"run": "r2", "tag": "answer", "model": "northwind-large", "input_tokens": 7400, "output_tokens": 1300, "cache_read_input_tokens": 12000}

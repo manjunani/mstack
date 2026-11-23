@@ -51,6 +51,7 @@
     },
     {
       "name": "check",
+      "fixture": "fixtures/brand-kit/check",
       "prompt": "Check site/ against brand.json and tell me what's off-brand.",
       "max_turns": 15,
       "allowed_tools": [

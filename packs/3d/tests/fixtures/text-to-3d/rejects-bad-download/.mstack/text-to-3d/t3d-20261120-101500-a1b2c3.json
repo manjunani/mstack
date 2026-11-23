@@ -1,0 +1,11 @@
+{
+  "id": "t3d-20261120-101500-a1b2c3",
+  "provider": "example-3d-service",
+  "stated_cost": "2 credits per model, as stated by the provider's tool on 2026-11-20",
+  "prompt": "a red armchair, low poly, real size",
+  "user_approved": true,
+  "approved_at": "2026-11-20T10:15:00+00:00",
+  "generations_allowed": 1,
+  "status": "approved",
+  "file": null
+}

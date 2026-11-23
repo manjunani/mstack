@@ -12,3 +12,6 @@ _draft/
 docs/DESIGN.md
 docs/SKILLS.md
 evals-smoke/
+
+# practice files for tests may contain .mstack folders on purpose
+!packs/*/tests/fixtures/**/.mstack/

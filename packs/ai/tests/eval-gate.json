@@ -39,6 +39,7 @@
     },
     {
       "name": "runs-the-gate",
+      "fixture": "fixtures/eval-gate/runs-the-gate",
       "prompt": "Compare evals/base.jsonl and evals/cand.jsonl and tell me whether the candidate can go out.",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

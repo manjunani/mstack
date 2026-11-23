@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "measures-not-guesses",
+      "fixture": "fixtures/xr-comfort-review/measures-not-guesses",
       "prompt": "Are the menus in dumps/scene_dump.json comfortable?",
       "max_turns": 15,
       "allowed_tools": [

@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "ranks-and-tests",
+      "fixture": "fixtures/shared/tallybook-export",
       "prompt": "We're about to commit to the plan in docs/specs/export.md. Run a premortem on it.",
       "max_turns": 18,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],

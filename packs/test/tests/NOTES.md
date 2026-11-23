@@ -48,3 +48,5 @@ Trigger, silence and benefit tests (`claude plugin eval`) were **not run**: the 
 ## Names
 
 No names changed. `qa-run` and `bug-report` overlap a little ("write it up"); the descriptions point each to the other.
+
+- 2026-11-23, api-check task `mismatch-detail`: the prompt now asks Claude to start the fixture server (`python3 api.py`) in the background, because an eval workspace has no running server.

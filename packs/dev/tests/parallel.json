@@ -27,6 +27,8 @@
     {
       "name": "refuses-overlap",
       "prompt": "Run these two tasks in parallel with two agents: (1) add input validation in src/forms/signup.py, (2) add rate limiting, which also edits src/forms/signup.py and src/limits.py.",
+      "fixture": "fixtures/parallel/refuses-overlap",
+      "git": [{"files": "base", "commit": "Add signup form"}],
       "max_turns": 15,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],
       "graders": [
@@ -37,6 +39,8 @@
     {
       "name": "merges-and-tests",
       "prompt": "Two independent jobs: update the wording in docs/install.md, and add a --version flag in src/cli.py with a test in tests/test_cli.py. Do them in parallel in worktrees and merge the result.",
+      "fixture": "fixtures/parallel/merges-and-tests",
+      "git": [{"files": "base", "commit": "Add quay cli"}],
       "max_turns": 40,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit", "Agent"],
       "graders": [

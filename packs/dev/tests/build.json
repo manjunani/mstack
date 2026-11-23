@@ -27,6 +27,8 @@
     {
       "name": "logs-through-ledger",
       "prompt": "Implement this small job: add a function slugify(text) to src/text.py that lower-cases and joins words with hyphens, with a unit test in tests/test_text.py. Track it properly so I can see it is really finished.",
+      "fixture": "fixtures/build/logs-through-ledger",
+      "git": [{"files": "base", "commit": "Add word count"}],
       "max_turns": 30,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
       "graders": [

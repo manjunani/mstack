@@ -1,0 +1,7 @@
+1
+00:00:00,300 --> 00:00:02,400
+Welcome back to the harbour hour.
+
+2
+00:00:02,900 --> 00:00:05,600
+Today we talk about tide tables and boats.

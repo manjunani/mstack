@@ -1,0 +1,9 @@
+id,customer,status,amount
+A101,Harbour Bakery,paid,120.50
+A102,Quay Tools,new,89.00
+A103,Pier Books,refunded,45.00
+A102,Lantern Cafe,paid,310.00
+,Tide Press,paid,72.25
+A105,Gull Studio,shipped,150.00
+A106,Anchor Florist,paid,7200.00
+A107,Rope & Sail,new,-15.00

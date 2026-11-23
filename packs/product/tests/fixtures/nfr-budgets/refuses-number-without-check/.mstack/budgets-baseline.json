@@ -1,0 +1,16 @@
+{
+  "B-01": {
+    "value": 0.17162962502334267,
+    "unit": "s",
+    "runs": [
+      0.1232063330244273,
+      0.1723529589944519,
+      0.17162962502334267
+    ],
+    "command": "python3 -m unittest discover -s tests -q",
+    "measure": "duration",
+    "condition": "on a developer laptop, warm cache",
+    "date": "2026-11-02",
+    "commit": null
+  }
+}

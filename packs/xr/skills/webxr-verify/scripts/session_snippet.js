@@ -2,7 +2,8 @@
  * mstack webxr-verify: in-page session snippet.
  *
  * Load it in the page AFTER a WebXR emulator has replaced navigator.xr (for example Meta's open-source
- * IWER, or a browser extension that emulates a headset). Check the emulator's own documentation for how
+ * IWER, or a browser extension that emulates a headset). Desktop Chromium has a navigator.xr of its own:
+ * IWER 2.8 leaves it in place unless called as device.installRuntime({ forceInstall: true }). Check the emulator's own documentation for how
  * to set the head pose and switch between controllers and hands: those calls differ between emulators and
  * versions, so this snippet takes them as functions you pass in. It loads nothing and sends nothing.
  *
@@ -63,7 +64,13 @@
             return renderer.xr.setSession(s);
           })
           .then(function () { return true; })
-          .catch(function (e) { out.session = { started: false, mode: mode, error: String(e && e.message || e) }; return false; });
+          .catch(function (e) {
+            // Desktop Chromium has its own navigator.xr with no headset behind it; an emulator that did not replace it
+            // gives this same refusal. IWER 2.8 keeps the browser's own unless installed with { forceInstall: true }.
+            out.session = { started: false, mode: mode, error: String(e && e.message || e),
+                            hint: 'if an emulator is loaded, check that it replaced the browser\'s own navigator.xr' };
+            return false;
+          });
       },
       capture: function (kind, name, apply) {
         if (typeof apply === 'function') apply();

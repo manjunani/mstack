@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "evidence-lines",
+      "fixture": "fixtures/xr-target/evidence-lines",
       "prompt": "What does this repo target for XR?",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "quest-handoff",
+      "fixture": "fixtures/xr-target/quest-handoff",
       "prompt": "This looks like a Quest app. What next?",
       "max_turns": 15,
       "allowed_tools": [

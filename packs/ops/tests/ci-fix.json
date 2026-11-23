@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "plans-from-log",
+      "fixture": "fixtures/ci-fix/plans-from-log",
       "prompt": "CI failed. I saved the log as ci-failed.log in the project root. What failed and can you reproduce it?",
       "max_turns": 14,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

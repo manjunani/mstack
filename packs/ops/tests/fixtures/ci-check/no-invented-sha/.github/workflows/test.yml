@@ -1,0 +1,13 @@
+name: test
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: thirdparty/cache-thing@v2
+        with:
+          path: ~/.cache/pip
+      - run: python3 -m unittest

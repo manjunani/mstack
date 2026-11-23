@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "profile-mixed",
+      "fixture": "fixtures/data-profile/profile-mixed",
       "prompt": "Here's people.csv in the current folder. What's in it and is anything off?",
       "max_turns": 15,
       "allowed_tools": [

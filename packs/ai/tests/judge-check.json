@@ -39,6 +39,7 @@
     },
     {
       "name": "runs-agreement",
+      "fixture": "fixtures/judge-check/runs-agreement",
       "prompt": "graded.jsonl has my labels and the judge's verdicts. Does the judge agree with me well enough?",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

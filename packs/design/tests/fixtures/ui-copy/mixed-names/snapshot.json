@@ -1,0 +1,37 @@
+{
+  "mstack_snapshot": 1,
+  "views": [
+    {
+      "viewport": { "width": 1440, "height": 900 }, "theme": "light", "state": "login",
+      "elements": [
+        { "selector": "main > h1", "role": "heading", "name": "Welcome back", "text": "Welcome back", "box": { "x": 520, "y": 120, "width": 400, "height": 40 } },
+        { "selector": "form > button.primary", "role": "button", "name": "Sign in", "text": "Sign in", "box": { "x": 520, "y": 320, "width": 400, "height": 44 } },
+        { "selector": "form > a.forgot", "role": "link", "name": "Forgot your password?", "text": "Forgot your password?", "href": "/reset", "box": { "x": 520, "y": 380, "width": 160, "height": 20 } },
+        { "selector": "footer > a:nth-of-type(1)", "role": "link", "name": "Learn more", "text": "Learn more", "href": "/pricing", "box": { "x": 520, "y": 820, "width": 90, "height": 20 } },
+        { "selector": "footer > a:nth-of-type(2)", "role": "link", "name": "See pricing", "text": "See pricing", "href": "/pricing/", "box": { "x": 640, "y": 820, "width": 90, "height": 20 } },
+        { "selector": "#email", "role": "textbox", "name": "Email", "text": "", "placeholder": "Your email here", "box": { "x": 520, "y": 200, "width": 400, "height": 44 } }
+      ]
+    },
+    {
+      "viewport": { "width": 1440, "height": 900 }, "theme": "light", "state": "dashboard with errors",
+      "elements": [
+        { "selector": "dialog.expired > p", "role": "", "name": "", "text": "Your session ended after 30 minutes without activity.", "box": { "x": 480, "y": 200, "width": 480, "height": 24 } },
+        { "selector": "dialog.expired > button", "role": "button", "name": "Log in", "text": "Log in", "box": { "x": 480, "y": 240, "width": 120, "height": 44 } },
+        { "selector": "li.project > button:nth-of-type(1)", "role": "button", "name": "Delete project", "text": "Delete project", "box": { "x": 1100, "y": 400, "width": 140, "height": 36 } },
+        { "selector": "div.settings > button.danger", "role": "button", "name": "Remove project", "text": "Remove project", "box": { "x": 200, "y": 1400, "width": 150, "height": 36 } },
+        { "selector": "div.toast.one > p", "role": "alert", "name": "", "text": "Something went wrong.", "box": { "x": 1000, "y": 20, "width": 300, "height": 24 } },
+        { "selector": "div.toast.one > button", "role": "button", "name": "OK", "text": "OK", "box": { "x": 1000, "y": 52, "width": 60, "height": 32 } },
+        { "selector": "div.upload > p.error", "role": "alert", "name": "", "text": "Upload failed. Check that the file is under 10 MB and try again.", "box": { "x": 200, "y": 600, "width": 500, "height": 24 } },
+        { "selector": "div.billing > p.error", "role": "alert", "name": "", "text": "Payment failed!", "box": { "x": 200, "y": 700, "width": 200, "height": 24 } },
+        { "selector": "div.billing > button", "role": "button", "name": "Update card details", "text": "Update card details", "box": { "x": 200, "y": 732, "width": 180, "height": 40 } },
+        { "selector": "div.report > pre", "role": "", "name": "", "text": "TypeError: Cannot read properties of undefined (reading 'id')", "box": { "x": 200, "y": 900, "width": 600, "height": 24 } },
+        { "selector": "section.about > p", "role": "", "name": "", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "box": { "x": 200, "y": 1000, "width": 600, "height": 48 } },
+        { "selector": "form.invite > button", "role": "button", "name": "Submit", "text": "Submit", "box": { "x": 200, "y": 1100, "width": 100, "height": 40 } },
+        { "selector": "form.wizard > button", "role": "button", "name": "Continue", "text": "Continue", "box": { "x": 200, "y": 1200, "width": 100, "height": 40 } },
+        { "selector": "header > button.save", "role": "button", "name": "SAVE ALL CHANGES", "text": "SAVE ALL CHANGES", "box": { "x": 1200, "y": 100, "width": 180, "height": 40 } },
+        { "selector": "nav > a.find", "role": "link", "name": "Find a store", "text": "Find a store", "href": "/stores", "box": { "x": 20, "y": 100, "width": 100, "height": 20 } },
+        { "selector": "nav > a.search", "role": "link", "name": "Search orders", "text": "Search orders", "href": "/orders/search", "box": { "x": 140, "y": 100, "width": 110, "height": 20 } }
+      ]
+    }
+  ]
+}

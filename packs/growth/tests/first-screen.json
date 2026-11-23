@@ -58,7 +58,8 @@
     },
     {
       "name": "promise",
-      "prompt": "Our ad says 'shared tide tables for harbours'. Does http://127.0.0.1:8000/ deliver that up top?",
+      "prompt": "Our ad says 'shared tide tables for harbours'. Does http://127.0.0.1:8783/ deliver that up top? (serve ./site with python3 -m http.server 8783 --bind 127.0.0.1 --directory site in the background first)",
+      "fixture": "fixtures/first-screen/promise",
       "max_turns": 15,
       "allowed_tools": [
         "Read",

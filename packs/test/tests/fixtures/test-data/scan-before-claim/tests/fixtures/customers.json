@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "name": "Ada Tester",
+    "email": "ada@example.test",
+    "phone": "+1 202-555-0143"
+  },
+  {
+    "id": 2,
+    "name": "Bram Sample",
+    "email": "bram@example.com",
+    "phone": "+1 415-555-0178",
+    "ni_number": "QQ 12 34 56 C"
+  },
+  {
+    "id": 3,
+    "name": "Chitra Demo",
+    "email": "chitra@example.org",
+    "pan": "ABCPD1234E"
+  }
+]

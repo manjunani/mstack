@@ -27,6 +27,8 @@
     {
       "name": "writes-and-lints",
       "prompt": "The request is settled: add a --json flag to our CLI's status command so it prints the same fields as JSON. Plan the work as small tasks. Do not implement anything.",
+      "fixture": "fixtures/plan/writes-and-lints",
+      "git": [{"files": "base", "commit": "Add status command"}],
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
       "graders": [

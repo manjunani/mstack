@@ -57,6 +57,7 @@
     },
     {
       "name": "rejects-bad-download",
+      "fixture": "fixtures/text-to-3d/rejects-bad-download",
       "prompt": "I approved it and got downloads/armchair.glb back from the provider, approval id is in .mstack/text-to-3d. Accept it?",
       "max_turns": 15,
       "allowed_tools": [

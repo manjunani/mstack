@@ -57,6 +57,7 @@
     },
     {
       "name": "checks-record",
+      "fixture": "fixtures/sim-flow/checks-record",
       "prompt": "There is a flow record at .mstack/sim-flow/sign-in. Did the flow pass?",
       "max_turns": 15,
       "allowed_tools": [

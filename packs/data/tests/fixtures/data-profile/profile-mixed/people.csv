@@ -1,0 +1,8 @@
+id,name,email,age,joined,score
+1,Ada Marsh,ada.marsh@example.test,34,2026-01-12,88
+2,Bo Lindqvist,bo.l@example.test,N/A,2026-02-03,91
+3,Cleo Brandt,cleo@example.test,41,2026-02-30,n/a
+4,Dev Okafor,dev.okafor@example.test,thirty,2026-03-15,77
+5,Eli Moreau,eli@example.test,29,2026-04-01,85
+2,Bo Lindqvist,bo.l@example.test,N/A,2026-02-03,91
+6,Fen Duarte,fen.d@example.test,,2026-05-09,93

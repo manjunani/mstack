@@ -1,0 +1,194 @@
+{
+ "format": "mstack-transcript-1",
+ "source": "talk.wav",
+ "duration": 15.0,
+ "engine": "typed by hand",
+ "words": [
+  {
+   "word": "Welcome",
+   "start": 0.32,
+   "end": 0.61,
+   "confidence": 0.9
+  },
+  {
+   "word": "back",
+   "start": 0.67,
+   "end": 0.96,
+   "confidence": 0.9
+  },
+  {
+   "word": "to",
+   "start": 1.02,
+   "end": 1.31,
+   "confidence": 0.9
+  },
+  {
+   "word": "the",
+   "start": 1.37,
+   "end": 1.66,
+   "confidence": 0.9
+  },
+  {
+   "word": "harbour",
+   "start": 1.72,
+   "end": 2.01,
+   "confidence": 0.9
+  },
+  {
+   "word": "hour.",
+   "start": 2.07,
+   "end": 2.36,
+   "confidence": 0.9
+  },
+  {
+   "word": "Today",
+   "start": 2.92,
+   "end": 3.2,
+   "confidence": 0.9
+  },
+  {
+   "word": "we",
+   "start": 3.26,
+   "end": 3.53,
+   "confidence": 0.9
+  },
+  {
+   "word": "talk",
+   "start": 3.59,
+   "end": 3.87,
+   "confidence": 0.9
+  },
+  {
+   "word": "about",
+   "start": 3.93,
+   "end": 4.21,
+   "confidence": 0.9
+  },
+  {
+   "word": "tide",
+   "start": 4.27,
+   "end": 4.55,
+   "confidence": 0.9
+  },
+  {
+   "word": "tables",
+   "start": 4.61,
+   "end": 4.88,
+   "confidence": 0.9
+  },
+  {
+   "word": "and",
+   "start": 4.94,
+   "end": 5.22,
+   "confidence": 0.9
+  },
+  {
+   "word": "boats.",
+   "start": 5.28,
+   "end": 5.56,
+   "confidence": 0.9
+  },
+  {
+   "word": "So",
+   "start": 6.32,
+   "end": 6.51,
+   "confidence": 0.9
+  },
+  {
+   "word": "the",
+   "start": 6.57,
+   "end": 6.76,
+   "confidence": 0.9
+  },
+  {
+   "word": "first",
+   "start": 6.82,
+   "end": 7.01,
+   "confidence": 0.9
+  },
+  {
+   "word": "thing",
+   "start": 7.07,
+   "end": 7.26,
+   "confidence": 0.9
+  },
+  {
+   "word": "to",
+   "start": 7.32,
+   "end": 7.51,
+   "confidence": 0.9
+  },
+  {
+   "word": "check",
+   "start": 7.57,
+   "end": 7.76,
+   "confidence": 0.9
+  },
+  {
+   "word": "is",
+   "start": 7.82,
+   "end": 8.01,
+   "confidence": 0.9
+  },
+  {
+   "word": "the",
+   "start": 8.07,
+   "end": 8.26,
+   "confidence": 0.9
+  },
+  {
+   "word": "morning",
+   "start": 8.32,
+   "end": 8.51,
+   "confidence": 0.9
+  },
+  {
+   "word": "chart.",
+   "start": 8.57,
+   "end": 8.76,
+   "confidence": 0.9
+  },
+  {
+   "word": "Thanks",
+   "start": 12.62,
+   "end": 12.85,
+   "confidence": 0.9
+  },
+  {
+   "word": "for",
+   "start": 12.91,
+   "end": 13.13,
+   "confidence": 0.9
+  },
+  {
+   "word": "listening,",
+   "start": 13.19,
+   "end": 13.42,
+   "confidence": 0.9
+  },
+  {
+   "word": "see",
+   "start": 13.48,
+   "end": 13.7,
+   "confidence": 0.9
+  },
+  {
+   "word": "you",
+   "start": 13.76,
+   "end": 13.99,
+   "confidence": 0.9
+  },
+  {
+   "word": "next",
+   "start": 14.05,
+   "end": 14.27,
+   "confidence": 0.9
+  },
+  {
+   "word": "week.",
+   "start": 14.33,
+   "end": 14.56,
+   "confidence": 0.9
+  }
+ ]
+}

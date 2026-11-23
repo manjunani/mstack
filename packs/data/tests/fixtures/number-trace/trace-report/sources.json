@@ -1,0 +1,9 @@
+{
+  "ignore": ["2026", "5"],
+  "numbers": [
+    { "value": "8", "label": "orders in October", "data": "orders.csv", "aggregate": "count" },
+    { "value": "43.00", "label": "mean paid order", "data": "orders.csv", "aggregate": "mean", "column": "amount", "where": { "status": "paid" } },
+    { "value": "30%", "label": "refund share", "data": "orders.csv", "aggregate": "share", "where": { "status": "refunded" } },
+    { "value": "215", "label": "paid revenue", "data": "orders.csv", "aggregate": "sum", "column": "amount", "where": { "status": "paid" } }
+  ]
+}

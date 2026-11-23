@@ -49,3 +49,5 @@ Trigger, silence and benefit tests (`tests/<skill>.json`) are written but were N
 ## Names
 
 No skill name was changed. `export-check` is fine as named.
+
+- transcribe no-recogniser (2026-11-23): grader premise changed from "no recogniser installed" to "no recogniser model in the workspace", since a test machine may have whisper-cli on the path; the script then ends blocked for want of a model.

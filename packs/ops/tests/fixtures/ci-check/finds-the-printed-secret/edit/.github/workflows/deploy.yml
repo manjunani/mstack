@@ -1,0 +1,19 @@
+name: deploy
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build site
+        run: python3 build.py
+      - name: Upload
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+          echo "uploading with token $DEPLOY_TOKEN"
+          python3 upload.py --token "$DEPLOY_TOKEN"

@@ -1,0 +1,30 @@
+{
+  "B-01": {
+    "value": 0.17162962502334267,
+    "unit": "s",
+    "runs": [
+      0.1232063330244273,
+      0.1723529589944519,
+      0.17162962502334267
+    ],
+    "command": "python3 -m unittest discover -s tests -q",
+    "measure": "duration",
+    "condition": "on a developer laptop, warm cache",
+    "date": "2026-11-02",
+    "commit": null
+  },
+  "B-02": {
+    "value": 3.1,
+    "unit": "ms",
+    "runs": [
+      3.1,
+      1.81,
+      3.47
+    ],
+    "command": "python3 bench/filter_bench.py",
+    "measure": "output",
+    "condition": "median of 5 runs in one process, data in memory",
+    "date": "2026-11-02",
+    "commit": null
+  }
+}

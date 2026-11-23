@@ -27,6 +27,8 @@
     {
       "name": "exact-range-and-check",
       "prompt": "Review the commits on this branch against main. I want real defects only.",
+      "fixture": "fixtures/review/exact-range-and-check",
+      "git": [{"files": "base", "commit": "Orders and refunds"}, {"branch": "refund-cleanup", "files": "c1", "commit": "Simplify page offset"}, {"files": "c2", "commit": "Tidy refund"}],
       "max_turns": 25,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],
       "graders": [
@@ -38,6 +40,8 @@
     {
       "name": "clean-change-gets-no-findings",
       "prompt": "Review my uncommitted change: I renamed one local variable from tmp to total in src/sum.py. Anything wrong?",
+      "fixture": "fixtures/review/clean-change-gets-no-findings",
+      "git": [{"files": "base", "commit": "Basket total"}, {"files": "change"}],
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],
       "graders": [

@@ -57,3 +57,7 @@ relies on a pass near a limit.
 
 No name from `docs/SKILLS.md` was changed. `page-speed` is not in this pack; the skills point to the web pack's
 `page-speed`, as the list says one home is chosen and the build brief placed it in web.
+
+## Benefit-test fixtures (2026-11-23)
+
+- first-screen `promise`, launch-site-check `ready-check` and `no-pricing`, site-audit `audit-local-site`: the prompt said a site was already running on 127.0.0.1:8000, which an empty eval workspace cannot have. Each now ships a `site/` fixture and asks the agent to serve it on its own port (8783, 8781, 8782, 8784). Meaning unchanged.

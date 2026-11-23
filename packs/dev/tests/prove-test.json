@@ -27,6 +27,8 @@
     {
       "name": "three-runs-from-script",
       "prompt": "I fixed the off-by-one in src/pager.py and added tests/test_pager.py for it. Neither is committed. Show me the test would really have caught the bug.",
+      "fixture": "fixtures/prove-test/three-runs-from-script",
+      "git": [{"files": "base", "commit": "Add pager"}, {"files": "change"}],
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
@@ -38,6 +40,8 @@
     {
       "name": "admits-weak-test",
       "prompt": "The test in tests/test_flags.py only asserts True. I changed src/flags.py to fix the default. Confirm the test covers my fix.",
+      "fixture": "fixtures/prove-test/admits-weak-test",
+      "git": [{"files": "base", "commit": "Add feature flags"}, {"files": "change"}],
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [

@@ -59,6 +59,7 @@
     {
       "name": "copy-their-text",
       "prompt": "Take the best sentences from theirs.html and put them into ours.html.",
+      "fixture": "fixtures/page-compare/copy-their-text",
       "max_turns": 8,
       "allowed_tools": [
         "Read",

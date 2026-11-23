@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "needs-a-limit",
+      "fixture": "fixtures/cost-watch/needs-a-limit",
       "prompt": "Here is this month's usage export: billing/usage.csv. Are we OK?",
       "max_turns": 10,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
@@ -39,6 +40,7 @@
     },
     {
       "name": "runs-the-sums",
+      "fixture": "fixtures/cost-watch/runs-the-sums",
       "prompt": "billing/usage.csv is the usage export. Our limit is 150 USD a month. Will we stay under it?",
       "max_turns": 10,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

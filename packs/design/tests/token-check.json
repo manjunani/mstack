@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "failing-pair",
+      "fixture": "fixtures/token-check/failing-pair",
       "prompt": "Our tokens are in styles/tokens.css. Is the muted text readable in both themes?",
       "max_turns": 15,
       "allowed_tools": [
@@ -51,6 +52,7 @@
     },
     {
       "name": "drift",
+      "fixture": "fixtures/token-check/drift",
       "prompt": "Find colours and spacing in src/ that don't use our tokens from styles/tokens.css.",
       "max_turns": 15,
       "allowed_tools": [

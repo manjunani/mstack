@@ -1,0 +1,100 @@
+{"app_name": "Notes", "app_version": "1.1", "build_version": "12", "bug_type": "309", "os_version": "iPhone OS 18.1 (22B83)", "timestamp": "2026-11-20 08:42:17.00 +0000", "name": "Notes"}
+{
+  "procName": "Notes",
+  "procPath": "/private/var/containers/Bundle/Application/7C1E0A52-3B6D-4F08-9A21-6D5B0E4C8F13/Notes.app/Notes",
+  "bundleInfo": {
+    "CFBundleIdentifier": "test.example.notes",
+    "CFBundleShortVersionString": "1.1",
+    "CFBundleVersion": "12"
+  },
+  "osVersion": {
+    "train": "iPhone OS 18.1",
+    "build": "22B83"
+  },
+  "captureTime": "2026-11-20 08:42:17.0000 +0000",
+  "exception": {
+    "type": "EXC_BREAKPOINT",
+    "signal": "SIGTRAP",
+    "codes": "0x0000000000000001, 0x00000001900009e4"
+  },
+  "termination": {
+    "namespace": "SIGNAL",
+    "indicator": "Trace/BPT trap: 5",
+    "code": 5
+  },
+  "asi": {
+    "libswiftCore.dylib": [
+      "Notes/FolderStore.swift:61: Fatal error: Index out of range"
+    ]
+  },
+  "faultingThread": 0,
+  "threads": [
+    {
+      "id": 4021,
+      "queue": "com.apple.main-thread",
+      "triggered": true,
+      "frames": [
+        {
+          "imageIndex": 1,
+          "imageOffset": 3812,
+          "symbol": "_assertionFailure(_:_:file:line:flags:)",
+          "symbolLocation": 296
+        },
+        {
+          "imageIndex": 0,
+          "imageOffset": 21844
+        },
+        {
+          "imageIndex": 0,
+          "imageOffset": 30112
+        },
+        {
+          "imageIndex": 2,
+          "imageOffset": 77120,
+          "symbol": "ViewRendererHost.render(interval:updateDisplayList:)",
+          "symbolLocation": 88
+        }
+      ]
+    },
+    {
+      "id": 4022,
+      "frames": [
+        {
+          "imageIndex": 2,
+          "imageOffset": 77120,
+          "symbol": "ViewRendererHost.render(interval:updateDisplayList:)",
+          "symbolLocation": 88
+        }
+      ]
+    }
+  ],
+  "usedImages": [
+    {
+      "name": "Notes",
+      "base": 4362076160,
+      "uuid": "c4a19e07-52b8-4d3f-9e61-0b7a2d58f3c4",
+      "arch": "arm64",
+      "path": "/private/var/containers/Bundle/Application/7C1E0A52-3B6D-4F08-9A21-6D5B0E4C8F13/Notes.app/Notes",
+      "source": "P",
+      "size": 245760
+    },
+    {
+      "name": "libswiftCore.dylib",
+      "base": 6710886400,
+      "uuid": "8f1d2c3b-0a4e-4b5f-9c6d-7e8f9a0b1c2d",
+      "arch": "arm64e",
+      "path": "/usr/lib/swift/libswiftCore.dylib",
+      "source": "P",
+      "size": 4194304
+    },
+    {
+      "name": "SwiftUI",
+      "base": 6979321856,
+      "uuid": "1b2c3d4e-5f60-4718-8293-a4b5c6d7e8f9",
+      "arch": "arm64e",
+      "path": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+      "source": "P",
+      "size": 8388608
+    }
+  ]
+}

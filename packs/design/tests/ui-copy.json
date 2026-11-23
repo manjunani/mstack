@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "source-scan",
+      "fixture": "fixtures/ui-copy/source-scan",
       "prompt": "Check the wording in src/components for confusing buttons and errors.",
       "max_turns": 15,
       "allowed_tools": [
@@ -51,6 +52,7 @@
     },
     {
       "name": "mixed-names",
+      "fixture": "fixtures/ui-copy/mixed-names",
       "prompt": "Users are confused between 'Log in' and 'Sign in' on our pages; snapshot.json has the screens. Fix the copy.",
       "max_turns": 15,
       "allowed_tools": [

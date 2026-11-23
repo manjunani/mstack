@@ -39,6 +39,7 @@
     },
     {
       "name": "probes-and-does-not-call-unnamed",
+      "fixture": "fixtures/mcp-check/probes-and-does-not-call-unnamed",
       "prompt": "My MCP server starts with `python3 server.py`. Check its tools list and schemas. Do not call any tool yet.",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

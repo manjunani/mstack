@@ -1,0 +1,55 @@
+{
+  "flow": "sign in",
+  "driver": "host simulator tool",
+  "app": "test.example.notes",
+  "device": "",
+  "started": "2026-11-23T02:05:12+00:00",
+  "steps": [
+    {
+      "n": 1,
+      "action": "launch the app",
+      "expected": "welcome screen with a Sign in button",
+      "observed": "welcome screen, Sign in button at the bottom",
+      "status": "pass",
+      "reason": "",
+      "same_screen": false,
+      "at": "2026-11-23T02:05:12+00:00",
+      "screenshot": "01.png",
+      "sha256": "587c7291eaa223be7e7f1f2d4583737f043a67b67a2e966fce59c87f3a2c5f70"
+    },
+    {
+      "n": 2,
+      "action": "tap Sign in",
+      "expected": "form with an email field",
+      "observed": "form with an email field and a Continue button",
+      "status": "pass",
+      "reason": "",
+      "same_screen": false,
+      "at": "2026-11-23T02:05:12+00:00",
+      "screenshot": "02.png",
+      "sha256": "f40fce3eb96f94734aa17b5157bb813ae2e97b317ecd94a2f47fdb20782e77e2"
+    },
+    {
+      "n": 3,
+      "action": "enter email",
+      "expected": "email field holds the address",
+      "observed": "",
+      "status": "human",
+      "reason": "needs the user's own test account address",
+      "same_screen": false,
+      "at": "2026-11-23T02:05:12+00:00"
+    },
+    {
+      "n": 4,
+      "action": "tap Continue",
+      "expected": "code entry screen",
+      "observed": "red banner: could not reach the server",
+      "status": "fail",
+      "reason": "",
+      "same_screen": false,
+      "at": "2026-11-23T02:05:12+00:00",
+      "screenshot": "04.png",
+      "sha256": "52657e8ab5a8f2cbb9f416ede1731777b2388c4d08a17c71ca05c7daef823772"
+    }
+  ]
+}

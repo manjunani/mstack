@@ -76,6 +76,8 @@ def main():
     if not session.get("started"):
         failures.append("no XR session started" + (f" ({session.get('error')})" if session.get("error") else ""))
         print(f"  not started: {session.get('error', 'no reason recorded')}")
+        if session.get("hint"):
+            print(f"  hint: {session['hint']}")
     else:
         print(f"  started: mode {session.get('mode')}, emulator {report.get('emulator', 'not named')}")
         if session.get("mode") != args.mode:

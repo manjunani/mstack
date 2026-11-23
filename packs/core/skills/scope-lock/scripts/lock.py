@@ -43,7 +43,8 @@ def allowed(project, lock, raw):
         return True, "inside the locked folder"
     if (project / STATE) in path.parents:
         return True, f"inside {STATE}, which stays writable"
-    if any(t == path or t in path.parents for t in temps):
+    in_project = path == project or project in path.parents
+    if not in_project and any(t == path or t in path.parents for t in temps):
         return True, "inside a temporary folder"
     return False, f"outside the locked folder {root}"
 

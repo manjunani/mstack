@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "scan",
+      "fixture": "fixtures/ios-a11y-check/scan",
       "prompt": "Check the SwiftUI code in ./Notes for VoiceOver and Dynamic Type problems.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-shots",
+      "fixture": "fixtures/ios-a11y-check/scan",
       "prompt": "Is the app fine at the biggest text size?",
       "max_turns": 15,
       "allowed_tools": [

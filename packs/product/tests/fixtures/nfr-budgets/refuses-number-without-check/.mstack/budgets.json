@@ -1,0 +1,15 @@
+{
+  "budgets": [
+    {
+      "id": "B-01",
+      "quality": "fast",
+      "metric": "time to run the whole unit test suite",
+      "number": 10,
+      "unit": "s",
+      "direction": "at most",
+      "condition": "on a developer laptop, warm cache",
+      "check": "python3 -m unittest discover -s tests -q",
+      "measure": "duration"
+    }
+  ]
+}

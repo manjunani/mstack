@@ -134,7 +134,8 @@ def check_scope(raw, cwd):
     path = (path if path.is_absolute() else cwd / path).resolve()
     temps = {pathlib.Path(tempfile.gettempdir()).resolve(), pathlib.Path("/tmp").resolve()}
     inside = path == root or root in path.parents or (project / ".mstack") in path.parents
-    if inside or any(t == path or t in path.parents for t in temps):
+    in_project = path == project or project in path.parents
+    if inside or (not in_project and any(t == path or t in path.parents for t in temps)):
         return
     answer("deny", f"scope lock: edits are limited to {root}, and {path} is outside it. "
                    "If this file has to change, stop and tell the user which file and why; only the user releases the lock.")

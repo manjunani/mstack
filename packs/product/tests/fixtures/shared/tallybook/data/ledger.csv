@@ -1,0 +1,7 @@
+id,date,client,account,amount,note
+1,2026-10-02,Harbor Bakery,sales,1240.50,October invoice 1
+2,2026-10-03,Northfield Dental,sales,880.00,Cleaning contract
+3,2026-10-03,Harbor Bakery,expenses,-312.20,Flour supplier
+4,2026-10-17,Kite & Co,sales,455.75,Design retainer
+5,2026-11-01,Harbor Bakery,sales,1310.00,November invoice 1
+6,2026-11-04,Northfield Dental,expenses,-96.40,Card fees

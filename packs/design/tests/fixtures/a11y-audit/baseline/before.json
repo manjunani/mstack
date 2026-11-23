@@ -1,0 +1,15 @@
+{
+  "url": "http://localhost:5173/checkout",
+  "testEngine": { "name": "axe-core", "version": "4.10.2" },
+  "violations": [
+    { "id": "color-contrast", "impact": "serious", "tags": ["cat.color", "wcag2aa", "wcag143"], "help": "Elements must meet minimum color contrast ratio thresholds",
+      "nodes": [ { "target": [".total-note"], "html": "<p class=\"total-note\">Tax included</p>" } ] },
+    { "id": "button-name", "impact": "critical", "tags": ["cat.name-role-value", "wcag2a", "wcag412"], "help": "Buttons must have discernible text",
+      "nodes": [ { "target": ["#close-cart"], "html": "<button id=\"close-cart\"></button>" } ] },
+    { "id": "region", "impact": "moderate", "tags": ["cat.keyboard", "best-practice"], "help": "All page content should be contained by landmarks",
+      "nodes": [ { "target": [".promo"], "html": "<div class=\"promo\">Free returns</div>" } ] }
+  ],
+  "passes": [ { "id": "html-has-lang", "nodes": [] }, { "id": "image-alt", "nodes": [] }, { "id": "label", "nodes": [] } ],
+  "incomplete": [],
+  "inapplicable": [ { "id": "video-caption", "nodes": [] } ]
+}

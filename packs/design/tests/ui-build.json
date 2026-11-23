@@ -51,6 +51,7 @@
     },
     {
       "name": "triage",
+      "fixture": "fixtures/ui-build/triage",
       "prompt": "Can you make the orders page in src/pages/Orders.jsx look less generic?",
       "max_turns": 15,
       "allowed_tools": [

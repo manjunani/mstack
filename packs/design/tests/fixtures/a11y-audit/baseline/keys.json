@@ -1,0 +1,13 @@
+{
+  "passes": [
+    { "view": "1280/light/default", "ended": "wrapped",
+      "stops": [
+        { "selector": "a.skip", "focusVisible": true },
+        { "selector": "#close-cart", "focusVisible": true },
+        { "selector": "#qty", "focusVisible": true },
+        { "selector": "#apply-coupon", "focusVisible": true },
+        { "selector": "#pay", "focusVisible": true }
+      ],
+      "checks": [ { "name": "Escape closes the cart drawer", "ok": true } ] }
+  ]
+}

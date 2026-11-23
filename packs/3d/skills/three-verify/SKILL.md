@@ -39,7 +39,7 @@ Scripts are in this skill's `scripts/` folder (`"${CLAUDE_SKILL_DIR}/scripts/"` 
    ```
    A confirmed line is code that does not match the installed version. Fix the code, not the version, unless the user asks. The change list in `references/api_changes.json` is short and unverified.
 2. **Start the page** with the project's own dev command. Note the URL.
-3. **Capture.** Load `scripts/capture_snippet.js` into the page (its header shows how). Call `mark('before')` before loading if you can, then one `pose()` per named camera position, `mark('loaded')`, dispose the scene, `mark('after_dispose')`. After each pose, take a browser screenshot and add its file name to that pose. Save `report()` as `report.json` next to the screenshots. Format: `references/capture-report.md`.
+3. **Capture.** Load `scripts/capture_snippet.js` into the page (its header shows how). Call `mark('before')` before loading if you can, then one `pose()` per named camera position, `mark('loaded')`, dispose the scene, `mark('after_dispose')`. If anything stays after dispose, load and dispose once more and `mark('after_dispose_2')`: three.js keeps some objects of its own, and only growth per load is a leak. After each pose, take a browser screenshot and add its file name to that pose. Save `report()` as `report.json` next to the screenshots. Format: `references/capture-report.md`.
 4. **Check.**
    ```
    python3 scripts/check_capture.py report.json --profile desktop-web
@@ -53,7 +53,7 @@ Scripts are in this skill's `scripts/` folder (`"${CLAUDE_SKILL_DIR}/scripts/"` 
 ## Rules
 
 - A screenshot that saved is not a render. Only the pixel check counts.
-- Headless browsers often use a software renderer. Read the adapter name before any word about speed.
+- Headless browsers often use a software renderer. Read the adapter name before any word about speed. A frame time no lower than the idle page's (`frameTime(120, 'idle')`) is the browser's frame schedule, not the scene.
 - Programs left after dispose are a warning (they are often cached); geometries and textures left are a leak.
 - Never edit numbers in the capture report.
 

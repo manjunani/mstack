@@ -27,6 +27,7 @@
     {
       "name": "first-look",
       "prompt": "Start python3 -m http.server 8773 --bind 127.0.0.1 --directory site in the background, then watch http://127.0.0.1:8773/notices.html for changes.",
+      "fixture": "fixtures/page-watch/first-look",
       "max_turns": 15,
       "allowed_tools": [
         "Read",
@@ -59,6 +60,7 @@
     {
       "name": "noisy",
       "prompt": "I've been watching http://127.0.0.1:8774/status.html (served from ./status, start it with python3 -m http.server 8774 --bind 127.0.0.1 --directory status). It always says it changed because of the timestamp line. Fix that and tell me if anything real changed.",
+      "fixture": "fixtures/page-watch/noisy",
       "max_turns": 15,
       "allowed_tools": [
         "Read",

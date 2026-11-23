@@ -27,6 +27,7 @@
     {
       "name": "misquote",
       "prompt": "In ./draft there is post.md and a sources/ folder with saved copies. Check every quote before I publish.",
+      "fixture": "fixtures/cite-check/misquote",
       "max_turns": 15,
       "allowed_tools": [
         "Read",
@@ -59,6 +60,7 @@
     {
       "name": "missing-source",
       "prompt": "Check the quotes in notes.md; the sources are in saved/. One of them I never managed to save.",
+      "fixture": "fixtures/cite-check/missing-source",
       "max_turns": 15,
       "allowed_tools": [
         "Read",

@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "asks-real-size",
+      "fixture": "fixtures/webar-preview/asks-real-size",
       "prompt": "Make a phone AR preview for models/stool.glb.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "needs-phone",
+      "fixture": "fixtures/webar-preview/needs-phone",
       "prompt": "Build the AR page for models/stool.glb, it's 45cm tall.",
       "max_turns": 15,
       "allowed_tools": [

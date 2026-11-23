@@ -26,7 +26,8 @@
   "tasks": [
     {
       "name": "ready-check",
-      "prompt": "The site is running at http://127.0.0.1:8000. We launch tomorrow; is everything a visitor needs there?",
+      "prompt": "The site is in ./site; serve it with python3 -m http.server 8781 --bind 127.0.0.1 --directory site in the background, then check http://127.0.0.1:8781. We launch tomorrow; is everything a visitor needs there?",
+      "fixture": "fixtures/launch-site-check/ready-check",
       "max_turns": 15,
       "allowed_tools": [
         "Read",
@@ -58,7 +59,8 @@
     },
     {
       "name": "no-pricing",
-      "prompt": "Our tool is free, there is no pricing page. Check the launch site at http://127.0.0.1:8000 anyway.",
+      "prompt": "Our tool is free, there is no pricing page. Check the launch site at http://127.0.0.1:8782 anyway (serve ./site with python3 -m http.server 8782 --bind 127.0.0.1 --directory site in the background first).",
+      "fixture": "fixtures/launch-site-check/no-pricing",
       "max_turns": 15,
       "allowed_tools": [
         "Read",

@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "scan-first",
+      "fixture": "fixtures/webxr-verify/scan-first",
       "prompt": "I changed the WebXR page in this repo. Does it still work?",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "emulator-limits",
+      "fixture": "fixtures/webxr-verify/emulator-limits",
       "prompt": "Here's captures/report.json from the emulator run. We're good for Quest?",
       "max_turns": 15,
       "allowed_tools": [

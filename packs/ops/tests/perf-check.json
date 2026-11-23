@@ -26,6 +26,8 @@
   "tasks": [
     {
       "name": "baseline-before-claim",
+      "fixture": "fixtures/perf-check/baseline-before-claim",
+      "git": [{"files": "before", "commit": "Count watched arrivals"}, {"files": "after"}],
       "prompt": "I already changed slow.py to use a dict lookup. It's faster now, right? Time `python3 slow.py` and tell me.",
       "max_turns": 14,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
@@ -39,6 +41,7 @@
     },
     {
       "name": "uses-the-runner",
+      "fixture": "fixtures/perf-check/uses-the-runner",
       "prompt": "Take a baseline for `python3 slow.py`, call it slow, so I can compare after my change.",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

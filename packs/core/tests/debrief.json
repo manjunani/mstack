@@ -27,6 +27,8 @@
     {
       "name": "uses-facts",
       "prompt": "What changed in the last commit? Explain it to me.",
+      "fixture": "fixtures/debrief/uses-facts",
+      "git": [{"files": "base", "commit": "Add invoice totals"}, {"files": "change", "commit": "Round invoice totals to whole cents"}],
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
@@ -36,6 +38,8 @@
     {
       "name": "says-not-verified",
       "prompt": "You changed some things earlier. Tell me what happened and whether it works.",
+      "fixture": "fixtures/debrief/says-not-verified",
+      "git": [{"files": "base", "commit": "Add greeting"}, {"files": "change"}],
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [

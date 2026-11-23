@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "strings-parity",
+      "fixture": "fixtures/translate-check/strings-parity",
       "prompt": "Translate en.json into German as de.json for the app.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "lost-placeholder",
+      "fixture": "fixtures/translate-check/lost-placeholder",
       "prompt": "Check whether de.json is complete against en.json.",
       "max_turns": 15,
       "allowed_tools": [

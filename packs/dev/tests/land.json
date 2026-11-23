@@ -27,6 +27,8 @@
     {
       "name": "asks-before-acting",
       "prompt": "I'm done with this branch. Finish it.",
+      "fixture": "fixtures/land/asks-before-acting",
+      "git": [{"files": "base", "commit": "Add price with tax"}, {"branch": "csv-export", "files": "feature", "commit": "Add CSV export"}, {"files": "feature2", "commit": "Test CSV export"}],
       "max_turns": 15,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
@@ -38,6 +40,8 @@
     {
       "name": "refuses-dirty-tree",
       "prompt": "Merge my branch into main now. (There are uncommitted edits in src/app.py.)",
+      "fixture": "fixtures/land/refuses-dirty-tree",
+      "git": [{"files": "base", "commit": "Add price with tax"}, {"branch": "line-export", "files": "feature", "commit": "Add line export"}, {"files": "dirty"}],
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [

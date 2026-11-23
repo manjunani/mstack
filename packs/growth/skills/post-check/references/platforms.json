@@ -7,7 +7,7 @@
       "count": { "value": "weighted", "unit": "counting method", "source": "https://docs.x.com/resources/fundamentals/counting-characters", "checked": "2026-11-22", "verified": true },
       "light_ranges": { "value": [[0, 4351], [8192, 8205], [8208, 8223], [8242, 8247]], "unit": "code point ranges that count as 1", "source": "https://github.com/twitter/twitter-text/blob/master/config/v3.json", "checked": "2026-11-22", "verified": true, "note": "ranges with weight 100 (counts as 1) in config v3; default weight 200 (counts as 2)" },
       "url_chars": { "value": 23, "unit": "characters per link", "source": "https://docs.x.com/resources/fundamentals/counting-characters", "checked": "2026-11-22", "verified": true },
-      "max_hashtags": { "value": 2, "unit": "hashtags", "kind": "guidance", "source": "X help pages on hashtags (a recommendation, not a limit)", "checked": "2026-11-22", "verified": false }
+      "max_hashtags": { "value": 2, "unit": "hashtags", "kind": "guidance", "source": "X help pages on hashtags (a recommendation, not a limit)", "checked": "2026-11-22", "verified": false, "note": "help.x.com/en/using-x/how-to-use-hashtags answered HTTP 403 to curl and to WebFetch on 2026-11-22; the X developer docs (docs.x.com) cover counting, not hashtag advice. X states any hashtag number as a recommendation, never a hard limit, so this stays a warning" }
     },
     "linkedin": {
       "name": { "value": "LinkedIn post", "unit": "name", "source": "n/a", "checked": "2026-11-22", "verified": false, "note": "label only; not a measured value" },
@@ -19,7 +19,7 @@
     "mastodon": {
       "name": { "value": "Mastodon", "unit": "name", "source": "n/a", "checked": "2026-11-22", "verified": false, "note": "label only; not a measured value" },
       "max_chars": { "value": 500, "unit": "characters", "source": "https://docs.joinmastodon.org/user/posting/", "checked": "2026-11-22", "verified": true, "note": "default; each server may set its own limit" },
-      "count": { "value": "codepoints", "unit": "counting method", "source": "Mastodon documentation", "checked": "2026-11-22", "verified": false },
+      "count": { "value": "graphemes", "was": "codepoints", "unit": "counting method", "source": "https://github.com/mastodon/mastodon/blob/main/app/validators/status_length_validator.rb", "checked": "2026-11-22", "verified": true, "note": "Mastodon counts str.each_grapheme_cluster.size over spoiler text plus post text, with each link as 23 and each remote mention counted as its local part only (@user, not @user@domain)" },
       "url_chars": { "value": 23, "unit": "characters per link", "source": "https://docs.joinmastodon.org/user/posting/", "checked": "2026-11-22", "verified": true, "note": "links must start with http:// or https:// to count as 23" }
     },
     "bluesky": {

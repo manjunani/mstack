@@ -59,6 +59,17 @@ try {
   process.exit(2);
 }
 const axeSource = fs.readFileSync(axePath, 'utf8');
+// A short CSS path for an element, used for both the list of focusable elements and the focus stops.
+const SELECTOR_SOURCE = `(node) => {
+  const parts = [];
+  for (let x = node; x && x.nodeType === 1 && parts.length < 4; x = x.parentElement) {
+    if (x.id) { parts.unshift('#' + CSS.escape(x.id)); break; }
+    const twins = x.parentElement ? Array.from(x.parentElement.children).filter((s) => s.tagName === x.tagName) : [];
+    parts.unshift(x.tagName.toLowerCase() + (twins.length > 1 ? ':nth-of-type(' + (twins.indexOf(x) + 1) + ')' : ''));
+  }
+  return parts.join(' > ');
+}`;
+const TABBABLE = 'a[href],area[href],button,input,select,textarea,iframe,summary,[tabindex],[contenteditable=""],[contenteditable="true"]';
 const runs = [];
 const passes = [];
 for (const url of urls) {
@@ -67,35 +78,39 @@ for (const url of urls) {
   await page.addScriptTag({ content: axeSource });
   const results = await page.evaluate(() => window.axe.run(document, { resultTypes: ['violations', 'incomplete'] }));
   runs.push({ view: `${width}/light/default ${url}`, results });
-  // Keyboard pass: press Tab, record where focus is and whether anything shows it.
+  // Keyboard pass: list what can take focus, then press Tab and record where focus is and whether anything shows it.
+  // The selector code is shared so a listed element and a focus stop on it get the same name.
+  const focusable = await page.evaluate(`((sel) => Array.from(document.querySelectorAll(${JSON.stringify(TABBABLE)}))
+    .filter((el) => el.tabIndex >= 0 && !el.disabled && !el.closest('[inert],[hidden],[aria-hidden="true"]') && el.getClientRects().length > 0
+      && getComputedStyle(el).visibility !== 'hidden' && !(el.type === 'radio' || el.type === 'hidden'))
+    .map((el) => sel(el)))(${SELECTOR_SOURCE})`);
   const stops = [];
   let ended = 'limit';
   let first = null;
+  let same = 0;
   for (let n = 0; n < maxStops; n += 1) {
     await page.keyboard.press('Tab');
-    const stop = await page.evaluate(() => {
+    const stop = await page.evaluate(`((sel) => {
       const el = document.activeElement;
       if (!el || el === document.body || el === document.documentElement) return null;
-      const sel = (node) => {
-        const parts = [];
-        for (let x = node; x && x.nodeType === 1 && parts.length < 4; x = x.parentElement) {
-          if (x.id) { parts.unshift('#' + CSS.escape(x.id)); break; }
-          const twins = x.parentElement ? Array.from(x.parentElement.children).filter((s) => s.tagName === x.tagName) : [];
-          parts.unshift(x.tagName.toLowerCase() + (twins.length > 1 ? `:nth-of-type(${twins.indexOf(x) + 1})` : ''));
-        }
-        return parts.join(' > ');
-      };
       const cs = getComputedStyle(el);
       const ring = (cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) > 0) || (cs.boxShadow && cs.boxShadow !== 'none');
       return { selector: sel(el), name: (el.getAttribute('aria-label') || el.innerText || el.value || '').trim().slice(0, 80), focusVisible: Boolean(ring && el.matches(':focus-visible')) };
-    });
+    })(${SELECTOR_SOURCE})`);
     if (!stop) { if (stops.length) { ended = 'wrapped'; break; } continue; }
+    // Focus that does not move when Tab is pressed is a trap, not a wrap: keep the repeats so audit.py sees them.
+    same = stops.length && stops[stops.length - 1].selector === stop.selector ? same + 1 : 0;
+    if (same) {
+      stops.push(stop);
+      if (same >= 2) { ended = 'stuck'; break; }
+      continue;
+    }
     if (first && stop.selector === first) { ended = 'wrapped'; break; }
     first = first || stop.selector;
     stops.push(stop);
   }
   // Note: a ring drawn by a pseudo-element or a colour change is not seen here; such stops show as false and need a look.
-  passes.push({ view: `${width}/light/default ${url}`, url, stops, ended });
+  passes.push({ view: `${width}/light/default ${url}`, url, stops, ended, focusable });
   await page.close();
 }
 await browser.close();

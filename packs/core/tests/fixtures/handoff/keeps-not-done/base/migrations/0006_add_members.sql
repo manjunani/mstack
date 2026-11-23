@@ -1,0 +1,1 @@
+CREATE TABLE members (id INTEGER PRIMARY KEY, full_name TEXT NOT NULL);

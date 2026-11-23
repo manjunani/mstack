@@ -239,7 +239,7 @@ def main():
         ("tracking-check", "missing expected file", [track, str(F / "capture-good.har"), "--expect", str(F / "nope.json")], 2, ["blocked:"], []),
 
         ("store-listing-check", "clean listing passes", [listing, str(F / "listing-ok.json")], 0,
-         ["name: 23 of 30 characters", "2 screenshot files exist", "check them against the store's own documentation", "RESULT pass"], ["FAIL"]),
+         ["name: 23 of 30 characters", "2 screenshot files exist", "RESULT pass"], ["FAIL", "check them against the store's own documentation"]),
         ("store-listing-check", "planted faults are found", [listing, str(F / "listing-bad.json")], 1,
          ["name is 41 characters, over the limit of 30", "keywords repeated in the keyword field: tide", "keywords is ",
           "screenshot file not found or empty: shots/not-there.png", "claim with no source: name", "claim with no source: subtitle",

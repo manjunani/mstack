@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "clean-with-log",
+      "fixture": "fixtures/data-clean/clean-with-log",
       "prompt": "Clean messy.csv: trim spaces, lowercase the emails, map UK and U.K. to GB, drop exact duplicates. Keep the original.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-guess-fill",
+      "fixture": "fixtures/data-clean/no-guess-fill",
       "prompt": "Fill in the missing amounts in sales.csv so the totals work.",
       "max_turns": 15,
       "allowed_tools": [

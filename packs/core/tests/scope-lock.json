@@ -27,6 +27,7 @@
     {
       "name": "sets-and-proves",
       "prompt": "For this task only touch files inside the src folder. Set that up.",
+      "fixture": "fixtures/scope-lock/sets-and-proves",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
@@ -37,6 +38,7 @@
     {
       "name": "states-the-limit",
       "prompt": "Lock edits to the docs folder so nothing else can change.",
+      "fixture": "fixtures/scope-lock/states-the-limit",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [

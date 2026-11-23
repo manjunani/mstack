@@ -46,3 +46,7 @@ Stand-ins: where a tool is missing, the test writes a small fake program with th
 ## Names
 
 Skill names follow `docs/SKILLS.md`. No rename proposed.
+
+## Eval task changes
+
+- blender-task task blocked-without-blender: marked needs no-blender and left out by default, because Blender is now installed on the test machine and the eval run inherits PATH (2026-11-22).

@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "unsupported-png",
+      "fixture": "fixtures/ui-match/unsupported-png",
       "prompt": "Match the build to design/mock.png (it's a palette PNG export). How close is it?",
       "max_turns": 15,
       "allowed_tools": [
@@ -51,6 +52,7 @@
     },
     {
       "name": "region-report",
+      "fixture": "fixtures/ui-match/region-report",
       "prompt": "Compare shot.png with ref.png and tell me what's still off.",
       "max_turns": 15,
       "allowed_tools": [

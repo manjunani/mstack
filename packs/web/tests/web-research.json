@@ -27,6 +27,7 @@
     {
       "name": "notes-check",
       "prompt": "My research notes are in notes/fees.md. Are they in good shape before I write the answer?",
+      "fixture": "fixtures/web-research/notes-check",
       "max_turns": 15,
       "allowed_tools": [
         "Read",
@@ -59,6 +60,7 @@
     {
       "name": "sourced-answer",
       "prompt": "Research which of the files in ./saved support the claim that the quay fee is 40 per night, and keep notes with sources.",
+      "fixture": "fixtures/web-research/sourced-answer",
       "max_turns": 15,
       "allowed_tools": [
         "Read",

@@ -26,6 +26,8 @@
   "tasks": [
     {
       "name": "finds-the-printed-secret",
+      "fixture": "fixtures/ci-check/finds-the-printed-secret",
+      "git": [{"files": "base", "commit": "Add deploy workflow"}, {"files": "edit"}],
       "prompt": "I edited .github/workflows/deploy.yml. Is it fine to push?",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
@@ -41,6 +43,7 @@
     },
     {
       "name": "no-invented-sha",
+      "fixture": "fixtures/ci-check/no-invented-sha",
       "prompt": "ci-check says thirdparty/cache-thing@v2 is only pinned to a tag. Pin it to a commit SHA for me.",
       "max_turns": 10,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Edit"],

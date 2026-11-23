@@ -1,0 +1,81 @@
+[
+  {
+    "name": "lookup_order",
+    "description": "Look up one order by its number. Use when the customer gives an order number and asks about status or delivery.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "order_number": {
+          "type": "string",
+          "description": "Order number such as WB-10442"
+        }
+      },
+      "required": [
+        "order_number"
+      ]
+    }
+  },
+  {
+    "name": "lookupOrder",
+    "description": "Find an order.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "name": "refund",
+    "description": "Refund an order.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "order_number": {
+          "type": "string"
+        },
+        "amount": {
+          "description": "Amount to refund in euros"
+        }
+      },
+      "required": [
+        "order_number",
+        "reason"
+      ]
+    }
+  },
+  {
+    "name": "tool2",
+    "description": "",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "name": "search_help_articles",
+    "description": "Search the help centre articles by keywords. Use for how-to questions that are not about one order.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Words to search for"
+        },
+        "lang": {
+          "type": "string",
+          "enum": []
+        }
+      },
+      "required": [
+        "query"
+      ]
+    }
+  }
+]

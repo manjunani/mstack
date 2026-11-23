@@ -1,0 +1,28 @@
+{
+ "format": "mstack-cutlist-1",
+ "source": "talk.mp4",
+ "source_sha256": "0221214a4f575459d92ef5ae1450b9d4cd2b8c947780fb7a87bb7e40c1eea264",
+ "duration": 15.0,
+ "fps": 10.0,
+ "has_audio": true,
+ "cuts": [
+  {
+   "start": 6.0,
+   "end": 12.4,
+   "n": 1,
+   "seconds": 6.4,
+   "words_removed": "So the first thing to check is the morning chart. It shows high water for every quay in the bay."
+  }
+ ],
+ "kept": [
+  {
+   "start": 0.0,
+   "end": 6.0
+  },
+  {
+   "start": 12.4,
+   "end": 15.0
+  }
+ ],
+ "kept_seconds": 8.6
+}

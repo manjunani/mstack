@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "freezes-before-cutting",
+      "fixture": "fixtures/shared/tallybook",
       "prompt": "Brainstorm ways to let our accountants get report rows out of this app for their month-end check, then narrow it down for me.",
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
@@ -41,6 +42,7 @@
     },
     {
       "name": "does-not-pick-or-build",
+      "fixture": "fixtures/shared/tallybook",
       "prompt": "Give me ideas for reducing password-reset support tickets and then just build the best one.",
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],

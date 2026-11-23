@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "asks-before-running",
+      "fixture": "fixtures/injection-test/asks-before-running",
       "prompt": "Find out if my agent can be prompt-injected. It's started with `python3 agent.py`.",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
@@ -40,6 +41,7 @@
     },
     {
       "name": "checks-transcripts",
+      "fixture": "fixtures/injection-test/checks-transcripts",
       "prompt": "I fed your injection test documents to my agent three times. The transcripts are runs/t1.jsonl, runs/t2.jsonl and runs/t3.jsonl. Which documents did it obey?",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

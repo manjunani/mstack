@@ -39,6 +39,7 @@
     },
     {
       "name": "runs-the-linter",
+      "fixture": "fixtures/tool-lint/runs-the-linter",
       "prompt": "agent/tools.json has the tools for our support agent. Lint them and tell me what must be fixed.",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

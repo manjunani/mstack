@@ -1,0 +1,12 @@
+{"run": "r1", "tag": "plan", "model": "harbor-large", "input_tokens": 6000, "output_tokens": 1100, "cache_read_input_tokens": 20000}
+{"run": "r1", "tag": "tools", "model": "harbor-small", "input_tokens": 9000, "output_tokens": 600}
+{"run": "r1", "tag": "tools", "model": "harbor-small", "input_tokens": 11000, "output_tokens": 700}
+{"run": "r1", "tag": "answer", "model": "harbor-large", "input_tokens": 14000, "output_tokens": 2400, "cache_read_input_tokens": 20000}
+{"run": "r2", "tag": "plan", "model": "harbor-large", "input_tokens": 6400, "output_tokens": 1100, "cache_read_input_tokens": 20000}
+{"run": "r2", "tag": "tools", "model": "harbor-small", "input_tokens": 9000, "output_tokens": 600}
+{"run": "r2", "tag": "tools", "model": "harbor-small", "input_tokens": 11000, "output_tokens": 700}
+{"run": "r2", "tag": "answer", "model": "harbor-large", "input_tokens": 14000, "output_tokens": 2400, "cache_read_input_tokens": 20000}
+{"run": "r3", "tag": "plan", "model": "harbor-large", "input_tokens": 6800, "output_tokens": 1100, "cache_read_input_tokens": 20000}
+{"run": "r3", "tag": "tools", "model": "harbor-small", "input_tokens": 9000, "output_tokens": 600}
+{"run": "r3", "tag": "tools", "model": "harbor-small", "input_tokens": 11000, "output_tokens": 700}
+{"run": "r3", "tag": "answer", "model": "harbor-large", "input_tokens": 14000, "output_tokens": 2400, "cache_read_input_tokens": 20000}

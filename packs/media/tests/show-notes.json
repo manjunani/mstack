@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "bad-quote",
+      "fixture": "fixtures/show-notes/bad-quote",
       "prompt": "Here are my notes in notes.json for the episode with transcript talk.transcript.json. Are they ready to publish?",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "chapters",
+      "fixture": "fixtures/show-notes/chapters",
       "prompt": "Make chapters and notes for the episode in talk.transcript.json.",
       "max_turns": 15,
       "allowed_tools": [

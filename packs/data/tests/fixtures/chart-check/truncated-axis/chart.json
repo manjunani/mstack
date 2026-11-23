@@ -1,0 +1,8 @@
+{
+  "type": "bar",
+  "title": "Revenue by quarter",
+  "x": { "label": "Quarter", "categories": ["Q1", "Q2", "Q3", "Q4"], "ordered": true },
+  "y": { "label": "Revenue", "unit": "EUR thousand", "min": 40, "max": 70 },
+  "series": [ { "name": "2026", "values": [48, 52, 61, 58] } ],
+  "source": { "file": "revenue.csv", "category_column": "quarter", "series": { "2026": "revenue_k" } }
+}

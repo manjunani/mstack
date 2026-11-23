@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "rules-from-spec",
+      "fixture": "fixtures/data-check/rules-from-spec",
       "prompt": "orders.csv must have unique non-empty ids, status in new/paid/refunded, and amount from 0 to 5000. Does it?",
       "max_turns": 15,
       "allowed_tools": [

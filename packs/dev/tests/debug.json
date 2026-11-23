@@ -27,6 +27,8 @@
     {
       "name": "reproduces-before-fixing",
       "prompt": "tests/test_pager.py fails with AssertionError: pages(10, 3) is 3. Find the cause and fix it.",
+      "fixture": "fixtures/debug/reproduces-before-fixing",
+      "git": [{"files": "base", "commit": "Add pager"}],
       "max_turns": 30,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Edit", "Write"],
       "graders": [

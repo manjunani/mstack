@@ -39,6 +39,7 @@
     },
     {
       "name": "runs-the-triage",
+      "fixture": "fixtures/trace-triage/runs-the-triage",
       "prompt": "runs/failed.jsonl is the trace of an agent run that went wrong. Where did it go wrong?",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

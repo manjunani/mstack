@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "slow-query",
+      "fixture": "fixtures/query-review/slow-query",
       "prompt": "This query is slow on shop.sqlite: SELECT * FROM orders WHERE status = 'paid'. What's wrong with it?",
       "max_turns": 15,
       "allowed_tools": [

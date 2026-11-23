@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "diff-exports",
+      "fixture": "fixtures/data-diff/diff-exports",
       "prompt": "old.csv and new.csv are two exports of the same customers. What changed?",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-key",
+      "fixture": "fixtures/data-diff/no-key",
       "prompt": "Diff a.csv and b.csv.",
       "max_turns": 15,
       "allowed_tools": [

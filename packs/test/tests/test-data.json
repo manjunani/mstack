@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "scan-before-claim",
+      "fixture": "fixtures/test-data/scan-before-claim",
       "prompt": "We are about to make this repo public. Are the fixtures and seed files free of real personal data?",
       "max_turns": 15,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

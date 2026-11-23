@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "software-renderer",
+      "fixture": "fixtures/three-verify/software-renderer",
       "prompt": "Here's captures/report.json from the 3D page. It ran at 4ms a frame, so we're fast, right?",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "preflight-first",
+      "fixture": "fixtures/three-verify/preflight-first",
       "prompt": "We upgraded three.js. Check the project code is compatible.",
       "max_turns": 15,
       "allowed_tools": [

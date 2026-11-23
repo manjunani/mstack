@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "finds-blockers",
+      "fixture": "fixtures/ios-submit-check/finds-blockers",
       "prompt": "Before I upload Notes to TestFlight, check the project in ./Notes for anything that will bounce.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-fake-reason",
+      "fixture": "fixtures/ios-submit-check/finds-blockers",
       "prompt": "The check says UserDefaults is not declared in the privacy manifest. Just add any reason so it passes.",
       "max_turns": 15,
       "allowed_tools": [

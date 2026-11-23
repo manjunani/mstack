@@ -1,0 +1,752 @@
+{
+ "format": "mstack-transcript-1",
+ "source": "talk.wav",
+ "duration": 93.72,
+ "engine": "whisper.cpp",
+ "words": [
+  {
+   "word": "Welcome",
+   "start": 0.5,
+   "end": 0.82,
+   "confidence": 0.92
+  },
+  {
+   "word": "to",
+   "start": 0.9,
+   "end": 1.22,
+   "confidence": 0.92
+  },
+  {
+   "word": "the",
+   "start": 1.3,
+   "end": 1.62,
+   "confidence": 0.92
+  },
+  {
+   "word": "harbour",
+   "start": 1.7,
+   "end": 2.02,
+   "confidence": 0.92
+  },
+  {
+   "word": "hour,",
+   "start": 2.1,
+   "end": 2.42,
+   "confidence": 0.92
+  },
+  {
+   "word": "the",
+   "start": 2.5,
+   "end": 2.82,
+   "confidence": 0.92
+  },
+  {
+   "word": "show",
+   "start": 2.9,
+   "end": 3.22,
+   "confidence": 0.92
+  },
+  {
+   "word": "about",
+   "start": 3.3,
+   "end": 3.62,
+   "confidence": 0.92
+  },
+  {
+   "word": "life",
+   "start": 3.7,
+   "end": 4.02,
+   "confidence": 0.92
+  },
+  {
+   "word": "on",
+   "start": 4.1,
+   "end": 4.42,
+   "confidence": 0.92
+  },
+  {
+   "word": "the",
+   "start": 4.5,
+   "end": 4.82,
+   "confidence": 0.92
+  },
+  {
+   "word": "water.",
+   "start": 4.9,
+   "end": 5.22,
+   "confidence": 0.92
+  },
+  {
+   "word": "I",
+   "start": 5.3,
+   "end": 5.62,
+   "confidence": 0.92
+  },
+  {
+   "word": "am",
+   "start": 5.7,
+   "end": 6.02,
+   "confidence": 0.92
+  },
+  {
+   "word": "your",
+   "start": 6.1,
+   "end": 6.42,
+   "confidence": 0.92
+  },
+  {
+   "word": "host",
+   "start": 6.5,
+   "end": 6.82,
+   "confidence": 0.92
+  },
+  {
+   "word": "and",
+   "start": 6.9,
+   "end": 7.22,
+   "confidence": 0.92
+  },
+  {
+   "word": "today",
+   "start": 7.3,
+   "end": 7.62,
+   "confidence": 0.92
+  },
+  {
+   "word": "we",
+   "start": 7.7,
+   "end": 8.02,
+   "confidence": 0.92
+  },
+  {
+   "word": "have",
+   "start": 8.1,
+   "end": 8.42,
+   "confidence": 0.92
+  },
+  {
+   "word": "three",
+   "start": 8.5,
+   "end": 8.82,
+   "confidence": 0.92
+  },
+  {
+   "word": "topics.",
+   "start": 8.9,
+   "end": 9.22,
+   "confidence": 0.92
+  },
+  {
+   "word": "First,",
+   "start": 14.0,
+   "end": 14.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "the",
+   "start": 14.4,
+   "end": 14.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "new",
+   "start": 14.8,
+   "end": 15.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "tide",
+   "start": 15.2,
+   "end": 15.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "tables.",
+   "start": 15.6,
+   "end": 15.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "The",
+   "start": 16.0,
+   "end": 16.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "council",
+   "start": 16.4,
+   "end": 16.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "printed",
+   "start": 16.8,
+   "end": 17.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "them",
+   "start": 17.2,
+   "end": 17.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "on",
+   "start": 17.6,
+   "end": 17.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "cheap",
+   "start": 18.0,
+   "end": 18.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "paper",
+   "start": 18.4,
+   "end": 18.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "this",
+   "start": 18.8,
+   "end": 19.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "year,",
+   "start": 19.2,
+   "end": 19.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "and",
+   "start": 19.6,
+   "end": 19.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "the",
+   "start": 20.0,
+   "end": 20.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "ink",
+   "start": 20.4,
+   "end": 20.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "runs",
+   "start": 20.8,
+   "end": 21.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "when",
+   "start": 21.2,
+   "end": 21.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "it",
+   "start": 21.6,
+   "end": 21.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "rains,",
+   "start": 22.0,
+   "end": 22.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "so",
+   "start": 22.4,
+   "end": 22.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "most",
+   "start": 22.8,
+   "end": 23.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "of",
+   "start": 23.2,
+   "end": 23.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "us",
+   "start": 23.6,
+   "end": 23.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "now",
+   "start": 24.0,
+   "end": 24.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "read",
+   "start": 24.4,
+   "end": 24.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "them",
+   "start": 24.8,
+   "end": 25.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "on",
+   "start": 25.2,
+   "end": 25.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "our",
+   "start": 25.6,
+   "end": 25.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "phones.",
+   "start": 26.0,
+   "end": 26.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "Second,",
+   "start": 38.0,
+   "end": 38.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "mooring",
+   "start": 38.4,
+   "end": 38.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "fees.",
+   "start": 38.8,
+   "end": 39.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "The",
+   "start": 39.2,
+   "end": 39.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "fees",
+   "start": 39.6,
+   "end": 39.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "went",
+   "start": 40.0,
+   "end": 40.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "up",
+   "start": 40.4,
+   "end": 40.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "by",
+   "start": 40.8,
+   "end": 41.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "a",
+   "start": 41.2,
+   "end": 41.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "small",
+   "start": 41.6,
+   "end": 41.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "amount",
+   "start": 42.0,
+   "end": 42.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "in",
+   "start": 42.4,
+   "end": 42.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "spring.",
+   "start": 42.8,
+   "end": 43.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "The",
+   "start": 43.2,
+   "end": 43.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "board",
+   "start": 43.6,
+   "end": 43.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "says",
+   "start": 44.0,
+   "end": 44.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "the",
+   "start": 44.4,
+   "end": 44.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "money",
+   "start": 44.8,
+   "end": 45.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "pays",
+   "start": 45.2,
+   "end": 45.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "for",
+   "start": 45.6,
+   "end": 45.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "the",
+   "start": 46.0,
+   "end": 46.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "new",
+   "start": 46.4,
+   "end": 46.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "pontoon",
+   "start": 46.8,
+   "end": 47.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "on",
+   "start": 47.2,
+   "end": 47.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "the",
+   "start": 47.6,
+   "end": 47.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "east",
+   "start": 48.0,
+   "end": 48.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "side.",
+   "start": 48.4,
+   "end": 48.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "Third,",
+   "start": 62.0,
+   "end": 62.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "the",
+   "start": 62.4,
+   "end": 62.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "winter",
+   "start": 62.8,
+   "end": 63.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "boat",
+   "start": 63.2,
+   "end": 63.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "show.",
+   "start": 63.6,
+   "end": 63.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "It",
+   "start": 64.0,
+   "end": 64.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "opens",
+   "start": 64.4,
+   "end": 64.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "on",
+   "start": 64.8,
+   "end": 65.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "the",
+   "start": 65.2,
+   "end": 65.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "first",
+   "start": 65.6,
+   "end": 65.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "Saturday",
+   "start": 66.0,
+   "end": 66.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "of",
+   "start": 66.4,
+   "end": 66.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "December,",
+   "start": 66.8,
+   "end": 67.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "entry",
+   "start": 67.2,
+   "end": 67.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "is",
+   "start": 67.6,
+   "end": 67.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "free",
+   "start": 68.0,
+   "end": 68.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "for",
+   "start": 68.4,
+   "end": 68.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "members,",
+   "start": 68.8,
+   "end": 69.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "and",
+   "start": 69.2,
+   "end": 69.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "there",
+   "start": 69.6,
+   "end": 69.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "will",
+   "start": 70.0,
+   "end": 70.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "be",
+   "start": 70.4,
+   "end": 70.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "a",
+   "start": 70.8,
+   "end": 71.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "talk",
+   "start": 71.2,
+   "end": 71.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "on",
+   "start": 71.6,
+   "end": 71.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "rope",
+   "start": 72.0,
+   "end": 72.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "care.",
+   "start": 72.4,
+   "end": 72.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "That",
+   "start": 86.0,
+   "end": 86.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "is",
+   "start": 86.4,
+   "end": 86.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "all",
+   "start": 86.8,
+   "end": 87.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "for",
+   "start": 87.2,
+   "end": 87.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "this",
+   "start": 87.6,
+   "end": 87.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "week.",
+   "start": 88.0,
+   "end": 88.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "Thanks",
+   "start": 88.4,
+   "end": 88.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "for",
+   "start": 88.8,
+   "end": 89.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "listening,",
+   "start": 89.2,
+   "end": 89.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "and",
+   "start": 89.6,
+   "end": 89.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "see",
+   "start": 90.0,
+   "end": 90.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "you",
+   "start": 90.4,
+   "end": 90.72,
+   "confidence": 0.92
+  },
+  {
+   "word": "next",
+   "start": 90.8,
+   "end": 91.12,
+   "confidence": 0.92
+  },
+  {
+   "word": "time",
+   "start": 91.2,
+   "end": 91.52,
+   "confidence": 0.92
+  },
+  {
+   "word": "on",
+   "start": 91.6,
+   "end": 91.92,
+   "confidence": 0.92
+  },
+  {
+   "word": "the",
+   "start": 92.0,
+   "end": 92.32,
+   "confidence": 0.92
+  },
+  {
+   "word": "water.",
+   "start": 92.4,
+   "end": 92.72,
+   "confidence": 0.92
+  }
+ ]
+}

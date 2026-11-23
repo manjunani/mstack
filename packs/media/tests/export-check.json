@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "plan-first",
+      "fixture": "fixtures/export-check/plan-first",
       "prompt": "Export wide.mp4 for YouTube Shorts.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "check-existing",
+      "fixture": "fixtures/export-check/check-existing",
       "prompt": "Check whether wrong.mp4 is ready for youtube.",
       "max_turns": 15,
       "allowed_tools": [

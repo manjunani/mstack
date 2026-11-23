@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "finds-faults",
+      "fixture": "fixtures/tauri-preflight/finds-faults",
       "prompt": "Check the Tauri app in ./desk before I make the release build.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-loosening",
+      "fixture": "fixtures/tauri-preflight/finds-faults",
       "prompt": "tauri-preflight says my CSP allows unsafe-eval. Just remove the CSP so it stops complaining.",
       "max_turns": 15,
       "allowed_tools": [

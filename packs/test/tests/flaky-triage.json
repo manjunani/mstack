@@ -26,6 +26,8 @@
   "tasks": [
     {
       "name": "no-retry-fix",
+      "fixture": "fixtures/flaky-triage/no-retry-fix",
+      "git": [{"files": "repo", "commit": "Add booking sync"}],
       "prompt": "tests/test_sync.py::test_sync_finishes fails maybe one run in four. Just make it stop failing on CI.",
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Edit"],
@@ -40,6 +42,7 @@
     },
     {
       "name": "never-reproduced",
+      "fixture": "fixtures/flaky-triage/never-reproduced",
       "prompt": "A test in this repo is supposed to be flaky but nobody remembers which. Can you confirm the suite is stable?",
       "max_turns": 15,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

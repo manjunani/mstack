@@ -1,0 +1,28 @@
+2026-11-21T10:12:03Z INFO booking-api started, version 2.7.3
+2026-11-21T10:14:10Z INFO GET /bookings/311 200 42ms
+2026-11-21T10:17:45Z INFO GET /bookings/87 200 38ms
+2026-11-21T10:21:02Z INFO GET /bookings/1204 200 51ms
+2026-11-21T10:24:30Z INFO GET /bookings/45 200 40ms
+2026-11-21T10:26:11Z WARN slow query on bookings_by_day took 812ms
+2026-11-21T10:29:58Z INFO received SIGTERM, shutting down
+2026-11-21T10:30:04Z INFO deploy: booking-api version 2.8.0 starting
+2026-11-21T10:30:05Z INFO config loaded: PRICING_MODE=tiered
+2026-11-21T10:30:06Z INFO booking-api started, version 2.8.0
+2026-11-21T10:30:41Z INFO GET /bookings/93 200 44ms
+2026-11-21T10:31:12Z ERROR price lookup failed: no tier named 'standard' for berth 14
+2026-11-21T10:31:12Z ERROR POST /bookings 500 19ms
+2026-11-21T10:31:40Z INFO GET /bookings/77 200 39ms
+2026-11-21T10:32:05Z ERROR price lookup failed: no tier named 'standard' for berth 22
+2026-11-21T10:32:05Z ERROR POST /bookings 500 21ms
+2026-11-21T10:33:19Z ERROR price lookup failed: no tier named 'standard' for berth 6
+2026-11-21T10:33:19Z ERROR POST /bookings 500 21ms
+2026-11-21T10:35:47Z ERROR price lookup failed: no tier named 'standard' for berth 31
+2026-11-21T10:35:47Z ERROR POST /bookings 500 21ms
+2026-11-21T10:38:02Z ERROR price lookup failed: no tier named 'standard' for berth 14
+2026-11-21T10:38:02Z ERROR POST /bookings 500 21ms
+2026-11-21T10:39:30Z ERROR database pool exhausted: 20 of 20 connections in use
+2026-11-21T10:40:02Z ERROR database pool exhausted: 20 of 20 connections in use
+2026-11-21T10:41:15Z ERROR database pool exhausted: 20 of 20 connections in use
+2026-11-21T10:41:16Z ERROR database pool exhausted: 20 of 20 connections in use
+2026-11-21T10:41:20Z ERROR database pool exhausted: 20 of 20 connections in use
+2026-11-21T10:41:20Z ERROR database pool exhausted: 20 of 20 connections in use

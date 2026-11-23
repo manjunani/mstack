@@ -39,6 +39,7 @@
     },
     {
       "name": "scores-a-run",
+      "fixture": "fixtures/rag-check/scores-a-run",
       "prompt": "gold.jsonl has our labelled questions and run.jsonl is what the retriever returned. We put 5 passages in the prompt. Is retrieval good enough? We want at least 80% hit rate.",
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],

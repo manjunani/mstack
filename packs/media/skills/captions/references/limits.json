@@ -10,14 +10,21 @@
     "checked": "2026-11-22", "verified": true, "note": "Netflix English (USA) rule; no standard binds every platform"
   },
   "min_duration": {
-    "value": 1.0, "unit": "seconds",
-    "source": "common subtitling practice, written from memory; not read in a primary source during this work",
-    "checked": "2026-11-22", "verified": false
+    "value": 0.833,
+    "was": 1.0,
+    "unit": "seconds",
+    "source": "https://partnerhelp.netflixstudios.com/hc/en-us/articles/215758617-Timed-Text-Style-Guide-General-Requirements",
+    "checked": "2026-11-22",
+    "verified": true,
+    "note": "Netflix: minimum 5/6 of a second per subtitle event (20 frames at 24 fps). Sources disagree: the BBC subtitle guidelines (https://www.bbc.co.uk/accessibility/forproducts/guides/subtitles/) set no fixed minimum but about 0.3 s per word"
   },
   "max_duration": {
-    "value": 7.0, "unit": "seconds",
-    "source": "common subtitling practice, written from memory; not read in a primary source during this work",
-    "checked": "2026-11-22", "verified": false
+    "value": 7.0,
+    "unit": "seconds",
+    "source": "https://partnerhelp.netflixstudios.com/hc/en-us/articles/215758617-Timed-Text-Style-Guide-General-Requirements",
+    "checked": "2026-11-22",
+    "verified": true,
+    "note": "Netflix: maximum 7 seconds per subtitle event. The BBC subtitle guidelines state no fixed maximum duration"
   },
   "max_chars_per_second": {
     "value": 17, "unit": "characters per second",

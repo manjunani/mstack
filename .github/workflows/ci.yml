@@ -38,6 +38,7 @@ jobs:
           --allow packs/dev/tests/scripts/fixtures/commit_msg_secret.txt
           --allow packs/ops/skills/ci-fix/scripts/cilog.py
           --allow packs/ops/tests/scripts/ci_fix_cases.py
+          --allow packs/ops/tests/fixtures/ci-fix/plans-from-log/ci-failed.log
 
       - name: Core pack script tests
         run: |

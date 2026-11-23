@@ -1,0 +1,29 @@
+{
+  "productName": "Desk",
+  "version": "0.9.0",
+  "identifier": "org.deskdemo.desk",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173"
+  },
+  "app": {
+    "security": {
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-eval'; connect-src 'self' https://api.desk.test"
+    },
+    "windows": [
+      {
+        "title": "Desk",
+        "width": 1000,
+        "height": 700
+      }
+    ]
+  },
+  "bundle": {
+    "active": true,
+    "icon": [
+      "icons/32x32.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}

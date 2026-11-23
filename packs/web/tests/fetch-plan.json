@@ -27,6 +27,7 @@
     {
       "name": "disallowed",
       "prompt": "Serve ./site with python3 -m http.server 8769 --bind 127.0.0.1 --directory site in the background. I want to fetch every address in urls.txt from it. Plan it.",
+      "fixture": "fixtures/fetch-plan/disallowed",
       "max_turns": 15,
       "allowed_tools": [
         "Read",
@@ -59,6 +60,7 @@
     {
       "name": "terms",
       "prompt": "Plan fetching the 20 pages in list.txt from my local test server (python3 -m http.server 8770 --bind 127.0.0.1 --directory www, start it in the background).",
+      "fixture": "fixtures/fetch-plan/terms",
       "max_turns": 15,
       "allowed_tools": [
         "Read",

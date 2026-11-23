@@ -26,6 +26,7 @@
   "tasks": [
     {
       "name": "trace-report",
+      "fixture": "fixtures/number-trace/trace-report",
       "prompt": "Check that every number in report.md matches the data it came from. sources.json says where each came from.",
       "max_turns": 15,
       "allowed_tools": [
@@ -57,6 +58,7 @@
     },
     {
       "name": "no-sources",
+      "fixture": "fixtures/number-trace/no-sources",
       "prompt": "Are the numbers in summary.md right?",
       "max_turns": 15,
       "allowed_tools": [

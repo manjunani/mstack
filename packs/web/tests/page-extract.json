@@ -27,6 +27,7 @@
     {
       "name": "local-table",
       "prompt": "Serve ./pages with python3 -m http.server 8767 --bind 127.0.0.1 --directory pages in the background, then get the fees table from http://127.0.0.1:8767/fees.html as JSON.",
+      "fixture": "fixtures/page-extract/local-table",
       "max_turns": 15,
       "allowed_tools": [
         "Read",
@@ -59,6 +60,7 @@
     {
       "name": "spa-page",
       "prompt": "Get the text from my React app at http://127.0.0.1:8768/ (it's served from ./app with python3 -m http.server 8768 --bind 127.0.0.1 --directory app).",
+      "fixture": "fixtures/page-extract/spa-page",
       "max_turns": 15,
       "allowed_tools": [
         "Read",

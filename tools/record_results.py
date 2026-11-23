@@ -20,6 +20,13 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import common  # noqa: E402
 
 
+def failed(run):
+    """A run that never really happened: usage limit, sign-in, network or API error.
+    Running out of turns is a real outcome (the model did not start the skill), so it is not a failure."""
+    error = str(run.get("error") or "")
+    return bool(error) and "maximum number of turns" not in error
+
+
 def mean(runs):
     return sum(r.get("score", 0) for r in runs) / len(runs) if runs else None
 
@@ -33,6 +40,7 @@ def main():
     args = parser.parse_args()
 
     counts = collections.defaultdict(lambda: collections.defaultdict(lambda: [0, 0]))
+    broken = collections.Counter()
     cost, version, runs_per_case = 0.0, "", set()
     for path in args.files:
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -46,8 +54,10 @@ def main():
             if len(parts) < 3 or parts[1] not in ("fire", "quiet", "task"):
                 continue
             skill, kind = parts[0], parts[1]
-            with_runs = case["arms"].get("with", [])
-            runs_per_case.add(len(with_runs))
+            all_runs = case["arms"].get("with", [])
+            with_runs = [r for r in all_runs if not failed(r)]
+            broken[skill] += len(all_runs) - len(with_runs) + sum(1 for r in case["arms"].get("without", []) if failed(r))
+            runs_per_case.add(len(all_runs))
             if not with_runs:
                 continue
             case_passed = sum(1 for r in with_runs if r.get("passed")) * 2 > len(with_runs)  # majority of runs
@@ -68,7 +78,12 @@ def main():
 
     target = args.root / "packs" / args.pack / "tests" / "results.json"
     results = json.loads(target.read_text(encoding="utf-8")) if target.exists() else {}
-    for skill, kinds in sorted(counts.items()):
+    skipped = []
+    for skill in sorted(set(counts) | set(broken)):
+        if broken[skill]:
+            skipped.append(f"{skill} ({broken[skill]} runs failed to run)")
+            continue
+        kinds = counts[skill]
         entry = results.get(skill, {})
         if kinds["trigger"][1]:
             entry["trigger"] = f"{kinds['trigger'][0]}/{kinds['trigger'][1]}"
@@ -85,6 +100,8 @@ def main():
         entry["with"] = f"Claude Code {version}"
         results[skill] = entry
         print(f"{skill}: " + ", ".join(f"{k} {v}" for k, v in entry.items()))
+    for line in skipped:
+        print(f"NOT RECORDED {line}: a usage limit, sign-in or API error stopped some runs; run this skill again")
     target.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
     print(f"wrote {target.relative_to(args.root)} (usage in these files: about ${cost:.2f} at list price)")
     return 0

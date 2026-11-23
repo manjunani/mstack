@@ -9,38 +9,184 @@
   },
   "usage_keys": {
     "value": {
-      "AVCaptureDevice": ["NSCameraUsageDescription"],
-      "UIImagePickerController": ["NSCameraUsageDescription"],
-      "AVAudioRecorder": ["NSMicrophoneUsageDescription"],
-      "requestRecordPermission": ["NSMicrophoneUsageDescription"],
-      "CLLocationManager": ["NSLocationWhenInUseUsageDescription", "NSLocationAlwaysAndWhenInUseUsageDescription"],
-      "PHPhotoLibrary": ["NSPhotoLibraryUsageDescription", "NSPhotoLibraryAddUsageDescription"],
-      "CNContactStore": ["NSContactsUsageDescription"],
-      "EKEventStore": ["NSCalendarsUsageDescription", "NSCalendarsFullAccessUsageDescription", "NSRemindersUsageDescription", "NSRemindersFullAccessUsageDescription"],
-      "HKHealthStore": ["NSHealthShareUsageDescription", "NSHealthUpdateUsageDescription"],
-      "SFSpeechRecognizer": ["NSSpeechRecognitionUsageDescription"],
-      "CBCentralManager": ["NSBluetoothAlwaysUsageDescription"],
-      "LAContext": ["NSFaceIDUsageDescription"],
-      "ATTrackingManager": ["NSUserTrackingUsageDescription"],
-      "CMMotionActivityManager": ["NSMotionUsageDescription"],
-      "MPMediaLibrary": ["NSAppleMusicUsageDescription"]
+      "AVCaptureDevice": [
+        "NSCameraUsageDescription"
+      ],
+      "UIImagePickerController": [
+        "NSCameraUsageDescription"
+      ],
+      "AVAudioRecorder": [
+        "NSMicrophoneUsageDescription"
+      ],
+      "requestRecordPermission": [
+        "NSMicrophoneUsageDescription"
+      ],
+      "CLLocationManager": [
+        "NSLocationWhenInUseUsageDescription",
+        "NSLocationAlwaysAndWhenInUseUsageDescription"
+      ],
+      "PHPhotoLibrary": [
+        "NSPhotoLibraryUsageDescription",
+        "NSPhotoLibraryAddUsageDescription"
+      ],
+      "CNContactStore": [
+        "NSContactsUsageDescription"
+      ],
+      "EKEventStore": [
+        "NSCalendarsUsageDescription",
+        "NSCalendarsFullAccessUsageDescription",
+        "NSCalendarsWriteOnlyAccessUsageDescription",
+        "NSRemindersUsageDescription",
+        "NSRemindersFullAccessUsageDescription"
+      ],
+      "HKHealthStore": [
+        "NSHealthShareUsageDescription",
+        "NSHealthUpdateUsageDescription"
+      ],
+      "SFSpeechRecognizer": [
+        "NSSpeechRecognitionUsageDescription"
+      ],
+      "CBCentralManager": [
+        "NSBluetoothAlwaysUsageDescription"
+      ],
+      "LAContext": [
+        "NSFaceIDUsageDescription"
+      ],
+      "ATTrackingManager": [
+        "NSUserTrackingUsageDescription"
+      ],
+      "CMMotionActivityManager": [
+        "NSMotionUsageDescription"
+      ],
+      "MPMediaLibrary": [
+        "NSAppleMusicUsageDescription"
+      ]
+    },
+    "was": {
+      "AVCaptureDevice": [
+        "NSCameraUsageDescription"
+      ],
+      "UIImagePickerController": [
+        "NSCameraUsageDescription"
+      ],
+      "AVAudioRecorder": [
+        "NSMicrophoneUsageDescription"
+      ],
+      "requestRecordPermission": [
+        "NSMicrophoneUsageDescription"
+      ],
+      "CLLocationManager": [
+        "NSLocationWhenInUseUsageDescription",
+        "NSLocationAlwaysAndWhenInUseUsageDescription"
+      ],
+      "PHPhotoLibrary": [
+        "NSPhotoLibraryUsageDescription",
+        "NSPhotoLibraryAddUsageDescription"
+      ],
+      "CNContactStore": [
+        "NSContactsUsageDescription"
+      ],
+      "EKEventStore": [
+        "NSCalendarsUsageDescription",
+        "NSCalendarsFullAccessUsageDescription",
+        "NSRemindersUsageDescription",
+        "NSRemindersFullAccessUsageDescription"
+      ],
+      "HKHealthStore": [
+        "NSHealthShareUsageDescription",
+        "NSHealthUpdateUsageDescription"
+      ],
+      "SFSpeechRecognizer": [
+        "NSSpeechRecognitionUsageDescription"
+      ],
+      "CBCentralManager": [
+        "NSBluetoothAlwaysUsageDescription"
+      ],
+      "LAContext": [
+        "NSFaceIDUsageDescription"
+      ],
+      "ATTrackingManager": [
+        "NSUserTrackingUsageDescription"
+      ],
+      "CMMotionActivityManager": [
+        "NSMotionUsageDescription"
+      ],
+      "MPMediaLibrary": [
+        "NSAppleMusicUsageDescription"
+      ]
     },
     "unit": "source symbol -> purpose-string keys; one of the listed keys must be present and filled",
-    "source": "memory of Apple's Info.plist key reference; not read from Apple in this work",
+    "source": "https://developer.apple.com/documentation/bundleresources/protected-resources",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true,
+    "note": "every key name was read on Apple's Protected resources page; added NSCalendarsWriteOnlyAccessUsageDescription (write-only calendar access). Which source symbol needs which key is mstack's reading of each key's description; Apple publishes no symbol-to-key table"
   },
   "required_reason_apis": {
     "value": {
-      "NSPrivacyAccessedAPICategoryUserDefaults": ["UserDefaults", "NSUserDefaults", "@AppStorage"],
-      "NSPrivacyAccessedAPICategoryFileTimestamp": ["creationDate", "modificationDate", "contentModificationDateKey", "creationDateKey", "getattrlist", "fstat("],
-      "NSPrivacyAccessedAPICategorySystemBootTime": ["systemUptime", "mach_absolute_time"],
-      "NSPrivacyAccessedAPICategoryDiskSpace": ["volumeAvailableCapacity", "systemFreeSize", "statfs("],
-      "NSPrivacyAccessedAPICategoryActiveKeyboards": ["activeInputModes"]
+      "NSPrivacyAccessedAPICategoryUserDefaults": [
+        "UserDefaults",
+        "NSUserDefaults",
+        "@AppStorage"
+      ],
+      "NSPrivacyAccessedAPICategoryFileTimestamp": [
+        "creationDate",
+        "modificationDate",
+        "fileModificationDate",
+        "contentModificationDateKey",
+        "creationDateKey",
+        "getattrlist",
+        "fstat(",
+        "fstatat(",
+        "lstat("
+      ],
+      "NSPrivacyAccessedAPICategorySystemBootTime": [
+        "systemUptime",
+        "mach_absolute_time"
+      ],
+      "NSPrivacyAccessedAPICategoryDiskSpace": [
+        "volumeAvailableCapacity",
+        "volumeTotalCapacityKey",
+        "systemFreeSize",
+        "systemSize",
+        "statfs(",
+        "statvfs(",
+        "getattrlist"
+      ],
+      "NSPrivacyAccessedAPICategoryActiveKeyboards": [
+        "activeInputModes"
+      ]
+    },
+    "was": {
+      "NSPrivacyAccessedAPICategoryUserDefaults": [
+        "UserDefaults",
+        "NSUserDefaults",
+        "@AppStorage"
+      ],
+      "NSPrivacyAccessedAPICategoryFileTimestamp": [
+        "creationDate",
+        "modificationDate",
+        "contentModificationDateKey",
+        "creationDateKey",
+        "getattrlist",
+        "fstat("
+      ],
+      "NSPrivacyAccessedAPICategorySystemBootTime": [
+        "systemUptime",
+        "mach_absolute_time"
+      ],
+      "NSPrivacyAccessedAPICategoryDiskSpace": [
+        "volumeAvailableCapacity",
+        "systemFreeSize",
+        "statfs("
+      ],
+      "NSPrivacyAccessedAPICategoryActiveKeyboards": [
+        "activeInputModes"
+      ]
     },
     "unit": "privacy manifest category -> source text that suggests the API is used; text matching over-reports",
-    "source": "memory of Apple's required-reason API list; not read from Apple in this work",
+    "source": "https://developer.apple.com/documentation/bundleresources/app-privacy-configuration/nsprivacyaccessedapitypes/nsprivacyaccessedapitype",
     "checked": "2026-11-22",
-    "verified": false
+    "verified": true,
+    "note": "the five category names match Apple's list exactly; added APIs Apple lists that the old text missed (fileModificationDate, fstatat, lstat, volumeTotalCapacityKey, systemSize, statvfs, getattrlist for disk space). Plain stat() is not matched because the text 'stat(' would hit far too much. NSUserDefaults and @AppStorage are mstack additions (Apple names UserDefaults; @AppStorage stores in it)"
   }
 }
