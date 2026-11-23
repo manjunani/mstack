@@ -1,0 +1,42 @@
+# mstack
+
+> mstack is a library of agent skills for Claude Code, Codex and other agents that read the Agent Skills format. Each skill is a folder with a SKILL.md and a script that runs a real check, and every skill ends in one of four states: pass, fail, not verified, or blocked. Skills come in 16 small packs, one per domain, so an agent installs only the pack for the work at hand. The machine-readable map of every skill (name, pack, description, needs, path, test results) is skills.json. In Claude Code, packs install as plugins; for other agents, tools/install_skills.py copies skill folders into the agent's skills folder.
+
+## Start here
+
+- [README](https://github.com/manjunani/mstack/blob/main/README.md): what mstack is, how to install it, the full skill table with test results
+- [skills.json](https://raw.githubusercontent.com/manjunani/mstack/main/skills.json): the skill map; its "usage" field explains every key
+- [AGENTS.md](https://github.com/manjunani/mstack/blob/main/AGENTS.md): guide for agents that change this repository
+- [install_skills.py](https://github.com/manjunani/mstack/blob/main/tools/install_skills.py): copies packs into Codex or another agent's skills folder
+
+## Standard
+
+- [RULES.md](https://github.com/manjunani/mstack/blob/main/standard/RULES.md): the 18 rules every skill follows
+- [DESCRIPTIONS.md](https://github.com/manjunani/mstack/blob/main/standard/DESCRIPTIONS.md): how a description is written so the skill starts at the right time
+- [SKILL-TEMPLATE.md](https://github.com/manjunani/mstack/blob/main/standard/SKILL-TEMPLATE.md): the shape of a SKILL.md
+- [TESTS.md](https://github.com/manjunani/mstack/blob/main/standard/TESTS.md): trigger, silence and benefit tests
+- [BUILDING.md](https://github.com/manjunani/mstack/blob/main/standard/BUILDING.md): how to build a pack
+
+## Packs
+
+- [mstack-core](https://github.com/manjunani/mstack/tree/main/packs/core): the base pack: prove work is done, delete safely, keep decisions, hand off a session, find the right skill
+- [mstack-dev](https://github.com/manjunani/mstack/tree/main/packs/dev): plan, build, prove a test, debug, review, parallel work, commit, land a branch, release, security check
+- [mstack-test](https://github.com/manjunani/mstack/tree/main/packs/test): QA a running app, flaky tests, test cases, untested risks, test data, API contracts, bug confirmation
+- [mstack-ops](https://github.com/manjunani/mstack/tree/main/packs/ops): deploys, migrations, backups, CI files, bills and logs, touching nothing live without a yes
+- [mstack-lean](https://github.com/manjunani/mstack/tree/main/packs/lean): cut token use in Claude Code: start-up context, session size, fan-out budgets, idle MCP servers, usage reports
+- [mstack-ai](https://github.com/manjunani/mstack/tree/main/packs/ai): evaluation gates, MCP servers, agent traces, tool definitions, retrieval, spend, prompt injection, LLM graders
+- [mstack-data](https://github.com/manjunani/mstack/tree/main/packs/data): profile, check, diff and clean datasets, read-only SQL, report numbers, charts, spreadsheets, notebooks
+- [mstack-web](https://github.com/manjunani/mstack/tree/main/packs/web): deployed sites, broken links, page extraction, quote checks, polite fetching, sourced research, speed, page changes
+- [mstack-design](https://github.com/manjunani/mstack/tree/main/packs/design): rendered page gate, accessibility, tokens, screen matching, interface words, brand
+- [mstack-product](https://github.com/manjunani/mstack/tree/main/packs/product): requirements, checkable specs, traceability, options, assumptions, interview evidence
+- [mstack-growth](https://github.com/manjunani/mstack/tree/main/packs/growth): site audit, structured data, launch pages, posts, claims, tracking, store listing, mail domain records
+- [mstack-writing](https://github.com/manjunani/mstack/tree/main/packs/writing): copy-edits with every change listed, translations with counted numbers, names and links
+- [mstack-media](https://github.com/manjunani/mstack/tree/main/packs/media): transcripts, subtitles, platform exports, podcast clean-up, show notes, cuts, image batches
+- [mstack-apps](https://github.com/manjunani/mstack/tree/main/packs/apps): SwiftUI and Tauri apps: simulator proof, store readiness, accessibility, signing, crash reports, app size
+- [mstack-3d](https://github.com/manjunani/mstack/tree/main/packs/3d): glTF gate, three.js render check, rig motion, Blender jobs, text-to-3D acceptance
+- [mstack-xr](https://github.com/manjunani/mstack/tree/main/packs/xr): WebXR emulator checks, comfort audit, platform detection, phone AR previews
+
+## Optional
+
+- [CONTRIBUTING.md](https://github.com/manjunani/mstack/blob/main/CONTRIBUTING.md): how to report a trigger problem or send a change
+- [SECURITY.md](https://github.com/manjunani/mstack/blob/main/SECURITY.md): reporting a security problem

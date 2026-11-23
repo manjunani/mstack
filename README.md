@@ -1,6 +1,6 @@
 # mstack
 
-Agent skills that run a real check and report the result. 115 skills in 15 small packs, one pack per domain. Install only what you need.
+Agent skills that run a real check and report the result. 120 skills in 16 small packs, one pack per domain. Install only what you need.
 
 **What it is.** A skill is a folder with a `SKILL.md` that tells a coding agent (Claude Code, Codex, Cursor and others) when to start and what to do, plus a script that does the checking. You talk to the agent in plain words; the matching skill starts, runs its script, and ends in one of four states: **pass**, **fail**, **not verified** or **blocked**. "Not verified" never counts as a pass.
 
