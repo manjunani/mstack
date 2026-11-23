@@ -1,0 +1,16 @@
+{
+  "warn_context_tokens": {
+    "value": 100000,
+    "unit": "tokens re-read by each new message",
+    "source": "mstack starting point, a choice and not a platform limit; the model's context window and the client's auto-compact point decide the real ceiling",
+    "checked": "2026-11-23",
+    "verified": false
+  },
+  "handoff_context_tokens": {
+    "value": 150000,
+    "unit": "tokens re-read by each new message",
+    "source": "mstack starting point, a choice and not a platform limit; set your own with --handoff-at, higher for models with a larger window",
+    "checked": "2026-11-23",
+    "verified": false
+  }
+}

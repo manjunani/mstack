@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "tracker": {
+      "command": "tracker-mcp"
+    },
+    "notes": {
+      "command": "notes-mcp"
+    },
+    "weather": {
+      "command": "weather-mcp"
+    }
+  }
+}

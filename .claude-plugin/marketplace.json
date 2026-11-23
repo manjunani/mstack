@@ -57,6 +57,12 @@
       "version": "0.1.0"
     },
     {
+      "name": "mstack-lean",
+      "source": "./packs/lean",
+      "description": "Cut token use in Claude Code: measure what loads at the start, how big a session is, what a fan-out will cost, which MCP servers are idle, and where usage went.",
+      "version": "0.1.0"
+    },
+    {
       "name": "mstack-media",
       "source": "./packs/media",
       "description": "Audio, video and image work with a measured result: word-timed transcripts, subtitles, platform exports, podcast clean-up, show notes, transcript-based cuts and image batches.",

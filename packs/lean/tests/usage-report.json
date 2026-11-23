@@ -1,0 +1,93 @@
+{
+  "fire": [
+    "where did my usage go this week?",
+    "which project eats the most tokens",
+    "show my Claude Code token use by day",
+    "I hit my usage limit, which sessions used the most",
+    "usage report for the last 30 days",
+    "break down my tokens per project: input, output, cache",
+    "what were my top sessions by tokens this month",
+    "how many cache read tokens am I burning",
+    "token table per day pls",
+    "which day last week did I use the most claude"
+  ],
+  "quiet": [
+    "how much does our app's OpenAI integration cost per request",
+    "is this chat too long",
+    "what's in my context before I type",
+    "our hosting bill on railway jumped",
+    "which mcp servers are unused",
+    "set a budget for 8 parallel agents",
+    "show me git log for last week",
+    "summarise my week of commits",
+    "how many requests did our API serve yesterday",
+    "count words in this essay"
+  ],
+  "tasks": [
+    {
+      "name": "tables",
+      "prompt": "Where did my Claude Code usage go? The transcripts are in ./transcripts. Look at the past year.",
+      "fixture": "fixtures/usage-report/transcripts",
+      "max_turns": 10,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-report",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "usage\\.py"
+        },
+        {
+          "name": "top-project",
+          "type": "regex",
+          "pattern": "billing-api",
+          "flags": "i"
+        },
+        {
+          "name": "cache",
+          "type": "regex",
+          "pattern": "cache",
+          "flags": "i"
+        }
+      ]
+    },
+    {
+      "name": "top-session",
+      "prompt": "which single session used the most tokens? transcripts are in ./transcripts, past year",
+      "fixture": "fixtures/usage-report/transcripts",
+      "max_turns": 10,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-report",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "usage\\.py"
+        },
+        {
+          "name": "names-session",
+          "type": "regex",
+          "pattern": "5f1e9a20",
+          "flags": "i"
+        },
+        {
+          "name": "no-money",
+          "type": "llm",
+          "body": "PASS if the reply names session 5f1e9a20 of billing-api as the largest with a token figure of about 1.23 million, and does not invent a money cost. FAIL otherwise."
+        }
+      ]
+    }
+  ]
+}

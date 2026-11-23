@@ -1,11 +1,50 @@
 # mstack
 
-Agent skills that run something and prove the result. Small packs, one per domain. Install only what you need.
+Agent skills that run a real check and report the result. 115 skills in 15 small packs, one pack per domain. Install only what you need.
 
-A skill is a folder with a `SKILL.md` that teaches a coding agent (Claude Code, Codex, Cursor and others) how to do one job. mstack is a library of them with four rules that most skill collections do not have:
+**What it is.** A skill is a folder with a `SKILL.md` that tells a coding agent (Claude Code, Codex, Cursor and others) when to start and what to do, plus a script that does the checking. You talk to the agent in plain words; the matching skill starts, runs its script, and ends in one of four states: **pass**, **fail**, **not verified** or **blocked**. "Not verified" never counts as a pass.
+
+## Install
+
+### Claude Code
+
+```
+/plugin marketplace add manjunani/mstack
+/plugin install mstack-core@mstack
+```
+
+Add other packs the same way, for example `/plugin install mstack-dev@mstack`. This is the tested path.
+
+### Codex and other agents
+
+Clone the repository, then copy the packs you want into your agent's skills folder:
+
+```
+git clone https://github.com/manjunani/mstack
+cd mstack
+python3 tools/install_skills.py --agent codex --packs core dev      # into ~/.codex/skills
+python3 tools/install_skills.py --agent project --packs core        # into ./.agents/skills
+python3 tools/install_skills.py --to <folder> --packs core --dry-run  # any folder; show the plan first
+```
+
+Each skill is copied as `mstack-<skill>` so it does not clash with skills you already have. If a folder with that name exists, the script stops and lists it; `--force` replaces only those folders. `--packs all` copies every pack, `--list` shows them. It needs Python 3 and nothing else.
+
+Honest state: the skills are plain Markdown and standard-library Python, and the copy step is tested. Running them inside Codex is untested end to end, because no working Codex model was available during testing. The guard hook in `mstack-core` works in Claude Code only; elsewhere its rules are instructions that nothing enforces.
+
+## Example
+
+You say "are we done? is it safe to commit?". The `verify` skill starts, runs your project's own test, lint and build commands, records each result against the exact code state, and replies with what is proven and what is not. If a check could not run, it says which one and ends as "not verified", not "pass".
+
+## For AI agents
+
+- [`skills.json`](skills.json) is the machine-readable map: every skill with its pack, description (when to use it and what it is not for), needs, path and measured test results. Its `usage` field explains each key.
+- [`AGENTS.md`](AGENTS.md) is for agents that change this repository: layout, rules, checks to run.
+- [`llms.txt`](llms.txt) is a short index of the repository in the llms.txt format.
+
+## The four rules most skill collections lack
 
 1. **Every skill runs a script.** No skill is only advice. The script produces the check; the model does not grade its own work.
-2. **Every skill ends in one of four states:** pass, fail, not verified, or blocked. "Not verified" never counts as a pass.
+2. **Every skill ends in one of four states:** pass, fail, not verified, or blocked.
 3. **Every skill is tested for when it starts.** Ten requests where it should start, ten where it should stay quiet, and the result is published below, including the bad ones.
 4. **Packs are small.** A coding agent can only keep so many skill descriptions in view. Install the pack for the work you do, not three thousand skills.
 
@@ -19,22 +58,9 @@ Before writing anything, we counted. Twelve public skill libraries hold 23,064 s
 
 The skills that held up under reading were the ones that run a tool and end with a verdict. mstack is built only from that kind.
 
-## Install
-
-Claude Code:
-
-```
-/plugin marketplace add manjunani/mstack
-/plugin install mstack-core@mstack
-```
-
-Then add any other pack the same way, for example `/plugin install mstack-dev@mstack`.
-
-Other agents that read the Agent Skills format: copy the folders under `packs/<pack>/skills/` into your agent's skills folder. The skills are plain Markdown and standard-library Python. The guard hook in `mstack-core` works in Claude Code only; elsewhere the same steps are instructions and nothing enforces them. Installing through other tools' installers has not been tested yet.
-
 ## Using it
 
-You do not type commands. Say what you want in plain words and the matching skill starts:
+You do not type commands. Say what you want in plain words and the matching skill starts. The core pack:
 
 | You say | Skill | What happens |
 |---|---|---|
@@ -192,15 +218,15 @@ Software development with proof at each step: plan, build, prove a test, debug, 
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
 | `build` | Carries out a plan task by task and keeps a ledger in which a task is logged complete only when its own test command passes and no file outside its list changed. | python3, git, the project's test runner | trigger 8/10, silence 0/10 |
-| `commit` | Turns a mixed working tree into clean commits, one per reason for change. | python3, git | smoke: trigger 2/2, silence 0/2 |
-| `debug` | Finds the real cause of a bug before any fix. | python3, git | smoke: trigger 2/2, silence 0/2 |
-| `land` | Finishes a branch in one of three ways the user picks: merge it locally, push it and open a pull request, or keep it as is. | python3, git, gh (only for opening a pull request) | smoke: trigger 2/2, silence 0/2 |
-| `parallel` | Runs independent tasks at the same time with separate agents, one git worktree each, then merges the results in order and runs the suite on the merged tree; refuses when two tasks' files overlap. | python3, git 2.17 or newer, a host that can start separate agents | smoke: trigger 1/2, silence 0/2 |
-| `plan` | Turns a settled request into a plan file of small ordered tasks, each naming its files, one check command and the output to expect, then lints the plan. | python3, git | smoke: trigger 2/2, silence 0/2 |
-| `prove-test` | Shows that a test can catch the bug it protects against. | python3, git, the project's test runner | smoke: trigger 2/2, silence 0/2 |
-| `release` | Cuts a version from the exact range since the last tag: lists the commits, migrations, config and dependency changes in it, drafts release notes, and refuses to go on until a rollback step is written in the release file. | python3, git | smoke: trigger 2/2, silence 0/2 |
-| `review` | Finds real defects in a change, ranked by severity, and drops every finding whose file, line and quoted text do not match the source. | python3, git | smoke: trigger 2/2, silence 0/2 |
-| `secure` | Finds security problems an attacker could use in the current change, with a status per check (ran, failed, not available): secrets in added lines, the dependency audit, changed entry points for untrusted input. | python3, git, the ecosystem's audit tool (npm, pip-audit, cargo-audit, govulncheck, bundler-audit) | smoke: trigger 2/2, silence 0/2 |
+| `commit` | Turns a mixed working tree into clean commits, one per reason for change. | python3, git | trigger 10/10, silence 0/10 |
+| `debug` | Finds the real cause of a bug before any fix. | python3, git | trigger 10/10, silence 0/10 |
+| `land` | Finishes a branch in one of three ways the user picks: merge it locally, push it and open a pull request, or keep it as is. | python3, git, gh (only for opening a pull request) | trigger 10/10, silence 0/10 |
+| `parallel` | Runs independent tasks at the same time with separate agents, one git worktree each, then merges the results in order and runs the suite on the merged tree; refuses when two tasks' files overlap. | python3, git 2.17 or newer, a host that can start separate agents | trigger 9/10, silence 0/10 |
+| `plan` | Turns a settled request into a plan file of small ordered tasks, each naming its files, one check command and the output to expect, then lints the plan. | python3, git | trigger 8/10, silence 0/10 |
+| `prove-test` | Shows that a test can catch the bug it protects against. | python3, git, the project's test runner | trigger 10/10, silence 0/10 |
+| `release` | Cuts a version from the exact range since the last tag: lists the commits, migrations, config and dependency changes in it, drafts release notes, and refuses to go on until a rollback step is written in the release file. | python3, git | trigger 10/10, silence 0/10 |
+| `review` | Finds real defects in a change, ranked by severity, and drops every finding whose file, line and quoted text do not match the source. | python3, git | trigger 6/10, silence 0/10 |
+| `secure` | Finds security problems an attacker could use in the current change, with a status per check (ran, failed, not available): secrets in added lines, the dependency audit, changed entry points for untrusted input. | python3, git, the ecosystem's audit tool (npm, pip-audit, cargo-audit, govulncheck, bundler-audit) | trigger 9/10, silence 0/10 |
 
 ### mstack-growth
 
@@ -212,16 +238,32 @@ Getting a product found and understood: site audit, structured data, launch page
 
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
-| `claim-check` | Finds every number, superlative ("fastest", "best", "only", "first"), comparison and testimonial in marketing text and fails each one that has no entry with evidence in a sources file. | python3; network only with --fetch, to the evidence addresses given | smoke: trigger 2/2, silence 0/2 |
-| `first-screen` | Reports what a landing page puts first: the first heading, first paragraph, first call to action and where it leads, whether the headline names the product, whether promised words appear, and the bytes that load first. | python3; network only for a URL | smoke: trigger 2/2, silence 0/2 |
-| `launch-site-check` | Asks a site for every page a first visitor needs before launch (home, pricing, privacy, terms, contact, a real 404, favicon, social preview image tags, a working sign-up or download link) and reports each one. | python3, network access to the site named | smoke: trigger 2/2, silence 0/2 |
-| `mail-domain-check` | Checks the SPF, DKIM and DMARC records of one sending domain from record text or the system resolver: syntax, a too-permissive SPF, a DMARC policy of none, weak or empty DKIM keys, and missing records. | python3; dig or nslookup only for a live lookup | smoke: trigger 2/2, silence 0/2 |
-| `page-compare` | Sets two saved HTML pages side by side on measurable points only, with no verdict on which is better. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `post-check` | Checks a draft post against one platform's limits: length counted the platform's way, link and hashtag counts, blog front matter, local images that exist, and no claim still marked unverified or TODO. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `site-audit` | Crawls one live site within a page limit, obeying robots.txt, and reports per page the title, meta description, h1, heading order, canonical, lang and image alt text, plus robots.txt, the sitemap and whether its URLs answer. | python3, network access to the site named | smoke: trigger 2/2, silence 0/2 |
-| `store-listing-check` | Checks an app store listing kept as a file (name, subtitle, description, keywords, screenshots) against the store's field limits from a dated list, finds repeated keywords and missing screenshots, and fails claims with no source. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `structured-data-check` | Validates the JSON-LD on real pages: each block parses, has @context and @type, and Article, Product, Organization, BreadcrumbList, FAQPage and SoftwareApplication items carry the properties in a dated list. | python3, network only for a URL | smoke: trigger 2/2, silence 0/2 |
-| `tracking-check` | Reads a HAR file or network capture and confirms each expected analytics event was sent with the right name and properties, flagging doubles, error answers and emails in URLs. | python3, a network capture the user made | smoke: trigger 1/2, silence 0/2 |
+| `claim-check` | Finds every number, superlative ("fastest", "best", "only", "first"), comparison and testimonial in marketing text and fails each one that has no entry with evidence in a sources file. | python3; network only with --fetch, to the evidence addresses given | trigger 10/10, silence 0/10 |
+| `first-screen` | Reports what a landing page puts first: the first heading, first paragraph, first call to action and where it leads, whether the headline names the product, whether promised words appear, and the bytes that load first. | python3; network only for a URL | trigger 9/10, silence 0/10 |
+| `launch-site-check` | Asks a site for every page a first visitor needs before launch (home, pricing, privacy, terms, contact, a real 404, favicon, social preview image tags, a working sign-up or download link) and reports each one. | python3, network access to the site named | trigger 7/10, silence 0/10 |
+| `mail-domain-check` | Checks the SPF, DKIM and DMARC records of one sending domain from record text or the system resolver: syntax, a too-permissive SPF, a DMARC policy of none, weak or empty DKIM keys, and missing records. | python3; dig or nslookup only for a live lookup | trigger 8/10, silence 0/10 |
+| `page-compare` | Sets two saved HTML pages side by side on measurable points only, with no verdict on which is better. | python3 | trigger 10/10, silence 0/10 |
+| `post-check` | Checks a draft post against one platform's limits: length counted the platform's way, link and hashtag counts, blog front matter, local images that exist, and no claim still marked unverified or TODO. | python3 | trigger 7/10, silence 0/10 |
+| `site-audit` | Crawls one live site within a page limit, obeying robots.txt, and reports per page the title, meta description, h1, heading order, canonical, lang and image alt text, plus robots.txt, the sitemap and whether its URLs answer. | python3, network access to the site named | trigger 9/10, silence 0/10 |
+| `store-listing-check` | Checks an app store listing kept as a file (name, subtitle, description, keywords, screenshots) against the store's field limits from a dated list, finds repeated keywords and missing screenshots, and fails claims with no source. | python3 | trigger 9/10, silence 1/10 |
+| `structured-data-check` | Validates the JSON-LD on real pages: each block parses, has @context and @type, and Article, Product, Organization, BreadcrumbList, FAQPage and SoftwareApplication items carry the properties in a dated list. | python3, network only for a URL | trigger 9/10, silence 0/10 |
+| `tracking-check` | Reads a HAR file or network capture and confirms each expected analytics event was sent with the right name and properties, flagging doubles, error answers and emails in URLs. | python3, a network capture the user made | trigger 9/10, silence 0/10 |
+
+### mstack-lean
+
+Cut token use in Claude Code: measure what loads at the start, how big a session is, what a fan-out will cost, which MCP servers are idle, and where usage went.
+
+```
+/plugin install mstack-lean --marketplace manjunani/mstack
+```
+
+| Skill | What it does | Needs | Tests |
+|---|---|---|---|
+| `context-audit` | Measures what Claude Code loads before the first message, ranks the biggest items in estimated tokens and says what to switch off. | python3 | not tested |
+| `fanout-budget` | Estimates the token cost of a batch of subagents or eval runs from past runs, sets a limit the user agrees to, and checks it before each new launch so a fan-out stops before it overshoots. | python3 | not tested |
+| `mcp-trim` | Lists the MCP servers Claude Code loads and counts how often each one's tools were really called in past transcripts, then prints the exact command or setting to turn off the idle ones. | python3 | not tested |
+| `session-check` | Reads the current Claude Code session's transcript and reports how many tokens each new message re-reads, how fast that grew and the file size, then says whether to hand off and start fresh. | python3 | not tested |
+| `usage-report` | Turns local Claude Code transcripts into a token table per project and per day (input, output, cache read, cache write) and lists the sessions that used the most. | python3 | not tested |
 
 ### mstack-media
 
@@ -236,10 +278,10 @@ Audio, video and image work with a measured result: word-timed transcripts, subt
 | `captions` | Writes .srt and .vtt subtitle files from a word-timed transcript and checks every cue for overlaps, order, line length and reading speed; burns them into the video only when asked. | python3; ffmpeg with the subtitles filter (libass) for burn-in only | trigger 9/10, silence 0/10 |
 | `export-check` | Encodes a finished video or audio file for a named platform and proves the result with ffprobe and a loudness reading. | python3, ffmpeg, ffprobe | trigger 9/10, silence 0/10 |
 | `image-batch` | Applies one resize, crop and export to a whole folder of images into a new folder, and checks every output. | python3; sips (macOS), ImageMagick or Pillow | trigger 10/10, silence 0/10 |
-| `podcast-edit` | Cleans a spoken recording into a new file: shortens long pauses, brings loudness to a named target in two passes, and only on request removes filler words with short crossfades, writing a list of every cut with its time. | python3, ffmpeg, ffprobe; a word-timed transcript for filler removal | smoke: trigger 2/2, silence 0/2 |
-| `show-notes` | Writes chapters and show notes for an episode from its word-timed transcript, then checks that chapters start at zero, ascend, are long enough and end inside the recording, and that every quoted line matches the transcript word for word. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `transcribe` | Makes a word-timed transcript of an audio or video file (JSON with start, end and confidence per word, plus plain text) and checks that it covers all the speech. | python3, ffmpeg, ffprobe, a local speech recogniser or an API the user names | smoke: trigger 2/2, silence 0/2 |
-| `video-edit` | Cuts supplied footage by its transcript into a new file, with a cut list the user approves first. | python3, ffmpeg, ffprobe, a word-timed transcript | smoke: trigger 2/2, silence 0/2 |
+| `podcast-edit` | Cleans a spoken recording into a new file: shortens long pauses, brings loudness to a named target in two passes, and only on request removes filler words with short crossfades, writing a list of every cut with its time. | python3, ffmpeg, ffprobe; a word-timed transcript for filler removal | trigger 10/10, silence 0/10 |
+| `show-notes` | Writes chapters and show notes for an episode from its word-timed transcript, then checks that chapters start at zero, ascend, are long enough and end inside the recording, and that every quoted line matches the transcript word for word. | python3 | trigger 8/10, silence 0/10 |
+| `transcribe` | Makes a word-timed transcript of an audio or video file (JSON with start, end and confidence per word, plus plain text) and checks that it covers all the speech. | python3, ffmpeg, ffprobe, a local speech recogniser or an API the user names | trigger 9/10, silence 0/10 |
+| `video-edit` | Cuts supplied footage by its transcript into a new file, with a cut list the user approves first. | python3, ffmpeg, ffprobe, a word-timed transcript | trigger 6/10, silence 0/10 |
 
 ### mstack-ops
 
@@ -254,14 +296,14 @@ Running software: check a deploy, a migration, a backup, a CI file, a bill and a
 | `ci-check` | Checks GitHub Actions workflow files before a push for unknown keys, jobs with no steps, a needs that names no job, printed secrets, unpinned third-party actions and missing permissions. | python3 | trigger 8/10, silence 0/10 |
 | `ci-fix` | Turns a saved log of a failed CI run into the first failing step, the command it ran and the first error lines, then reruns that command locally and says whether the same error came back. | python3 | trigger 10/10, silence 0/10 |
 | `cost-watch` | Reads a usage or billing export (CSV or JSON), sums it by service and day, projects the month and compares it with the limit the user states, and names the service whose spend grew most. | python3 | trigger 10/10, silence 0/10 |
-| `dep-upgrade` | Upgrades one dependency with a record that proves it: the old version from the lock file, the target, the changelog sections read, and the same test command passing before and after. | python3, the project's package manager | smoke: trigger 2/2, silence 0/2 |
-| `deploy-check` | Confirms that the version now running is the one that was meant to ship and that it answers. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `env-check` | Lists environment variable names the code reads that are not set or not documented, and names that nothing reads, without showing any value. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `log-triage` | Narrows a saved log file to the first error, the distinct error groups with counts (numbers and ids masked), and what changed in the lines just before the first error, such as a deploy, a restart or a config change. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `migration-check` | Reads pending SQL migration files and flags statements that lock a table, lose data or leave no way back, each with the reason and a safer form. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `perf-check` | Measures whether a change made one command, script or build faster or slower beyond run-to-run noise, from a saved baseline and repeated timings compared by median and spread. | python3 | smoke: trigger 1/2, silence 0/2 |
-| `restore-test` | Restores a backup into a new scratch folder and proves the data is in it, by an integrity check and row or file counts compared with numbers the user states. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `rollback` | Returns a service to its previous version through a checked plan, then confirms the old version answers. | python3, the hosting platform's own command-line tool or dashboard | smoke: trigger 2/2, silence 0/2 |
+| `dep-upgrade` | Upgrades one dependency with a record that proves it: the old version from the lock file, the target, the changelog sections read, and the same test command passing before and after. | python3, the project's package manager | trigger 9/10, silence 0/10 |
+| `deploy-check` | Confirms that the version now running is the one that was meant to ship and that it answers. | python3 | trigger 10/10, silence 0/10 |
+| `env-check` | Lists environment variable names the code reads that are not set or not documented, and names that nothing reads, without showing any value. | python3 | trigger 10/10, silence 0/10 |
+| `log-triage` | Narrows a saved log file to the first error, the distinct error groups with counts (numbers and ids masked), and what changed in the lines just before the first error, such as a deploy, a restart or a config change. | python3 | trigger 9/10, silence 0/10 |
+| `migration-check` | Reads pending SQL migration files and flags statements that lock a table, lose data or leave no way back, each with the reason and a safer form. | python3 | trigger 9/10, silence 0/10 |
+| `perf-check` | Measures whether a change made one command, script or build faster or slower beyond run-to-run noise, from a saved baseline and repeated timings compared by median and spread. | python3 | trigger 10/10, silence 0/10 |
+| `restore-test` | Restores a backup into a new scratch folder and proves the data is in it, by an integrity check and row or file counts compared with numbers the user states. | python3 | trigger 9/10, silence 0/10 |
+| `rollback` | Returns a service to its previous version through a checked plan, then confirms the old version answers. | python3, the hosting platform's own command-line tool or dashboard | trigger 10/10, silence 0/10 |
 
 ### mstack-product
 
@@ -273,14 +315,14 @@ Requirement gathering and brainstorming: settle what is wanted, write a checkabl
 
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
-| `clarify` | Settles what the user wants before anything is built. | python3, a user who can answer | smoke: trigger 2/2, silence 0/2 |
-| `compare-options` | Ranks named options on weighted criteria with a script, applies vetoes, and shows the smallest change that would flip the winner. | python3 | smoke: trigger 1/2, silence 0/2 |
-| `ideate` | Produces a wide list of options grounded in the project, cuts it with a reason for every cut, and ends with a short list of two or three. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `nfr-budgets` | Turns quality words such as fast, reliable or secure into budgets that a command can check. | python3, a project with commands that can be run | smoke: trigger 2/2, silence 0/2 |
-| `premortem` | Assumes a chosen plan has already failed, lists the assumptions it rests on, ranks them by impact and confidence with a script, and names the cheapest test for the worst one, with a pass and a fail line. | python3, a written plan or spec | smoke: trigger 2/2, silence 0/2 |
-| `research-synthesis` | Turns interview transcripts or research notes into themes backed by exact quotes. | python3, text sources | smoke: trigger 2/2, silence 0/2 |
-| `spec` | Writes a one-page spec in which every "done when" line has an id (R-001) and names how it will be checked, then lints it. | python3 | smoke: trigger 2/2, silence 0/2 |
-| `trace` | Builds a matrix from each requirement id in the spec (R-001) to the tests, code and commits that mention it, and flags what is missing in either direction. | python3, git, a spec with ids | smoke: trigger 2/2, silence 0/2 |
+| `clarify` | Settles what the user wants before anything is built. | python3, a user who can answer | trigger 8/10, silence 0/10 |
+| `compare-options` | Ranks named options on weighted criteria with a script, applies vetoes, and shows the smallest change that would flip the winner. | python3 | trigger 7/10, silence 0/10 |
+| `ideate` | Produces a wide list of options grounded in the project, cuts it with a reason for every cut, and ends with a short list of two or three. | python3 | trigger 10/10, silence 0/10 |
+| `nfr-budgets` | Turns quality words such as fast, reliable or secure into budgets that a command can check. | python3, a project with commands that can be run | trigger 10/10, silence 0/10 |
+| `premortem` | Assumes a chosen plan has already failed, lists the assumptions it rests on, ranks them by impact and confidence with a script, and names the cheapest test for the worst one, with a pass and a fail line. | python3, a written plan or spec | trigger 9/10, silence 0/10 |
+| `research-synthesis` | Turns interview transcripts or research notes into themes backed by exact quotes. | python3, text sources | trigger 9/10, silence 0/10 |
+| `spec` | Writes a one-page spec in which every "done when" line has an id (R-001) and names how it will be checked, then lints it. | python3 | trigger 9/10, silence 0/10 |
+| `trace` | Builds a matrix from each requirement id in the spec (R-001) to the tests, code and commits that mention it, and flags what is missing in either direction. | python3, git, a spec with ids | trigger 9/10, silence 0/10 |
 
 ### mstack-test
 
@@ -361,10 +403,11 @@ Version 0.1. Honest state of things:
 - The "is the result better with the skill than without" test exists for every skill and has not been run yet.
 - Skills that need a tool we did not have (a 3D program, a headset, a speech recogniser) detect that tool and stop as blocked. Their live path is untested and marked so.
 - Numbers that age, such as platform limits and thresholds, live in dated data files and are marked unverified until someone checks them against the source.
+- Claude Code is the tested agent. `tools/install_skills.py` is tested for copying into a folder; running the copied skills in Codex is untested end to end, because no working Codex model was available during testing. The guard hook works in Claude Code only.
 
 ## How a skill is built
 
-`standard/` is the method: the rules, how to write a description that triggers, the skill template, how tests work, and how to build a pack. `tools/validate.py` enforces the rules; `claude plugin validate` checks the plugin format.
+`standard/` is the method: the rules, how to write a description that triggers, the skill template, how tests work, and how to build a pack. `tools/validate.py` enforces the rules; `claude plugin validate` checks the plugin format. [`AGENTS.md`](AGENTS.md) sums this up for AI agents working in the repository.
 
 ## Contributing and reporting
 

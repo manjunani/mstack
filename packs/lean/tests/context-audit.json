@@ -1,0 +1,99 @@
+{
+  "fire": [
+    "why is my context already so full before I even type anything?",
+    "audit my claude code setup, what loads at session start",
+    "which of my plugins eat the most tokens",
+    "new sessions start at like 30k tokens, what is taking the room",
+    "my CLAUDE.md imports a bunch of files, how much do they cost",
+    "help me slim down what claude loads on startup",
+    "rank the stuff in my startup context by size",
+    "too many skills installed? show me which ones cost the most in the listing",
+    "context audit pls",
+    "what should I switch off so every session starts lighter"
+  ],
+  "quiet": [
+    "this chat is getting long, should I start a new one?",
+    "how many tokens did I use this week across projects",
+    "is this skill safe to install? it runs a shell script",
+    "which MCP servers have I never called",
+    "write a handoff so I can continue tomorrow",
+    "how much does our summariser agent cost per run in API fees",
+    "remember that we always use pnpm in this repo",
+    "shorten this README for me",
+    "our vercel bill doubled, why",
+    "explain what a context window is"
+  ],
+  "tasks": [
+    {
+      "name": "ranks-and-proposes",
+      "prompt": "My Claude Code sessions start heavy. I copied my config into ./home (treat it as my home folder) and the project is ./shop. Find out what loads before I type and tell me what to switch off.",
+      "fixture": "fixtures/context-audit/setup",
+      "max_turns": 12,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-audit",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "audit\\.py"
+        },
+        {
+          "name": "names-import",
+          "type": "regex",
+          "pattern": "style-guide",
+          "flags": "i"
+        },
+        {
+          "name": "says-estimate",
+          "type": "regex",
+          "pattern": "(estimat|about|approx|~)",
+          "flags": "i"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        }
+      ]
+    },
+    {
+      "name": "budget-verdict",
+      "prompt": "I want everything that loads at session start under 1000 tokens. Config is in ./home (use it as home), project is ./shop. Am I under? Don't change anything.",
+      "fixture": "fixtures/context-audit/setup",
+      "max_turns": 12,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-with-budget",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "audit\\.py.*--budget\\s+1,?000"
+        },
+        {
+          "name": "verdict",
+          "type": "regex",
+          "pattern": "\\b(fail|over)\\b",
+          "flags": "i"
+        },
+        {
+          "name": "no-edits",
+          "type": "llm",
+          "body": "PASS if the reply says the setup is over the 1000-token budget, names the biggest items, and the assistant did not edit, move or delete any file. FAIL otherwise."
+        }
+      ]
+    }
+  ]
+}

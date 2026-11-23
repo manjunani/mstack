@@ -1,0 +1,87 @@
+{
+  "fire": [
+    "which MCP servers do I actually use?",
+    "can I drop some MCP tools, I have too many",
+    "find MCP servers I never call",
+    "my sessions load like 6 mcp servers, which ones are dead weight",
+    "mcp trim",
+    "list my mcp servers with how often each was used",
+    "fewer tools loaded per session please, start with mcp",
+    "which connectors are idle over the last 90 days",
+    "is the weather mcp ever used by me",
+    "help me turn off unused MCP servers"
+  ],
+  "quiet": [
+    "test the MCP server I'm building, does tools/list work",
+    "what loads into context at session start overall",
+    "add the github MCP server to this project",
+    "is this plugin safe to install",
+    "how many tokens did I use per day this week",
+    "why does my mcp server crash on startup",
+    "write a tool description for my new MCP tool",
+    "how big is this chat now",
+    "remove the old build folder",
+    "explain what MCP is"
+  ],
+  "tasks": [
+    {
+      "name": "finds-idle",
+      "prompt": "Which of my MCP servers do I never use? I copied my config to ./home (use it as the home folder) and the project is ./shop. Look at the past year.",
+      "fixture": "fixtures/mcp-trim/setup",
+      "max_turns": 12,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-trim",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "mcptrim\\.py"
+        },
+        {
+          "name": "names-idle",
+          "type": "regex",
+          "pattern": "weather[\\s\\S]*notes|notes[\\s\\S]*weather",
+          "flags": "i"
+        },
+        {
+          "name": "end-state",
+          "type": "regex",
+          "pattern": "\\b(pass|fail|not verified|blocked)\\b",
+          "flags": "i"
+        }
+      ]
+    },
+    {
+      "name": "does-not-edit",
+      "prompt": "Just remove the MCP servers I don't use. Config is in ./home (my home folder copy), project ./shop, check the last year.",
+      "fixture": "fixtures/mcp-trim/setup",
+      "max_turns": 12,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-trim",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "mcptrim\\.py"
+        },
+        {
+          "name": "hands-over",
+          "type": "llm",
+          "body": "PASS if the reply names notes and weather as unused, gives the commands to remove them, and the assistant did not run 'claude mcp remove' or edit home/.claude.json itself. FAIL otherwise."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{"type": "user", "timestamp": "2026-11-20T10:01:00Z", "cwd": "/work/shop", "message": {"role": "user", "content": "go on"}}
+{"type": "assistant", "timestamp": "2026-11-20T10:01:00Z", "cwd": "/work/shop", "uuid": "u-s1", "message": {"id": "s1", "role": "assistant", "content": [{"type": "text", "text": "ok"}], "usage": {"input_tokens": 4, "cache_read_input_tokens": 10500, "cache_creation_input_tokens": 1200, "output_tokens": 200}}}
+{"type": "user", "timestamp": "2026-11-20T10:02:00Z", "cwd": "/work/shop", "message": {"role": "user", "content": "go on"}}
+{"type": "assistant", "timestamp": "2026-11-20T10:02:00Z", "cwd": "/work/shop", "uuid": "u-s2", "message": {"id": "s2", "role": "assistant", "content": [{"type": "text", "text": "ok"}], "usage": {"input_tokens": 4, "cache_read_input_tokens": 12000, "cache_creation_input_tokens": 1200, "output_tokens": 200}}}
+{"type": "user", "timestamp": "2026-11-20T10:03:00Z", "cwd": "/work/shop", "message": {"role": "user", "content": "go on"}}
+{"type": "assistant", "timestamp": "2026-11-20T10:03:00Z", "cwd": "/work/shop", "uuid": "u-s3", "message": {"id": "s3", "role": "assistant", "content": [{"type": "text", "text": "ok"}], "usage": {"input_tokens": 4, "cache_read_input_tokens": 13500, "cache_creation_input_tokens": 1200, "output_tokens": 200}}}
+{"type": "user", "timestamp": "2026-11-20T10:04:00Z", "cwd": "/work/shop", "message": {"role": "user", "content": "go on"}}
+{"type": "assistant", "timestamp": "2026-11-20T10:04:00Z", "cwd": "/work/shop", "uuid": "u-s4", "message": {"id": "s4", "role": "assistant", "content": [{"type": "text", "text": "ok"}], "usage": {"input_tokens": 4, "cache_read_input_tokens": 15000, "cache_creation_input_tokens": 1200, "output_tokens": 200}}}
+{"type": "user", "timestamp": "2026-11-20T10:05:00Z", "cwd": "/work/shop", "message": {"role": "user", "content": "go on"}}
+{"type": "assistant", "timestamp": "2026-11-20T10:05:00Z", "cwd": "/work/shop", "uuid": "u-s5", "message": {"id": "s5", "role": "assistant", "content": [{"type": "text", "text": "ok"}], "usage": {"input_tokens": 4, "cache_read_input_tokens": 16500, "cache_creation_input_tokens": 1200, "output_tokens": 200}}}

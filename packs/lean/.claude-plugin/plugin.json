@@ -1,0 +1,9 @@
+{
+  "name": "mstack-lean",
+  "description": "Cut token use in Claude Code: measure what loads at the start, how big a session is, what a fan-out will cost, which MCP servers are idle, and where usage went.",
+  "version": "0.1.0",
+  "author": { "name": "manjunani" },
+  "license": "MIT",
+  "repository": "https://github.com/manjunani/mstack",
+  "keywords": ["tokens", "context", "usage", "mcp", "budget"]
+}

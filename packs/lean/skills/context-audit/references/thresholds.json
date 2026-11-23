@@ -1,0 +1,23 @@
+{
+  "chars_per_token": {
+    "value": 4,
+    "unit": "characters per token",
+    "source": "rough rule of thumb for English text and code; real tokenizers differ by model and content",
+    "checked": "2026-11-23",
+    "verified": false
+  },
+  "startup_budget_tokens": {
+    "value": 20000,
+    "unit": "estimated tokens loaded before the first message",
+    "source": "mstack starting point, a choice and not a platform limit; set your own with --budget",
+    "checked": "2026-11-23",
+    "verified": false
+  },
+  "duplicate_min_chars": {
+    "value": 80,
+    "unit": "characters a paragraph needs before a repeat is reported",
+    "source": "mstack choice, to skip short lines such as headings",
+    "checked": "2026-11-23",
+    "verified": false
+  }
+}

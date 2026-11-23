@@ -1,0 +1,87 @@
+{
+  "fire": [
+    "is this chat getting too long?",
+    "should I start a new session or keep going here",
+    "how big is this session now in tokens",
+    "replies are getting slow, is the conversation too big?",
+    "check the session size",
+    "how many tokens does every new message re-read at this point",
+    "are we near the point where I should hand off?",
+    "session check",
+    "this convo has been going for hours, time to restart?",
+    "how much context is this session carrying"
+  ],
+  "quiet": [
+    "write a handoff note so the next session can continue",
+    "how many tokens did each of my projects use this month",
+    "what loads into context before I type anything",
+    "note that we picked sqlite for the cache",
+    "continue from the handoff",
+    "estimate what 8 parallel agents will cost",
+    "summarise what we did today",
+    "how much does our chatbot cost per conversation in API spend",
+    "which MCP servers can I remove",
+    "count the lines in this log file"
+  ],
+  "tasks": [
+    {
+      "name": "long-says-hand-off",
+      "prompt": "is this session getting too long? its transcript is logs/session.jsonl",
+      "fixture": "fixtures/session-check/long",
+      "max_turns": 10,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-check",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "session\\.py"
+        },
+        {
+          "name": "advises-hand-off",
+          "type": "regex",
+          "pattern": "(hand ?off|new session|start (a )?fresh)",
+          "flags": "i"
+        },
+        {
+          "name": "measured",
+          "type": "regex",
+          "pattern": "16[0-9],[0-9]{3}|16[0-9]k",
+          "flags": "i"
+        }
+      ]
+    },
+    {
+      "name": "short-keeps-going",
+      "prompt": "how big is the session in logs/session.jsonl, do I need to restart?",
+      "fixture": "fixtures/session-check/short",
+      "max_turns": 10,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-check",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "session\\.py"
+        },
+        {
+          "name": "no-restart",
+          "type": "llm",
+          "body": "PASS if the reply says there is no need to restart yet and gives a measured figure of about 17,700 tokens re-read per message. FAIL if it advises a restart or gives no measured figure."
+        }
+      ]
+    }
+  ]
+}
