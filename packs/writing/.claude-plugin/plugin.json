@@ -1,7 +1,7 @@
 {
   "name": "mstack-writing",
   "description": "Text work with a proof: copy-edits where every change is listed and nothing else moved, and translations where numbers, names, links and placeholders are counted on both sides.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": { "name": "manjunani" },
   "license": "MIT",
   "repository": "https://github.com/manjunani/mstack",

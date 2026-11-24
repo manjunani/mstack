@@ -2,14 +2,14 @@
   "fire": [
     "check the VoiceOver labels in my SwiftUI app",
     "does my iOS app support Dynamic Type",
-    "find icon buttons with no accessibility label",
+    "find icon buttons with no accessibility label in my SwiftUI app",
     "accessibility check for the iphone app before release",
-    "are there fixed font sizes that break larger text",
+    "are there fixed font sizes in my iOS app that break larger text",
     "check my swiftui views for a11y problems",
-    "blind users say the toolbar buttons just read 'button'",
+    "blind users say the toolbar buttons in my iPhone app just read 'button'",
     "verify the screenshots at the largest text size look ok",
-    "is the status dot colour only? check accessibility",
-    "make sure the app works with larger accessibility text sizes"
+    "is the status dot in my SwiftUI view colour only? check accessibility",
+    "make sure my iOS app works with larger accessibility text sizes"
   ],
   "quiet": [
     "run an accessibility audit on our website",

@@ -57,3 +57,11 @@ first-byte default only warns for that reason.
 
 - `webfetch.py` is copied into each fetching skill's `scripts/` (a skill may not depend on another's files); the runner checks the copies are identical. A change must be copied to all six.
 - `page-speed` is listed as shared with another pack in docs/SKILLS.md; this build put it in web as asked.
+
+## 2026-11-24: trigger prompts made concrete
+
+Some fitting requests named no page, site or platform ("pull the table from this page", "find icon buttons
+with no accessibility label"). In the test sessions the model asked which page, or could not tell an iOS app
+from a web page, and stopped before any skill could start. Those requests now carry what a real request has:
+an example.test address, a urls.txt file, or "my SwiftUI app". The near-miss requests are unchanged. Results
+recorded before this date used the old wording.

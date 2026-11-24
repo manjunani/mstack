@@ -1,14 +1,14 @@
 {
   "fire": [
     "give me the text of https://example.test/article without the menus",
-    "pull the table from this page into json",
+    "pull the table from https://example.test/stats into json",
     "scrape this one page for me: https://example.test/pricing",
     "turn saved.html into clean structured data",
-    "what are the headings and links on this page",
+    "what are the headings and links on https://example.test/docs",
     "the page returns nothing when I fetch it, does it need javascript?",
-    "extract the article body from this URL as plain text",
-    "get me the prices table off this single page",
-    "convert this webpage to clean text I can paste",
+    "extract the article body from https://example.test/blog/launch as plain text",
+    "get me the prices table off https://example.test/pricing, just that one page",
+    "convert https://example.test/about to clean text I can paste",
     "page-extract the changelog page"
   ],
   "quiet": [

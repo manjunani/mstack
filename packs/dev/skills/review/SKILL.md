@@ -4,7 +4,7 @@ description: Finds real bugs in a code change, ranked by severity, and keeps onl
 license: MIT
 metadata:
   pack: dev
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, git
 ---
 

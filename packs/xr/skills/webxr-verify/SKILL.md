@@ -4,7 +4,7 @@ description: Proves a WebXR page works without a headset: checks the code for an
 license: MIT
 metadata:
   pack: xr
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, a browser the agent can drive, a WebXR emulator
 ---
 

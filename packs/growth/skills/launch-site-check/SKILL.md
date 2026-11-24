@@ -4,7 +4,7 @@ description: Asks a site for every page a first visitor needs before launch: pri
 license: MIT
 metadata:
   pack: growth
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, network access to the site named
 ---
 

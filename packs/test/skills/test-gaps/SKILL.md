@@ -4,7 +4,7 @@ description: Finds what matters and is not tested. Counts test files, detects ru
 license: MIT
 metadata:
   pack: test
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, git (for recent changes)
 ---
 

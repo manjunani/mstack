@@ -1,15 +1,15 @@
 {
   "fire": [
     "I want to scrape all the product pages on example.test, is that ok?",
-    "can I crawl this site? here's the list of urls",
+    "can I crawl these? the list of urls is in urls.txt",
     "before I download these 300 pages, check robots.txt",
-    "how long would it take to fetch this list politely",
-    "grab all the recipe pages from this site for my dataset",
-    "is /search allowed by their robots rules",
+    "how long would it take to fetch the 300 urls in urls.txt politely",
+    "grab all the recipe pages from example.test for my dataset",
+    "is /search allowed by example.test's robots rules",
     "make a crawl plan for these urls with a sane rate",
-    "what crawl delay does this site ask for",
+    "what crawl delay does example.test ask for",
     "fetch-plan for pages.txt",
-    "I'm going to collect every article on this blog, set it up properly"
+    "I'm going to collect every article on blog.example.test, set it up properly"
   ],
   "quiet": [
     "get the text of this one article",

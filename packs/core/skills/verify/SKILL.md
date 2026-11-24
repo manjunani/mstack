@@ -4,7 +4,7 @@ description: Proves a "done" claim with fresh evidence: runs the project's own t
 license: MIT
 metadata:
   pack: core
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, git
 ---
 

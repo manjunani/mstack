@@ -4,7 +4,7 @@ description: Tests whether an LLM grader can be trusted, by comparing its verdic
 license: MIT
 metadata:
   pack: ai
-  version: 0.2.1
+  version: 0.2.2
   needs: python3
 ---
 

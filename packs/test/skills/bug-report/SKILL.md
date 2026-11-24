@@ -4,7 +4,7 @@ description: Confirms a bug reproduces from a clean start, saves the output as e
 license: MIT
 metadata:
   pack: test
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, a command or steps that show the bug
 ---
 

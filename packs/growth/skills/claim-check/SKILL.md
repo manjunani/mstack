@@ -4,7 +4,7 @@ description: Finds every number, superlative ("fastest", "best", "only", "first"
 license: MIT
 metadata:
   pack: growth
-  version: 0.2.1
+  version: 0.2.2
   needs: python3; network only with --fetch, to the evidence addresses given
 ---
 

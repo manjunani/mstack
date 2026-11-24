@@ -4,7 +4,7 @@ description: Finishes a branch in one of three ways the user picks: merge it loc
 license: MIT
 metadata:
   pack: dev
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, git, gh (only for opening a pull request)
 ---
 

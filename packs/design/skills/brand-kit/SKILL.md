@@ -4,7 +4,7 @@ description: Captures the user's own brand into one brand.json file (colours wit
 license: MIT
 metadata:
   pack: design
-  version: 0.2.1
+  version: 0.2.2
   needs: python3
 ---
 

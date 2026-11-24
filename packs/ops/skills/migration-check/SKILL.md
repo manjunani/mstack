@@ -4,7 +4,7 @@ description: Reads pending SQL migration files and flags statements that lock a 
 license: MIT
 metadata:
   pack: ops
-  version: 0.2.1
+  version: 0.2.2
   needs: python3
 ---
 

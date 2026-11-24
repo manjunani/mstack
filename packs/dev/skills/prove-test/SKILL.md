@@ -4,7 +4,7 @@ description: Shows that a test can catch the bug it protects against. Runs it wi
 license: MIT
 metadata:
   pack: dev
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, git, the project's test runner
 ---
 

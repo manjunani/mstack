@@ -4,7 +4,7 @@ description: Explains what a task really changed, from the actual diff and the c
 license: MIT
 metadata:
   pack: core
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, git
 ---
 

@@ -4,7 +4,7 @@ description: Writes one file that lets a fresh session continue unfinished work 
 license: MIT
 metadata:
   pack: core
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, git
 ---
 

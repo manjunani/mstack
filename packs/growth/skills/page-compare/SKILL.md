@@ -4,7 +4,7 @@ description: Sets two saved HTML pages side by side on measurable points only, w
 license: MIT
 metadata:
   pack: growth
-  version: 0.2.1
+  version: 0.2.2
   needs: python3
 ---
 

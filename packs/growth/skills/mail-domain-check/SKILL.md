@@ -4,7 +4,7 @@ description: Checks the SPF, DKIM and DMARC records of one sending domain from r
 license: MIT
 metadata:
   pack: growth
-  version: 0.2.1
+  version: 0.2.2
   needs: python3; dig or nslookup only for a live lookup
 ---
 

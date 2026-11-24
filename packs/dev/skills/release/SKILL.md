@@ -4,7 +4,7 @@ description: Cuts a version from the exact range since the last tag: lists the c
 license: MIT
 metadata:
   pack: dev
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, git
 ---
 

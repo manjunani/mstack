@@ -4,7 +4,7 @@ description: Makes a word-timed transcript of an audio or video file (JSON with 
 license: MIT
 metadata:
   pack: media
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, ffmpeg, ffprobe, a local speech recogniser or an API the user names
 ---
 

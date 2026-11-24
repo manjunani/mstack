@@ -4,7 +4,7 @@ description: Reads a third-party skill, plugin or skills repository before insta
 license: MIT
 metadata:
   pack: core
-  version: 0.2.1
+  version: 0.2.2
   needs: python3
 ---
 

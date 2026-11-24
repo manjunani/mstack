@@ -4,7 +4,7 @@ description: Lists the MCP servers Claude Code loads and counts how often each o
 license: MIT
 metadata:
   pack: lean
-  version: 0.2.1
+  version: 0.2.2
   needs: python3
 ---
 

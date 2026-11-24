@@ -4,7 +4,7 @@ description: Keeps file edits inside one folder until released, so a task cannot
 license: MIT
 metadata:
   pack: core
-  version: 0.2.1
+  version: 0.2.2
   needs: python3
 ---
 

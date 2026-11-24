@@ -4,7 +4,7 @@ description: Tells what changed on one web page since the last look: saves a nor
 license: MIT
 metadata:
   pack: web
-  version: 0.2.1
+  version: 0.2.2
   needs: python3
 ---
 

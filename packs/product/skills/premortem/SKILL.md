@@ -4,7 +4,7 @@ description: Assumes a chosen plan has already failed, lists the assumptions it 
 license: MIT
 metadata:
   pack: product
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, a written plan or spec
 ---
 

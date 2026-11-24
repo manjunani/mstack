@@ -7,7 +7,7 @@
     "with": "Claude Code 2.1.330"
   },
   "fetch-plan": {
-    "trigger": "7/10",
+    "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
     "tested": "2026-11-24",
@@ -21,7 +21,7 @@
     "with": "Claude Code 2.1.330"
   },
   "page-extract": {
-    "trigger": "5/10",
+    "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
     "tested": "2026-11-24",

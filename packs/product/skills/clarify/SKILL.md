@@ -4,7 +4,7 @@ description: Settles what the user wants before anything is built. Asks one ques
 license: MIT
 metadata:
   pack: product
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, a user who can answer
 ---
 

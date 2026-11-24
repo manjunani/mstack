@@ -4,7 +4,7 @@ description: Proofreads and copy-edits a document to a style guide, house style 
 license: MIT
 metadata:
   pack: writing
-  version: 0.2.1
+  version: 0.2.2
   needs: python3
 ---
 

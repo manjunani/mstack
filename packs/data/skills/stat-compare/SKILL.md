@@ -4,7 +4,7 @@ description: Compares two groups from the raw rows (A/B test, before and after, 
 license: MIT
 metadata:
   pack: data
-  version: 0.2.1
+  version: 0.2.2
   needs: python3
 ---
 

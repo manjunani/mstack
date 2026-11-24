@@ -4,7 +4,7 @@ description: Runs a Blender job in background mode with a script and proves the 
 license: MIT
 metadata:
   pack: 3d
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, Blender
 ---
 

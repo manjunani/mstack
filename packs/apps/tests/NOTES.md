@@ -123,3 +123,11 @@ change, no VoiceOver pass. The scan is text matching and will miss labels set in
   there.
 - `pngstat.py` is copied into four skills because a skill may not depend on another skill's files. A
   change to one copy needs the same change in the others (`cmp` shows whether they match).
+
+## 2026-11-24: trigger prompts made concrete
+
+Some fitting requests named no page, site or platform ("pull the table from this page", "find icon buttons
+with no accessibility label"). In the test sessions the model asked which page, or could not tell an iOS app
+from a web page, and stopped before any skill could start. Those requests now carry what a real request has:
+an example.test address, a urls.txt file, or "my SwiftUI app". The near-miss requests are unchanged. Results
+recorded before this date used the old wording.

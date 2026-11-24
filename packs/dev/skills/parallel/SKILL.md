@@ -4,7 +4,7 @@ description: Runs independent tasks at the same time with separate agents, one g
 license: MIT
 metadata:
   pack: dev
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, git 2.17 or newer, a host that can start separate agents
 ---
 

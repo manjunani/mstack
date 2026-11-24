@@ -4,7 +4,7 @@ description: Records a user flow on the iPhone simulator step by step and checks
 license: MIT
 metadata:
   pack: apps
-  version: 0.2.1
+  version: 0.2.2
   needs: python3, a tool that can tap on the simulator (the host agent's simulator tool or the project's UI tests)
 ---
 

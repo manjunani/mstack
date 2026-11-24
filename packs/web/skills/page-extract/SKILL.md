@@ -4,7 +4,7 @@ description: Turns one web page or URL into clean JSON or plain text with a scri
 license: MIT
 metadata:
   pack: web
-  version: 0.2.1
+  version: 0.2.2
   needs: python3
 ---
 

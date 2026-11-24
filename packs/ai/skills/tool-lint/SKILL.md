@@ -4,7 +4,7 @@ description: Checks tool definitions before a model sees them and flags names th
 license: MIT
 metadata:
   pack: ai
-  version: 0.2.1
+  version: 0.2.2
   needs: python3
 ---
 
