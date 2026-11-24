@@ -4,7 +4,7 @@ description: Validates the JSON-LD on real pages: each block parses, has @contex
 license: MIT
 metadata:
   pack: growth
-  version: 0.2.0
+  version: 0.2.1
   needs: python3, network only for a URL
 ---
 

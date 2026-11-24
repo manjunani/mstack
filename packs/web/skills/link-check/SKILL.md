@@ -4,7 +4,7 @@ description: Finds broken links and missing images, scripts and styles on one si
 license: MIT
 metadata:
   pack: web
-  version: 0.2.0
+  version: 0.2.1
   needs: python3
 ---
 

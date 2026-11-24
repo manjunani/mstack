@@ -4,7 +4,7 @@ description: Stops a .glb or .gltf model from shipping until it is a real file, 
 license: MIT
 metadata:
   pack: 3d
-  version: 0.2.0
+  version: 0.2.1
   needs: python3; optional gltf_validator, gltf-transform, a browser for renders
 ---
 

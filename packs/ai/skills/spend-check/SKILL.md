@@ -4,7 +4,7 @@ description: Measures the tokens and cost of an AI flow from its own usage log a
 license: MIT
 metadata:
   pack: ai
-  version: 0.2.0
+  version: 0.2.1
   needs: python3
 ---
 

@@ -4,7 +4,7 @@ description: Turns a .glb into a phone AR preview at true size: compares the mod
 license: MIT
 metadata:
   pack: xr
-  version: 0.2.0
+  version: 0.2.1
   needs: python3; optional usdcat, usdchecker, a GLB to USDZ converter, a model-viewer build
 ---
 

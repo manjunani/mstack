@@ -4,7 +4,7 @@ description: Carries out a plan task by task, each task of a longer plan in a fr
 license: MIT
 metadata:
   pack: dev
-  version: 0.2.0
+  version: 0.2.1
   needs: python3, git, the project's test runner
 ---
 

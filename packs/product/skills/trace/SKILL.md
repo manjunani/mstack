@@ -4,7 +4,7 @@ description: Builds a matrix from each requirement id in the spec (R-001) to the
 license: MIT
 metadata:
   pack: product
-  version: 0.2.0
+  version: 0.2.1
   needs: python3, git, a spec with ids
 ---
 

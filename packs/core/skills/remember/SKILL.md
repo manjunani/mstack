@@ -4,7 +4,7 @@ description: Saves a decision or a lesson as a short record in a plain file in t
 license: MIT
 metadata:
   pack: core
-  version: 0.2.0
+  version: 0.2.1
   needs: python3
 ---
 

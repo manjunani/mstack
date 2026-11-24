@@ -1,7 +1,7 @@
 {
   "name": "mstack-3d",
   "description": "3D models and scenes, proven by numbers and pixels: glTF gate, three.js render check, rig motion check, Blender jobs, text-to-3D acceptance.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": { "name": "manjunani" },
   "license": "MIT",
   "repository": "https://github.com/manjunani/mstack",

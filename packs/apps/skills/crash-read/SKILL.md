@@ -4,7 +4,7 @@ description: Reads an Apple crash report (.ips or .crash) and names the failing 
 license: MIT
 metadata:
   pack: apps
-  version: 0.2.0
+  version: 0.2.1
   needs: python3; dwarfdump and atos (Xcode command-line tools) only for unsymbolicated reports
 ---
 

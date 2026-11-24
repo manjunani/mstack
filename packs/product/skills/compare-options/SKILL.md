@@ -4,7 +4,7 @@ description: Ranks named options on weighted criteria with a script, applies vet
 license: MIT
 metadata:
   pack: product
-  version: 0.2.0
+  version: 0.2.1
   needs: python3
 ---
 

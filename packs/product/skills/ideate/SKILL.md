@@ -4,7 +4,7 @@ description: Produces a wide list of options grounded in the project, cuts it wi
 license: MIT
 metadata:
   pack: product
-  version: 0.2.0
+  version: 0.2.1
   needs: python3
 ---
 

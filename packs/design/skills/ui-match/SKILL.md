@@ -4,7 +4,7 @@ description: Builds a screen from a screenshot, Figma export or mockup image and
 license: MIT
 metadata:
   pack: design
-  version: 0.2.0
+  version: 0.2.1
   needs: python3, a browser the agent can drive, the reference as PNG
 ---
 

@@ -4,7 +4,7 @@ description: Measures a built .app or .ipa by part (executable, frameworks, Asse
 license: MIT
 metadata:
   pack: apps
-  version: 0.2.0
+  version: 0.2.1
   needs: python3
 ---
 

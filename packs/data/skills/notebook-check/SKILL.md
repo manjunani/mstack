@@ -4,7 +4,7 @@ description: Checks a Jupyter .ipynb file for cells run out of order or never ru
 license: MIT
 metadata:
   pack: data
-  version: 0.2.0
+  version: 0.2.1
   needs: python3, jupyter (optional, for the re-run)
 ---
 

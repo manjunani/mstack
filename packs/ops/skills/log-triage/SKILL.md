@@ -4,7 +4,7 @@ description: Narrows a saved log file to the first error, the distinct error gro
 license: MIT
 metadata:
   pack: ops
-  version: 0.2.0
+  version: 0.2.1
   needs: python3
 ---
 

@@ -4,7 +4,7 @@ description: Turns a settled request into a plan file of small ordered tasks, ea
 license: MIT
 metadata:
   pack: dev
-  version: 0.2.0
+  version: 0.2.1
   needs: python3, git
 ---
 
