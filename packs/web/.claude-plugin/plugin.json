@@ -1,7 +1,7 @@
 {
   "name": "mstack-web",
   "description": "Working with the live web, honestly: check a deployed site, find broken links, extract a page, check quotes against saved sources, plan a polite fetch, keep research sourced, measure transfer speed, watch a page for changes.",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "author": { "name": "manjunani" },
   "license": "MIT",
   "repository": "https://github.com/manjunani/mstack",

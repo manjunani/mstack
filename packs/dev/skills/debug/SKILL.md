@@ -4,7 +4,7 @@ description: Finds the real cause of a bug before any fix. Keeps a case file wit
 license: MIT
 metadata:
   pack: dev
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, git
 ---
 

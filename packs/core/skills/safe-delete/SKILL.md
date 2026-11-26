@@ -4,7 +4,7 @@ description: Deletes files and folders so the removal can be undone: lists what 
 license: MIT
 metadata:
   pack: core
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, git
 ---
 

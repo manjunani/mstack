@@ -3,77 +3,99 @@
     "trigger": "8/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "data-check": {
     "trigger": "9/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "data-clean": {
     "trigger": "9/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "1/2",
+    "benefit_runs": 3
   },
   "data-diff": {
     "trigger": "9/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "data-profile": {
     "trigger": "8/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "notebook-check": {
     "trigger": "8/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "number-trace": {
     "trigger": "9/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "query-review": {
     "trigger": "9/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "sheet-audit": {
     "trigger": "8/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "sql-run": {
     "trigger": "8/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "1/2",
+    "benefit_runs": 3
   },
   "stat-compare": {
     "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   }
 }

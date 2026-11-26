@@ -3,35 +3,45 @@
     "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "1/1",
+    "benefit_runs": 3
   },
   "gltf-gate": {
     "trigger": "8/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "rig-motion-check": {
     "trigger": "8/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "text-to-3d": {
     "trigger": "9/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "three-verify": {
     "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "1/2",
+    "benefit_runs": 3
   }
 }

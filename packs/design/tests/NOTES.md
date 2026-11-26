@@ -50,3 +50,46 @@ Last run: **115 cases, 0 wrong, 0 not run.**
 ## Names
 
 No name from `docs/SKILLS.md` was changed. The study note asked whether `design-review` sits too close to core `review` and `verify`; the description names `review` as its neighbour, and only the trigger tests can show whether that is enough.
+
+Proposed text for packs/design/tests/NOTES.md (ui-build). Not applied; NOTES.md was left untouched.
+
+Replace the ui-build row of the "Script tests" table with:
+
+| ui-build | 32 | blocking lint on filler text, a TODO marker, a dead handler, a dead link, invented proof, a removed focus outline, a stand-in name (Acme), a placeholder avatar service and a mailto link to example.com; default-look traits only warn; an outline removed with a `focus-visible` ring is accepted; one fixture per default look added on 2026-11-25 (blue-to-violet gradient, stock indigo brand colour, stock hero phrases, announcement pill, sparkle icon, blurred blobs, grey on colour, bounce animation, hover lift on every card, eyebrow labels, gradient buttons, stock calls to action, everything centred, the same card class repeated, an icon-tile grid, same-length card copy, too many font weights, a skipped heading level), each checked for its rule id, file and line, and each tripping only its own rule; a finished page with sample input hints (`placeholder="Jane Doe"`, `you@example.com`), a skeleton `animate-pulse`, one centred note, one hover effect and two shadowed cards gives no warning at all; round 1 to 3 are recorded and round 4 is refused; a round with no real note is refused |
+
+Update "Last run": ui-build alone ran 32 cases, 0 wrong (2026-11-25, `.testrun/uibuild-looks-083623/`). The other design skills were not re-run; if their counts are unchanged the pack total becomes 137 cases (115 + 22).
+
+Add under "Faults the tests caught (fixed)" only if wanted; nothing in the new rules failed its fixture. During writing, the per-file checks were kept off CSS for card, tile, copy and heading rules (they read markup only), and `placeholder-name` ignores names inside an input's `placeholder` attribute so a form hint such as "Jane Doe" is not called unfinished work.
+
+Note for the default-looks list: it now has 20 line patterns (9 from 2026-11-22, 11 added 2026-11-25; four of the new ones warn only at a minimum count per file: stock-brand-colour 3, hover-lift 3, eyebrow-labels 3, stock-cta 2) and 6 per-file checks with dated thresholds under `file_checks`. Three new blocking rules (placeholder-name, placeholder-image, example-link) live in `scripts/lint_ui.py` next to the existing ones. Ideas follow the research summary of Impeccable's detector (research/libraries-2026-11-25.md); no text, rule wording or code was taken from its repository.
+
+## diagram-check (added 2026-11-25)
+
+Built offline on Python 3.14, standard library only. Nothing installed; no browser, no renderer, no mermaid-cli.
+
+### Script test
+
+`tests/scripts/diagram_check_cases.py` has its own runner (diagram-check is not in `design_cases.py`). It copies `tests/scripts/fixtures/diagram-check/` into a fresh `.testrun/design-diagram-check/run-<n>/` and checks the exit code and a piece of the output for each case.
+
+```
+python3 packs/design/tests/scripts/diagram_check_cases.py
+```
+
+Last run: **32 cases, 0 wrong.** One case per rule on SVG (overlapping boxes, overlapping labels, label past its box, label past the viewBox, contrast with the large-text limit, contrast through a CSS descendant selector, unlabelled shape, loose line end, small font, font scaled by `--display-width`, `--min-font`, hard-coded caption failing on a dark page, the same file with `--theme light`, a `prefers-color-scheme` rule that fixes it, `--ignore`); rotated text ends as not verified; a clean SVG passes. draw.io: an uncompressed file with overlap, unlabelled cell, edge with no target and white text on light blue; a compressed (deflate + base64) page that passes; an unreadable compressed page. Mermaid: style/classDef contrast, font size and an empty label; a fill left to the theme that fails in dark; clean styles still end as not verified. Bad input: not well-formed XML, an empty SVG, HTML saved as .svg, XML entities refused, unknown extension, missing file (blocked). `--help`.
+
+### Fault the tests caught (fixed in the test)
+
+- `--ignore blank` on the unlabelled fixture was expected to pass, but the line into the ignored box then touches nothing and is reported as a loose edge. That is the correct result; the case now expects it.
+
+### What is not checked, and why
+
+- No font metrics: text width is the character count times 0.55 em (0.6 for monospace), so clipping and overlap of labels near the limit can be off by a few pixels. Tolerances are in `references/limits.json`.
+- Mermaid: layout (overlap, clipping, canvas, loose edges) needs a render. Source-only checks end as not verified. Rendered Mermaid SVGs use HTML labels (foreignObject): their boxes are checked, their font size and contrast are listed as not measured.
+- SVG: rotated or skewed elements, `<use>`, `<image>`, gradient fills behind text and CSS selectors with pseudo-classes, attributes or sibling combinators are listed as not measured. Path bounds include control points, so curved shapes are slightly larger than drawn.
+- draw.io: no fixed canvas, so off-canvas is not checked. Missing or `default` colours are taken as draw.io's adaptive defaults (readable in both themes); this and the 11 px default font size are from memory.
+- Every limit in `references/limits.json` is `verified: false`: the WCAG ratios were written from memory and the rest are judgement values (minimum font, gaps, dark page colour #0d1117, Mermaid theme colours).
+- Trigger, silence and benefit evals were not run in this build.
+
+### Name
+
+`diagram-check` is not in `docs/SKILLS.md`; it comes from research/libraries-2026-11-25.md section 4 (Diagram Design, Archify; ideas only, no text taken).

@@ -4,7 +4,7 @@ description: Runs independent tasks at the same time with separate agents, one g
 license: MIT
 metadata:
   pack: dev
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, git 2.17 or newer, a host that can start separate agents
 ---
 
@@ -49,7 +49,7 @@ The script is `scripts/lanes.py` in this skill's folder. In Claude Code that is 
    python3 scripts/lanes.py create .mstack/parallel/tasks.json
    ```
    Each lane gets a folder, a branch and a brief file. A lane has no ignored files: no installed dependencies, no `.env`. If a lane needs them, tell the user; never copy secret files into lanes.
-6. **Start all agents in one turn.** Give each agent only the path of its brief and tell it to work in the lane folder named there. Do not paste the conversation.
+6. **Start all agents in one turn.** Give each agent only the path of its brief and tell it to work in the lane folder named there. Do not paste the conversation. Use this pack's bare `task-builder` agent (in Claude Code: subagent type `mstack-dev:task-builder`), which has only file and shell tools and no CLAUDE.md, skills or MCP servers, so each agent starts small; if it is not available, use the smallest agent type that can read, edit and run commands.
 7. **When they return, read git, not the reports.**
    ```
    python3 scripts/lanes.py list

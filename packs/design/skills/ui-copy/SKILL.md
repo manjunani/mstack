@@ -4,7 +4,7 @@ description: Checks the words in an interface and flags one action with several 
 license: MIT
 metadata:
   pack: design
-  version: 0.2.2
+  version: 0.3.0
   needs: python3; a browser for the best evidence
 ---
 

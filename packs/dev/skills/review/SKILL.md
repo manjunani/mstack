@@ -4,7 +4,7 @@ description: Finds real bugs in a code change, ranked by severity, and keeps onl
 license: MIT
 metadata:
   pack: dev
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, git
 ---
 
@@ -17,6 +17,7 @@ Produces a findings file for one exact range in which every finding was checked 
 Reviewing a change:
 - `review.py package` printed the range as two full commit ids (or "uncommitted changes").
 - `review.py check` exits 0 on the findings file: every finding stands, or there are none.
+- `floor.py` ran on the same range, and every finding it did not print as `accepted` is in the review as important or critical.
 - The findings file lists what was not judged.
 
 Answering comments:
@@ -50,13 +51,18 @@ The script is `scripts/review.py` in this skill's folder. In Claude Code that is
    - Was a check, a lock, a validation or an error path removed? Why was it there (`git log -S`, `git blame`)?
    - Who calls what changed (`grep` for each changed name)? Do those callers still get what they expect?
    - Is the new behaviour covered by a test that would fail without it?
-5. **Write the findings** to `.mstack/review/<id>/findings.json`. One entry per defect: file, line, severity, title, evidence (what goes wrong and when), quote (the exact text of that line), fix. Severity: critical = wrong result, data loss or a security hole; important = will break in a case that happens; minor = worth fixing, harms nobody yet. Style and taste go in the reply as remarks, not in the file.
-6. **Check them.**
+5. **Check the floor.** On the range `package` printed (give no range for uncommitted changes):
+   ```
+   python3 scripts/floor.py <base commit>..<head commit>
+   ```
+   Each `FLOOR` line is a check made weaker: a test deleted, removed or skipped, an assertion dropped or loosened, a threshold moved, a checker silenced, a CI step removed. Treat every one as at least important. A line in the new code goes into the findings with floor.py's file, line and quote; one marked `(before)` cites removed code, so it goes in the report instead. Accept one only when the intent or the user gives the reason: `--allow "<file>:<reason>"`, and quote that reason.
+6. **Write the findings** to `.mstack/review/<id>/findings.json`. One entry per defect: file, line, severity, title, evidence (what goes wrong and when), quote (the exact text of that line), fix. Severity: critical = wrong result, data loss or a security hole; important = will break in a case that happens; minor = worth fixing, harms nobody yet. Style and taste go in the reply as remarks, not in the file.
+7. **Check them.**
    ```
    python3 scripts/review.py check .mstack/review/<id>/findings.json
    ```
    For each `REJECTED` line: open the source at that place. Correct the finding if the defect is real, drop it if it is not. Run again until exit 0.
-7. **Report.** End state first. Then critical, important, minor, each with `file:line`, then what was not judged. Change nothing unless the user asks for the fixes.
+8. **Report.** End state first. Then critical, important, minor, each with `file:line`, then what was not judged. Change nothing unless the user asks for the fixes.
 
 ## Steps: answering comments from someone else
 

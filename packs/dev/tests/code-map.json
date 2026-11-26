@@ -1,0 +1,53 @@
+{
+  "fire": [
+    "who calls parse_config? i want to change what it returns",
+    "where is the Invoice class used in this repo",
+    "what breaks if i change the signature of apply_discount in shop/pricing.py",
+    "find every caller of handleSubmit before I rename it",
+    "which files import src/billing/tax.py",
+    "what does my branch affect? list the callers of whatever I changed vs main",
+    "I'm new to this codebase, give me a quick map of the modules and what imports what",
+    "is load_user_profile still used anywhere or is it dead code",
+    "before I touch utils/retry.go, who depends on RetryWithBackoff",
+    "code map: impact of my uncommitted changes, which tests should I look at"
+  ],
+  "quiet": [
+    "review my diff for bugs before I merge",
+    "the checkout test fails with a KeyError, why",
+    "run the tests and tell me if we're green",
+    "rename parse_config to read_config everywhere",
+    "explain what the apply_discount function does",
+    "write unit tests for shop/pricing.py",
+    "commit these changes with a good message",
+    "draw an architecture diagram of our microservices for the slides",
+    "is this endpoint safe from SQL injection",
+    "plan the steps to split billing into its own package"
+  ],
+  "tasks": [
+    {
+      "name": "finds-callers",
+      "prompt": "I want to add a required currency argument to apply_discount. Who calls it, and which tests cover it? Don't change anything yet.",
+      "fixture": "fixtures/code-map/finds-callers",
+      "max_turns": 15,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-callers", "type": "tool_used", "tool": "Bash", "input_match": "code_map\\.py\\s+(--\\S+\\s+\\S+\\s+)*callers\\s+apply_discount" },
+        { "name": "names-callers", "type": "llm", "body": "apply_discount is defined in shop/pricing.py and used at shop/cart.py (Cart.total), shop/checkout.py (quote, via pricing.apply_discount), shop/pricing.py (bulk_price) and tests/test_pricing.py. legacy/old_report.py only has the name inside a string and shop/checkout.py line 9 only in a comment. PASS if the reply names Cart.total or shop/cart.py, quote or shop/checkout.py, bulk_price, and tests/test_pricing.py as the test, and does not present legacy/old_report.py or the comment as a caller. FAIL otherwise." },
+        { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
+      ]
+    },
+    {
+      "name": "impact-of-rename",
+      "prompt": "On this branch I renamed format_total to render_total. Compared with main, what else does that touch, and is anything left broken?",
+      "fixture": "fixtures/code-map/impact-of-rename",
+      "git": [{"files": "base", "commit": "Invoice formatting"}, {"branch": "rename-total", "files": "c1", "commit": "Rename format_total"}],
+      "max_turns": 15,
+      "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
+      "graders": [
+        { "name": "ran-impact", "type": "tool_used", "tool": "Bash", "input_match": "code_map\\.py\\s+(--\\S+\\s+\\S+\\s+)*impact" },
+        { "name": "finds-stale-caller", "type": "regex", "pattern": "report\\.py", "flags": "i" },
+        { "name": "honest-state", "type": "llm", "body": "app/report.py line 5 still calls fmt.format_total, which no longer exists after the rename, so the branch is broken there. PASS if the reply says app/report.py (monthly) still uses format_total and will fail, and states an end state (fail, or an equivalent plain statement that something is broken). FAIL if it says nothing is broken or does not mention report.py." }
+      ]
+    }
+  ]
+}

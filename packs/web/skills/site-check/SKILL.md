@@ -4,7 +4,7 @@ description: Checks how a deployed address answers: every redirect hop, the fina
 license: MIT
 metadata:
   pack: web
-  version: 0.2.2
+  version: 0.3.0
   needs: python3
 ---
 

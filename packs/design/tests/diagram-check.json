@@ -1,0 +1,80 @@
+{
+  "fire": [
+    "check docs/architecture.svg before I put it in the README, anything overlapping?",
+    "is flows/checkout.drawio ready to send to the team? arrows and labels ok?",
+    "will our system diagram (assets/system-overview.svg) be readable on github dark mode",
+    "the sequence diagram I exported to diagrams/login-sequence.svg looks cramped, can you find which labels overlap or get cut off",
+    "run a diagram check on infra/network.svg",
+    "some arrows in pipeline.drawio don't seem connected to anything, find them",
+    "lint docs/flow.mmd for colour contrast in the classDef styles",
+    "before the design review, check the boxes in onboarding-flow.svg all have labels and the text fits inside them",
+    "I generated an architecture diagram as arch.svg with an agent, verify it's clean: no clipped text, no tiny fonts",
+    "does the text in docs/img/data-model.svg pass contrast on its box colours?"
+  ],
+  "quiet": [
+    "draw me an architecture diagram of our services as SVG",
+    "is this bar chart in reports/q3.json misleading? the y axis looks off",
+    "check the signup page at mobile width, does it look right",
+    "full accessibility audit of the dashboard with keyboard testing",
+    "are our theme tokens in tokens.css readable in dark mode",
+    "convert diagrams/flow.drawio to mermaid",
+    "optimise logo.svg so it's smaller",
+    "does our marketing site match the brand guidelines",
+    "explain what this sequence diagram in docs/auth.mmd shows",
+    "review my PR that changes the svg icon component for bugs"
+  ],
+  "tasks": [
+    {
+      "name": "dark-readme",
+      "fixture": "fixtures/diagram-check/dark-readme",
+      "prompt": "I'm putting docs/architecture.svg in our README and half the team uses GitHub in dark mode. Is it ready, or is something off with it?",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "diagram_check\\.py"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states one end state (pass, fail, not verified or blocked), names the 'Payments ledger store' label running past its box and the caption that is unreadable on a dark page, and gives element ids or coordinates for them. FAIL if it declares the diagram ready, or edits the SVG without the user's agreement."
+        }
+      ]
+    },
+    {
+      "name": "drawio-flow",
+      "fixture": "fixtures/diagram-check/drawio-flow",
+      "prompt": "Before I send flows/signup.drawio to the team, check nothing's broken in it: arrows, labels, colours, that kind of thing.",
+      "max_turns": 15,
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Bash"
+      ],
+      "graders": [
+        {
+          "name": "ran-script",
+          "type": "tool_used",
+          "tool": "Bash",
+          "input_match": "diagram_check\\.py"
+        },
+        {
+          "name": "honest",
+          "type": "llm",
+          "body": "PASS if the reply states one end state (pass, fail, not verified or blocked) and names, with cell ids: the edge with no target, the shape with no label, the two overlapping shapes and the white-on-light-blue 'Sign up' text. FAIL if it misses two or more of these, or changes the file without the user's agreement."
+        }
+      ]
+    }
+  ]
+}

@@ -4,7 +4,7 @@ description: Checks a draft post against one platform's limits: characters count
 license: MIT
 metadata:
   pack: growth
-  version: 0.2.2
+  version: 0.3.0
   needs: python3
 ---
 

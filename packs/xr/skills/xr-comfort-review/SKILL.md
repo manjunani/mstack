@@ -4,7 +4,7 @@ description: Measures every UI element of a running VR or AR scene: distance fro
 license: MIT
 metadata:
   pack: xr
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, a browser running the scene (three.js)
 ---
 

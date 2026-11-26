@@ -3,49 +3,72 @@
     "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "brand-kit": {
     "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "1/2",
+    "benefit_runs": 3
   },
   "design-review": {
     "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "token-check": {
     "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "ui-build": {
     "trigger": "9/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "1/2",
+    "benefit_runs": 3
   },
   "ui-copy": {
     "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   },
   "ui-match": {
     "trigger": "8/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-23",
-    "with": "Claude Code 2.1.330"
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
+  },
+  "diagram-check": {
+    "trigger": "10/10",
+    "silence": "0/10",
+    "runs": 1,
+    "tested": "2026-11-25",
+    "with": "Claude Code 2.1.330",
+    "benefit": "2/2",
+    "benefit_runs": 3
   }
 }

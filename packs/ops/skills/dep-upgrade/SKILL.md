@@ -4,7 +4,7 @@ description: Upgrades one dependency with a record that proves it: the old versi
 license: MIT
 metadata:
   pack: ops
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, the project's package manager
 ---
 

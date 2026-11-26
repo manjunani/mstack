@@ -1,0 +1,99 @@
+{
+  "_about": "Limits and estimates used by scripts/diagram_check.py. The contrast ratios are WCAG 2.x values written from memory; every other entry is a judgement call or an estimate of renderer behaviour. None was read in a primary source during this work, so every entry is verified: false. Change a value here, not in the script.",
+  "contrast_text_min": {
+    "value": 4.5, "unit": "ratio", "source": "WCAG 2.2, success criterion 1.4.3 (https://www.w3.org/TR/WCAG22/), from memory",
+    "checked": "2026-11-25", "verified": false
+  },
+  "contrast_large_min": {
+    "value": 3.0, "unit": "ratio", "source": "WCAG 2.2, success criterion 1.4.3 (https://www.w3.org/TR/WCAG22/), from memory",
+    "checked": "2026-11-25", "verified": false
+  },
+  "large_text_px": {
+    "value": 24, "unit": "px", "source": "WCAG 2.2 'large scale' text, 18 pt, from memory",
+    "checked": "2026-11-25", "verified": false
+  },
+  "large_bold_text_px": {
+    "value": 18.66, "unit": "px", "source": "WCAG 2.2 'large scale' bold text, 14 pt, from memory",
+    "checked": "2026-11-25", "verified": false
+  },
+  "min_font_px": {
+    "value": 12, "unit": "px", "source": "judgement: smallest label size that stays readable when a diagram is shown at its own size",
+    "checked": "2026-11-25", "verified": false
+  },
+  "char_width_em": {
+    "value": 0.55, "unit": "em", "source": "estimate: average advance of a proportional sans-serif character; used because the script has no font metrics",
+    "checked": "2026-11-25", "verified": false
+  },
+  "mono_char_width_em": {
+    "value": 0.6, "unit": "em", "source": "estimate: advance of a common monospace font",
+    "checked": "2026-11-25", "verified": false
+  },
+  "ascent_em": {
+    "value": 0.8, "unit": "em", "source": "estimate: share of the font size above the baseline",
+    "checked": "2026-11-25", "verified": false
+  },
+  "line_height_em": {
+    "value": 1.2, "unit": "em", "source": "estimate: line height of wrapped labels",
+    "checked": "2026-11-25", "verified": false
+  },
+  "overlap_tolerance_px": {
+    "value": 2, "unit": "px", "source": "judgement: shared borders and estimate error are not overlaps",
+    "checked": "2026-11-25", "verified": false
+  },
+  "edge_gap_px": {
+    "value": 8, "unit": "px", "source": "judgement: room for an arrowhead marker between a line end and the shape it points at",
+    "checked": "2026-11-25", "verified": false
+  },
+  "label_gap_px": {
+    "value": 24, "unit": "px", "source": "judgement: a label this close to a shape, outside any other shape, names it (icon with caption)",
+    "checked": "2026-11-25", "verified": false
+  },
+  "min_node_px": {
+    "value": 16, "unit": "px", "source": "judgement: shapes smaller than this on both sides are arrowheads, dots or icons, not nodes",
+    "checked": "2026-11-25", "verified": false
+  },
+  "node_group_max_shapes": {
+    "value": 4, "unit": "shapes", "source": "judgement: a <g> with this many shapes or fewer is one node drawn from parts (a cylinder, a card with a header)",
+    "checked": "2026-11-25", "verified": false
+  },
+  "background_cover": {
+    "value": 0.95, "unit": "share of canvas", "source": "judgement: a shape covering this much of the canvas is the diagram's background",
+    "checked": "2026-11-25", "verified": false
+  },
+  "page_light": {
+    "value": "#ffffff", "unit": "colour", "source": "judgement: page behind a transparent diagram in a light theme",
+    "checked": "2026-11-25", "verified": false
+  },
+  "page_dark": {
+    "value": "#0d1117", "unit": "colour", "source": "judgement: a typical dark page (code hosts and docs sites in dark mode)",
+    "checked": "2026-11-25", "verified": false
+  },
+  "page_text_light": {
+    "value": "#000000", "unit": "colour", "source": "judgement: text colour that currentColor and theme-default colours take on a light page",
+    "checked": "2026-11-25", "verified": false
+  },
+  "page_text_dark": {
+    "value": "#e6edf3", "unit": "colour", "source": "judgement: text colour that currentColor and theme-default colours take on a dark page",
+    "checked": "2026-11-25", "verified": false
+  },
+  "drawio_font_px": {
+    "value": 11, "unit": "px", "source": "draw.io default fontSize when a style sets none, from memory",
+    "checked": "2026-11-25", "verified": false
+  },
+  "mermaid_text_light": {
+    "value": "#333333", "unit": "colour", "source": "Mermaid default theme node text, from memory",
+    "checked": "2026-11-25", "verified": false
+  },
+  "mermaid_text_dark": {
+    "value": "#cccccc", "unit": "colour", "source": "Mermaid dark theme node text, from memory",
+    "checked": "2026-11-25", "verified": false
+  },
+  "mermaid_fill_light": {
+    "value": "#ececff", "unit": "colour", "source": "Mermaid default theme node fill, from memory",
+    "checked": "2026-11-25", "verified": false
+  },
+  "mermaid_fill_dark": {
+    "value": "#1f2020", "unit": "colour", "source": "Mermaid dark theme node fill, from memory",
+    "checked": "2026-11-25", "verified": false
+  }
+}

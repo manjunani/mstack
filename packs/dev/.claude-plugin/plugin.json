@@ -1,7 +1,7 @@
 {
   "name": "mstack-dev",
-  "description": "Software development with proof at each step: plan, build, prove a test, debug, review, parallel work, commit, land a branch, release, security check.",
-  "version": "0.2.2",
+  "description": "Software development with proof at each step: plan, build with a bare agent per task, map callers and impact, prove a test, debug, review with a floor guard, parallel work, commit, land a branch, release, security check.",
+  "version": "0.3.0",
   "author": { "name": "manjunani" },
   "license": "MIT",
   "repository": "https://github.com/manjunani/mstack",

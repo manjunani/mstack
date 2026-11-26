@@ -4,7 +4,7 @@ description: Confirms that the version now running is the one that was meant to 
 license: MIT
 metadata:
   pack: ops
-  version: 0.2.2
+  version: 0.3.0
   needs: python3
 ---
 

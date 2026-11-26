@@ -4,7 +4,7 @@ description: Cleans messy values in a CSV into a new file (trim, case, dates to 
 license: MIT
 metadata:
   pack: data
-  version: 0.2.2
+  version: 0.3.0
   needs: python3
 ---
 

@@ -4,7 +4,7 @@ description: Compares two versions of a dataset by key and reports rows added, r
 license: MIT
 metadata:
   pack: data
-  version: 0.2.2
+  version: 0.3.0
   needs: python3
 ---
 

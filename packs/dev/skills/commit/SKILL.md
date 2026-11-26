@@ -4,7 +4,7 @@ description: Turns a mixed working tree into clean commits, one per reason for c
 license: MIT
 metadata:
   pack: dev
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, git
 ---
 

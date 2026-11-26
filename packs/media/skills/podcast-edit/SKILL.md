@@ -4,7 +4,7 @@ description: Cleans a spoken recording into a new file: shortens long pauses, br
 license: MIT
 metadata:
   pack: media
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, ffmpeg, ffprobe; a word-timed transcript for filler removal
 ---
 

@@ -4,8 +4,11 @@
   lint   scan source files. Unfinished work blocks: filler Latin, TODO and FIXME markers in
          markup or styles, placeholder copy, invented proof (a testimonial or a number with
          no source), handlers that do nothing, links to nowhere, focus outlines removed with
-         nothing in their place. Default-look traits only warn: they come from a dated list
-         in references/default-looks.json, and a brief that asks for one of them wins.
+         nothing in their place, stand-in names (Acme, John Doe, Your Company), stock
+         placeholder images and links to example.com. Default-look traits only warn: line
+         patterns and per-file checks (centred text, repeated card classes, icon-tile grids,
+         same-length card copy, too many font weights, skipped heading levels) come from a
+         dated list in references/default-looks.json, and a brief that asks for one wins.
   round  record one render-and-inspect round in .mstack/ui-build/rounds.json; the fourth
          round is refused, so the work stops and remaining issues go to the user.
 
@@ -30,11 +33,106 @@ BLOCKS = [
     ("placeholder-copy", re.compile(r"\b(placeholder|dummy|sample) (text|copy|title|heading|content)\b|\b(your|insert) [\w ]{0,20}\bhere\b|\bgoes here\b", re.I), "placeholder copy"),
     ("dead-handler", re.compile(r"on[A-Z]\w*=\{\s*\(\)\s*=>\s*\{\s*\}\s*\}|onclick=\"\s*\"|@click=\"\s*\"|on:click=\{\(\)\s*=>\s*\{\}\}"), "a handler that does nothing"),
     ("dead-link", re.compile(r"""href\s*=\s*["'](#|javascript:void\(0\);?)["']"""), "a link that goes nowhere"),
+    ("placeholder-image", re.compile(r"\b(via\.placeholder\.com|placehold\.(co|it)|placeholder\.com|dummyimage\.com|picsum\.photos|placekitten\.com|placeimg\.com|loremflickr\.com|i\.pravatar\.cc|randomuser\.me/api/portraits|ui-avatars\.com)\b", re.I), "a stock placeholder image or fake avatar service"),
+    ("example-link", re.compile(r"""\b(href|src|action)\s*=\s*\{?\s*["'`](https?://(www\.)?example\.(com|org|net)\b|mailto:[^"'`]*@example\.(com|org|net))""", re.I), "a link or address that still points to example.com"),
     ("invented-proof", re.compile(r"\b(trusted by|loved by|used by|join) (over |more than )?[\d,.]+\s*[kKmM+]*\+?\s*(teams|users|customers|companies|developers|people)\b|\b\d(\.\d)?/5 (stars|rating)\b|\b\d{2,3}% (faster|more|less|of (users|customers))\b", re.I), "a claim of proof (users, ratings, percentages); keep it only if the user supplied it"),
 ]
 FOCUS_OFF = re.compile(r"outline\s*:\s*(none|0)\b|\boutline-none\b|focus:outline-none")
 FOCUS_BACK = re.compile(r"focus-visible|:focus[^{]*\{[^}]*(box-shadow|outline\s*:\s*\d|border|ring)|focus:ring|focus-visible:ring|focus:shadow|focus:border")
+PLACEHOLDER_NAME = re.compile(r"\b(Acme( (Inc|Corp|Co|Corporation|Ltd))?\.?|John Doe|Jane Doe|John Smith|Your (Company|Brand|Logo|Name)|Company Name|Brand ?Name|Product Name)\b")
+# a hint inside an input's placeholder is a legitimate use of a sample name
+PLACEHOLDER_ATTR = re.compile(r"""placeholder\s*[=:]\s*\{?\s*(["'`])[^"'`]*\1""", re.I)
 MARKER = re.compile(r"(<!--|/\*|//|\{/\*)\s*(TODO|FIXME|XXX|HACK)\b|\b(TODO|FIXME)\s*:")
+
+
+MARKUP_EXT = {".html", ".htm", ".jsx", ".tsx", ".js", ".ts", ".vue", ".svelte", ".astro"}
+CLASS_ATTR = re.compile(r"""\bclass(?:Name)?\s*=\s*\{?\s*["'`]([^"'`]+)["'`]""")
+CENTRED = re.compile(r"""\btext-center\b|text-align\s*:\s*center\b|textAlign\s*:\s*["']center""")
+OTHER_ALIGN = re.compile(r"""\btext-(left|start|right|end|justify)\b|text-align\s*:\s*(left|start|right|end|justify)\b|textAlign\s*:\s*["'](left|start|right|end|justify)""")
+WEIGHT_CLASS = {"thin": 100, "extralight": 200, "light": 300, "normal": 400, "medium": 500, "semibold": 600, "bold": 700, "extrabold": 800, "black": 900}
+WEIGHT_TW = re.compile(r"(?<![\w-])font-(thin|extralight|light|normal|medium|semibold|bold|extrabold|black)(?![\w-])")
+WEIGHT_CSS = re.compile(r"""font-?[wW]eight\s*:\s*["']?(\d00|bold|normal)\b""")
+HEADING = re.compile(r"<h([1-6])\b")
+H3_TEXT = re.compile(r"<h3\b[^>]*>(.*?)</h3>")
+P_TEXT = re.compile(r"<p\b[^>]*>(.*?)</p>")
+TAGS = re.compile(r"<[^>]+>|\{[^}]*\}")
+
+
+def file_checks(path, lines, checks):
+    """Per-file default-look checks that need counts across lines. Returns (id, line, what, shown line)."""
+    out = []
+    markup = path.suffix.lower() in MARKUP_EXT
+
+    def add(rule, number, extra):
+        out.append((rule, number, f"{checks[rule]['what']} ({extra})", lines[number - 1].strip()[:90]))
+
+    c = checks["centred-everything"]
+    centred = [i for i, line in enumerate(lines, 1) for _ in CENTRED.finditer(line)]
+    other = sum(len(OTHER_ALIGN.findall(line)) for line in lines)
+    if len(centred) >= c["min_centred"] and len(centred) / (len(centred) + other) >= c["min_share"]:
+        add("centred-everything", centred[0], f"{len(centred)} centred, {other} other alignments")
+
+    if markup:
+        c = checks["same-card-everywhere"]
+        seen = {}
+        for i, line in enumerate(lines, 1):
+            for value in CLASS_ATTR.findall(line):
+                tokens = value.split()
+                if any(t.startswith("rounded") for t in tokens) and any(t.startswith("shadow") and t != "shadow-none" for t in tokens):
+                    seen.setdefault(" ".join(sorted(tokens)), []).append(i)
+        repeats = sorted((places for places in seen.values() if len(places) >= c["min_repeats"]), key=len, reverse=True)
+        if repeats:
+            add("same-card-everywhere", repeats[0][0], f"{len(repeats[0])} blocks share one class list")
+
+        c = checks["icon-tile-grid"]
+        tiles = []
+        for i, line in enumerate(lines, 1):
+            for value in CLASS_ATTR.findall(line):
+                tokens = set(value.split())
+                square = any(f"h-{n}" in tokens and f"w-{n}" in tokens for n in ("8", "9", "10", "11", "12", "14", "16")) or any(f"size-{n}" in tokens for n in ("8", "9", "10", "11", "12", "14", "16"))
+                if square and any(t.startswith("rounded") for t in tokens) and any(t.startswith("bg-") for t in tokens):
+                    ahead = "\n".join(lines[i - 1:i + c["look_ahead_lines"]])
+                    if re.search(r"<(h[2-6]|CardTitle)\b", ahead):
+                        tiles.append(i)
+                    break
+        if len(tiles) >= c["min_tiles"]:
+            add("icon-tile-grid", tiles[0], f"{len(tiles)} tiles")
+
+        c = checks["uniform-card-copy"]
+        cards = []
+        for i, line in enumerate(lines, 1):
+            title = H3_TEXT.search(line)
+            if not title:
+                continue
+            for j in range(i - 1, min(len(lines), i + 3)):
+                body = P_TEXT.search(lines[j] if j != i - 1 else line[title.end():])
+                if body:
+                    cards.append((i, len(TAGS.sub("", title.group(1)).split()), len(TAGS.sub("", body.group(1)).strip())))
+                    break
+        n = c["min_cards"]
+        for k in range(len(cards) - n + 1):
+            run = cards[k:k + n]
+            lengths = [length for _, _, length in run]
+            if len({words for _, words, _ in run}) == 1 and min(lengths) > 0 and max(lengths) / min(lengths) <= c["max_length_ratio"]:
+                add("uniform-card-copy", run[0][0], f"{n} cards, texts of {min(lengths)} to {max(lengths)} characters")
+                break
+
+        levels = [(i, int(m.group(1))) for i, line in enumerate(lines, 1) for m in HEADING.finditer(line)]
+        for (_, before), (i, level) in zip(levels, levels[1:]):
+            if level > before + 1:
+                add("skipped-heading", i, f"h{before} then h{level}")
+                break
+
+    c = checks["font-weight-sprawl"]
+    weights = {}
+    for i, line in enumerate(lines, 1):
+        for name in WEIGHT_TW.findall(line):
+            weights.setdefault(WEIGHT_CLASS[name], i)
+        for value in WEIGHT_CSS.findall(line):
+            weights.setdefault({"bold": 700, "normal": 400}.get(value) or int(value), i)
+    if len(weights) > c["max_weights"]:
+        add("font-weight-sprawl", min(weights.values()), f"{len(weights)} weights: {', '.join(str(w) for w in sorted(weights))}")
+    return out
 
 
 def files_under(root):
@@ -55,6 +153,7 @@ def cmd_lint(args):
         return 2
     data = json.loads(LOOKS.read_text(encoding="utf-8"))
     looks = data["patterns"]["value"]
+    checks = data["file_checks"]["value"]
     findings = []
     for path in files:
         rel = path.name if root.is_file() else str(path.relative_to(root))
@@ -64,6 +163,8 @@ def cmd_lint(args):
             for rule, pattern, what in BLOCKS:
                 if pattern.search(line):
                     findings.append(("block", rule, rel, number, what, line.strip()[:90]))
+            if PLACEHOLDER_NAME.search(PLACEHOLDER_ATTR.sub("", line)):
+                findings.append(("block", "placeholder-name", rel, number, "a stand-in name (Acme, John Doe, Your Company): use the real one or mark it as a listed placeholder", line.strip()[:90]))
             if MARKER.search(line):
                 findings.append(("block", "work-marker", rel, number, "a TODO or FIXME marker: finish it or move it to the issue tracker", line.strip()[:90]))
             if FOCUS_OFF.search(line):
@@ -72,8 +173,10 @@ def cmd_lint(args):
                     findings.append(("block", "focus-removed", rel, number, "the focus outline is removed and no other focus style is given", line.strip()[:90]))
         for look in looks:
             hits = [i for i, line in enumerate(lines, 1) if re.search(look["pattern"], line, re.I)]
-            if hits:
+            if hits and len(hits) >= look.get("min", 1):
                 findings.append(("warn", look["id"], rel, hits[0], f"{look['what']} ({len(hits)} place(s))", lines[hits[0] - 1].strip()[:90]))
+        for rule, number, what, shown in file_checks(path, lines, checks):
+            findings.append(("warn", rule, rel, number, what, shown))
     findings.sort(key=lambda f: (f[0] != "block", f[2], f[3]))
     for level, rule, rel, number, what, line in findings[:args.max_lines]:
         print(f"{'BLOCK' if level == 'block' else 'warn '} {rule:18} {rel}:{number}: {what}\n        {line}")

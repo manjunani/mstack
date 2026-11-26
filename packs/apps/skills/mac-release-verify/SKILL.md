@@ -4,7 +4,7 @@ description: Checks that a built Mac app or .dmg will open on other people's Mac
 license: MIT
 metadata:
   pack: apps
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, macOS, codesign, spctl, xcrun stapler
 ---
 

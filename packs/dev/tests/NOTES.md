@@ -145,3 +145,92 @@ the end of a build (not after every task) is unchanged: it governs when the full
 happens. `plan` now requires each task to stand alone (Context, numbered steps, no references to the
 conversation), so a brief needs nothing else. The trigger examples and benefit tasks in `build.json` and
 `plan.json` keep their meaning and were not changed.
+
+## 2026-11-25: token cost of agent per task, measured
+
+One throwaway project with a 4-task plan (small tasks, each reading about 3,000 tokens of code), built three
+ways with `claude -p` on a machine with many plugins installed. Cost is the API list-price equivalent.
+
+| Way | Cost | Each task agent starts at | Tokens in task agents |
+|---|---|---|---|
+| One session | $1.13 | - | - |
+| Agent per task, built-in general-purpose agent | $3.06 | about 80,000 | 1.54 million |
+| Agent per task, the pack's `task-builder` agent | $1.71 | about 8,000 | 0.57 million |
+
+The general-purpose agent loads every tool schema on the machine before it reads a file; `task-builder` loads
+only file and shell tools. With small tasks one session is still cheapest, because each agent's start costs
+more than the reads it keeps out of the main session. The gap closes, and reverses, when tasks read a lot or
+the plan is long: in one session every file a task reads is re-read on every later message, in agent per task
+it is not. All three builds passed their checks and the full suite.
+
+### review: floor guard (floor.py), 2026-11-25
+
+Idea from addyosmani/agent-skills `constraint-driven-development` (floor guard); script and text written for mstack.
+
+Tested by `tests/scripts/floor_cases.sh` (29 runs, 74 checks, all ok; run in `.testrun/floor-a2`):
+- clean change (new code plus a new test) passes; single REF means REF..HEAD; empty range passes;
+  a renamed test file and a renamed test function are not counted as removals.
+- test-deleted (git rm of a test file), test-removed (Python def and JS it() case), assert-removed,
+  assert-loosened (assertEqual -> assertTrue, `assert a == b` -> `assert a`, toStrictEqual -> toEqual).
+- threshold-weakened (fail_under lowered, timeout raised); a stronger bar passes; threshold-removed
+  (fail_under deleted); retry-added (@pytest.mark.flaky).
+- test-skipped (@unittest.skip, pytest.mark.xfail, it.only, xit); focus/skip markers do not also count as removed tests.
+- check-disabled (`|| true`, continue-on-error, # type: ignore, # noqa, @ts-ignore, eslint-disable, --no-verify).
+- ci-step-removed (a step removed from a workflow) and ci-file-deleted; a changed `run:` line is not a removed step.
+- --allow with a real reason accepts (exit 0, lines marked accepted); a non-word, filler or missing reason
+  is blocked (exit 2); an --allow for another file is reported as unused and the run still fails.
+- unknown range and unknown single ref are blocked; outside a git repository is blocked.
+- working-folder mode sees uncommitted edits and untracked files; the script writes nothing
+  (file checksums, .git/index and git status unchanged; no .mstack folder made).
+
+Not tested:
+- Go, Rust, Java/Kotlin, Swift test patterns (func TestX, #[test], @Test, XCTAssert*, t.Skip) are in the
+  script but have no case; GitLab, CircleCI, Jenkins and `.github/settings.yml` required-check removal also have no case.
+- BASE...HEAD (merge-base form) has no case.
+- Paths with spaces or non-ASCII names, binary files, very large diffs.
+- Detection is line-based: a test removed by editing a parametrize list, an assertion weakened across
+  several lines, or a threshold moved into another file is not seen. Number direction is by keyword
+  (timeout/retry/tolerance higher = weaker; coverage/min/threshold lower = weaker) and can be wrong for
+  unusual names.
+- The "real words" check on --allow reasons is a heuristic (3 distinct words with vowels, 15+ characters,
+  one common word such as "the" or "because"); a determined user can pass it with nonsense.
+- Run on mstack itself (working folder) it flags floor_cases.sh, whose test text contains the markers it
+  tests for; that is the expected use of --allow. Over the full mstack history it reported 9 added `# noqa`
+  lines, all real.
+- The SKILL.md step was not exercised by a trigger or benefit eval.
+
+### code-map (new, 2026-11-25)
+
+Script test: `sh packs/dev/tests/scripts/code_map_cases.sh packs/dev "$PWD/.testrun/dev-code-map/run-1"`.
+Last run: 76 cases, 76 ok (2026-11-25, `.testrun/dev-code-map-6`). Machine: macOS, Python 3.14.
+
+What the cases cover:
+- `callers` on Python: definition, import, call, method call and reference, each `exact` with file:line and
+  the enclosing function; a comment, a string and a different name that starts the same
+  (`compute_tax_total`) do not match; `node_modules/` and a folder with `pyvenv.cfg` are skipped; a
+  same-name method call in a file that imports neither the name nor its module is set apart.
+- `callers` on JavaScript (import, call inside a function, comment and string skipped, `formatPriceShort`
+  not matched) and Go (comment skipped), all marked `text match`; a qualified method (`Invoice.total`); a
+  module path (who imports `src/billing/tax.py`).
+- Name not found exits 1 and offers close names (`compute_taxes` -> `compute_tax`); a name with a space
+  exits 2.
+- `map`: outline with methods per class and import edges; the 120-line cap and `--max-lines 15` on 60
+  extra files; a missing folder exits 2.
+- `impact` on `A..B` and `A...B`: the changed definition, callers one and two levels out, the test file,
+  and the ranked files to read; a bad range and a word that is neither commit nor file exit 2; file paths
+  as targets; a rename in the working folder that leaves a caller behind exits 1 with a `BROKEN` line, and
+  passes once the caller is updated; a clean working folder is "nothing changed"; outside a git
+  repository impact exits 2 while `callers` still works.
+
+Tried by hand, not kept as cases: Rust (`fn`, `struct`, `use crate::...`, `impl X` labelled `impl`) and
+Swift (`func`, `struct`, method call) on a small project in `.testrun/dev-code-map-langs`; `callers` and
+`impact` on the mstack repository itself (about 1 s for `callers`). Both task fixtures were run by hand:
+`finds-callers` gives 6 uses in 4 files with the string and comment left out; `impact-of-rename` ends
+`RESULT fail` with `app/report.py:5` ranked third.
+
+Not tested: trigger, silence and benefit evals (`claude plugin eval` not run, as asked). Swift, Rust and
+other C-like languages have no kept script cases. Known limits, stated in the SKILL: dynamic calls
+(`getattr`, string dispatch, reflection) are invisible; Python `obj.name()` matches any receiver; for a
+committed range, callers are searched in the working folder as it is now; text matches in non-Python
+languages can include a same-named thing from another module. `packs/dev/.claude-plugin/plugin.json`
+description does not yet mention code-map (not touched, per the brief).

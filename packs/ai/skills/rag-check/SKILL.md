@@ -4,7 +4,7 @@ description: Measures whether retrieval returns the passage that holds the answe
 license: MIT
 metadata:
   pack: ai
-  version: 0.2.2
+  version: 0.3.0
   needs: python3
 ---
 

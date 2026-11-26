@@ -1,7 +1,7 @@
 {
   "name": "mstack-data",
   "description": "Working with data: profile, check, diff and clean datasets, run and review SQL read-only, trace report numbers, compare groups, and audit charts, spreadsheets and notebooks.",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "author": {
     "name": "manjunani"
   },

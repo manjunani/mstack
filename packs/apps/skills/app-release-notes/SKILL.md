@@ -4,7 +4,7 @@ description: Drafts "What's New" notes for an app version from the real commits 
 license: MIT
 metadata:
   pack: apps
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, git
 ---
 

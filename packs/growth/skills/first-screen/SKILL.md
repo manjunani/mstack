@@ -4,7 +4,7 @@ description: Reports what a landing page puts first: the first heading, first pa
 license: MIT
 metadata:
   pack: growth
-  version: 0.2.2
+  version: 0.3.0
   needs: python3; network only for a URL
 ---
 

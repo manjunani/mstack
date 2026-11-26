@@ -4,7 +4,7 @@ description: Proves a three.js or React Three Fiber scene renders and reports fp
 license: MIT
 metadata:
   pack: 3d
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, a browser with a screenshot tool; node optional
 ---
 

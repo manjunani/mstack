@@ -1,6 +1,6 @@
 {
-  "_about": "Traits that make a screen look like every other generated screen, used by scripts/lint_ui.py as warnings only. They describe what machine-made pages tend to share as of the date written; fashions move, so review the list when it is more than six months old. A brief that asks for one of these wins.",
-  "_written": "2026-11-22",
+  "_about": "Traits that make a screen look like every other generated screen, used by scripts/lint_ui.py as warnings only. They describe what machine-made pages tend to share as of the date written; fashions move, so review the list when it is more than six months old. A brief that asks for one of these wins. A pattern with \"min\" warns only when it appears at least that many times in one file.",
+  "_written": "2026-11-25",
   "max_rounds": {
     "value": 3,
     "unit": "render-and-inspect rounds before the work stops and asks",
@@ -18,11 +18,37 @@
       { "id": "stock-hero-words", "pattern": "\\b(unleash|supercharge|revolutioni[sz]e|seamless(ly)?|next-gen(eration)?|game.?chang|elevate your|empower your|10x)\\b", "what": "hero copy words that fit any product" },
       { "id": "three-card-row", "pattern": "grid-cols-3|repeat\\(3,\\s*1fr\\)", "what": "a row of three equal feature cards" },
       { "id": "everything-rounded", "pattern": "rounded-(2xl|3xl)|border-radius\\s*:\\s*(2[4-9]|[3-9]\\d)px", "what": "very large corner radius on every block" },
-      { "id": "glow-shadow", "pattern": "shadow-(indigo|violet|purple)-|box-shadow[^;]*rgba\\((99, 102, 241|139, 92, 246)", "what": "coloured glow shadows" }
+      { "id": "glow-shadow", "pattern": "shadow-(indigo|violet|purple)-|box-shadow[^;]*rgba\\((99, 102, 241|139, 92, 246)", "what": "coloured glow shadows" },
+      { "id": "blue-violet-gradient", "pattern": "from-(blue|sky|cyan)-\\d00.{0,40}to-(indigo|violet|purple|fuchsia)-\\d00", "what": "a blue-to-violet gradient, the reverse of the usual generated accent" },
+      { "id": "stock-brand-colour", "min": 3, "pattern": "\\b(bg|text|border|ring|from|to|fill|stroke)-(indigo|violet)-(500|600|700)\\b|#(6366f1|4f46e5|4338ca|8b5cf6|7c3aed|6d28d9)\\b", "what": "the framework's stock indigo or violet used as the brand colour" },
+      { "id": "stock-hero-phrases", "pattern": "unlock the (full )?power|harness the power|take your \\w+( \\w+)? to the next level|transform the way you|built for the modern|your all-in-one|the all-in-one|like never before|say goodbye to|streamline your|effortless(ly)? (manage|create|build)|the future of \\w+ is here", "what": "hero phrases that could sell any product" },
+      { "id": "announce-pill", "pattern": "rounded-full.{0,160}>\\s*\\W{0,3}\\s*(new|introducing|announcing|now in beta|now with)\\b", "what": "a small pill badge announcing something new above the headline" },
+      { "id": "ai-sparkle", "pattern": "<Sparkles?\\b|Sparkles?Icon\\b|lucide-sparkles?\\b|\\bfa-wand-magic-sparkles\\b", "what": "a sparkle icon standing in for AI or magic" },
+      { "id": "blurred-blobs", "pattern": "\\bblur-(2xl|3xl)\\b|\\bblur-\\[\\d{3}px\\]|(^|[^-])filter\\s*:\\s*blur\\(\\s*([4-9]\\d|\\d{3})px", "what": "large blurred colour blobs behind the content" },
+      { "id": "grey-on-colour", "pattern": "\\bbg-(red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-[5-9]00\\b[^\"'`]*\\btext-(gray|slate|zinc|neutral|stone)-[3-6]00\\b|\\btext-(gray|slate|zinc|neutral|stone)-[3-6]00\\b[^\"'`]*\\bbg-(red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-[5-9]00\\b", "what": "grey text on a saturated colour, which reads muddy" },
+      { "id": "attention-animation", "pattern": "\\banimate-(bounce|ping)\\b|animation(-name)?\\s*:\\s*[^;]*\\b(bounce|ping)\\b", "what": "bouncing or pinging decoration that pulls the eye for no reason" },
+      { "id": "hover-lift", "min": 3, "pattern": "hover:(scale-1[01][05]|-translate-y-(0\\.5|1|2))\\b", "what": "every card lifts or grows on hover" },
+      { "id": "eyebrow-labels", "min": 3, "pattern": "\\buppercase\\b[^\"'`]{0,80}\\btracking-(wide|wider|widest)\\b|\\btracking-(wide|wider|widest)\\b[^\"'`]{0,80}\\buppercase\\b", "what": "a small spaced capital label above every section" },
+      { "id": "gradient-buttons", "pattern": "<(button|Button|a)\\b[^>]*\\bbg-gradient-to-|<(button|Button|a)\\b[^>]*background(-image)?\\s*:\\s*linear-gradient", "what": "gradient-filled buttons" },
+      { "id": "stock-cta", "min": 2, "pattern": ">\\s*(get started( for free| now| today)?|learn more|start (your )?free trial|try it (for )?free|start for free)\\s*(&rarr;|→)?\\s*<", "what": "calls to action that say nothing about this product" }
     ],
     "unit": "regular expressions matched per line, case-insensitive",
-    "source": "mstack's own observation of generated pages, written 2026-11-22",
-    "checked": "2026-11-22",
+    "source": "mstack's own observation of generated pages, written 2026-11-22; extended 2026-11-25",
+    "checked": "2026-11-25",
     "verified": false, "note": "mstack list; no primary source"
+  },
+  "file_checks": {
+    "value": {
+      "centred-everything": { "min_centred": 6, "min_share": 0.8, "what": "nearly all text is centred" },
+      "same-card-everywhere": { "min_repeats": 3, "what": "the same rounded, shadowed card class repeated block after block" },
+      "icon-tile-grid": { "min_tiles": 3, "look_ahead_lines": 4, "what": "a grid of square icon tiles, each over a heading" },
+      "uniform-card-copy": { "min_cards": 3, "max_length_ratio": 1.2, "what": "cards whose titles have the same word count and whose texts are nearly the same length" },
+      "font-weight-sprawl": { "max_weights": 4, "what": "more font weights than a type scale needs" },
+      "skipped-heading": { "what": "a heading level is skipped (for example h1 straight to h3)" }
+    },
+    "unit": "counts and ratios per file",
+    "source": "mstack first setting, 2026-11-25",
+    "checked": "2026-11-25",
+    "verified": false, "note": "mstack thresholds; no primary source"
   }
 }

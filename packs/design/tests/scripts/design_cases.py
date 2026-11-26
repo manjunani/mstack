@@ -316,7 +316,39 @@ def cases_ui_build(work):
         ("round 2", [u, "round", "--note", "header fixed; empty state still missing"], 0, "round 2 of 3"),
         ("round 3", [u, "round", "--note", "empty state added; contrast of the badge still low"], 0, "round 3 of 3"),
         ("round 4 is refused", [u, "round", "--note", "one more try at the badge colour"], 2, "blocked: the limit of 3"),
+        ("a finished page with sample input hints, a skeleton pulse and one centred note is silent",
+         [u, "lint", "clean"], 0, "0 blocking, 0 default-look warnings"),
+    ] + [
+        (f"{rule} {'blocks' if level == 'BLOCK' else 'warns'} at {name}:{line}", [u, "lint", f"looks/{name}"],
+         1 if level == "BLOCK" else 0, f"{level:5} {rule:18} {name}:{line}:")
+        for level, rule, name, line in UI_BUILD_LOOKS
     ]
+
+
+# one fixture per rule added on 2026-11-25; each file trips only its own rule
+UI_BUILD_LOOKS = [
+    ("BLOCK", "placeholder-name", "placeholder-name.jsx", 4),
+    ("BLOCK", "placeholder-image", "placeholder-image.html", 3),
+    ("BLOCK", "example-link", "example-link.html", 3),
+    ("warn", "blue-violet-gradient", "blue-violet-gradient.jsx", 3),
+    ("warn", "stock-brand-colour", "stock-brand-colour.jsx", 4),
+    ("warn", "stock-hero-phrases", "stock-hero-phrases.html", 3),
+    ("warn", "announce-pill", "announce-pill.jsx", 4),
+    ("warn", "ai-sparkle", "ai-sparkle.tsx", 4),
+    ("warn", "blurred-blobs", "blurred-blobs.jsx", 4),
+    ("warn", "grey-on-colour", "grey-on-colour.jsx", 4),
+    ("warn", "attention-animation", "attention-animation.jsx", 4),
+    ("warn", "hover-lift", "hover-lift.jsx", 4),
+    ("warn", "eyebrow-labels", "eyebrow-labels.html", 2),
+    ("warn", "gradient-buttons", "gradient-buttons.html", 4),
+    ("warn", "stock-cta", "stock-cta.jsx", 5),
+    ("warn", "centred-everything", "centred-everything.html", 2),
+    ("warn", "same-card-everywhere", "same-card-everywhere.jsx", 4),
+    ("warn", "icon-tile-grid", "icon-tile-grid.jsx", 4),
+    ("warn", "uniform-card-copy", "uniform-card-copy.html", 2),
+    ("warn", "font-weight-sprawl", "font-weight-sprawl.css", 1),
+    ("warn", "skipped-heading", "skipped-heading.html", 4),
+]
 
 
 def cases_brand_kit(work):

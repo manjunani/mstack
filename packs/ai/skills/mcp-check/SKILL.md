@@ -4,7 +4,7 @@ description: Proves a stdio MCP server works by starting it, running the initial
 license: MIT
 metadata:
   pack: ai
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, the server's own runtime
 ---
 

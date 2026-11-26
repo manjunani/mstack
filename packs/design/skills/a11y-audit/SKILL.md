@@ -4,7 +4,7 @@ description: Finds accessibility failures on a rendered page with axe-core and a
 license: MIT
 metadata:
   pack: design
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, node, Playwright with Chromium and axe-core in the project (or a host browser tool that can run axe)
 ---
 

@@ -4,7 +4,7 @@ description: Turns a saved log of a failed CI run into the first failing step, t
 license: MIT
 metadata:
   pack: ops
-  version: 0.2.2
+  version: 0.3.0
   needs: python3
 ---
 

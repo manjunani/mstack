@@ -4,7 +4,7 @@ description: Runs written rules against a dataset like tests (not null, unique, 
 license: MIT
 metadata:
   pack: data
-  version: 0.2.2
+  version: 0.3.0
   needs: python3
 ---
 

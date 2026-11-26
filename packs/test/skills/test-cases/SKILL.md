@@ -4,7 +4,7 @@ description: Turns a spec or a function contract into a table of test cases (bou
 license: MIT
 metadata:
   pack: test
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, a spec or contract with requirement lines
 ---
 

@@ -4,7 +4,7 @@ description: Carries out a plan task by task, each task of a longer plan in a fr
 license: MIT
 metadata:
   pack: dev
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, git, the project's test runner
 ---
 
@@ -49,7 +49,7 @@ The script is `scripts/ledger.py` in this skill's folder. In Claude Code that is
    It prints the files the task may touch and its check. Add `--review per-task` on the first start only when the user asks for a review after each task (risky work: money, auth, data migration).
 3. **Fit the codebase before writing** (one context; in agent per task the brief tells the agent this). Read the files in the list and one nearby example. Then, in this order: is the change needed at all; does this codebase already have it; does the standard library or an installed dependency do it; only then write new code, in the style of the file you are in. No new dependency without asking.
 4. **Write the task.**
-   - Agent per task: run `python3 scripts/ledger.py brief <n>` and start one fresh agent with that output as its whole prompt. Do not add the conversation or the plan's other tasks. Wait for its five-line report. On `STATUS: blocked` or a `QUESTION`, answer from the plan or ask the user, then start a new agent for the task with the answer added to the brief. Do not read the agent's whole diff; `done` and the final review check the work.
+   - Agent per task: run `python3 scripts/ledger.py brief <n>` and start one fresh agent with that output as its whole prompt. Use the `task-builder` agent this pack ships (in Claude Code: subagent type `mstack-dev:task-builder`); it loads only file and shell tools, so it starts far smaller than a general-purpose agent. If it is not available, use the smallest agent type that can read, edit and run commands. Do not add the conversation or the plan's other tasks. Wait for its five-line report. On `STATUS: blocked` or a `QUESTION`, answer from the plan or ask the user, then start a new agent for the task with the answer added to the brief. Do not read the agent's whole diff; `done` and the final review check the work.
    - One context: touch only the listed files. Write or extend the task's test first when the plan's check is a test.
 5. **Close the task.**
    ```

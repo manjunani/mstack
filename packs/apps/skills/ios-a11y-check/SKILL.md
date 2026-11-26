@@ -4,7 +4,7 @@ description: Finds SwiftUI code that breaks VoiceOver and Dynamic Type, with fil
 license: MIT
 metadata:
   pack: apps
-  version: 0.2.2
+  version: 0.3.0
   needs: python3; the simulator only for the screenshots
 ---
 

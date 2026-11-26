@@ -4,7 +4,7 @@ description: Builds factories and seed data that hold no real personal data and 
 license: MIT
 metadata:
   pack: test
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, the project's seed or factory command
 ---
 

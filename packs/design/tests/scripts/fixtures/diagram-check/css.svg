@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="diagram" viewBox="0 0 400 200">
+  <title>css</title>
+  <style>
+    rect { fill: #ffffff; stroke: #000000; }
+    #diagram .node > text { fill: #c0c0c0; font-size: 14px; }
+  </style>
+  <rect x="0" y="0" width="400" height="200"/>
+  <g class="node" id="n1"><rect x="20" y="40" width="120" height="60"/><text x="80" y="75" text-anchor="middle">Faint</text></g>
+</svg>

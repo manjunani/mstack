@@ -4,7 +4,7 @@ description: Builds a new screen, or reworks one that looks generic, so it fits 
 license: MIT
 metadata:
   pack: design
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, a browser the agent can drive for the render step
 ---
 
@@ -40,7 +40,7 @@ The script is `scripts/lint_ui.py` in this skill's folder.
    ```
    python3 scripts/lint_ui.py lint src/pages/orders
    ```
-   Fix every `BLOCK`. Read the warnings against the brief; keep a trait only if the brief wants it. The list of default looks is dated (`references/default-looks.json`).
+   Each line gives a rule id, the file and line, and a one-line reason. `BLOCK` is unfinished work: filler text, TODO markers, placeholder copy, stand-in names (Acme, John Doe, Your Company), placeholder image services, example.com links, invented proof, dead handlers and links, removed focus outlines. Fix every one. `warn` is a default look: stock gradients and brand colours, stock hero phrases and calls to action, glass, glow and blurred blobs, sparkle and emoji icons, everything centred, the same card or icon tile repeated, same-length card copy, too many font weights, skipped heading levels. Read the warnings against the brief; keep a trait only if the brief wants it. The list and its thresholds are dated (`references/default-looks.json`).
 6. **Render and inspect**, phone and desktop width. Record the round:
    ```
    python3 scripts/lint_ui.py round --note "320 px: header wraps; 1440 px: fine" --screenshot shots/r1-320.png

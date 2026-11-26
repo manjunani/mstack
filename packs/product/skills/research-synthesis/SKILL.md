@@ -4,7 +4,7 @@ description: Turns interview transcripts or research notes into themes backed by
 license: MIT
 metadata:
   pack: product
-  version: 0.2.2
+  version: 0.3.0
   needs: python3, text sources
 ---
 
