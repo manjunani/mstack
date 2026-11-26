@@ -4,7 +4,7 @@ description: Translates a text or a JSON strings file and proves nothing countab
 license: MIT
 metadata:
   pack: writing
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

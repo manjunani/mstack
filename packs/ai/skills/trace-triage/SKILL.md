@@ -4,7 +4,7 @@ description: Reads the saved trace of an agent run and names where it went wrong
 license: MIT
 metadata:
   pack: ai
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

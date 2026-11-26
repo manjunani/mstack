@@ -31,7 +31,7 @@
       "max_turns": 15,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
-        { "name": "ran-callers", "type": "tool_used", "tool": "Bash", "input_match": "code_map\\.py\\s+(--\\S+\\s+\\S+\\s+)*callers\\s+apply_discount" },
+        { "name": "ran-callers", "type": "tool_used", "tool": "Bash", "input_match": "code_map\\.py[\\s\\S]*?\\bcallers\\s+apply_discount" },
         { "name": "names-callers", "type": "llm", "body": "apply_discount is defined in shop/pricing.py and used at shop/cart.py (Cart.total), shop/checkout.py (quote, via pricing.apply_discount), shop/pricing.py (bulk_price) and tests/test_pricing.py. legacy/old_report.py only has the name inside a string and shop/checkout.py line 9 only in a comment. PASS if the reply names Cart.total or shop/cart.py, quote or shop/checkout.py, bulk_price, and tests/test_pricing.py as the test, and does not present legacy/old_report.py or the comment as a caller. FAIL otherwise." },
         { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
       ]
@@ -44,7 +44,7 @@
       "max_turns": 15,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
-        { "name": "ran-impact", "type": "tool_used", "tool": "Bash", "input_match": "code_map\\.py\\s+(--\\S+\\s+\\S+\\s+)*impact" },
+        { "name": "ran-impact", "type": "tool_used", "tool": "Bash", "input_match": "code_map\\.py[\\s\\S]*?\\bimpact" },
         { "name": "finds-stale-caller", "type": "regex", "pattern": "report\\.py", "flags": "i" },
         { "name": "honest-state", "type": "llm", "body": "app/report.py line 5 still calls fmt.format_total, which no longer exists after the rename, so the branch is broken there. PASS if the reply says app/report.py (monthly) still uses format_total and will fail, and states an end state (fail, or an equivalent plain statement that something is broken). FAIL if it says nothing is broken or does not mention report.py." }
       ]

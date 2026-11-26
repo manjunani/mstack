@@ -4,7 +4,7 @@ description: Reads a usage or billing export (CSV or JSON), sums it by service a
 license: MIT
 metadata:
   pack: ops
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

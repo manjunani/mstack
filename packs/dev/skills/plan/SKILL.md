@@ -4,7 +4,7 @@ description: Turns a settled request into a plan file of small ordered tasks, ea
 license: MIT
 metadata:
   pack: dev
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, git
 ---
 
@@ -27,6 +27,8 @@ End in exactly one state: **pass**, **fail** (the lint still reports problems; s
 | python3 | `python3 --version` | end as blocked |
 | git | `git rev-parse --is-inside-work-tree` | carry on; the lint then searches the folder without git's ignore rules |
 | A settled request | You can state the goal and what is out of scope in two sentences | end as blocked with the open question; `clarify` or `spec` settle it, if installed |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 ## Steps
 

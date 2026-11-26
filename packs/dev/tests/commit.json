@@ -42,7 +42,7 @@
           "name": "ran-gate",
           "type": "tool_used",
           "tool": "Bash",
-          "input_match": "gate\\.py\\s+(check|scan)"
+          "input_match": "gate\\.py[\\s\\S]*?\\b(check|scan)\\b"
         },
         {
           "name": "no-add-all",

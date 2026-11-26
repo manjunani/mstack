@@ -34,7 +34,22 @@ import subprocess
 import sys
 import time
 
-GIT = os.environ.get("MSTACK_GIT") or "git"
+def _find_git():
+    """The git program: MSTACK_GIT when set, otherwise the first git that runs. On macOS /usr/bin/git is
+    an xcrun shim that fails inside a sandbox (it cannot write its cache), so the real binaries come next."""
+    if os.environ.get("MSTACK_GIT"):
+        return os.environ["MSTACK_GIT"]
+    for candidate in ("git", "/Applications/Xcode.app/Contents/Developer/usr/bin/git",
+                      "/Library/Developer/CommandLineTools/usr/bin/git", "/opt/homebrew/bin/git", "/usr/local/bin/git"):
+        try:
+            if subprocess.run([candidate, "--version"], capture_output=True, timeout=10).returncode == 0:
+                return candidate
+        except (OSError, subprocess.SubprocessError):
+            continue
+    return "git"
+
+
+GIT = _find_git()
 STATE = ".mstack"
 FOLDER = "debug"
 SCOPE = ["--", ".", f":(exclude){STATE}"]

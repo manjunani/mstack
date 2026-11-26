@@ -32,8 +32,8 @@
       "max_turns": 25,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],
       "graders": [
-        { "name": "built-package", "type": "tool_used", "tool": "Bash", "input_match": "review\\.py\\s+package" },
-        { "name": "checked-findings", "type": "tool_used", "tool": "Bash", "input_match": "review\\.py\\s+check" },
+        { "name": "built-package", "type": "tool_used", "tool": "Bash", "input_match": "review\\.py[\\s\\S]*?\\bpackage" },
+        { "name": "checked-findings", "type": "tool_used", "tool": "Bash", "input_match": "review\\.py[\\s\\S]*?\\bcheck" },
         { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
       ]
     },

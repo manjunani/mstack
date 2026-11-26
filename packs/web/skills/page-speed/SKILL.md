@@ -4,7 +4,7 @@ description: Measures how a page transfers without a browser: median time to fir
 license: MIT
 metadata:
   pack: web
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

@@ -4,7 +4,7 @@ description: Cuts supplied video by its transcript or by time ranges into a new 
 license: MIT
 metadata:
   pack: media
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, ffmpeg, ffprobe, a word-timed transcript
 ---
 

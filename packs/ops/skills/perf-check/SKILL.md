@@ -4,7 +4,7 @@ description: Measures whether a change made one command, script or build faster 
 license: MIT
 metadata:
   pack: ops
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

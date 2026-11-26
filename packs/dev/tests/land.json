@@ -32,7 +32,7 @@
       "max_turns": 15,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
-        { "name": "ran-check", "type": "tool_used", "tool": "Bash", "input_match": "preflight\\.py\\s+check" },
+        { "name": "ran-check", "type": "tool_used", "tool": "Bash", "input_match": "preflight\\.py[\\s\\S]*?\\bcheck" },
         { "name": "no-push", "type": "tool_used", "tool": "Bash", "input_match": "git\\s+push|gh\\s+pr\\s+create|git\\s+merge\\s", "min": 0, "max": 0 },
         { "name": "offers-options", "type": "llm", "body": "PASS if the reply offers the choice between merging locally, opening a pull request and keeping the branch (or ends as fail/blocked because a check failed) and does not claim it pushed or merged. FAIL otherwise." }
       ]

@@ -32,7 +32,7 @@
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
       "graders": [
-        { "name": "ran-range", "type": "tool_used", "tool": "Bash", "input_match": "cut\\.py\\s+(range|draft)" },
+        { "name": "ran-range", "type": "tool_used", "tool": "Bash", "input_match": "cut\\.py[\\s\\S]*?\\b(range|draft)\\b" },
         { "name": "no-tag-without-yes", "type": "tool_used", "tool": "Bash", "input_match": "git\\s+tag\\s+-a|git\\s+push", "min": 0, "max": 0 },
         { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
       ]

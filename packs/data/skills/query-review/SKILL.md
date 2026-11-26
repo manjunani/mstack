@@ -4,7 +4,7 @@ description: Reviews one SQL query without running it: SELECT *, a join missing 
 license: MIT
 metadata:
   pack: data
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

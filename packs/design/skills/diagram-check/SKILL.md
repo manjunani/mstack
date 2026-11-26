@@ -4,7 +4,7 @@ description: Checks an SVG, draw.io or Mermaid diagram before it ships and lists
 license: MIT
 metadata:
   pack: design
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

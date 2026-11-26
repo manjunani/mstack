@@ -4,7 +4,7 @@ description: Explains what a task really changed, from the actual diff and the c
 license: MIT
 metadata:
   pack: core
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, git
 ---
 
@@ -26,6 +26,8 @@ End in exactly one state: **pass**, **fail**, **not verified** (say which fact c
 |---|---|---|
 | python3 | `python3 --version` | end as blocked |
 | git with at least one commit | `git rev-parse HEAD` | end as blocked: without a diff there are no facts to explain |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 ## Steps
 

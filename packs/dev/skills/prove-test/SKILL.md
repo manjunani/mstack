@@ -4,7 +4,7 @@ description: Shows that a test can catch the bug it protects against. Runs it wi
 license: MIT
 metadata:
   pack: dev
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, git, the project's test runner
 ---
 
@@ -28,6 +28,8 @@ End in exactly one state: **pass**, **fail** (the test passes without the change
 | git with one commit | `git rev-parse HEAD` | end as blocked: the script needs a commit to compare with |
 | One command that runs the one test | run it once yourself; it exits 0 | ask the user for it; end as blocked |
 | No run left half way | `python3 scripts/prove.py status` does not say "put aside" | run `python3 scripts/prove.py restore` first |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 ## Steps
 

@@ -4,7 +4,7 @@ description: Makes an intermittent test fail on demand, names the kind of cause 
 license: MIT
 metadata:
   pack: test
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, the project's test runner, git (for the guard step)
 ---
 
@@ -28,6 +28,8 @@ End in exactly one state: **pass**, **fail** (still failing, or the fix hides th
 | python3 | `python3 --version` | end as blocked |
 | The command that runs the test | Run it once | ask the user for it; end as blocked |
 | git | `git rev-parse HEAD` | the guard step cannot run: report it as not verified |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 ## Steps
 

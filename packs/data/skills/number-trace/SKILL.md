@@ -4,7 +4,7 @@ description: Ties every number in a report to the query or file aggregate that p
 license: MIT
 metadata:
   pack: data
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

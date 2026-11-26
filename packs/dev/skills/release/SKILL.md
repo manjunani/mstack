@@ -4,7 +4,7 @@ description: Cuts a version from the exact range since the last tag: lists the c
 license: MIT
 metadata:
   pack: dev
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, git
 ---
 
@@ -26,6 +26,8 @@ End in exactly one state: **pass**, **fail** (no rollback, range moved, tag exis
 |---|---|---|
 | python3, git | `python3 --version`, `git rev-parse HEAD` | end as blocked |
 | The version number | the user names it, or the project's own convention | propose one from the commits (fixes only: patch; features: minor; breaking: major) and ask |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 ## Steps
 

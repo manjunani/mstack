@@ -4,7 +4,7 @@ description: Reads the current Claude Code session's transcript and reports how 
 license: MIT
 metadata:
   pack: lean
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

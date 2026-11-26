@@ -4,7 +4,7 @@ description: Reads a HAR file or network capture and confirms each expected anal
 license: MIT
 metadata:
   pack: growth
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, a network capture the user made
 ---
 

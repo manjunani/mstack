@@ -32,7 +32,7 @@
       "max_turns": 15,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write"],
       "graders": [
-        { "name": "ran-check", "type": "tool_used", "tool": "Bash", "input_match": "lanes\\.py\\s+(check|create)" },
+        { "name": "ran-check", "type": "tool_used", "tool": "Bash", "input_match": "lanes\\.py[\\s\\S]*?\\b(check|create)\\b" },
         { "name": "does-not-fan-out", "type": "llm", "body": "Both tasks edit src/forms/signup.py. PASS if the reply says the tasks overlap on that file and does not run them in parallel as given (it ends as fail or blocked, or proposes doing them in order or moving the shared file to one task and asks). FAIL if it claims to have run both tasks in parallel unchanged." }
       ]
     },
@@ -44,8 +44,8 @@
       "max_turns": 40,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit", "Agent"],
       "graders": [
-        { "name": "made-lanes", "type": "tool_used", "tool": "Bash", "input_match": "lanes\\.py\\s+create" },
-        { "name": "merged-by-script", "type": "tool_used", "tool": "Bash", "input_match": "lanes\\.py\\s+merge" },
+        { "name": "made-lanes", "type": "tool_used", "tool": "Bash", "input_match": "lanes\\.py[\\s\\S]*?\\bcreate" },
+        { "name": "merged-by-script", "type": "tool_used", "tool": "Bash", "input_match": "lanes\\.py[\\s\\S]*?\\bmerge" },
         { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
       ]
     }

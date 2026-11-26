@@ -1,8 +1,16 @@
 # mstack
 
-Agent skills that run a real check and report the result. 122 skills in 16 small packs, one pack per domain. Install only what you need.
+A stack for coding agents: the way I plan, build, check and ship code with Claude Code, written down as skills. Every step ends in a real check and a clear verdict, never the model's own word.
 
-**What it is.** A skill is a folder with a `SKILL.md` that tells a coding agent (Claude Code, Codex, Cursor and others) when to start and what to do, plus a script that does the checking. You talk to the agent in plain words; the matching skill starts, runs its script, and ends in one of four states: **pass**, **fail**, **not verified** or **blocked**. "Not verified" never counts as a pass.
+```
+plan → build → verify → review → commit → land
+```
+
+**The stack** is two packs, `core` and `dev` (19 skills): the daily flow above, plus debug, secure, handoff, remember and safe delete. **Add-on packs** (14 more, 122 skills in all) bring the same rule to other work when you need it: design, data, ops, web, apps, testing, writing, media, product, growth, 3D, XR, AI agents and token use.
+
+**How a skill works.** A skill is a folder with a `SKILL.md` that tells the agent when to start and what to do, plus a script that does the checking. You talk in plain words; the matching skill starts, runs its script, and ends in one of four states: **pass**, **fail**, **not verified** or **blocked**. "Not verified" never counts as a pass.
+
+**Compared with other stacks** (gstack, pstack, tstack) and 23 skill libraries, strengths and weaknesses for each, mstack included: [`docs/comparison-2026-11.md`](docs/comparison-2026-11.md).
 
 ## Install
 
@@ -11,9 +19,10 @@ Agent skills that run a real check and report the result. 122 skills in 16 small
 ```
 /plugin marketplace add manjunani/mstack
 /plugin install mstack-core@mstack
+/plugin install mstack-dev@mstack
 ```
 
-Add other packs the same way, for example `/plugin install mstack-dev@mstack`. This is the tested path.
+That is the stack. Add an add-on pack the same way when you need it, for example `/plugin install mstack-design@mstack`. This is the tested path.
 
 ### Codex and other agents
 
@@ -142,11 +151,11 @@ iPhone apps in SwiftUI and Mac apps in Tauri: prove a screen on the simulator, r
 
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
-| `app-release-notes` | Drafts "What's New" notes for an app version from the real commits between two tags and checks them: each line names a commit in the range, and each user-facing feat, fix or perf commit appears or is skipped on purpose. | python3, git | trigger 10/10, silence 0/10, benefit 1/2 |
+| `app-release-notes` | Drafts "What's New" notes for an app version from the real commits between two tags and checks them: each line names a commit in the range, and each user-facing feat, fix or perf commit appears or is skipped on purpose. | python3, git | trigger 10/10, silence 0/10, benefit 2/2 |
 | `app-size` | Measures a built .app or .ipa by part (executable, frameworks, Assets.car, resources) and lists the largest files, keeps a baseline under .mstack, and shows what grew, what is new and what was removed since that baseline. | python3 | trigger 9/10, silence 0/10, benefit 2/2 |
 | `crash-read` | Reads an Apple crash report (.ips or .crash) and names the failing frame from the app's own code. | python3; dwarfdump and atos (Xcode command-line tools) only for unsymbolicated reports | trigger 10/10, silence 0/10, benefit 2/2 |
 | `ios-a11y-check` | Finds SwiftUI code that breaks VoiceOver and Dynamic Type, with file and line, and checks the largest-text screenshots exist and are not blank. | python3; the simulator only for the screenshots | trigger 10/10, silence 0/10, benefit 2/2 |
-| `ios-submit-check` | Finds the mechanical reasons an iPhone app upload or App Store review would bounce: missing purpose strings for camera, location or photos, an incomplete privacy manifest, mismatched version and build numbers, a bad 1024 icon, wrong screenshot sizes. | python3 | trigger 8/10, silence 0/10, benefit 1/2 |
+| `ios-submit-check` | Finds the mechanical reasons an iPhone app upload or App Store review would bounce: missing purpose strings for camera, location or photos, an incomplete privacy manifest, mismatched version and build numbers, a bad 1024 icon, wrong screenshot sizes. | python3 | trigger 10/10, silence 0/10, benefit 2/2 |
 | `mac-release-verify` | Checks that a built Mac app or .dmg will open on other people's Macs: runs codesign strict verification, a Gatekeeper assessment with spctl and stapler validate for the notarisation ticket, and reports each as pass, fail or could not check. | python3, macOS, codesign, spctl, xcrun stapler | trigger 8/10, silence 0/10, benefit 2/2 |
 | `sim-flow` | Records a user flow on the iPhone simulator step by step and checks the record: each step has an action, the screen expected, what was seen and a non-blank screenshot, with one result for the whole flow. | python3, a tool that can tap on the simulator (the host agent's simulator tool or the project's UI tests) | trigger 10/10, silence 0/10, benefit 2/2 |
 | `sim-proof` | Proves an iPhone app launches on the simulator and shows a real screen: installs the built .app on a booted simulator, launches it, checks the process stays alive and takes a screenshot that a pixel check confirms is not blank. | python3, Xcode command-line tools (xcrun simctl), a booted simulator, a simulator build of the app | trigger 10/10, silence 0/10, benefit 2/2 |
@@ -167,7 +176,7 @@ The base pack: prove work is done, delete safely, keep decisions, hand off a ses
 | `mstack` | Looks up which mstack skill or pack fits a task, from the generated map of every skill, and gives the install line for a pack that is missing. | python3 | trigger 10/10, silence 0/10, benefit 1/2 |
 | `remember` | Saves a decision or a lesson as a short record in a plain file in the repository, so no one asks again or repeats a mistake. | python3 | trigger 10/10, silence 0/10, benefit 1/2 |
 | `safe-delete` | Deletes files and folders so the removal can be undone: lists what would go, what refers to it and what git cannot bring back, then moves it to a trash folder with an undo command. | python3, git | trigger 10/10, silence 0/10, benefit 2/2 |
-| `scope-lock` | Keeps file edits inside one folder until released, so a task cannot change files elsewhere by accident. | python3 | trigger 10/10, silence 0/10, benefit 0/2 |
+| `scope-lock` | Keeps file edits inside one folder until released, so a task cannot change files elsewhere by accident. | python3 | trigger 10/10, silence 0/10, benefit 1/2 |
 | `skill-check` | Reads a third-party skill, plugin or skills repository before install and reports what could harm the user, such as downloads piped into a shell, credential reads, hidden text and instructions aimed at the agent. | python3 | trigger 10/10, silence 0/10, benefit 2/2 |
 | `verify` | Proves a "done" claim with fresh evidence: runs the project's own test, type, lint and build commands and records each result for the exact code state. | python3, git | trigger 10/10, silence 0/10, benefit 1/2 |
 
@@ -223,11 +232,11 @@ Software development with proof at each step: plan, build with a bare agent per 
 | Skill | What it does | Needs | Tests |
 |---|---|---|---|
 | `build` | Carries out a plan task by task, each task of a longer plan in a fresh agent so the main session stays small, and keeps a ledger in which a task is logged complete only when its own test command passes and no file outside its list changed. | python3, git, the project's test runner | trigger 8/10, silence 0/10, benefit 1/2 |
-| `code-map` | Lists every definition, call and import of a function, class or module as file:line with the line's text, and for a change the edited definitions, their callers two levels out and the tests that touch them, so only those files get read. | python3, git | trigger 9/10, silence 0/10, benefit 0/2 |
-| `commit` | Turns a mixed working tree into clean commits, one per reason for change. | python3, git | trigger 10/10, silence 0/10, benefit 0/2 |
+| `code-map` | Lists every definition, call and import of a function, class or module as file:line with the line's text, and for a change the edited definitions, their callers two levels out and the tests that touch them, so only those files get read. | python3, git | trigger 9/10, silence 0/10, benefit 2/2 |
+| `commit` | Turns a mixed working tree into clean commits, one per reason for change. | python3, git | trigger 10/10, silence 0/10, benefit 2/2 |
 | `debug` | Finds the real cause of a bug before any fix. | python3, git | trigger 10/10, silence 0/10, benefit 1/2 |
-| `land` | Finishes a branch in one of three ways the user picks: merge it locally, push it and open a pull request, or keep it as is. | python3, git, gh (only for opening a pull request) | trigger 10/10, silence 0/10, benefit 1/2 |
-| `parallel` | Runs independent tasks at the same time with separate agents, one git worktree each, then merges the results in order and runs the suite on the merged tree; refuses when two tasks' files overlap. | python3, git 2.17 or newer, a host that can start separate agents | trigger 9/10, silence 0/10, benefit 0/2 |
+| `land` | Finishes a branch in one of three ways the user picks: merge it locally, push it and open a pull request, or keep it as is. | python3, git, gh (only for opening a pull request) | trigger 10/10, silence 0/10, benefit 2/2 |
+| `parallel` | Runs independent tasks at the same time with separate agents, one git worktree each, then merges the results in order and runs the suite on the merged tree; refuses when two tasks' files overlap. | python3, git 2.17 or newer, a host that can start separate agents | trigger 9/10, silence 0/10, benefit 2/2 |
 | `plan` | Turns a settled request into a plan file of small ordered tasks, each a brief a fresh agent can carry out alone: its files, the context it needs, one check command and the output to expect; then lints the plan. | python3, git | trigger 10/10, silence 0/10, benefit 1/2 |
 | `prove-test` | Shows that a test can catch the bug it protects against. | python3, git, the project's test runner | trigger 10/10, silence 0/10, benefit 1/2 |
 | `release` | Cuts a version from the exact range since the last tag: lists the commits, migrations, config and dependency changes in it, drafts release notes, and refuses to go on until a rollback step is written in the release file. | python3, git | trigger 10/10, silence 0/10, benefit 2/2 |
@@ -342,7 +351,7 @@ Software testing: QA a running app, pin down flaky tests, derive test cases, fin
 |---|---|---|---|
 | `api-check` | Compares a running API with its OpenAPI contract by sending one real request per route and printing request, expected and actual for every status or response shape that does not match. | python3, a running local or test server, an OpenAPI 3 contract in JSON | trigger 10/10, silence 0/10, benefit 2/2 |
 | `bug-report` | Confirms a bug reproduces from a clean start, saves the output as evidence, and writes one report that a lint script checks for steps, expected, actual, evidence files and leaked secrets or personal data. | python3, a command or steps that show the bug | trigger 10/10, silence 0/10, benefit 1/2 |
-| `flaky-triage` | Makes an intermittent test fail on demand, names the kind of cause from recorded runs, and proves the fix with enough repeated green runs. | python3, the project's test runner, git (for the guard step) | trigger 10/10, silence 0/10, benefit 1/2 |
+| `flaky-triage` | Makes an intermittent test fail on demand, names the kind of cause from recorded runs, and proves the fix with enough repeated green runs. | python3, the project's test runner, git (for the guard step) | trigger 10/10, silence 0/10, benefit 2/2 |
 | `qa-run` | Drives a running app through the user flows a change touched and writes a QA report in which every issue has steps, expected, actual and a saved evidence file. | python3, a browser tool of the host agent, git (optional) | trigger 10/10, silence 1/10, benefit 2/2 |
 | `test-cases` | Turns a spec or a function contract into a table of test cases (boundaries, combinations, properties) in which every requirement has a case and every case has one specific expected result. | python3, a spec or contract with requirement lines | trigger 9/10, silence 0/10, benefit 2/2 |
 | `test-data` | Builds factories and seed data that hold no real personal data and give the same result on every run, proven by a scanner and a two-run comparison. | python3, the project's seed or factory command | trigger 9/10, silence 0/10, benefit 2/2 |
@@ -401,13 +410,14 @@ The same information is in `skills.json`, the skill map. The `mstack` skill read
 
 ## Status
 
-Version 0.3. Honest state of things:
+Version 0.3.1. Honest state of things:
 
 - Every script was run on throwaway projects, including the failure cases. Those script tests are in each pack's `tests/scripts/`, with notes on what could not be tested in `tests/NOTES.md`.
-- Every skill has the full trigger test: ten fitting and ten near-miss requests. Together the skills started on 1,142 of 1,220 fitting requests (94%) and on 3 of 1,220 near misses. All 122 reach the mark of 8 of 10. For three skills (`page-extract`, `fetch-plan`, `ios-a11y-check`) some fitting requests named no page or platform, so the model asked which one before any skill could start; those requests now say it, as a real request would (see each pack's `tests/NOTES.md`).
-- `build` and `parallel` hand each task to `task-builder`, an agent with only file and shell tools and no CLAUDE.md, skills or MCP servers; `task-worker` in core does the same for any delegated coding task. On a four-task test plan this cut the agent cost from $3.06 to $1.71 at list price (one session alone: $1.13); see `packs/dev/tests/NOTES.md`.
+- Every skill has the full trigger test: ten fitting and ten near-miss requests. Together the skills started on 1,144 of 1,220 fitting requests (94%) and on 3 of 1,220 near misses. All 122 reach the mark of 8 of 10. For three skills (`page-extract`, `fetch-plan`, `ios-a11y-check`) some fitting requests named no page or platform, so the model asked which one before any skill could start; those requests now say it, as a real request would (see each pack's `tests/NOTES.md`).
+- `build` and `parallel` hand each task to `task-builder`, an agent with only file and shell tools and no CLAUDE.md, skills or MCP servers; `task-worker` in core does the same for any delegated coding task. On a four-task test plan this cut the agent cost from $3.06 to $1.70 at list price (one session alone: $1.13); see `packs/dev/tests/NOTES.md`.
 - All trigger results are from single runs in a clean session with only that pack installed. With many other skills installed, results can differ.
-- The "is the result better with the skill than without" test has run for every pack, three runs per arm, two or three tasks per skill. Across all 122 skills: better on 199 of 248 tasks, the same on 45, worse on 4. By pack: core 10 of 16 better (1 worse), dev 9 of 22 (1 worse), apps 16 of 18 (2 worse), and for the other thirteen packs 164 of 192 better with none worse. "The same" mostly means the task was easy enough that both arms got it right. Each skill's figure is in the table above and in its pack's `tests/results.json`.
+- The "is the result better with the skill than without" test has run for every pack, three runs per arm, two or three tasks per skill. Across all 122 skills: better on 210 of 248 tasks, the same on 37, worse on 1. The stack itself (core and dev): 27 of 38 better, 10 the same, 1 worse (`prove-test`, where the judge failed one of three runs). "The same" mostly means the task was easy enough that both arms got it right. Each skill's figure is in the table above and in its pack's `tests/results.json`.
+- In 0.3.0 most git-based skills looked no better than no skill at all. The cause was the test, not the skills: the eval sandbox cannot run macOS's `/usr/bin/git` launcher, so their scripts failed in both arms. Since 0.3.1 every script that calls git falls back to the real git binary, which also helps when Claude Code runs with its sandbox on.
 - Skills that need a tool we did not have (a 3D program, a headset, a speech recogniser) detect that tool and stop as blocked. Their live path is untested and marked so.
 - Numbers that age, such as platform limits and thresholds, live in dated data files and are marked unverified until someone checks them against the source.
 - Claude Code is the tested agent. `tools/install_skills.py` is tested for copying into a folder; running the copied skills in Codex is untested end to end, because no working Codex model was available during testing. The guard hook works in Claude Code only.

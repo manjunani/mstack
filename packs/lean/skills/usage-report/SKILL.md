@@ -4,7 +4,7 @@ description: Turns local Claude Code transcripts into a token table per project 
 license: MIT
 metadata:
   pack: lean
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

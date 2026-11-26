@@ -21,16 +21,16 @@
     "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-25",
+    "tested": "2026-11-26",
     "with": "Claude Code 2.1.330",
-    "benefit": "1/2",
+    "benefit": "2/2",
     "benefit_runs": 3
   },
   "qa-run": {
     "trigger": "10/10",
     "silence": "1/10",
     "runs": 1,
-    "tested": "2026-11-25",
+    "tested": "2026-11-26",
     "with": "Claude Code 2.1.330",
     "benefit": "2/2",
     "benefit_runs": 3
@@ -57,7 +57,7 @@
     "trigger": "10/10",
     "silence": "0/10",
     "runs": 1,
-    "tested": "2026-11-25",
+    "tested": "2026-11-26",
     "with": "Claude Code 2.1.330",
     "benefit": "2/2",
     "benefit_runs": 3

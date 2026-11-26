@@ -4,7 +4,7 @@ description: Turns a mixed working tree into clean commits, one per reason for c
 license: MIT
 metadata:
   pack: dev
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, git
 ---
 
@@ -26,6 +26,8 @@ End in exactly one state: **pass**, **fail** (a secret, a conflict marker or a m
 |---|---|---|
 | python3 | `python3 --version` | end as blocked |
 | git | `git rev-parse --is-inside-work-tree` | end as blocked |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 ## Steps
 

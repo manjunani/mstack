@@ -4,7 +4,7 @@ description: Applies one resize, crop and export to a whole folder of images int
 license: MIT
 metadata:
   pack: media
-  version: 0.3.0
+  version: 0.3.1
   needs: python3; sips (macOS), ImageMagick or Pillow
 ---
 

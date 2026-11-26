@@ -4,7 +4,7 @@ description: Writes a one-page spec in which every "done when" line has an id (R
 license: MIT
 metadata:
   pack: product
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

@@ -39,6 +39,24 @@ import shutil
 import subprocess
 import sys
 
+
+def _find_git():
+    """The git program: MSTACK_GIT when set, otherwise the first git that runs. On macOS /usr/bin/git is
+    an xcrun shim that fails inside a sandbox (it cannot write its cache), so the real binaries come next."""
+    if os.environ.get("MSTACK_GIT"):
+        return os.environ["MSTACK_GIT"]
+    for candidate in ("git", "/Applications/Xcode.app/Contents/Developer/usr/bin/git",
+                      "/Library/Developer/CommandLineTools/usr/bin/git", "/opt/homebrew/bin/git", "/usr/local/bin/git"):
+        try:
+            if subprocess.run([candidate, "--version"], capture_output=True, timeout=10).returncode == 0:
+                return candidate
+        except (OSError, subprocess.SubprocessError):
+            continue
+    return "git"
+
+
+GIT = _find_git()
+
 STATE = pathlib.Path(".mstack") / "trace"
 SKIP_DIRS = {".git", ".mstack", ".testrun", "node_modules", "dist", "build", "target", "venv", ".venv", "__pycache__", "vendor", ".next", "coverage"}
 CODE_EXT = {".py", ".js", ".jsx", ".ts", ".tsx", ".mjs", ".cjs", ".go", ".rs", ".rb", ".java", ".kt", ".swift", ".php", ".cs",
@@ -57,7 +75,7 @@ MAX_BYTES = 2_000_000
 
 def git(root, *args):
     try:
-        out = subprocess.run(["git", "-C", str(root), *args], capture_output=True, text=True, timeout=120)
+        out = subprocess.run([GIT, "-C", str(root), *args], capture_output=True, text=True, timeout=120)
     except (OSError, subprocess.TimeoutExpired):
         return None
     return out.stdout if out.returncode == 0 else None
@@ -139,7 +157,7 @@ def search_files(root, skip):
 
 def search_commits(root):
     """Return {id: [{"hash", "code": bool}]} from commit messages, or None when git cannot answer."""
-    if shutil.which("git") is None or git(root, "rev-parse", "--is-inside-work-tree") is None:
+    if shutil.which(GIT) is None or git(root, "rev-parse", "--is-inside-work-tree") is None:
         return None
     log = git(root, "log", "--format=%x1e%h%x1f%B%x1f", "--name-only")
     if log is None:

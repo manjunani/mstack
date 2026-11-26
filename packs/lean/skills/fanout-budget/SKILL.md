@@ -4,7 +4,7 @@ description: Estimates the token cost of a batch of subagents or eval runs from 
 license: MIT
 metadata:
   pack: lean
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

@@ -4,7 +4,7 @@ description: Measures every text-on-background colour token pair in light and da
 license: MIT
 metadata:
   pack: design
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

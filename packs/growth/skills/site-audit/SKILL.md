@@ -4,7 +4,7 @@ description: Crawls one live site within a page limit, obeying robots.txt, and r
 license: MIT
 metadata:
   pack: growth
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, network access to the site named
 ---
 

@@ -4,7 +4,7 @@ description: Encodes a finished video or audio file for a named platform and pro
 license: MIT
 metadata:
   pack: media
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, ffmpeg, ffprobe
 ---
 

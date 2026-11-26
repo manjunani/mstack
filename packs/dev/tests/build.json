@@ -32,8 +32,8 @@
       "max_turns": 30,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash", "Write", "Edit"],
       "graders": [
-        { "name": "started", "type": "tool_used", "tool": "Bash", "input_match": "ledger\\.py\\s+start" },
-        { "name": "closed-by-script", "type": "tool_used", "tool": "Bash", "input_match": "ledger\\.py\\s+done" },
+        { "name": "started", "type": "tool_used", "tool": "Bash", "input_match": "ledger\\.py[\\s\\S]*?\\bstart" },
+        { "name": "closed-by-script", "type": "tool_used", "tool": "Bash", "input_match": "ledger\\.py[\\s\\S]*?\\bdone" },
         { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
       ]
     },

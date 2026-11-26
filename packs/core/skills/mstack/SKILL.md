@@ -4,7 +4,7 @@ description: Looks up which mstack skill or pack fits a task, from the generated
 license: MIT
 metadata:
   pack: core
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

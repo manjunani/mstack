@@ -4,7 +4,7 @@ description: Measures what Claude Code loads before the first message, ranks the
 license: MIT
 metadata:
   pack: lean
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

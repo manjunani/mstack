@@ -4,7 +4,7 @@ description: Decides whether a change to a prompt, model, tool or agent made res
 license: MIT
 metadata:
   pack: ai
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

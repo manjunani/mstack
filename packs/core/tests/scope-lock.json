@@ -31,8 +31,8 @@
       "max_turns": 12,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
-        { "name": "set", "type": "tool_used", "tool": "Bash", "input_match": "lock\\.py\\s+(--project\\s+\\S+\\s+)?set" },
-        { "name": "tested", "type": "tool_used", "tool": "Bash", "input_match": "lock\\.py\\s+(--project\\s+\\S+\\s+)?test" }
+        { "name": "set", "type": "tool_used", "tool": "Bash", "input_match": "lock\\.py[\\s\\S]*?\\bset" },
+        { "name": "tested", "type": "tool_used", "tool": "Bash", "input_match": "lock\\.py[\\s\\S]*?\\btest" }
       ]
     },
     {

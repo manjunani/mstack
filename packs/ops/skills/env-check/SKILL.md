@@ -4,7 +4,7 @@ description: Lists environment variable names the code reads that are not set or
 license: MIT
 metadata:
   pack: ops
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

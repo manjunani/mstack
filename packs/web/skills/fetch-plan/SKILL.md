@@ -4,7 +4,7 @@ description: Writes a plan before fetching many pages: robots.txt verdict per ad
 license: MIT
 metadata:
   pack: web
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

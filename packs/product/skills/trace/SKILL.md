@@ -4,7 +4,7 @@ description: Builds a matrix from each requirement id in the spec (R-001) to the
 license: MIT
 metadata:
   pack: product
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, git, a spec with ids
 ---
 
@@ -27,6 +27,8 @@ End in exactly one state: **pass**, **fail** (the flags are shown), **not verifi
 | python3 | `python3 --version` | end as blocked |
 | A spec with ids | a file in `docs/specs/`, or `SPEC.md`, has bullets that start `R-001:` | use `spec` if installed (its second mode writes a spec from existing code); otherwise ask the user where the requirements are; end as blocked |
 | git | `git rev-parse --is-inside-work-tree` | the matrix is built from files only and ends as not verified; `--no-commits` accepts that |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 ## Steps
 

@@ -32,7 +32,7 @@
       "max_turns": 15,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
-        { "name": "used-manifest", "type": "tool_used", "tool": "Bash", "input_match": "manifest\\.py\\s+plan" },
+        { "name": "used-manifest", "type": "tool_used", "tool": "Bash", "input_match": "manifest\\.py[\\s\\S]*?\\bplan" },
         { "name": "no-raw-delete", "type": "tool_used", "tool": "Bash", "input_match": "\\brm\\s+-[a-zA-Z]*r", "min": 0, "max": 0 }
       ]
     },

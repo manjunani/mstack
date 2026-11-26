@@ -4,7 +4,7 @@ description: Carries out a plan task by task, each task of a longer plan in a fr
 license: MIT
 metadata:
   pack: dev
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, git, the project's test runner
 ---
 
@@ -36,6 +36,8 @@ End in exactly one state: **pass**, **fail** (show the failing check output), **
 | git with one commit | `git rev-parse HEAD` | end as blocked: the ledger ties tasks to commits |
 | A plan with files and a check per task | `.mstack/plans/<name>.md` exists | use `plan` to write one; for a small clear request give `--files` and `--check` to `start` instead |
 | The full test command | ask the user, or read it from the project's README, CI file or `.mstack/checks.json` | end as blocked; never invent a command |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 ## Steps
 

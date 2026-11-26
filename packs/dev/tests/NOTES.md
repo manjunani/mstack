@@ -156,6 +156,11 @@ ways with `claude -p` on a machine with many plugins installed. Cost is the API 
 | One session | $1.13 | - | - |
 | Agent per task, built-in general-purpose agent | $3.06 | about 80,000 | 1.54 million |
 | Agent per task, the pack's `task-builder` agent | $1.71 | about 8,000 | 0.57 million |
+| Same, 0.3.0 `task-builder` with `omitClaudeMd` (2026-11-26) | $1.70 | about 7,500 | 0.42 million |
+
+Skipping CLAUDE.md saved about 500 tokens per agent here, because the throwaway project has no CLAUDE.md of
+its own; only the user-level file was skipped. In a project with a long CLAUDE.md the saving per agent is
+the length of that file.
 
 The general-purpose agent loads every tool schema on the machine before it reads a file; `task-builder` loads
 only file and shell tools. With small tasks one session is still cheapest, because each agent's start costs

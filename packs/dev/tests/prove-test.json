@@ -32,7 +32,7 @@
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
-        { "name": "ran-proof", "type": "tool_used", "tool": "Bash", "input_match": "prove\\.py\\s+run" },
+        { "name": "ran-proof", "type": "tool_used", "tool": "Bash", "input_match": "prove\\.py[\\s\\S]*?\\brun" },
         { "name": "no-stash", "type": "tool_used", "tool": "Bash", "input_match": "git\\s+stash|git\\s+checkout\\s+--|git\\s+restore", "min": 0, "max": 0 },
         { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
       ]

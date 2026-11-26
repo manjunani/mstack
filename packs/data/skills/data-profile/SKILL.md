@@ -4,7 +4,7 @@ description: Describes a CSV, JSON-lines file or SQLite table as it really is, g
 license: MIT
 metadata:
   pack: data
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

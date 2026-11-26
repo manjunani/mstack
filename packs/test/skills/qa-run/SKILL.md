@@ -4,7 +4,7 @@ description: Drives a running app through the user flows a change touched and wr
 license: MIT
 metadata:
   pack: test
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, a browser tool of the host agent, git (optional)
 ---
 
@@ -29,6 +29,8 @@ End in exactly one state: **pass**, **fail** (issues found, an incomplete report
 | A browser tool | Your own tool list has a tool that can open a URL, click, type, read the page and save a screenshot | Tell the user that this skill drives the app through the host agent's browser tool and none is connected; name the kinds that work (a built-in browser pane, a Playwright or Chrome DevTools connection). Install nothing. End as blocked |
 | A way to start the app | The user's command, or the `dev` / `start` script in the project files | ask the user; end as blocked if there is none |
 | git | `git rev-parse --is-inside-work-tree` | carry on; ask the user which screens changed |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 This skill ships no browser. Reading the source or calling URLs with curl is not a replacement: without a browser tool the result is blocked, not a weaker pass.
 

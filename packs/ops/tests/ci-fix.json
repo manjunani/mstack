@@ -31,7 +31,7 @@
       "max_turns": 14,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
-        { "name": "ran-plan", "type": "tool_used", "tool": "Bash", "input_match": "cilog\\.py\\s+plan" },
+        { "name": "ran-plan", "type": "tool_used", "tool": "Bash", "input_match": "cilog\\.py[\\s\\S]*?\\bplan" },
         { "name": "end-state", "type": "regex", "pattern": "\\b(pass|fail|not verified|blocked)\\b", "flags": "i" }
       ]
     },

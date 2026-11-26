@@ -4,7 +4,7 @@ description: Checks a chart from its JSON spec for a truncated bar axis, missing
 license: MIT
 metadata:
   pack: data
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

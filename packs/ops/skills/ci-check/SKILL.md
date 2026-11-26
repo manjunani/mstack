@@ -4,7 +4,7 @@ description: Checks GitHub Actions workflow files before a push for unknown keys
 license: MIT
 metadata:
   pack: ops
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

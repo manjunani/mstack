@@ -4,7 +4,7 @@ description: Tests whether planted instructions in documents can steer an agent,
 license: MIT
 metadata:
   pack: ai
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, the user's own agent
 ---
 

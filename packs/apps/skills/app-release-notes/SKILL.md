@@ -4,7 +4,7 @@ description: Drafts "What's New" notes for an app version from the real commits 
 license: MIT
 metadata:
   pack: apps
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, git
 ---
 
@@ -26,6 +26,8 @@ End in exactly one state: **pass**, **fail** (lines with no commit, or user-faci
 |---|---|---|
 | python3, git | `git rev-parse --is-inside-work-tree` | end as blocked |
 | Two refs | `git tag --sort=-creatordate` | ask which tag was the last store release; the newest tag is only a guess |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 ## Steps
 

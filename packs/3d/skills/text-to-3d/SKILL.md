@@ -4,7 +4,7 @@ description: Gets one 3D model from a text-to-3D provider the user picked, with 
 license: MIT
 metadata:
   pack: 3d
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, the provider's own tool or account
 ---
 

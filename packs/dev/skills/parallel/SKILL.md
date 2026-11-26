@@ -4,7 +4,7 @@ description: Runs independent tasks at the same time with separate agents, one g
 license: MIT
 metadata:
   pack: dev
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, git 2.17 or newer, a host that can start separate agents
 ---
 
@@ -29,6 +29,8 @@ End in exactly one state: **pass**, **fail** (overlap, a lane outside its file l
 | Tasks with a file list each | a plan from `plan`, or the user's list | write the lists with the user first; a task with no file list cannot be shown to be independent |
 | Separate agents | the host has an agent or task tool | say so; offer `build` to do the tasks one after another; end as blocked |
 | The full test command | ask the user, or the project's README or CI file | merge ends as not verified |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 On a machine where a wrapper changes `git`, set `MSTACK_GIT` to the real program (for example `/usr/bin/git`) before running the script.
 

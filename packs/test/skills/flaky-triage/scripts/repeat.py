@@ -28,6 +28,7 @@ import argparse
 import datetime
 import json
 import math
+import os
 import pathlib
 import random
 import re
@@ -37,6 +38,24 @@ import statistics
 import subprocess
 import sys
 import time
+
+
+def _find_git():
+    """The git program: MSTACK_GIT when set, otherwise the first git that runs. On macOS /usr/bin/git is
+    an xcrun shim that fails inside a sandbox (it cannot write its cache), so the real binaries come next."""
+    if os.environ.get("MSTACK_GIT"):
+        return os.environ["MSTACK_GIT"]
+    for candidate in ("git", "/Applications/Xcode.app/Contents/Developer/usr/bin/git",
+                      "/Library/Developer/CommandLineTools/usr/bin/git", "/opt/homebrew/bin/git", "/usr/local/bin/git"):
+        try:
+            if subprocess.run([candidate, "--version"], capture_output=True, timeout=10).returncode == 0:
+                return candidate
+        except (OSError, subprocess.SubprocessError):
+            continue
+    return "git"
+
+
+GIT = _find_git()
 
 STATE = pathlib.Path(".mstack") / "flaky"
 KEEP_LOGS = 5
@@ -61,7 +80,7 @@ def now_stamp():
 
 def git_out(root, *args):
     try:
-        out = subprocess.run(["git", "-C", str(root), *args], capture_output=True, text=True, timeout=60)
+        out = subprocess.run([GIT, "-C", str(root), *args], capture_output=True, text=True, timeout=60)
     except (OSError, subprocess.TimeoutExpired):
         return None
     return out.stdout if out.returncode == 0 else None

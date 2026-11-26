@@ -4,7 +4,7 @@ description: Finishes a branch in one of three ways the user picks: merge it loc
 license: MIT
 metadata:
   pack: dev
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, git, gh (only for opening a pull request)
 ---
 
@@ -28,6 +28,8 @@ End in exactly one state: **pass**, **fail** (dirty tree, failing suite, state m
 | python3, git | `python3 --version`, `git rev-parse HEAD` | end as blocked |
 | The full test command | the project's README, CI file or `.mstack/checks.json` | ask; without it the result is at best not verified |
 | gh, signed in (PR only) | `gh auth status` | offer the push alone and the compare link; or end as blocked |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 ## Steps
 

@@ -4,7 +4,7 @@ description: Finds security problems an attacker could use in the current change
 license: MIT
 metadata:
   pack: dev
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, git, the ecosystem's audit tool (npm, pip-audit, cargo-audit, govulncheck, bundler-audit)
 ---
 
@@ -27,6 +27,8 @@ End in exactly one state: **pass** (every check ran and nothing was found), **fa
 | python3, git | `python3 --version`, `git rev-parse --is-inside-work-tree` | end as blocked |
 | The audit tool for each lock file | `python3 scripts/scan.py detect` | say which tool and that installing it needs the user's yes; the audit becomes not available |
 | Network for the audit | the user agrees that the tool may ask its advisory database | the audit is not run; the result is at best not verified |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 ## Steps
 

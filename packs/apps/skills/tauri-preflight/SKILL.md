@@ -4,7 +4,7 @@ description: Flags release blockers in a Tauri desktop app's tauri.conf.json and
 license: MIT
 metadata:
   pack: apps
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

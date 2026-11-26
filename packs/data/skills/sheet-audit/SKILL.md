@@ -4,7 +4,7 @@ description: Audits an .xlsx workbook from the file for error cells, numbers typ
 license: MIT
 metadata:
   pack: data
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

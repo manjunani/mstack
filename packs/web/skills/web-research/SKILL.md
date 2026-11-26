@@ -4,7 +4,7 @@ description: Answers a question from the web with a notes file where every claim
 license: MIT
 metadata:
   pack: web
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, the host's web search and fetch tools
 ---
 

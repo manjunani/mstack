@@ -25,11 +25,30 @@ Exit codes: 0 = every line maps to a commit in the range, and every user-facing 
             2 = blocked or not verified: not a git repository, a ref that does not exist, an empty range, no notes file
 """
 import argparse
+import os
 import pathlib
 import re
 import shutil
 import subprocess
 import sys
+
+
+def _find_git():
+    """The git program: MSTACK_GIT when set, otherwise the first git that runs. On macOS /usr/bin/git is
+    an xcrun shim that fails inside a sandbox (it cannot write its cache), so the real binaries come next."""
+    if os.environ.get("MSTACK_GIT"):
+        return os.environ["MSTACK_GIT"]
+    for candidate in ("git", "/Applications/Xcode.app/Contents/Developer/usr/bin/git",
+                      "/Library/Developer/CommandLineTools/usr/bin/git", "/opt/homebrew/bin/git", "/usr/local/bin/git"):
+        try:
+            if subprocess.run([candidate, "--version"], capture_output=True, timeout=10).returncode == 0:
+                return candidate
+        except (OSError, subprocess.SubprocessError):
+            continue
+    return "git"
+
+
+GIT = _find_git()
 
 PREFIX = re.compile(r"^(\w+)(\([^)]*\))?(!)?:\s*(.+)$")
 INTERNAL = {"chore", "ci", "build", "docs", "test", "tests", "refactor", "style", "revert"}
@@ -39,7 +58,7 @@ HASH = re.compile(r"\b[0-9a-f]{7,40}\b")
 
 def git(*args):
     try:
-        done = subprocess.run(["git", *args], capture_output=True, text=True, timeout=60)
+        done = subprocess.run([GIT, *args], capture_output=True, text=True, timeout=60)
     except (OSError, subprocess.TimeoutExpired) as exc:
         return None, str(exc)
     return (done.stdout if done.returncode == 0 else None), done.stderr.strip()
@@ -47,7 +66,7 @@ def git(*args):
 
 def commits(start, end):
     """Return (list, problem). Each commit: hash, subject, kind, user_facing, files."""
-    if not shutil.which("git"):
+    if not shutil.which(GIT):
         return None, "blocked: git is not on this machine"
     out, err = git("rev-parse", "--is-inside-work-tree")
     if out is None:

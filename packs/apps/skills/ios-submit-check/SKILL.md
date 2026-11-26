@@ -1,10 +1,10 @@
 ---
 name: ios-submit-check
-description: Finds the mechanical reasons an iPhone app upload or App Store review would bounce: missing purpose strings for camera, location or photos, an incomplete privacy manifest, mismatched version and build numbers, a bad 1024 icon, wrong screenshot sizes. Use when the user is about to archive or upload to App Store Connect or TestFlight, or asks "is the app ready to submit". Not for the store listing text (use store-listing-check) or for a full release checklist (use release).
+description: Finds the mechanical reasons an iPhone app upload or App Store review would bounce: missing purpose strings for camera, location or photos, an incomplete privacy manifest, mismatched version and build numbers, a bad 1024 icon, wrong screenshot sizes. Use when the user is about to archive or upload to App Store Connect or TestFlight, or asks "is the app ready to submit", or wants a flagged privacy manifest entry, purpose string or version mismatch fixed so the check passes. Not for the store listing text (use store-listing-check) or for a full release checklist (use release).
 license: MIT
 metadata:
   pack: apps
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

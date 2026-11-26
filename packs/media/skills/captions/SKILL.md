@@ -4,7 +4,7 @@ description: Writes .srt and .vtt subtitle files from a word-timed transcript an
 license: MIT
 metadata:
   pack: media
-  version: 0.3.0
+  version: 0.3.1
   needs: python3; ffmpeg with the subtitles filter (libass) for burn-in only
 ---
 

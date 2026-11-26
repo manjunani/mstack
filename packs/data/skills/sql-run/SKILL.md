@@ -4,7 +4,7 @@ description: Runs one SQL query read-only with the limits inside the runner, wit
 license: MIT
 metadata:
   pack: data
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

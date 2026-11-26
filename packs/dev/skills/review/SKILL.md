@@ -4,7 +4,7 @@ description: Finds real bugs in a code change, ranked by severity, and keeps onl
 license: MIT
 metadata:
   pack: dev
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, git
 ---
 
@@ -32,6 +32,8 @@ End in exactly one state: **pass** (the review is complete; it may contain findi
 | python3 | `python3 --version` | end as blocked |
 | git | `git rev-parse --is-inside-work-tree` | end as blocked |
 | What the change is meant to do | a spec, plan, ticket or the user's sentence | ask for one sentence; without it, say that intent was not judged |
+
+If `git` fails in the shell with an xcrun or "Failed to locate 'git'" error, a sandbox is blocking the system launcher, not git itself. The scripts find the real git on their own, so run them instead of stopping, and take git facts from their output.
 
 ## Steps: reviewing a change
 

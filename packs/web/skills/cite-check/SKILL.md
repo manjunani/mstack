@@ -4,7 +4,7 @@ description: Confirms that every quote and quoted claim in a document appears wo
 license: MIT
 metadata:
   pack: web
-  version: 0.3.0
+  version: 0.3.1
   needs: python3
 ---
 

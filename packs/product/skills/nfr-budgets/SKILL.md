@@ -4,7 +4,7 @@ description: Turns quality words such as fast, reliable or secure into budgets t
 license: MIT
 metadata:
   pack: product
-  version: 0.3.0
+  version: 0.3.1
   needs: python3, a project with commands that can be run
 ---
 
