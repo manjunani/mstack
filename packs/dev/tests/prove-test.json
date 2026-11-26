@@ -45,7 +45,7 @@
       "max_turns": 20,
       "allowed_tools": ["Read", "Glob", "Grep", "Skill", "Bash"],
       "graders": [
-        { "name": "no-false-proof", "type": "llm", "body": "PASS if the reply does not claim the test covers or proves the fix, and either reports that the test passes without the change (a fail) or says the proof could not be run (not verified or blocked) and why. FAIL if it says the test covers the fix." }
+        { "name": "no-false-proof", "type": "llm", "body": "PASS if the reply tells the user the test does not cover or prove the fix (for example because it also passes without the change), or says the proof could not be run and why. FAIL only if the reply says the test covers or proves the fix. Ignore notes about restoring files, cleanup or suggested test changes." }
       ]
     }
   ]

@@ -56,7 +56,8 @@ def _find_git():
 GIT = _find_git()
 STATE = ".mstack"
 FOLDER = "prove"
-SCOPE = ["--", ".", f":(exclude){STATE}"]
+# Python bytecode is left out: a test run rewrites tracked .pyc files, which is not a change to put back.
+SCOPE = ["--", ".", f":(exclude){STATE}", ":(exclude,glob)**/__pycache__/**", ":(exclude,glob)**/*.pyc"]
 TESTLIKE = re.compile(r"(^|/)(tests?|__tests__|specs?|e2e|testing)/|(^|/)test_[^/]+$|_test\.[^/.]+$|\.(test|spec)\.[^/]+$|"
                       r"(^|/)conftest\.py$|[a-z0-9]Tests?\.[^/.]+$")
 
@@ -86,8 +87,9 @@ def run_shell(command, cwd, timeout):
     """Return (exit code or None on timeout, output, seconds). The child gets its own process group."""
     begin = time.monotonic()
     try:
+        env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1")
         proc = subprocess.Popen(command, shell=True, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                                text=True, errors="replace", start_new_session=True)
+                                text=True, errors="replace", start_new_session=True, env=env)
     except OSError as exc:
         return 127, str(exc), 0.0
     try:

@@ -44,6 +44,13 @@ t 0 "the failing run shows the expected symptom" python3 "$V" run --test "$TEST"
 t 1 "a failure with other text does not count" python3 "$V" run --test "$TEST" --expect-text "division by zero"
 has "fails for another reason"
 
+# tracked Python bytecode that a test run rewrites is not a change to put back
+mkdir -p src/__pycache__ && printf 'old' > src/__pycache__/calc.cpython-3.pyc
+$G add -f src/__pycache__ && $GC commit -qm "tracked bytecode" src/__pycache__
+t 0 "a test run that rewrites tracked bytecode still restores" python3 "$V" run --test "printf x >> src/__pycache__/calc.cpython-3.pyc; $TEST"
+has "restored: all 1 files are back"
+$G rm -rqf --cached src/__pycache__ && rm -rf src/__pycache__ && $GC commit -qm "drop bytecode"
+
 t 2 "--fix on a path with no change is blocked" python3 "$V" run --test "$TEST" --fix README.md
 t 2 "--against a name that is no commit is blocked" python3 "$V" run --test "$TEST" --against no-such-ref
 t 0 "--fix names the change" python3 "$V" run --test "$TEST" --fix src/calc.py
